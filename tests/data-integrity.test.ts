@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
 import scenarioData from '../data/scenarios/little-bighorn-1876/scenario.json';
-import type { Order, Scenario } from '../src/schema/scenario-schema.js';
+import type { Order, Scenario, Unit } from '../src/schema/scenario-schema.js';
 import { validateScenario } from '../src/validate.js';
 
 const scenario = scenarioData as unknown as Scenario;
+const remainingTodoAmbiguities = (JSON.stringify(scenarioData).match(/TODO-AMBIGUOUS/g) ?? []).length;
+
+console.info(`[metric] remaining TODO-AMBIGUOUS count: ${remainingTodoAmbiguities}`);
 
 type JsonRecord = Record<string, unknown>;
 
@@ -30,6 +33,7 @@ describe('Little Bighorn scenario data integrity', () => {
     const result = validateScenario(scenarioData);
     expect(result.errors).toEqual([]);
     expect(result.valid).toBe(true);
+    expect(scenario.meta.schemaVersion).toBe('0.2');
   });
 
   it('2. every ID reference resolves', () => {
@@ -58,21 +62,26 @@ describe('Little Bighorn scenario data integrity', () => {
       expect(unitIds.has(leader.attachedToUnitId), `${leader.id}.attachedToUnitId`).toBe(true);
     });
 
-    scenario.units.forEach((unit) => {
+    const assertUnitReferences = (
+      unit: Unit,
+      path: string,
+      availableTacticsIds = tacticsIds,
+    ): void => {
       expect(sideIds.has(unit.sideId), `${unit.id}.sideId`).toBe(true);
-      expect(tacticsIds.has(unit.tacticsProfileId), `${unit.id}.tacticsProfileId`).toBe(true);
+      expect(availableTacticsIds.has(unit.tacticsProfileId), `${path}.tacticsProfileId`).toBe(true);
       if (unit.commandingLeaderId) {
-        expect(leaderIds.has(unit.commandingLeaderId), `${unit.id}.commandingLeaderId`).toBe(true);
+        expect(leaderIds.has(unit.commandingLeaderId), `${path}.commandingLeaderId`).toBe(true);
       }
-      Object.keys(unit.weaponMix).forEach((id) => expect(weaponIds.has(id), `${unit.id}.weaponMix.${id}`).toBe(true));
-      Object.keys(unit.ammunition).forEach((id) => expect(weaponIds.has(id), `${unit.id}.ammunition.${id}`).toBe(true));
-    });
+      Object.keys(unit.weaponMix).forEach((id) => expect(weaponIds.has(id), `${path}.weaponMix.${id}`).toBe(true));
+      Object.keys(unit.ammunition).forEach((id) => expect(weaponIds.has(id), `${path}.ammunition.${id}`).toBe(true));
+    };
+    scenario.units.forEach((unit) => assertUnitReferences(unit, `units.${unit.id}`));
 
-    const assertOrderReferences = (order: Order, path: string): void => {
+    const assertOrderReferences = (order: Order, path: string, availableUnitIds = unitIds): void => {
       expect(leaderIds.has(order.issuerLeaderId), `${path}.issuerLeaderId`).toBe(true);
-      order.recipientUnitIds.forEach((id) => expect(unitIds.has(id), `${path}.recipientUnitIds.${id}`).toBe(true));
+      order.recipientUnitIds.forEach((id) => expect(availableUnitIds.has(id), `${path}.recipientUnitIds.${id}`).toBe(true));
       if (order.objective?.landmarkId) expect(landmarkIds.has(order.objective.landmarkId), `${path}.landmarkId`).toBe(true);
-      if (order.objective?.targetUnitId) expect(unitIds.has(order.objective.targetUnitId), `${path}.targetUnitId`).toBe(true);
+      if (order.objective?.targetUnitId) expect(availableUnitIds.has(order.objective.targetUnitId), `${path}.targetUnitId`).toBe(true);
     };
     scenario.orders.forEach((order) => assertOrderReferences(order, `orders.${order.id}`));
 
@@ -89,28 +98,46 @@ describe('Little Bighorn scenario data integrity', () => {
     });
 
     scenario.variants.forEach((variant) => {
+      const addedUnitIds = variant.patch.addUnits?.map(({ id }) => id) ?? [];
+      const addedTacticsIds = variant.patch.addTacticsProfiles?.map(({ id }) => id) ?? [];
+      const variantUnitIds = new Set([...unitIds, ...addedUnitIds]);
+      const variantTacticsIds = new Set([...tacticsIds, ...addedTacticsIds]);
+      expectUnique(addedUnitIds);
+      expectUnique(addedTacticsIds);
+      addedUnitIds.forEach((id) => expect(unitIds.has(id), `${variant.id}.addUnits.${id}.collision`).toBe(false));
+      addedTacticsIds.forEach((id) => expect(tacticsIds.has(id), `${variant.id}.addTacticsProfiles.${id}.collision`).toBe(false));
+      variant.patch.addUnits?.forEach((unit) => assertUnitReferences(unit, `${variant.id}.addUnits.${unit.id}`, variantTacticsIds));
       variant.excludesVariantIds.forEach((id) => expect(variantIds.has(id), `${variant.id}.excludes.${id}`).toBe(true));
       variant.patch.removeOrderIds?.forEach((id) => expect(orderIds.has(id), `${variant.id}.removeOrderIds.${id}`).toBe(true));
       variant.patch.removeCheckpointIds?.forEach((id) => expect(checkpointIds.has(id), `${variant.id}.removeCheckpointIds.${id}`).toBe(true));
       variant.patch.modifyOrders?.forEach(({ id, changes }) => {
         expect(orderIds.has(id), `${variant.id}.modifyOrders.${id}`).toBe(true);
         if (changes.issuerLeaderId) expect(leaderIds.has(changes.issuerLeaderId), `${variant.id}.${id}.issuerLeaderId`).toBe(true);
-        changes.recipientUnitIds?.forEach((unitId) => expect(unitIds.has(unitId), `${variant.id}.${id}.recipientUnitIds.${unitId}`).toBe(true));
+        changes.recipientUnitIds?.forEach((unitId) => expect(variantUnitIds.has(unitId), `${variant.id}.${id}.recipientUnitIds.${unitId}`).toBe(true));
         if (changes.objective?.landmarkId) expect(landmarkIds.has(changes.objective.landmarkId), `${variant.id}.${id}.landmarkId`).toBe(true);
-        if (changes.objective?.targetUnitId) expect(unitIds.has(changes.objective.targetUnitId), `${variant.id}.${id}.targetUnitId`).toBe(true);
+        if (changes.objective?.targetUnitId) expect(variantUnitIds.has(changes.objective.targetUnitId), `${variant.id}.${id}.targetUnitId`).toBe(true);
       });
       variant.patch.modifyUnits?.forEach(({ id, changes }) => {
         expect(unitIds.has(id), `${variant.id}.modifyUnits.${id}`).toBe(true);
-        if (changes.tacticsProfileId) expect(tacticsIds.has(changes.tacticsProfileId), `${variant.id}.${id}.tacticsProfileId`).toBe(true);
+        if (changes.tacticsProfileId) expect(variantTacticsIds.has(changes.tacticsProfileId), `${variant.id}.${id}.tacticsProfileId`).toBe(true);
         if (changes.commandingLeaderId) expect(leaderIds.has(changes.commandingLeaderId), `${variant.id}.${id}.commandingLeaderId`).toBe(true);
         Object.keys(changes.weaponMix ?? {}).forEach((weaponId) => expect(weaponIds.has(weaponId), `${variant.id}.${id}.weaponMix.${weaponId}`).toBe(true));
         Object.keys(changes.ammunition ?? {}).forEach((weaponId) => expect(weaponIds.has(weaponId), `${variant.id}.${id}.ammunition.${weaponId}`).toBe(true));
       });
-      variant.patch.addOrders?.forEach((order) => assertOrderReferences(order, `${variant.id}.addOrders.${order.id}`));
-      variant.patch.addCheckpoints?.forEach((checkpoint) => expect(unitIds.has(checkpoint.unitId), `${variant.id}.addCheckpoints.${checkpoint.id}`).toBe(true));
+      variant.patch.modifyLeaders?.forEach(({ id, changes }) => {
+        expect(leaderIds.has(id), `${variant.id}.modifyLeaders.${id}`).toBe(true);
+        if (changes.attachedToUnitId) expect(variantUnitIds.has(changes.attachedToUnitId), `${variant.id}.${id}.attachedToUnitId`).toBe(true);
+      });
+      variant.patch.modifyEndStates?.forEach(({ unitId, changes }) => {
+        expect(scenario.calibration.endState.some((state) => state.unitId === unitId), `${variant.id}.modifyEndStates.${unitId}`).toBe(true);
+        if (changes.landmarkId) expect(landmarkIds.has(changes.landmarkId), `${variant.id}.${unitId}.landmarkId`).toBe(true);
+      });
+      variant.patch.addOrders?.forEach((order) => assertOrderReferences(order, `${variant.id}.addOrders.${order.id}`, variantUnitIds));
+      variant.patch.addCheckpoints?.forEach((checkpoint) => expect(variantUnitIds.has(checkpoint.unitId), `${variant.id}.addCheckpoints.${checkpoint.id}`).toBe(true));
     });
 
     Object.keys(scenario.calibration.casualties).forEach((id) => expect(unitIds.has(id), `calibration.casualties.${id}`).toBe(true));
+    Object.keys(scenario.calibration.sideCasualties ?? {}).forEach((id) => expect(sideIds.has(id), `calibration.sideCasualties.${id}`).toBe(true));
     scenario.calibration.endState.forEach((state) => {
       expect(unitIds.has(state.unitId), `calibration.endState.${state.unitId}`).toBe(true);
       if (state.landmarkId) expect(landmarkIds.has(state.landmarkId), `calibration.endState.${state.landmarkId}`).toBe(true);
@@ -225,6 +252,27 @@ describe('Little Bighorn scenario data integrity', () => {
     ['v-reno-holds-timber', 'v-benteen-prompt'].forEach((id) => {
       const variant = scenario.variants.find((item) => item.id === id);
       expect(variant?.provenance.note, id).toContain('counterfactual: excluded from calibration scoring');
+    });
+  });
+
+  it('12. D19 camp strengths are nonzero and preserve the 5,250 best-strength anchor', () => {
+    const campIds = ['hunkpapa-camp', 'oglala-camp', 'minneconjou-camp', 'sans-arc-camp', 'mixed-north-camp', 'cheyenne-camp'];
+    const camps = campIds.map((id) => scenario.units.find((unit) => unit.id === id));
+    camps.forEach((camp, index) => expect(camp?.strength.best, campIds[index]).toBeGreaterThan(0));
+    expect(camps.reduce((sum, camp) => sum + (camp?.strength.best ?? 0), 0)).toBe(5250);
+  });
+
+  it('13. every unit strength Estimate has integer low/best/high (D26)', () => {
+    const assertIntegerStrength = (strength: { low: number; best: number; high: number } | undefined, label: string): void => {
+      if (!strength) return;
+      (['low', 'best', 'high'] as const).forEach((bound) => {
+        expect(Number.isInteger(strength[bound]), `${label}.strength.${bound}`).toBe(true);
+      });
+    };
+    scenario.units.forEach((unit) => assertIntegerStrength(unit.strength, `units.${unit.id}`));
+    scenario.variants.forEach((variant) => {
+      variant.patch.addUnits?.forEach((unit) => assertIntegerStrength(unit.strength, `${variant.id}.addUnits.${unit.id}`));
+      variant.patch.modifyUnits?.forEach(({ id, changes }) => assertIntegerStrength(changes.strength, `${variant.id}.modifyUnits.${id}`));
     });
   });
 });

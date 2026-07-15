@@ -2,6 +2,7 @@
  * scenario-schema.ts
  * Battle-agnostic scenario format for the order-driven historical battle simulator.
  * First target: Little Bighorn, June 25, 1876.
+ * Schema version: 0.2.
  *
  * Design principles:
  *  1. DATA-ONLY battles. The engine knows nothing about any specific battle;
@@ -107,7 +108,7 @@ export interface ClockSpec {
   start: string;
   /** Wall-clock of scenario end, e.g. "21:00" June 25. */
   end: string;
-  /** Single retained engine tick length in sim-seconds; tick phases are deferred to v0.2. */
+  /** Single retained engine tick length in sim-seconds; playback phasing is not stored here. */
   tickSeconds: number;
 }
 
@@ -368,6 +369,13 @@ export interface Variant {
     addCheckpoints?: Checkpoint[];
     removeCheckpointIds?: string[];
     modifyUnits?: { id: string; changes: Partial<Unit> }[];
+    modifyLeaders?: { id: string; changes: Partial<Leader> }[];
+    addUnits?: Unit[];
+    addTacticsProfiles?: TacticsProfile[];
+    modifyEndStates?: {
+      unitId: string;
+      changes: Partial<CalibrationTargets['endState'][number]>;
+    }[];
   };
   /** Variants that cannot be enabled together. */
   excludesVariantIds: string[];
@@ -381,6 +389,8 @@ export interface Variant {
 export interface CalibrationTargets {
   /** unitId -> historical losses. */
   casualties: Record<string, { killed: Estimate; wounded: Estimate }>;
+  /** sideId -> side-wide historical losses that cannot be assigned to units. */
+  sideCasualties?: Record<string, { killed: Estimate; wounded: Estimate }>;
   /** Narrative end-state assertions the engine can check mechanically. */
   endState: {
     description: string;      // "Custer battalion annihilated; Reno-Benteen besieged on hill"

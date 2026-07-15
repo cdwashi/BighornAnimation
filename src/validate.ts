@@ -121,6 +121,40 @@ export function validateScenario(value: unknown): ValidationResult {
     numberAt(checkpoint.toleranceMinutes, `${path}.toleranceMinutes`);
     provenanceAt(checkpoint.provenance, `${path}.provenance`);
   };
+  const tacticsProfileAt = (candidate: unknown, path: string): void => {
+    const profile = objectAt(candidate, path);
+    if (!profile) return;
+    stringAt(profile.id, `${path}.id`);
+    stringAt(profile.name, `${path}.name`);
+    const weights = objectAt(profile.weights, `${path}.weights`);
+    if (weights) ['standoffFire', 'infiltration', 'shockCharge', 'dispersion', 'withdrawalDiscipline', 'targetHorses']
+      .forEach((field) => numberAt(weights[field], `${path}.weights.${field}`));
+    if (profile.dismountHolderFraction !== undefined) numberAt(profile.dismountHolderFraction, `${path}.dismountHolderFraction`);
+    provenanceAt(profile.provenance, `${path}.provenance`);
+  };
+  const unitAt = (candidate: unknown, path: string): void => {
+    const unit = objectAt(candidate, path);
+    if (!unit) return;
+    ['id', 'sideId', 'kind', 'name', 'tacticsProfileId', 'startFormation'].forEach((field) =>
+      stringAt(unit[field], `${path}.${field}`),
+    );
+    estimateAt(unit.strength, `${path}.strength`);
+    const mix = objectAt(unit.weaponMix, `${path}.weaponMix`);
+    if (mix) Object.entries(mix).forEach(([weaponId, fraction]) => numberAt(fraction, `${path}.weaponMix.${weaponId}`));
+    const ammunition = objectAt(unit.ammunition, `${path}.ammunition`);
+    if (ammunition) Object.entries(ammunition).forEach(([weaponId, estimate]) => estimateAt(estimate, `${path}.ammunition.${weaponId}`));
+    booleanAt(unit.mounted, `${path}.mounted`);
+    numberAt(unit.baseMorale, `${path}.baseMorale`);
+    positionAt(unit.startPosition, `${path}.startPosition`);
+    if (unit.commandingLeaderId !== undefined) stringAt(unit.commandingLeaderId, `${path}.commandingLeaderId`);
+    provenanceAt(unit.provenance, `${path}.provenance`);
+  };
+  const casualtyAt = (candidate: unknown, path: string): void => {
+    const casualty = objectAt(candidate, path);
+    if (!casualty) return;
+    estimateAt(casualty.killed, `${path}.killed`);
+    estimateAt(casualty.wounded, `${path}.wounded`);
+  };
 
   const root = objectAt(value, '$');
   if (!root) return { valid: false, errors };
@@ -228,17 +262,9 @@ export function validateScenario(value: unknown): ValidationResult {
   });
 
   const tactics = objectAt(root.tacticsProfiles, '$.tacticsProfiles');
-  if (tactics) Object.entries(tactics).forEach(([key, item]) => {
-    const profile = objectAt(item, `$.tacticsProfiles.${key}`);
-    if (!profile) return;
-    stringAt(profile.id, `$.tacticsProfiles.${key}.id`);
-    stringAt(profile.name, `$.tacticsProfiles.${key}.name`);
-    const weights = objectAt(profile.weights, `$.tacticsProfiles.${key}.weights`);
-    if (weights) ['standoffFire', 'infiltration', 'shockCharge', 'dispersion', 'withdrawalDiscipline', 'targetHorses']
-      .forEach((field) => numberAt(weights[field], `$.tacticsProfiles.${key}.weights.${field}`));
-    if (profile.dismountHolderFraction !== undefined) numberAt(profile.dismountHolderFraction, `$.tacticsProfiles.${key}.dismountHolderFraction`);
-    provenanceAt(profile.provenance, `$.tacticsProfiles.${key}.provenance`);
-  });
+  if (tactics) Object.entries(tactics).forEach(([key, item]) =>
+    tacticsProfileAt(item, `$.tacticsProfiles.${key}`),
+  );
 
   arrayAt(root.sides, '$.sides').forEach((item, index) => {
     const side = objectAt(item, `$.sides[${index}]`);
@@ -254,23 +280,7 @@ export function validateScenario(value: unknown): ValidationResult {
     stringsAt(leader.traits, `$.leaders[${index}].traits`);
     provenanceAt(leader.ratingsProvenance, `$.leaders[${index}].ratingsProvenance`);
   });
-  arrayAt(root.units, '$.units').forEach((item, index) => {
-    const unit = objectAt(item, `$.units[${index}]`);
-    if (!unit) return;
-    ['id', 'sideId', 'kind', 'name', 'tacticsProfileId', 'startFormation'].forEach((field) =>
-      stringAt(unit[field], `$.units[${index}].${field}`),
-    );
-    estimateAt(unit.strength, `$.units[${index}].strength`);
-    const mix = objectAt(unit.weaponMix, `$.units[${index}].weaponMix`);
-    if (mix) Object.entries(mix).forEach(([weaponId, fraction]) => numberAt(fraction, `$.units[${index}].weaponMix.${weaponId}`));
-    const ammunition = objectAt(unit.ammunition, `$.units[${index}].ammunition`);
-    if (ammunition) Object.entries(ammunition).forEach(([weaponId, estimate]) => estimateAt(estimate, `$.units[${index}].ammunition.${weaponId}`));
-    booleanAt(unit.mounted, `$.units[${index}].mounted`);
-    numberAt(unit.baseMorale, `$.units[${index}].baseMorale`);
-    positionAt(unit.startPosition, `$.units[${index}].startPosition`);
-    if (unit.commandingLeaderId !== undefined) stringAt(unit.commandingLeaderId, `$.units[${index}].commandingLeaderId`);
-    provenanceAt(unit.provenance, `$.units[${index}].provenance`);
-  });
+  arrayAt(root.units, '$.units').forEach((item, index) => unitAt(item, `$.units[${index}]`));
   arrayAt(root.orders, '$.orders').forEach((item, index) => orderAt(item, `$.orders[${index}]`));
   arrayAt(root.checkpoints, '$.checkpoints').forEach((item, index) => checkpointAt(item, `$.checkpoints[${index}]`));
   arrayAt(root.observationEvents, '$.observationEvents').forEach((item, index) => {
@@ -295,10 +305,12 @@ export function validateScenario(value: unknown): ValidationResult {
     if (patch) {
       if (patch.addOrders !== undefined) arrayAt(patch.addOrders, `$.variants[${index}].patch.addOrders`).forEach((order, orderIndex) => orderAt(order, `$.variants[${index}].patch.addOrders[${orderIndex}]`));
       if (patch.addCheckpoints !== undefined) arrayAt(patch.addCheckpoints, `$.variants[${index}].patch.addCheckpoints`).forEach((checkpoint, checkpointIndex) => checkpointAt(checkpoint, `$.variants[${index}].patch.addCheckpoints[${checkpointIndex}]`));
+      if (patch.addUnits !== undefined) arrayAt(patch.addUnits, `$.variants[${index}].patch.addUnits`).forEach((unit, unitIndex) => unitAt(unit, `$.variants[${index}].patch.addUnits[${unitIndex}]`));
+      if (patch.addTacticsProfiles !== undefined) arrayAt(patch.addTacticsProfiles, `$.variants[${index}].patch.addTacticsProfiles`).forEach((profile, profileIndex) => tacticsProfileAt(profile, `$.variants[${index}].patch.addTacticsProfiles[${profileIndex}]`));
       ['removeOrderIds', 'removeCheckpointIds'].forEach((field) => {
         if (patch[field] !== undefined) stringsAt(patch[field], `$.variants[${index}].patch.${field}`);
       });
-      ['modifyOrders', 'modifyUnits'].forEach((field) => {
+      ['modifyOrders', 'modifyUnits', 'modifyLeaders'].forEach((field) => {
         if (patch[field] !== undefined) arrayAt(patch[field], `$.variants[${index}].patch.${field}`).forEach((changeItem, changeIndex) => {
           const change = objectAt(changeItem, `$.variants[${index}].patch.${field}[${changeIndex}]`);
           if (change) {
@@ -306,6 +318,13 @@ export function validateScenario(value: unknown): ValidationResult {
             objectAt(change.changes, `$.variants[${index}].patch.${field}[${changeIndex}].changes`);
           }
         });
+      });
+      if (patch.modifyEndStates !== undefined) arrayAt(patch.modifyEndStates, `$.variants[${index}].patch.modifyEndStates`).forEach((changeItem, changeIndex) => {
+        const change = objectAt(changeItem, `$.variants[${index}].patch.modifyEndStates[${changeIndex}]`);
+        if (change) {
+          stringAt(change.unitId, `$.variants[${index}].patch.modifyEndStates[${changeIndex}].unitId`);
+          objectAt(change.changes, `$.variants[${index}].patch.modifyEndStates[${changeIndex}].changes`);
+        }
       });
     }
     stringsAt(variant.excludesVariantIds, `$.variants[${index}].excludesVariantIds`);
@@ -315,12 +334,15 @@ export function validateScenario(value: unknown): ValidationResult {
   const calibration = objectAt(root.calibration, '$.calibration');
   if (calibration) {
     const casualties = objectAt(calibration.casualties, '$.calibration.casualties');
-    if (casualties) Object.entries(casualties).forEach(([unitId, item]) => {
-      const casualty = objectAt(item, `$.calibration.casualties.${unitId}`);
-      if (!casualty) return;
-      estimateAt(casualty.killed, `$.calibration.casualties.${unitId}.killed`);
-      estimateAt(casualty.wounded, `$.calibration.casualties.${unitId}.wounded`);
-    });
+    if (casualties) Object.entries(casualties).forEach(([unitId, item]) =>
+      casualtyAt(item, `$.calibration.casualties.${unitId}`),
+    );
+    if (calibration.sideCasualties !== undefined) {
+      const sideCasualties = objectAt(calibration.sideCasualties, '$.calibration.sideCasualties');
+      if (sideCasualties) Object.entries(sideCasualties).forEach(([sideId, item]) =>
+        casualtyAt(item, `$.calibration.sideCasualties.${sideId}`),
+      );
+    }
     arrayAt(calibration.endState, '$.calibration.endState').forEach((item, index) => {
       const state = objectAt(item, `$.calibration.endState[${index}]`);
       if (!state) return;

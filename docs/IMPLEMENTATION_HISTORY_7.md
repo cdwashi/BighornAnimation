@@ -54,6 +54,15 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D16 | 07-14 | **Weak citations recorded faithfully** (Wikipedia, forum-tier, "subagent" relays) rather than laundered | Honest accounting; flags where re-sourcing is warranted before publication-grade claims. | Approved |
 | D17 | 07-14 | **schema v0.1.1** (weaponMix sum rule removed, RIFLE_BREECHLOADER added, tickPhases deferred). | Approved |
 | D18 | 07-14 | **O1 split** Fable froze all judgment into TRANSCRIPTION-DECISIONS, Codex assembles + builds the harness, Fable reviews. | Approved |
+| D19 | 07-14 | **Post-O1 review rulings** R1–R9 above (dated today); mark O1 closed on commit.
+| D20 | 07-14 | DEM: USGS 3DEP 1/3 arc-second, TNM API, bounds sw(45.42,−107.48) ne(45.60,−107.15) | Free, seamless, adequate for battalion-scale LOS; preserved battlefield ≈ 1876 surface. 1 m lidar noted as upgrade path. | Approved |
+| D20a | 07-14 | Two-tier grid: core battlefield 10 m, full box (approach + Crow's Nest) 30 m | Full 10 m ≈ 10 MB asset; two tiers keep the static app light while serving both phases. | Approved |
+| D21 | 07-14 | Project to UTM 13N; engine in local meters, origin SW corner | No degree math in the engine; authoring stays WGS84. | Approved |
+| D22 | 07-14 | Contours: 5 m interval, 25 m index | ~100 m total relief; 10 m too sparse to read coulees. | Approved |
+| D23 | 07-14 | LOS requires earth-curvature + refraction correction (k=0.13) | Crow's Nest sighting is ~24 km; raw curvature drop ~45 m exceeds village-site relief. Gate G3 proves it live. | Approved |
+| D24 | 07-14 | O3 protocol: adjudicate Crow's Nest candidates by viewshed-scoring against documented dawn observations | HIGH-confidence observation events legitimately adjudicate a disputed input coordinate. | Approved |
+| D25 | 07-14 | O4 Tier A for v1: river/timber corrections from NPS GRI figures + Maguire 1876 map, LOW–MEDIUM flagged; Tier B (QGIS georeferencing) backlogged | Ships honest corrections now without blocking M1. | Approved |
+| D26 | 07-14 | Integer-strength rule: all unit strength Estimates (incl. variant-added/modified) are whole men; splits use parent-keeps-remainder (co-c 19/20/23, co-c-det 19/20/22). Enforced by new data-integrity assertion. | Found via O1b review (22.5-man bug); bug becomes a permanent gate, per house pattern. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -105,6 +114,10 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 6. **Decisions approved.** Chuck approved D11–D14 and the D15 approach (numbers
    pending review). Requested this implementation history file and a PRD to make the
    process reproducible for future battles — both delivered to close the session.
+
+### Session 2 — 2026-07-14 (claude.ai)
+
+"O1 executed via Codex, reviewed by CC + Fable; D19 rulings; O1b burn-down 57→42 flags; D26 integer rule from review; terrain decisions D20–D25 approved; M1-A queued."
 
 **State at session end:** schema frozen at v0.1; research data in hand; five gating
 decisions resolved; transcription (O1) is the next unit of work. GitHub repo not yet
