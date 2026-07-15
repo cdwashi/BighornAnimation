@@ -50,11 +50,11 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D12 | 07-14 | **Baseline interpretation = archaeology-weighted (Gray/Fox):** MTC feint (F1), unequal wings / no C-split (F2), tactical disintegration (F3), E Co in Deep Ravine (F4). Traditional readings (serious crossing, organized last stand) + Reno-timber and Weir-initiative disputes ship as named variants | Follows the declared source hierarchy; physical evidence outranks testimony where they conflict. | Approved by Chuck |
 | D13 | 07-14 | **Native strength defaults:** warriors 900 / 1,750 / 2,500 (low/best/high); armed fraction ⅓ / 0.40 / ½; repeaters 25–30% of armed | Matches research "best working figure 1,500–2,000"; all sweepable — sets the default run only. | Approved by Chuck |
 | D14 | 07-14 | **Warrior unit decomposition:** one defense-pool WARRIOR_BAND per village circle (strength ∝ lodges) + named-leader bands for documented axes (Gall south/Calhoun; Crazy Horse north sweep; Crow King ~80; Lame White Man's charge) drawing from circle pools | The coalition did not fight in discrete units; this is acknowledged model invention. Every such unit marked LOW confidence with rationale in provenance. | Approved by Chuck |
-| D15 | 07-14 | **Leader ratings (0–100)** proposed by Claude from documented behavioral evidence, evidence quoted in `ratingsProvenance`; Chuck reviews the numbers explicitly | Research deliberately supplied evidence, not numbers; the numbers are argued opinions and are flagged as such for PR-style review. | Approach approved; numbers pending review |
+| D15 | 07-14 | **Leader ratings (0–100)** proposed by Claude from documented behavioral evidence, evidence quoted in `ratingsProvenance`; Chuck reviews the numbers explicitly | Research deliberately supplied evidence, not numbers; the numbers are argued opinions and are flagged as such for PR-style review. | Approved — ratings approved as proposed (Chuck, 07-14); O2 closed |
 | D16 | 07-14 | **Weak citations recorded faithfully** (Wikipedia, forum-tier, "subagent" relays) rather than laundered | Honest accounting; flags where re-sourcing is warranted before publication-grade claims. | Approved |
-| D17 | 07-14 | **schema v0.1.1** (weaponMix sum rule removed, RIFLE_BREECHLOADER added, tickPhases deferred). | Approved |
-| D18 | 07-14 | **O1 split** Fable froze all judgment into TRANSCRIPTION-DECISIONS, Codex assembles + builds the harness, Fable reviews. | Approved |
-| D19 | 07-14 | **Post-O1 review rulings** R1–R9 above (dated today); mark O1 closed on commit.
+| D17 | 07-14 | **schema v0.1.1** (weaponMix sum rule removed, RIFLE_BREECHLOADER added, tickPhases deferred). | First contact with real data exposed the sum-rule bug. | Approved |
+| D18 | 07-14 | **O1 split** Fable froze all judgment into TRANSCRIPTION-DECISIONS, Codex assembles + builds the harness, Fable reviews. | Judgment/typing split per workflow. | Approved |
+| D19 | 07-14 | **Post-O1 review rulings R1–R9:** DEM south bound 45.42 ratified; civilians-interpreters kept as 16th US unit (flagged); camp strengths via lodge-proportional method (5,250 across six camps); pack-train mix 0.8/0.8 + GRAHAM source key; scout ammo mirrored from tables; courier orders target co-f; checkpoint representative mappings ratified; blackfeet-santee position interpolated; empty variant exclusions confirmed correct. Full detail: codex-report.md AMBIGUITIES + CODEX-WORKORDER-O1B.md. | Codex ask-don't-guess flags → Fable rulings; most traced to spec bugs owned in-session. | Approved; O1 closed |
 | D20 | 07-14 | DEM: USGS 3DEP 1/3 arc-second, TNM API, bounds sw(45.42,−107.48) ne(45.60,−107.15) | Free, seamless, adequate for battalion-scale LOS; preserved battlefield ≈ 1876 surface. 1 m lidar noted as upgrade path. | Approved |
 | D20a | 07-14 | Two-tier grid: core battlefield 10 m, full box (approach + Crow's Nest) 30 m | Full 10 m ≈ 10 MB asset; two tiers keep the static app light while serving both phases. | Approved |
 | D21 | 07-14 | Project to UTM 13N; engine in local meters, origin SW corner | No degree math in the engine; authoring stays WGS84. | Approved |
@@ -65,7 +65,7 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D26 | 07-14 | Integer-strength rule: all unit strength Estimates (incl. variant-added/modified) are whole men; splits use parent-keeps-remainder (co-c 19/20/23, co-c-det 19/20/22). Enforced by new data-integrity assertion. | Found via O1b review (22.5-man bug); bug becomes a permanent gate, per house pattern. | Approved |
 | D27 | 07-14 | Marker-relocation convention: marker-sourced landmark coords may move to the DEM terrain feature when DEM+EPQS confirm, historical function requires it, and provenance keeps both. Applied: sharpshooter-ridge → 45.5336,−107.3927 (crest, 1039 m), MEDIUM. | HMDB marker sits on the flank (1025 m), below Reno Hill; ridge must command Reno Hill per plunging-fire accounts. Found by gate G2; second instance of the Crow's Nest-decoy pattern. | Approved |
 | D28 | 07-14 | Movement-cost slope factor 1+tan(slope), [CAL] placeholder; Tobler's hiking function noted as M5 upgrade candidate. | No formula in spec; monotonic and adequate pending calibration. | Approved |
-| D29 | 07-14 | Large derived vector assets: commit compressed (.br) variants only; gitignore raw derived files >5 MB; loader reads .br. Pipeline additionally caps GeoJSON coordinate precision at 5 decimals (~1 m — ample for 5 m contours). | 43 MB raw GeoJSON bloats every future clone; GitHub warns at 50 MB. Raw remains reproducible via `npm run terrain`. | Approved |
+| D29 | 07-15 | Large derived vector assets: commit compressed (.br) variants only; gitignore raw derived files >5 MB; loader reads .br. Pipeline additionally caps GeoJSON coordinate precision at 5 decimals (~1 m — ample for 5 m contours). | 43 MB raw GeoJSON bloats every future clone; GitHub warns at 50 MB. Raw remains reproducible via `npm run terrain`. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -76,17 +76,25 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | Research output (Chuck-supplied) | 07-14 | Full A–K dataset + gaps/reliability report. Received and reviewed; quality strong. |
 | `IMPLEMENTATION_HISTORY.md` | 07-14 | This file. |
 | `PRD-battle-simulator.md` | 07-14 | Product requirements + reproducible per-battle pipeline. |
+| `TRANSCRIPTION-DECISIONS.md` | 07-14 | Frozen judgment calls for O1 assembly; authoritative on conflicts with research doc. |
+| `CODEX-WORKORDER-O1.md` | 07-14 | Work order: scenario transcription + validation harness. |
+| `CODEX-WORKORDER-O1B.md` | 07-14 | Work order: schema v0.2 + D19 ambiguity burn-down. |
+| `M1-TERRAIN-SPEC.md` | 07-14 | Terrain pipeline spec (D20–D25); §8 gates became the M1-A exit tests. |
+| `CODEX-WORKORDER-M1A.md` | 07-14 | Work order: terrain pipeline + loader + validation gates. |
+| `scenario.json` v0.2 | 07-14 | Little Bighorn scenario data; 33 units / 18 leaders / 22 orders / 7 variants; 41-flag ambiguity ledger. |
+| `codex-report.md`, `codex-report-o1b.md`, `codex-report-m1a.md` | 07-14 | Codex execution reports with verbatim proof output and AMBIGUITIES sections. |
+| `data/terrain/little-bighorn-1876/` | 07-14 | Processed terrain assets: two-tier elevation/slope grids, hillshades, 5 m contours, cover + movement-cost layers (D29 .br packaging, 07-15). |
 
 ## 4. Open Items
 
 | # | Item | Owner | Notes |
 |---|---|---|---|
-| O1 | Transcribe research → `little-bighorn-1876.json` + validation harness | Claude | Next task. Data-integrity tests: ID references resolve; times within clock; weapon-mix fractions ≤ 1; coords within DEM bounds; every DISPUTED row landed as Estimate or Variant. |
-| O2 | Leader rating numbers review | Chuck | Per D15 — review like a PR. |
-| O3 | Crow's Nest coordinate | Both | Research warns the published marker coordinate is a decoy at the visitor site; true Wolf Mts overlook on private land. Try GNIS / Gray's maps. Viewshed accuracy for the opening scene depends on it. |
-| O4 | 1876 river channel corrections | Claude | Source: NPS Geologic Resources Inventory 2011 (1891-vs-modern channel overlay), esp. Ford B + Garryowen loop. Feeds `terrain.historicalCorrections`. |
-| O5 | Re-source weak citations flagged in D16 | Claude | Before any publication-grade use. |
-| O6 | DEM acquisition + terrain pipeline (USGS 3DEP 1/3 arc-second) | Claude | Contours via marching squares (d3-contour candidate); slope/movement-cost grid; LOS raycast grid. |
+| O1 | Transcribe research → `scenario.json` + validation harness | Claude | ✅ Closed — committed (d6b1da2 + 3c2f1f8); D19 rulings; 42-flag ambiguity ledger carried in provenance. |
+| O2 | Leader rating numbers review | Chuck | ✅ Closed — ratings approved as proposed (D15, 07-14). |
+| O3 | Crow's Nest coordinate | Both | In progress — D24 viewshed-adjudication method road-tested via D27 (neighborhood scan + EPQS); Research run for candidates drafted. |
+| O4 | 1876 river channel corrections | Claude | In progress — Tier A per D25 (NPS GRI figures + Maguire map); zero-area placeholders currently flagged by the rasterizer. |
+| O5 | Re-source weak citations flagged in D16 | Claude | Open — before any publication-grade use. |
+| O6 | DEM acquisition + terrain pipeline | Claude | ✅ Closed — M1-A delivered pipeline, loader, raycast, gates G1–G5 (see D20–D23, D29). |
 
 ## 5. Conversation / Session History
 
@@ -118,11 +126,11 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
    pending review). Requested this implementation history file and a PRD to make the
    process reproducible for future battles — both delivered to close the session.
 
-### Session 2 — 2026-07-14 (claude.ai)
+### Session 2 — 2026-07-14/15 (claude.ai)
 
 "O1 executed via Codex, reviewed by CC + Fable; D19 rulings; O1b burn-down 57→42 flags; D26 integer rule from review; terrain decisions D20–D25 approved; M1-A queued."
 
-**State at session end:** schema frozen at v0.1; research data in hand; five gating
-decisions resolved; transcription (O1) is the next unit of work. GitHub repo not yet
-created — when it is, this file and the PRD move into it and the repo becomes source
-of truth per standing practice.
+**State at session end:** repo live and source of truth; O1 + O1b committed (schema
+v0.2, 42-flag ambiguity ledger); M1-A terrain pipeline complete with all five gates
+green incl. G4 terrain-mask; D19–D29 logged; O3/O4 Tier A and the M2 engine spec are
+the open fronts.
