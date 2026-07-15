@@ -66,6 +66,15 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D27 | 07-14 | Marker-relocation convention: marker-sourced landmark coords may move to the DEM terrain feature when DEM+EPQS confirm, historical function requires it, and provenance keeps both. Applied: sharpshooter-ridge → 45.5336,−107.3927 (crest, 1039 m), MEDIUM. | HMDB marker sits on the flank (1025 m), below Reno Hill; ridge must command Reno Hill per plunging-fire accounts. Found by gate G2; second instance of the Crow's Nest-decoy pattern. | Approved |
 | D28 | 07-14 | Movement-cost slope factor 1+tan(slope), [CAL] placeholder; Tobler's hiking function noted as M5 upgrade candidate. | No formula in spec; monotonic and adequate pending calibration. | Approved |
 | D29 | 07-15 | Large derived vector assets: commit compressed (.br) variants only; gitignore raw derived files >5 MB; loader reads .br. Pipeline additionally caps GeoJSON coordinate precision at 5 decimals (~1 m — ample for 5 m contours). | 43 MB raw GeoJSON bloats every future clone; GitHub warns at 50 MB. Raw remains reproducible via `npm run terrain`. | Approved |
+| D30 | 07-15 | Engine in `engine/src/`, headless and pure: no React/DOM/Node-only APIs in hot path (terrain loader injected); no `Date.now()`/`Math.random()` — all randomness via seeded PRNG; no key-order-dependent iteration; pure functions over explicit state. Root `tsc -b`, no workspace restructuring. | Determinism and testability; mirrors the Mah Jongg headless-engine pattern. | Approved |
+| D31 | 07-15 | State/replay: event-sourced canon (re-run from tick 0 is canonical), keyframe snapshots for UI scrubbing only. Save = scenario id + content hash, variant ids, parameter overrides, seed, target tick; load refuses on scenario-hash mismatch. Typed engine events feed UI index and tests. | Full-day replay is sub-second (2,160 ticks × ~33 units); hash check inherits the Mah Jongg save-integrity rule. | Approved |
+| D31a | 07-15 | PRNG: mulberry32, seeded from scenario + user seed; PRNG state serialized in SimState. | Substrate established before M4 needs combat rolls; replay stays bit-identical. | Approved |
+| D32 | 07-15 | Speed table as engine config constants, all [CAL]: cav walk 1.8 m/s, trot 3.6, gallop 5.4; dismounted skirmish 1.1; pack train 1.2 (caps co-located escort); warrior mounted = cavalry parity [CAL]; on foot 1.3. Effective = base × cost-grid factor × formation modifier (COLUMN 1.0, LINE 0.8, SKIRMISH 0.7, DISPERSED 0.9). Fords: impassable river except ford cells + crossingPenaltyMinutes hold. Fatigue deferred to M4. | Standard cavalry-manual rates as starting values. **Chuck: approved as-is; tune later against the E5 report if needed.** | Approved |
+| D33 | 07-15 | Pathfinding: A* on core-tier movement-cost grid, 8-connected, √2 diagonals, cost = step distance × mean adjacent cell cost; string-pulling smoothing; paths cached per order; 30 m tier when a path exits the core box. Units are points at battalion scale (no friendly collision in M2). | Grid already exists from M1; caching keeps the full-day run trivial. | Approved |
+| D34 | 07-15 | Order lifecycle: issued → in-transit (transmissionMinutes + issuer orderDelayMinutes) → received → active → done/superseded. **Supersede-on-receipt: a newly received order replaces the active order; no queueing.** `order-superseded` audit event emitted. Pursuit objectives (targetUnitId): repath every 10 ticks or on >250 m target displacement; park at 150 m standoff emitting `contact-pending` (M4's engagement seam). | Queueing can silently reorder history when transmission delays overlap; supersede keeps the timed order list authoritative and matches how verbal battlefield orders worked. **Chuck: supersede approved.** | Approved |
+| D35 | 07-15 | Couriers are delivery-queue timers in M2 (data transmissionMinutes authoritative); queue entries carry route endpoints so M4 can upgrade couriers to killable entities without schema change. | Honors FR4's courier-loss requirement later without blocking M2. | Approved |
+| D36 | 07-15 | M2 executes scheduled orders only; DEFEND_CAMP and tactics-profile trigger behaviors dormant until M3 provides spotting. Scheduled coalition orders (gall-response, gall-calhoun, crazy-horse-sweep, ch-strike, lwm-charge) run as movement. | Trigger condition is "enemy spotted," which requires LOS; running them blind would fabricate behavior. | Approved |
+| D37 | 07-15 | Movement-only checkpoint pre-score (gate E5) is informational, non-blocking: report emitted via CLI runner (`npm run sim`); misses expected pending M4 combat delays, but gross misses (wrong side of river, hours-scale error) investigated before M2 closes. Keyframe interval for UI scrubbing: every 10 ticks (5 min). | E5 is the baseline M4 must beat; gross-miss clause catches engine bugs hiding behind "combat will fix it." **Chuck: 10-tick keyframe default approved.** | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -84,6 +93,7 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | `scenario.json` v0.2 | 07-14 | Little Bighorn scenario data; 33 units / 18 leaders / 22 orders / 7 variants; 41-flag ambiguity ledger. |
 | `codex-report.md`, `codex-report-o1b.md`, `codex-report-m1a.md` | 07-14 | Codex execution reports with verbatim proof output and AMBIGUITIES sections. |
 | `data/terrain/little-bighorn-1876/` | 07-14 | Processed terrain assets: two-tier elevation/slope grids, hillshades, 5 m contours, cover + movement-cost layers (D29 .br packaging, 07-15). |
+| `M2-ENGINE-SPEC.md` | 07-15 | Engine-core spec (D30–D37); gates E1–E6 define M2 exit. |
 
 ## 4. Open Items
 
@@ -132,5 +142,5 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 
 **State at session end:** repo live and source of truth; O1 + O1b committed (schema
 v0.2, 42-flag ambiguity ledger); M1-A terrain pipeline complete with all five gates
-green incl. G4 terrain-mask; D19–D29 logged; O3/O4 Tier A and the M2 engine spec are
-the open fronts.
+green incl. G4 terrain-mask; D19–D37 logged; O3/O4 Tier A and the M2 engine
+implementation (spec approved, D30–D37) are the open fronts.
