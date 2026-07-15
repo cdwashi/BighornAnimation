@@ -52,6 +52,8 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D14 | 07-14 | **Warrior unit decomposition:** one defense-pool WARRIOR_BAND per village circle (strength ∝ lodges) + named-leader bands for documented axes (Gall south/Calhoun; Crazy Horse north sweep; Crow King ~80; Lame White Man's charge) drawing from circle pools | The coalition did not fight in discrete units; this is acknowledged model invention. Every such unit marked LOW confidence with rationale in provenance. | Approved by Chuck |
 | D15 | 07-14 | **Leader ratings (0–100)** proposed by Claude from documented behavioral evidence, evidence quoted in `ratingsProvenance`; Chuck reviews the numbers explicitly | Research deliberately supplied evidence, not numbers; the numbers are argued opinions and are flagged as such for PR-style review. | Approach approved; numbers pending review |
 | D16 | 07-14 | **Weak citations recorded faithfully** (Wikipedia, forum-tier, "subagent" relays) rather than laundered | Honest accounting; flags where re-sourcing is warranted before publication-grade claims. | Approved |
+| D17 | 07-14 | **schema v0.1.1** (weaponMix sum rule removed, RIFLE_BREECHLOADER added, tickPhases deferred). | Approved |
+| D18 | 07-14 | **O1 split** Fable froze all judgment into TRANSCRIPTION-DECISIONS, Codex assembles + builds the harness, Fable reviews. | Approved |
 
 ## 3. Artifacts Delivered
 

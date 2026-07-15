@@ -107,7 +107,7 @@ export interface ClockSpec {
   start: string;
   /** Wall-clock of scenario end, e.g. "21:00" June 25. */
   end: string;
-  /** Engine tick length in sim-seconds. 30–60s is the expected range. */
+  /** Single retained engine tick length in sim-seconds; tick phases are deferred to v0.2. */
   tickSeconds: number;
 }
 
@@ -184,7 +184,7 @@ export interface HistoricalCorrection {
 export interface WeaponSpec {
   id: string;                // "springfield-1873-carbine"
   name: string;
-  class: 'CARBINE' | 'RIFLE_REPEATER' | 'RIFLE_MUZZLELOADER' | 'REVOLVER' | 'BOW' | 'MELEE';
+  class: 'CARBINE' | 'RIFLE_BREECHLOADER' | 'RIFLE_REPEATER' | 'RIFLE_MUZZLELOADER' | 'REVOLVER' | 'BOW' | 'MELEE';
   /** Aimed rounds per minute under combat conditions (not bench rate). */
   effectiveRoundsPerMinute: Estimate;
   /** Hit probability per aimed shot vs. an exposed man-sized target, by range band. */
@@ -246,7 +246,7 @@ export interface Unit {
   name: string;
   /** Effective fighting strength at scenario start. */
   strength: Estimate;
-  /** weaponId -> fraction of the unit carrying it (fractions sum ≤ 1). */
+  /** weaponId -> fraction of the unit carrying it; each fraction is in [0,1]. */
   weaponMix: Record<string, number>;
   /** Rounds per man per weapon at start; resupply via orders (pack train). */
   ammunition: Record<string, Estimate>;
