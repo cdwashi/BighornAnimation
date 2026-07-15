@@ -63,6 +63,9 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D24 | 07-14 | O3 protocol: adjudicate Crow's Nest candidates by viewshed-scoring against documented dawn observations | HIGH-confidence observation events legitimately adjudicate a disputed input coordinate. | Approved |
 | D25 | 07-14 | O4 Tier A for v1: river/timber corrections from NPS GRI figures + Maguire 1876 map, LOW–MEDIUM flagged; Tier B (QGIS georeferencing) backlogged | Ships honest corrections now without blocking M1. | Approved |
 | D26 | 07-14 | Integer-strength rule: all unit strength Estimates (incl. variant-added/modified) are whole men; splits use parent-keeps-remainder (co-c 19/20/23, co-c-det 19/20/22). Enforced by new data-integrity assertion. | Found via O1b review (22.5-man bug); bug becomes a permanent gate, per house pattern. | Approved |
+| D27 | 07-14 | Marker-relocation convention: marker-sourced landmark coords may move to the DEM terrain feature when DEM+EPQS confirm, historical function requires it, and provenance keeps both. Applied: sharpshooter-ridge → 45.5336,−107.3927 (crest, 1039 m), MEDIUM. | HMDB marker sits on the flank (1025 m), below Reno Hill; ridge must command Reno Hill per plunging-fire accounts. Found by gate G2; second instance of the Crow's Nest-decoy pattern. | Approved |
+| D28 | 07-14 | Movement-cost slope factor 1+tan(slope), [CAL] placeholder; Tobler's hiking function noted as M5 upgrade candidate. | No formula in spec; monotonic and adequate pending calibration. | Approved |
+| D29 | 07-14 | Large derived vector assets: commit compressed (.br) variants only; gitignore raw derived files >5 MB; loader reads .br. Pipeline additionally caps GeoJSON coordinate precision at 5 decimals (~1 m — ample for 5 m contours). | 43 MB raw GeoJSON bloats every future clone; GitHub warns at 50 MB. Raw remains reproducible via `npm run terrain`. | Approved |
 
 ## 3. Artifacts Delivered
 

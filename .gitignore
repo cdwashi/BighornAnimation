@@ -2,3 +2,7 @@ node_modules/
 dist/
 coverage/
 *.tsbuildinfo
+pipeline/cache/
+# D29: raw derived terrain assets >5 MB ship as .br only; raw is reproducible via `npm run terrain`
+data/terrain/**/contours-*.geojson
+data/terrain/**/movement-cost-*.f32

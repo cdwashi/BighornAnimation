@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0",
+  "scenarioId": "little-bighorn-1876",
+  "source": {
+    "dataset": "USGS 3DEP 1/3 arc-second",
+    "productTitle": "USGS 1/3 Arc Second n46w108 20241115",
+    "downloadUrl": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n46w108/USGS_13_n46w108_20241115.tif",
+    "sha256": "71d1d2c42cfa4c456980b27e26ce22ffc4afb3ac271526bd2ce3b2b53c455457",
+    "horizontalDatum": "NAD83",
+    "verticalDatum": "NAVD88",
+    "elevationUnits": "meters"
+  },
+  "crs": {
+    "geographic": "EPSG:4326",
+    "projected": "UTM zone 13N",
+    "projectedDefinition": "+proj=utm +zone=13 +datum=NAD83 +units=m +no_defs +type=crs",
+    "axisUnits": "meters",
+    "localOrigin": {
+      "easting": 305972.14441500703,
+      "northing": 5032600.677413359,
+      "wgs84": {
+        "lat": 45.42,
+        "lon": -107.48
+      }
+    },
+    "forwardTransform": "proj4(EPSG:4326, UTM13N) minus localOrigin",
+    "inverseTransform": "proj4(UTM13N, EPSG:4326) after adding localOrigin"
+  },
+  "tiers": {
+    "core": {
+      "geographicBounds": {
+        "sw": {
+          "lat": 45.49,
+          "lon": -107.48
+        },
+        "ne": {
+          "lat": 45.6,
+          "lon": -107.33
+        }
+      },
+      "localBounds": {
+        "minX": 240.04882936395006,
+        "minY": 7425.56972808484,
+        "maxX": 12320.04882936395,
+        "maxY": 20005.56972808484
+      },
+      "resolutionMeters": 10,
+      "width": 1209,
+      "height": 1259,
+      "rowOrder": "south-to-north",
+      "elevation": {
+        "path": "elevation-core.i16",
+        "compressedPath": "elevation-core.i16.br",
+        "dataType": "Int16",
+        "byteOrder": "little-endian",
+        "scaleMeters": 0.1,
+        "noData": -32768
+      },
+      "slope": {
+        "path": "slope-core.u8",
+        "compressedPath": "slope-core.u8.br",
+        "dataType": "Uint8",
+        "noData": 255
+      },
+      "hillshade": {
+        "path": "hillshade-core.png",
+        "format": "PNG",
+        "illumination": "Horn method; azimuth 315 degrees NW; altitude 45 degrees"
+      }
+    },
+    "full": {
+      "geographicBounds": {
+        "sw": {
+          "lat": 45.42,
+          "lon": -107.48
+        },
+        "ne": {
+          "lat": 45.6,
+          "lon": -107.15
+        }
+      },
+      "localBounds": {
+        "minX": 0,
+        "minY": -743.4227297920734,
+        "maxX": 26370,
+        "maxY": 20016.577270207927
+      },
+      "resolutionMeters": 30,
+      "width": 880,
+      "height": 693,
+      "rowOrder": "south-to-north",
+      "elevation": {
+        "path": "elevation-full.i16",
+        "compressedPath": "elevation-full.i16.br",
+        "dataType": "Int16",
+        "byteOrder": "little-endian",
+        "scaleMeters": 0.1,
+        "noData": -32768
+      },
+      "slope": {
+        "path": "slope-full.u8",
+        "compressedPath": "slope-full.u8.br",
+        "dataType": "Uint8",
+        "noData": 255
+      },
+      "hillshade": {
+        "path": "hillshade-full.png",
+        "format": "PNG",
+        "illumination": "Horn method; azimuth 315 degrees NW; altitude 45 degrees"
+      }
+    }
+  },
+  "contours": {
+    "path": "contours-core.geojson",
+    "compressedPath": "contours-core.geojson.br",
+    "format": "GeoJSON",
+    "coordinatePrecision": 5,
+    "intervalMeters": 5,
+    "indexIntervalMeters": 25,
+    "sourceTier": "core"
+  },
+  "rasterLayers": {
+    "tier": "core",
+    "coverKind": {
+      "path": "cover-kind-core.u8",
+      "compressedPath": "cover-kind-core.u8.br",
+      "dataType": "Uint8",
+      "codes": {
+        "NONE": 0,
+        "TIMBER": 1,
+        "VILLAGE": 2,
+        "RAVINE": 3,
+        "HISTORICAL_CORRECTION": 4,
+        "RIVER": 254,
+        "FORD": 255
+      }
+    },
+    "movementCost": {
+      "path": "movement-cost-core.f32",
+      "compressedPath": "movement-cost-core.f32.br",
+      "dataType": "Float32",
+      "byteOrder": "little-endian",
+      "noData": "Infinity",
+      "semantics": "slope factor multiplied by cover movementFactor; river Infinity; ford crossingPenaltyMinutes"
+    },
+    "riverBurnedCellCount": 1287,
+    "fordBurnedCellCount": 18
+  }
+}
