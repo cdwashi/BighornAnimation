@@ -241,7 +241,7 @@ describe('Little Bighorn scenario data integrity', () => {
     expect(scenario.leaders).toHaveLength(18);
     expect(Object.keys(scenario.weapons)).toHaveLength(6);
     expect(Object.keys(scenario.tacticsProfiles)).toHaveLength(3);
-    expect(scenario.orders).toHaveLength(22);
+    expect(scenario.orders).toHaveLength(23);
     expect(scenario.checkpoints).toHaveLength(10);
     expect(scenario.observationEvents).toHaveLength(9);
     expect(scenario.variants).toHaveLength(7);

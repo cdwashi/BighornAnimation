@@ -180,6 +180,8 @@ Minute conversions: 12:00→540, 12:07→547, 12:15→555, 14:15→675, 14:20→
 | ch-strike | 825 | crazy-horse | crazy-horse-band, oglala-pool | ATTACK | targetUnit co-i | 0 | — | MEDIUM |
 | lwm-charge | 825 | lame-white-man | lwm-band, cheyenne-pool | CHARGE | targetUnit co-c | 0 | — | MEDIUM |
 
+> ADDENDUM (D39, 07-15): reno-mount (749, MOUNT, co-a/g/m, 'Mount!') split out of reno-retreat's historicalText; see IMPLEMENTATION_HISTORY D39.
+
 Remaining coalition pools have no orders: DEFEND_CAMP trigger behavior from the
 tactics profile governs them.
 

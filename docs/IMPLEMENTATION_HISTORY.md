@@ -75,6 +75,9 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D35 | 07-15 | Couriers are delivery-queue timers in M2 (data transmissionMinutes authoritative); queue entries carry route endpoints so M4 can upgrade couriers to killable entities without schema change. | Honors FR4's courier-loss requirement later without blocking M2. | Approved |
 | D36 | 07-15 | M2 executes scheduled orders only; DEFEND_CAMP and tactics-profile trigger behaviors dormant until M3 provides spotting. Scheduled coalition orders (gall-response, gall-calhoun, crazy-horse-sweep, ch-strike, lwm-charge) run as movement. | Trigger condition is "enemy spotted," which requires LOS; running them blind would fabricate behavior. | Approved |
 | D37 | 07-15 | Movement-only checkpoint pre-score (gate E5) is informational, non-blocking: report emitted via CLI runner (`npm run sim`); misses expected pending M4 combat delays, but gross misses (wrong side of river, hours-scale error) investigated before M2 closes. Keyframe interval for UI scrubbing: every 10 ticks (5 min). | E5 is the baseline M4 must beat; gross-miss clause catches engine bugs hiding behind "combat will fix it." **Chuck: 10-tick keyframe default approved.** | Approved |
+| D38 | 07-15 | HOLD with an objective means "proceed to objective, then hold position" (amends M2-ENGINE-SPEC §6, which said stationary). Engine change only; verified safe for all other HOLDs in data and variants (both degenerate to stationary). | E5 gross-miss root cause: right-wing-ridges froze co-c/i/l at Cedar Coulee for 5+ hrs; plain military reading of the order was inexpressible. Found by gate E5 + escalation rule. | Approved |
+| D39 | 07-15 | Add MOUNT order: id reno-mount, minute 749, issuer reno, recipients co-a/g/m, transmission 0, historicalText "Mount!" — split from reno-retreat per research §E verbatim commands. 749 (not 750) guarantees the 2-tick state change completes before reno-retreat's WITHDRAW arrives under D34 supersede. Order count 22→23; data-integrity expected-count test updated; TRANSCRIPTION-DECISIONS §8 addendum noted. | E5 gross-miss root cause: the rout ran dismounted (+195 min to Reno Hill). Transcription refinement of recorded commands, not invention. | Approved |
+| D40 | 07-15 | M2 closed with Reno Hill +95.5 min documented as a placeholder-river artifact (three mechanisms: southern-endpoint walkaround, retreat-crossing ford ~2 km off channel, timber objective on the channel line — all pre-flagged "pending O4/O6"). Resolution deferred to O4 Tier A; E5 re-baselines via `npm run sim` when real geometry lands. Escalation adjudicated: not engine, not D32. | Engine met every M2 exit gate; miss is known-placeholder data with an approved fix path (D25). Holding M2 open buys no information. D32 speed table survives second contact untuned. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -94,6 +97,8 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | `codex-report.md`, `codex-report-o1b.md`, `codex-report-m1a.md` | 07-14 | Codex execution reports with verbatim proof output and AMBIGUITIES sections. |
 | `data/terrain/little-bighorn-1876/` | 07-14 | Processed terrain assets: two-tier elevation/slope grids, hillshades, 5 m contours, cover + movement-cost layers (D29 .br packaging, 07-15). |
 | `M2-ENGINE-SPEC.md` | 07-15 | Engine-core spec (D30–D37); gates E1–E6 define M2 exit. |
+| CODEX-WORKORDER-M2A.md | 07-15 | Engine-core work order (D30–D37 frozen). |
+| reports/e5-baseline.md | 07-15 | Movement-only checkpoint baseline (gate E5); the score M4 must beat. |
 
 ## 4. Open Items
 

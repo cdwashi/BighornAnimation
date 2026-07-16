@@ -10,5 +10,5 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "pipeline/**/*.ts", "pipeline/**/*.d.ts"]
+  "include": ["src/**/*.ts", "tests/**/*.ts", "pipeline/**/*.ts", "pipeline/**/*.d.ts", "engine/**/*.ts"]
 }

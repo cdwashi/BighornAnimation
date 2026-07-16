@@ -1,5 +1,6 @@
 declare const process: {
   cwd(): string;
+  argv: string[];
   exitCode?: number;
 };
 
