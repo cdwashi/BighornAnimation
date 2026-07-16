@@ -146,6 +146,7 @@ export interface RiverSpec {
   id: string;                // "little-bighorn-river"
   name: string;
   path: GeoPath;
+  provenance: Provenance;
   /** Fording points; elsewhere the river blocks or heavily penalizes crossing. */
   fords: { id: string; name: string; position: GeoPoint; provenance: Provenance }[];
   crossingPenaltyMinutes: number; // at a ford, per unit

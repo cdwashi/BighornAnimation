@@ -143,7 +143,7 @@
       "noData": "Infinity",
       "semantics": "slope factor multiplied by cover movementFactor; river Infinity; ford crossingPenaltyMinutes"
     },
-    "riverBurnedCellCount": 1287,
-    "fordBurnedCellCount": 18
+    "riverBurnedCellCount": 2903,
+    "fordBurnedCellCount": 15
   }
 }

@@ -78,6 +78,11 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D38 | 07-15 | HOLD with an objective means "proceed to objective, then hold position" (amends M2-ENGINE-SPEC §6, which said stationary). Engine change only; verified safe for all other HOLDs in data and variants (both degenerate to stationary). | E5 gross-miss root cause: right-wing-ridges froze co-c/i/l at Cedar Coulee for 5+ hrs; plain military reading of the order was inexpressible. Found by gate E5 + escalation rule. | Approved |
 | D39 | 07-15 | Add MOUNT order: id reno-mount, minute 749, issuer reno, recipients co-a/g/m, transmission 0, historicalText "Mount!" — split from reno-retreat per research §E verbatim commands. 749 (not 750) guarantees the 2-tick state change completes before reno-retreat's WITHDRAW arrives under D34 supersede. Order count 22→23; data-integrity expected-count test updated; TRANSCRIPTION-DECISIONS §8 addendum noted. | E5 gross-miss root cause: the rout ran dismounted (+195 min to Reno Hill). Transcription refinement of recorded commands, not invention. | Approved |
 | D40 | 07-15 | M2 closed with Reno Hill +95.5 min documented as a placeholder-river artifact (three mechanisms: southern-endpoint walkaround, retreat-crossing ford ~2 km off channel, timber objective on the channel line — all pre-flagged "pending O4/O6"). Resolution deferred to O4 Tier A; E5 re-baselines via `npm run sim` when real geometry lands. Escalation adjudicated: not engine, not D32. | Engine met every M2 exit gate; miss is known-placeholder data with an approved fix path (D25). Holding M2 open buys no information. D32 speed table survives second contact untuned. | Approved |
+| D41 | 07-16 | Tier A channel: 298-point DEM-thalweg trace replaces the 4-point placeholder, and becomes the river-1876-channel correction geometry. Confidence MEDIUM as 1876 meander-belt proxy per Martin (2010) via NPS GRI 2011; Garryowen loop and Ford B reach flagged LOW (documented 1876 deltas). Validation: 0 elevation reversals over 1,192 rows, monotone 957.9→921.2 m descent, sinuosity 2.09, passes 4 m from the USGS gauge. | USGS hydrography APIs robots-blocked; DEM thalweg is self-contained, validated, and uses committed data. Dissolves all three D40 mechanisms. | Approved |
+| D42 | 07-16 | Ford relocations: ford-a 45.49473,−107.39305 validated (MEDIUM); ford-b → 45.5468,−107.4164 snapped to channel (LOW — the 1938-realigned marker sits 336 m east; GRI documents realignment from the 1876 channel; exact 1876 point unknown); retreat-crossing → 45.52081,−107.38558, channel point nearest Reno Hill at 461 m (MEDIUM — matches bluff-base retreat and Water Carriers Ravine accounts). | Closes M1-A ambiguity #4. | Approved |
+| D43 | 07-16 | Tier A timber polygon (loop bend 45.526–45.534 + 250 m east-bank belt) and village polygon (600 m west-bank strip, Garryowen reach → Ford B) at LOW; timber landmark relocated to loop centroid per D27 convention. Maguire-map georeferencing remains the Tier B upgrade. | Per D25; extent approximated from channel geometry, GRI terrace description, and accounts. | Approved |
+| D44 | 07-16 | cp-reno-skirmish-line and cp-reno-timber checkpoint positions relocated to corrected timber geometry; times and tolerances unchanged; provenance records both coordinates. | Source-geometry correction of APPROX-flagged, LOW-confidence checkpoint coordinates that we now know sit ~1 km east of the actual river — not tuning to fit a run. Explicitly human-approved (Chuck, 07-16) because checkpoints are calibration ground truth. | Approved |
+| D45 | 07-16 | cp-yates-ford-b checkpoint relocated to the D42 ford-b coordinate (45.5468,−107.4164); tolerance (150 m) and time unchanged; provenance records the 1938 marker coordinate, the GRI-documented realignment, and the Fox-archaeology caveat (finds anchor to the stable coulee-mouth approach; exact 1876 crossing within the reach is LOW). | Checkpoint and its order objective must reference the same physical crossing; the marker is documented as not the 1876 river. Marker-vs-feature convention (D27, D44 lineage). Flips MISS→HIT — hence an explicit human ruling, not a silent edit. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -93,21 +98,24 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | `CODEX-WORKORDER-O1B.md` | 07-14 | Work order: schema v0.2 + D19 ambiguity burn-down. |
 | `M1-TERRAIN-SPEC.md` | 07-14 | Terrain pipeline spec (D20–D25); §8 gates became the M1-A exit tests. |
 | `CODEX-WORKORDER-M1A.md` | 07-14 | Work order: terrain pipeline + loader + validation gates. |
-| `scenario.json` v0.2 | 07-14 | Little Bighorn scenario data; 33 units / 18 leaders / 22 orders / 7 variants; 41-flag ambiguity ledger. |
+| `scenario.json` v0.2 | 07-14 | Little Bighorn scenario data; 33 units / 18 leaders / 22 orders / 7 variants; 37-flag ambiguity ledger. |
 | `codex-report.md`, `codex-report-o1b.md`, `codex-report-m1a.md` | 07-14 | Codex execution reports with verbatim proof output and AMBIGUITIES sections. |
 | `data/terrain/little-bighorn-1876/` | 07-14 | Processed terrain assets: two-tier elevation/slope grids, hillshades, 5 m contours, cover + movement-cost layers (D29 .br packaging, 07-15). |
 | `M2-ENGINE-SPEC.md` | 07-15 | Engine-core spec (D30–D37); gates E1–E6 define M2 exit. |
 | CODEX-WORKORDER-M2A.md | 07-15 | Engine-core work order (D30–D37 frozen). |
 | reports/e5-baseline.md | 07-15 | Movement-only checkpoint baseline (gate E5); the score M4 must beat. |
+| `O4-CORRECTIONS.md` | 07-16 | Approved O4 Tier A river/timber/village geometry rulings D41–D44. |
+| `o4-corrections-data.json` | 07-16 | O4 Tier A channel, ford, timber, village, and Garryowen correction geometry with per-item provenance. |
+| `reports/e5-baseline.md` (O4-A regeneration) | 07-16 | Movement-only checkpoint baseline regenerated at tick 2160 after Tier A geometry integration. |
 
 ## 4. Open Items
 
 | # | Item | Owner | Notes |
 |---|---|---|---|
-| O1 | Transcribe research → `scenario.json` + validation harness | Claude | ✅ Closed — committed (d6b1da2 + 3c2f1f8); D19 rulings; 42-flag ambiguity ledger carried in provenance. |
+| O1 | Transcribe research → `scenario.json` + validation harness | Claude | ✅ Closed — committed (d6b1da2 + 3c2f1f8); D19 rulings; 37-flag ambiguity ledger carried in provenance. |
 | O2 | Leader rating numbers review | Chuck | ✅ Closed — ratings approved as proposed (D15, 07-14). |
 | O3 | Crow's Nest coordinate | Both | In progress — D24 viewshed-adjudication method road-tested via D27 (neighborhood scan + EPQS); Research run for candidates drafted. |
-| O4 | 1876 river channel corrections | Claude | In progress — Tier A per D25 (NPS GRI figures + Maguire map); zero-area placeholders currently flagged by the rasterizer. |
+| O4 | 1876 river channel corrections | Claude | ✅ Closed — Tier A shipped; Tier B georeferencing backlogged. |
 | O5 | Re-source weak citations flagged in D16 | Claude | Open — before any publication-grade use. |
 | O6 | DEM acquisition + terrain pipeline | Claude | ✅ Closed — M1-A delivered pipeline, loader, raycast, gates G1–G5 (see D20–D23, D29). |
 

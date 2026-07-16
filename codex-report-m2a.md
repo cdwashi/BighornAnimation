@@ -72,6 +72,12 @@ and the final quartet was not run after the second E5 stop.
 The requested final chain was intentionally **not run after the second E5 escalation**.
 There is no final quartet-chain output to report without violating the stop rule.
 
+**Post-adjudication verification (closes the trail):** after the D40 ruling, the
+full quartet was run green in the working tree (Fable, 30/30 tests, gates E1–E6),
+and independently reproduced from fresh public clone, 30/30, quartet exit 0,
+2026-07-15 (Chuck) — confirming the committed state, including the D29 .br-only
+assets, is good as pushed.
+
 The last completed typecheck before the E5 run was:
 
 ```text

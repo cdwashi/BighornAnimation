@@ -209,6 +209,7 @@ export function validateScenario(value: unknown): ValidationResult {
       arrayAt(path?.points, `$.terrain.rivers[${index}].path.points`).forEach((point, pointIndex) =>
         pointAt(point, `$.terrain.rivers[${index}].path.points[${pointIndex}]`),
       );
+      provenanceAt(river.provenance, `$.terrain.rivers[${index}].provenance`);
       arrayAt(river.fords, `$.terrain.rivers[${index}].fords`).forEach((fordItem, fordIndex) => {
         const ford = objectAt(fordItem, `$.terrain.rivers[${index}].fords[${fordIndex}]`);
         if (!ford) return;

@@ -145,9 +145,8 @@ async function main(): Promise<void> {
   river.fords.forEach((ford) => {
     const cell = gridIndex(tier, ...wgs84ToLocal(ford.position));
     if (!cell) return;
-    // TODO-AMBIGUOUS(M1-A): the scenario's intentionally coarse river polyline does
-    // not put every ford coordinate on a burned cell. Mark the nearest channel cell
-    // as ford as well as a one-cell-radius marker so every ford opens the river mask.
+    // D42 places all authored fords on the corrected channel. Keep the nearest-channel
+    // cell plus one-cell-radius marker so every ford robustly opens the rasterized mask.
     let nearestRiverIndex: number | undefined;
     let nearestDistanceSquared = Number.POSITIVE_INFINITY;
     riverCells.forEach((riverIndex) => {
