@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { brotliCompressSync, constants as zlibConstants } from 'node:zlib';
+import { brotliCompressSync, constants as zlibConstants, gzipSync } from 'node:zlib';
 
 import { contours } from 'd3-contour';
 import { PNG } from 'pngjs';
@@ -94,10 +94,12 @@ async function deriveTier(
       params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 11 },
     }),
   );
+  await writeFile(join(OUTPUT_DIR, `${slopeFilename}.gz`), gzipSync(slope, { level: 9 }));
   await writeFile(join(OUTPUT_DIR, hillshadeFilename), PNG.sync.write(png));
   tier.slope = {
     path: slopeFilename,
     compressedPath: `${slopeFilename}.br`,
+    gzipPath: `${slopeFilename}.gz`,
     dataType: 'Uint8',
     noData: 255,
   };
@@ -171,9 +173,14 @@ async function main(): Promise<void> {
       params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 11 },
     }),
   );
+  await writeFile(
+    join(OUTPUT_DIR, `${contourFilename}.gz`),
+    gzipSync(new TextEncoder().encode(`${contourJson}\n`), { level: 9 }),
+  );
   manifest.contours = {
     path: contourFilename,
     compressedPath: `${contourFilename}.br`,
+    gzipPath: `${contourFilename}.gz`,
     format: 'GeoJSON',
     coordinatePrecision: 5,
     intervalMeters: 5,

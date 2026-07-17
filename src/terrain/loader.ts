@@ -14,6 +14,8 @@ export interface TerrainTierMetadata {
   rowOrder: 'south-to-north';
   elevation: {
     path: string;
+    compressedPath?: string;
+    gzipPath?: string;
     dataType: 'Int16';
     byteOrder: 'little-endian';
     scaleMeters: number;
@@ -72,9 +74,9 @@ export class TerrainLoader {
 
   static async fromDirectory(directory: string): Promise<TerrainLoader> {
     const [{ readFile }, { join }, { brotliDecompressSync }] = await Promise.all([
-      import('node:fs/promises'),
-      import('node:path'),
-      import('node:zlib'),
+      import(/* webpackIgnore: true */ 'node:fs/promises'),
+      import(/* webpackIgnore: true */ 'node:path'),
+      import(/* webpackIgnore: true */ 'node:zlib'),
     ]);
     // D29: raw derived assets >5 MB are gitignored; fall back to the committed
     // .br variant when the raw file is absent (fresh clone without `npm run terrain`).
@@ -100,10 +102,19 @@ export class TerrainLoader {
     const manifest = await response.json() as TerrainManifestData;
     const base = response.url || String(manifestUrl);
     const load = async (name: TerrainTierName): Promise<Int16Array> => {
-      const assetUrl = new URL(manifest.tiers[name].elevation.path, base);
+      const asset = manifest.tiers[name].elevation;
+      const assetUrl = new URL(asset.gzipPath ?? asset.path, base);
       const assetResponse = await fetch(assetUrl);
       if (!assetResponse.ok) throw new Error(`Terrain grid fetch failed: ${assetResponse.status}`);
-      return decodeInt16LittleEndian(new Uint8Array(await assetResponse.arrayBuffer()));
+      if (!asset.gzipPath) {
+        return decodeInt16LittleEndian(new Uint8Array(await assetResponse.arrayBuffer()));
+      }
+      if (typeof DecompressionStream === 'undefined') {
+        throw new Error('This browser cannot decode gzip terrain assets');
+      }
+      if (!assetResponse.body) throw new Error('Terrain grid fetch returned no body');
+      const decompressed = assetResponse.body.pipeThrough(new DecompressionStream('gzip'));
+      return decodeInt16LittleEndian(new Uint8Array(await new Response(decompressed).arrayBuffer()));
     };
     const [core, full] = await Promise.all([load('core'), load('full')]);
     return new TerrainLoader(manifest, { core, full });
@@ -131,6 +142,23 @@ export class TerrainLoader {
       ],
     );
     return { lat, lon };
+  }
+
+  elevationGrid(name: TerrainTierName): {
+    values: Int16Array;
+    width: number;
+    height: number;
+    scaleMeters: number;
+    noData: number;
+  } {
+    const tier = this.manifest.tiers[name];
+    return {
+      values: this.elevations[name],
+      width: tier.width,
+      height: tier.height,
+      scaleMeters: tier.elevation.scaleMeters,
+      noData: tier.elevation.noData,
+    };
   }
 
   tierAt(lat: number, lon: number): TerrainTierName {

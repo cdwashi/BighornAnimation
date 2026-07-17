@@ -95,6 +95,7 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D54 | 07-16 | Cover transmittance becomes path-length-dependent (Beer–Lambert): ∏(1−losOpacity)^(cellPathMeters/L0), L0=100 m [CAL]; losOpacity redefined as opacity per 100 m of path. Global re-tune under D49; exam re-run with all verdicts accepted as they fall (D52 integrity constraint now standing policy). | Per-polygon attenuation (M3-SPEC §2 — Fable's spec defect, owned) provably admits no global threshold: Weir pass requires T≤1.4e-3 while north-camp masking requires T>9.1e-3. Path-length law makes "bends and timber mask the extent" expressible as physics. | Approved |
 | D55 | 07-16 | Engine cache-purity rule: all memoization must be a pure function of current SimState; history-dependent auxiliary state is forbidden (D31 invariant made explicit). Applied: spotting LOS cache re-keyed by 100 m-quantized endpoint cell pairs. New permanent gate: cache-equivalence test — full-day run with caching disabled vs enabled must be bit-identical. Invalidation-semantics change may shift spotting verdicts by a tick; exam/E5 re-run with verdicts accepted per standing policy. | Found by E6 going red after D53a's track change; latent through all prior E6 passes (scrub-point luck). Defect originated in Fable's M3-A work-order cache sentence — owned. Bug becomes rule becomes gate, per house pattern (D26, D29 lineage). | Approved |
 | D53a | 07-16 | reno-advance objective changed from raw waypoint {45.52,−107.43} (stale terrace coordinate) to landmarkId village-s-end; sole stale-coordinate order (verified by count). E5 co-a track change accepted as it falls, diff itemized. | Completes D53's order-objective coherence: the raw coordinate is how the staleness occurred; the landmark reference is self-healing against future geometry corrections. Checkpoints untouched — unit track changes are source coherence, not tuning. | Approved |
+| D56 | 07-17 | Engine full-day reconstruction re-targeted: ≤ 6 s with worker progress indication (was "<1 s" — an unvalidated D31 movement-only estimate; M2 gate timings already showed ~5 s/day pre-M3-B). Scrubbing unaffected (instant via D37 keyframes). Engine optimization → M6 backlog, revisit after M4 reshapes the profile (A* + spotting dominate today). | Measurement correcting an estimate, not a regression. Codex profiled, attempted, reverted, and declined to game the number. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -121,6 +122,11 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | `reports/e5-baseline.md` (O4-A regeneration) | 07-16 | Movement-only checkpoint baseline regenerated at tick 2160 after Tier A geometry integration. |
 | `reports/c4-observation-exam.md` | 07-16 | M3-A C4 movement-only observation exam with per-event margins, factor audit, O3 informational rows, mismatches, and global tuning audit. |
 | `CODEX-WORKORDER-M3A.md` | 07-16 | Headless M3-A work order for spotting, believed picture, DEFEND_CAMP, D51, C4, and gates V1–V3/V7. |
+| `CODEX-WORKORDER-M3B.md` | 07-17 | App-shell work order for the map, POV viewshed, belief modes, decision index, and gates V4–V6. |
+| `app/` | 07-17 | First static-export UI shell: full-viewport period map, worker-backed timeline, POV viewshed, belief-vs-reality controls, and chronological decision index. |
+| `codex-report-m3b.md` | 07-17 | M3-B execution report: V4 timings, V5 exact parity 200/200, V6 counts, gzip weight table, D50 perf finding (→ D56). |
+| `docs/screenshots/` (m3b-*) | 07-17 | First rendered proof: full map 15:40, Custer POV at Weir vicinity with belief on, decision index at the Cooke note. |
+| `.claude/launch.json` + `.claude/static-server.mjs` | 07-17 | Dev-only static-export preview tooling (dependency-free node server on :4173) used for live UI verification. |
 
 ## 4. Open Items
 
@@ -171,3 +177,5 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 v0.2, 42-flag ambiguity ledger); M1-A terrain pipeline complete with all five gates
 green incl. G4 terrain-mask; D19–D37 logged; O3/O4 Tier A and the M2 engine
 implementation (spec approved, D30–D37) are the open fronts.
+
+M3-B: first UI shipped — map, POV viewshed, belief toggle, decision index.

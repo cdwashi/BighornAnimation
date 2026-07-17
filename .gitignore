@@ -1,6 +1,9 @@
 node_modules/
 dist/
 coverage/
+public/terrain/
+.next/
+out/
 *.tsbuildinfo
 pipeline/cache/
 # D29: raw derived terrain assets >5 MB ship as .br only; raw is reproducible via `npm run terrain`

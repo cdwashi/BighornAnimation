@@ -23,6 +23,7 @@ export interface LocalBounds {
 export interface GridAsset {
   path: string;
   compressedPath?: string;
+  gzipPath?: string;
   dataType: 'Int16' | 'Uint8' | 'Float32';
   byteOrder?: 'little-endian';
   scaleMeters?: number;
@@ -66,6 +67,7 @@ export interface TerrainManifest {
   contours?: {
     path: string;
     compressedPath: string;
+    gzipPath: string;
     format: 'GeoJSON';
     coordinatePrecision: number;
     intervalMeters: 5;

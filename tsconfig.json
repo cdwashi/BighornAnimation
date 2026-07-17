@@ -8,7 +8,35 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "jsx": "preserve",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable",
+      "WebWorker"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "outDir": "dist",
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "pipeline/**/*.ts", "pipeline/**/*.d.ts", "engine/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts",
+    "pipeline/**/*.ts",
+    "pipeline/**/*.d.ts",
+    "engine/**/*.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

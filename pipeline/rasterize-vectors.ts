@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { brotliCompressSync, constants as zlibConstants } from 'node:zlib';
+import { brotliCompressSync, constants as zlibConstants, gzipSync } from 'node:zlib';
 
 import {
   MANIFEST_PATH,
@@ -196,17 +196,21 @@ async function main(): Promise<void> {
       params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 11 },
     }),
   );
+  await writeFile(join(OUTPUT_DIR, `${coverFilename}.gz`), gzipSync(coverKind, { level: 9 }));
+  await writeFile(join(OUTPUT_DIR, `${movementFilename}.gz`), gzipSync(movementBytes, { level: 9 }));
   manifest.rasterLayers = {
     tier: 'core',
     coverKind: {
       path: coverFilename,
       compressedPath: `${coverFilename}.br`,
+      gzipPath: `${coverFilename}.gz`,
       dataType: 'Uint8',
       codes: COVER_CODES,
     },
     movementCost: {
       path: movementFilename,
       compressedPath: `${movementFilename}.br`,
+      gzipPath: `${movementFilename}.gz`,
       dataType: 'Float32',
       byteOrder: 'little-endian',
       noData: 'Infinity',

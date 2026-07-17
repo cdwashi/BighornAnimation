@@ -51,6 +51,7 @@
       "elevation": {
         "path": "elevation-core.i16",
         "compressedPath": "elevation-core.i16.br",
+        "gzipPath": "elevation-core.i16.gz",
         "dataType": "Int16",
         "byteOrder": "little-endian",
         "scaleMeters": 0.1,
@@ -59,6 +60,7 @@
       "slope": {
         "path": "slope-core.u8",
         "compressedPath": "slope-core.u8.br",
+        "gzipPath": "slope-core.u8.gz",
         "dataType": "Uint8",
         "noData": 255
       },
@@ -92,6 +94,7 @@
       "elevation": {
         "path": "elevation-full.i16",
         "compressedPath": "elevation-full.i16.br",
+        "gzipPath": "elevation-full.i16.gz",
         "dataType": "Int16",
         "byteOrder": "little-endian",
         "scaleMeters": 0.1,
@@ -100,6 +103,7 @@
       "slope": {
         "path": "slope-full.u8",
         "compressedPath": "slope-full.u8.br",
+        "gzipPath": "slope-full.u8.gz",
         "dataType": "Uint8",
         "noData": 255
       },
@@ -113,6 +117,7 @@
   "contours": {
     "path": "contours-core.geojson",
     "compressedPath": "contours-core.geojson.br",
+    "gzipPath": "contours-core.geojson.gz",
     "format": "GeoJSON",
     "coordinatePrecision": 5,
     "intervalMeters": 5,
@@ -124,6 +129,7 @@
     "coverKind": {
       "path": "cover-kind-core.u8",
       "compressedPath": "cover-kind-core.u8.br",
+      "gzipPath": "cover-kind-core.u8.gz",
       "dataType": "Uint8",
       "codes": {
         "NONE": 0,
@@ -138,6 +144,7 @@
     "movementCost": {
       "path": "movement-cost-core.f32",
       "compressedPath": "movement-cost-core.f32.br",
+      "gzipPath": "movement-cost-core.f32.gz",
       "dataType": "Float32",
       "byteOrder": "little-endian",
       "noData": "Infinity",

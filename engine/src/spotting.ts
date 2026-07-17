@@ -128,6 +128,22 @@ export interface SpottingRuntime {
   readonly config: SpottingConfig;
   readonly projectedCover: readonly ProjectedCover[];
   readonly blockedRays: Map<string, BlockedCacheEntry>;
+  readonly coverPaths?: Map<string, CoverPathResult>;
+  readonly sweepScores?: Map<string, {
+    observerX: number;
+    observerY: number;
+    observerHeight: number;
+    perception: number;
+    targetX: number;
+    targetY: number;
+    strength: number;
+    formation: SpottingSignature['formation'];
+    mounted: boolean;
+    moving: boolean;
+    kind: SpottingSignature['kind'];
+    score: number;
+  }>;
+  readonly pairKeys?: string[][];
   /**
    * D55 cache-purity rule: memoization must be a pure function of current
    * SimState, so disabling it (recomputing every quantized ray) must be
@@ -199,11 +215,15 @@ export function createSpottingRuntime(
     config: spottingConfig(overrides),
     projectedCover: projectedCover(scenario, terrain),
     blockedRays: new Map(),
+    coverPaths: new Map(),
+    sweepScores: new Map(),
+    pairKeys: scenario.units.map((observer) =>
+      scenario.units.map((target) => contactKey(observer.id, target.id))),
     memoizationEnabled,
   };
 }
 
-function pointInPolygon(point: PointMeters, ring: readonly PointMeters[]): boolean {
+export function pointInPolygon(point: PointMeters, ring: readonly PointMeters[]): boolean {
   let inside = false;
   for (let index = 0, previous = ring.length - 1; index < ring.length; previous = index, index += 1) {
     const a = ring[index];
@@ -276,6 +296,15 @@ export interface CoverPathResult {
   crossed: Array<{ coverId: string; pathMeters: number; transmittance: number }>;
 }
 
+/** D54's single attenuation law, shared by exact rays and display-grid viewsheds. */
+export function beerLambertTransmittance(
+  opacity: number,
+  pathMeters: number,
+  attenuationUnitMeters: number,
+): number {
+  return Math.pow(1 - opacity, pathMeters / attenuationUnitMeters);
+}
+
 /** D54 Beer-Lambert attenuation, reusable by spotting and the M3-B renderer. */
 export function coverPathTransmittance(
   runtime: SpottingRuntime,
@@ -326,9 +355,10 @@ export function coverPathTransmittance(
   const crossed: CoverPathResult['crossed'] = [];
   for (const [index, pathMeters] of pathByCover) {
     const cover = runtime.projectedCover[index];
-    const coverTransmittance = Math.pow(
-      1 - cover.opacity,
-      pathMeters / runtime.config.attenuationUnitMeters,
+    const coverTransmittance = beerLambertTransmittance(
+      cover.opacity,
+      pathMeters,
+      runtime.config.attenuationUnitMeters,
     );
     transmittance *= coverTransmittance;
     totalPathMeters += pathMeters;
@@ -362,6 +392,22 @@ function motionFactor(signature: SpottingSignature, config: SpottingConfig): num
   return config.motionMountedDry;
 }
 
+function unobstructedScore(
+  observer: ObserverSignature,
+  target: SpottingSignature,
+  config: SpottingConfig,
+): number {
+  const distanceMeters = Math.hypot(
+    target.position.x - observer.position.x,
+    target.position.y - observer.position.y,
+  );
+  const angularSize = distanceMeters <= 0
+    ? Number.POSITIVE_INFINITY
+    : Math.sqrt(Math.max(0, target.effectiveStrength)) *
+      dispersionFactor(target, config) * heightFactor(target, config) / distanceMeters;
+  return config.K * angularSize * motionFactor(target, config) * observer.perceptionFactor;
+}
+
 function quantizedGridCell(
   position: PositionMeters,
   cellMeters: number,
@@ -390,12 +436,12 @@ export function evaluateDetectability(
   options: DetectabilityOptions = {},
 ): DetectabilityResult {
   const config = runtime.config;
+  const quantizedTerrainRay = options.quantizeTerrainRay === true;
   const distanceMeters = Math.hypot(
     target.position.x - observer.position.x,
     target.position.y - observer.position.y,
   );
   const targetHeight = heightFactor(target, config);
-  const quantizedTerrainRay = options.quantizeTerrainRay === true;
   const observerCell = quantizedGridCell(observer.position, config.blockedCacheMoveMeters);
   const targetCell = quantizedGridCell(target.position, config.blockedCacheMoveMeters);
   const rayObserver = quantizedTerrainRay ? observerCell.point : observer.position;
@@ -409,8 +455,8 @@ export function evaluateDetectability(
       `\u0000${targetCell.cellX},${targetCell.cellY}\u0000${observer.heightMeters},${targetHeight}`
     : '';
   const cached = runtime.memoizationEnabled ? runtime.blockedRays.get(pairKey) : undefined;
-  const canUseBlockedCache = quantizedTerrainRay && cached !== undefined;
-  const ray = canUseBlockedCache
+  const canUseTerrainCache = quantizedTerrainRay && cached !== undefined;
+  const ray = canUseTerrainCache
     ? cached.ray
     : raycastTerrain(terrain, rayObserver, rayTarget, {
       observerHeightMeters: observer.heightMeters,
@@ -418,13 +464,22 @@ export function evaluateDetectability(
       curvatureCorrection: true,
       refractionCoefficient: 0.13,
     });
-  if (quantizedTerrainRay && !canUseBlockedCache && runtime.memoizationEnabled) {
-    if (ray.visible) runtime.blockedRays.delete(pairKey);
-    else runtime.blockedRays.set(pairKey, { ray });
+  if (quantizedTerrainRay && !canUseTerrainCache && runtime.memoizationEnabled) {
+    runtime.blockedRays.set(pairKey, { ray });
   }
-  const coverPath = ray.visible
-    ? coverPathTransmittance(runtime, observer.position, target.position)
-    : { transmittance: 0, totalPathMeters: 0, crossed: [] };
+  const coverObserver = quantizedTerrainRay ? rayObserver : observer.position;
+  const coverTarget = quantizedTerrainRay ? rayTarget : target.position;
+  const coverKey = quantizedTerrainRay ? pairKey :
+    `${observer.position.x},${observer.position.y}\u0000${target.position.x},${target.position.y}`;
+  let coverPath = ray.visible && runtime.memoizationEnabled
+    ? runtime.coverPaths?.get(coverKey)
+    : undefined;
+  if (!coverPath) {
+    coverPath = ray.visible
+      ? coverPathTransmittance(runtime, coverObserver, coverTarget)
+      : { transmittance: 0, totalPathMeters: 0, crossed: [] };
+    if (ray.visible && runtime.memoizationEnabled) runtime.coverPaths?.set(coverKey, coverPath);
+  }
   const coverTransmittance = coverPath.transmittance;
   const atmosphere = Math.max(0, Math.min(1, atmosphericFactor));
   const transmittance = coverTransmittance * atmosphere;
@@ -435,7 +490,7 @@ export function evaluateDetectability(
     : Math.sqrt(Math.max(0, target.effectiveStrength)) * dispersion * height / distanceMeters;
   const motion = motionFactor(target, config);
   const score = config.K * angularSize * transmittance * motion * observer.perceptionFactor;
-  return {
+  const result: DetectabilityResult = {
     score,
     factors: {
       distanceMeters,
@@ -451,11 +506,12 @@ export function evaluateDetectability(
       motionFactor: motion,
       perceptionFactor: observer.perceptionFactor,
       raySampleCount: ray.sampleCount,
-      cachedBlockedRay: canUseBlockedCache,
+      cachedBlockedRay: canUseTerrainCache && !ray.visible,
       quantizedTerrainRay,
     },
     ray,
   };
+  return result;
 }
 
 export function observerSignature(
@@ -557,27 +613,69 @@ export function performSpottingSweep(
 ): void {
   if (state.tick % runtime.config.sweepCadenceTicks !== 0) return;
   for (const unit of state.units) unit.lastSpottingSweepTick = state.tick;
-  for (const observer of state.units) {
+  const targetViews = state.units.map((unit) => targetSignature(scenario, unit));
+  const sources = state.units.map((unit) => scenario.units[unit.unitIndex]);
+  for (let observerIndex = 0; observerIndex < state.units.length; observerIndex += 1) {
+    const observer = state.units[observerIndex];
     const observerSource = scenario.units[observer.unitIndex];
     const observerView = observerSignature(scenario, observer, runtime.config);
-    for (const target of state.units) {
-      const targetSource = scenario.units[target.unitIndex];
+    for (let targetIndex = 0; targetIndex < state.units.length; targetIndex += 1) {
+      const target = state.units[targetIndex];
+      const targetSource = sources[targetIndex];
       if (observerSource.sideId === targetSource.sideId) continue;
-      const key = contactKey(observer.id, target.id);
+      const key = runtime.pairKeys?.[observerIndex]?.[targetIndex] ??
+        contactKey(observer.id, target.id);
       const existing = state.observerContacts[key];
-      const result = evaluateDetectability(
-        terrain,
-        runtime,
-        observerView,
-        targetSignature(scenario, target),
-        1,
-        { quantizeTerrainRay: true },
-      );
+      const targetView = targetViews[targetIndex];
+      const maximumScore = unobstructedScore(observerView, targetView, runtime.config);
+      if ((!existing || existing.status !== 'spotted') &&
+        maximumScore < runtime.config.spotThreshold) continue;
+      const cachedScore = runtime.memoizationEnabled ? runtime.sweepScores?.get(key) : undefined;
+      const scoreIsCurrent = cachedScore !== undefined &&
+        cachedScore.observerX === observerView.position.x &&
+        cachedScore.observerY === observerView.position.y &&
+        cachedScore.observerHeight === observerView.heightMeters &&
+        cachedScore.perception === observerView.perceptionFactor &&
+        cachedScore.targetX === targetView.position.x &&
+        cachedScore.targetY === targetView.position.y &&
+        cachedScore.strength === targetView.effectiveStrength &&
+        cachedScore.formation === targetView.formation &&
+        cachedScore.mounted === targetView.mounted &&
+        cachedScore.moving === targetView.moving &&
+        cachedScore.kind === targetView.kind;
+      const score = existing?.status === 'spotted' && maximumScore <= runtime.config.loseThreshold
+        ? maximumScore
+        : scoreIsCurrent
+        ? cachedScore.score
+        : evaluateDetectability(
+          terrain,
+          runtime,
+          observerView,
+          targetView,
+          1,
+          { quantizeTerrainRay: true },
+        ).score;
+      if (!scoreIsCurrent && runtime.memoizationEnabled) {
+        runtime.sweepScores?.set(key, {
+          observerX: observerView.position.x,
+          observerY: observerView.position.y,
+          observerHeight: observerView.heightMeters,
+          perception: observerView.perceptionFactor,
+          targetX: targetView.position.x,
+          targetY: targetView.position.y,
+          strength: targetView.effectiveStrength,
+          formation: targetView.formation,
+          mounted: targetView.mounted,
+          moving: targetView.moving,
+          kind: targetView.kind,
+          score,
+        });
+      }
       if (!existing || existing.status !== 'spotted') {
-        if (result.score >= runtime.config.spotThreshold) {
+        if (score >= runtime.config.spotThreshold) {
           recordContact(state, observer, observerSource.sideId, target, 'gained', events);
         }
-      } else if (result.score <= runtime.config.loseThreshold) {
+      } else if (score <= runtime.config.loseThreshold) {
         recordContact(state, observer, observerSource.sideId, target, 'lost', events);
       } else {
         recordContact(state, observer, observerSource.sideId, target, 'updated', events);

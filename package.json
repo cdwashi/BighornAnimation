@@ -7,7 +7,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
-    "build": "tsc -b",
+    "build": "tsc -b && node scripts/prepare-app-assets.mjs && next build",
+    "build:ts": "tsc -b",
+    "dev": "node scripts/prepare-app-assets.mjs && next dev",
     "sim": "npm run build --silent && node dist/engine/cli.js",
     "exam": "npm run build --silent && node dist/engine/exam-cli.js",
     "terrain": "npm run build && node dist/pipeline/fetch-dem.js && node dist/pipeline/build-grids.js && node dist/pipeline/derive.js && node dist/pipeline/rasterize-vectors.js"
@@ -15,7 +17,10 @@
   "devDependencies": {
     "@types/d3-contour": "^3.0.6",
     "@types/pngjs": "^6.0.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0",
     "vitest": "^3.0.0"
@@ -23,7 +28,10 @@
   "dependencies": {
     "d3-contour": "^4.0.2",
     "geotiff": "^3.0.5",
+    "next": "^14.2.35",
     "pngjs": "^7.0.0",
-    "proj4": "^2.20.9"
+    "proj4": "^2.20.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

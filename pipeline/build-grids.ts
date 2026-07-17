@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { brotliCompressSync, constants as zlibConstants } from 'node:zlib';
+import { brotliCompressSync, constants as zlibConstants, gzipSync } from 'node:zlib';
 
 import { fromFile } from 'geotiff';
 
@@ -87,6 +87,7 @@ async function buildTier(
       params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 11 },
     }),
   );
+  await writeFile(join(OUTPUT_DIR, `${filename}.gz`), gzipSync(bytes, { level: 9 }));
   console.log(`[grids] wrote ${filename} (${bytes.byteLength} bytes)`);
   return {
     geographicBounds,
@@ -103,6 +104,7 @@ async function buildTier(
     elevation: {
       path: filename,
       compressedPath: `${filename}.br`,
+      gzipPath: `${filename}.gz`,
       dataType: 'Int16',
       byteOrder: 'little-endian',
       scaleMeters: 0.1,
