@@ -7,8 +7,10 @@ import type {
 
 export class FlatTerrain implements EngineTerrain {
   readonly grid: MovementGrid;
+  readonly minimumResolutionMeters: number;
 
   constructor(width = 120, height = 120, resolutionMeters = 100) {
+    this.minimumResolutionMeters = resolutionMeters;
     const costs = new Float32Array(width * height);
     costs.fill(1);
     this.grid = {
@@ -35,6 +37,12 @@ export class FlatTerrain implements EngineTerrain {
     const column = Math.round(x / this.grid.resolutionMeters);
     const row = Math.round(y / this.grid.resolutionMeters);
     return { movementFactor: 1, coverKind: 0, cellKey: `flat:${row * this.grid.width + column}` };
+  }
+
+  elevationAtMeters(x: number, y: number): number {
+    void x;
+    void y;
+    return 0;
   }
 }
 

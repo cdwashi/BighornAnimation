@@ -165,6 +165,8 @@ describe('M2 exit gates', () => {
       units: [heldUnit],
       deliveryQueue: [],
       deliveredOrders: [],
+      observerContacts: {},
+      believedPictures: Object.fromEntries(scenario.sides.map((side) => [side.id, {}])),
       emittedEventCursor: 0,
     };
     const heldAt = { ...heldUnit.position };

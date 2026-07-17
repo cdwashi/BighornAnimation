@@ -70,6 +70,7 @@ function activateOrder(
   unit.blockedReason = undefined;
   unit.distanceMovedOnActiveOrder = 0;
   unit.pursuit = undefined;
+  unit.campDefense = undefined;
   unit.transition = order.type === 'DISMOUNT_SKIRMISH'
     ? { kind: 'DISMOUNT', remainingTicks: 2 }
     : order.type === 'MOUNT'

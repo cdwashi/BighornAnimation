@@ -15,11 +15,17 @@ function objectivePoints(
 ): { points: PointMeters[]; targetUnitId?: string } | undefined {
   const objective = order.objective;
   if (!objective) return undefined;
+  // D53a: waypoints and landmarkId compose — route waypoints first, landmark as
+  // the final goal — so orders can pin a historical route while referencing a
+  // landmark that stays self-healing against geometry corrections.
   if (objective.waypoints && objective.waypoints.length > 0) {
-    return { points: objective.waypoints.map((point) => {
-      const projected = state.units.length >= 0 ? point : point;
-      return { x: projected.lon, y: projected.lat };
-    }) };
+    const points = objective.waypoints.map((point) => ({ x: point.lon, y: point.lat }));
+    if (objective.landmarkId) {
+      const landmark = scenario.terrain.landmarks.find((item) => item.id === objective.landmarkId);
+      if (!landmark) return undefined;
+      points.push({ x: landmark.position.lon, y: landmark.position.lat });
+    }
+    return { points };
   }
   if (objective.landmarkId) {
     const landmark = scenario.terrain.landmarks.find((item) => item.id === objective.landmarkId);

@@ -102,6 +102,7 @@ function moveOneUnit(
   events: SimEvent[],
   cache: PathCache,
 ): void {
+  const startingPosition = { ...unit.position };
   if (completeTransition(scenario, state, unit, events)) return;
   if (unit.path.length === 0 || unit.pathIndex >= unit.path.length || unit.blockedReason) return;
 
@@ -229,6 +230,9 @@ function moveOneUnit(
       unitId: unit.id,
       orderId: unit.activeOrderId,
     });
+  }
+  if (unit.position.x !== startingPosition.x || unit.position.y !== startingPosition.y) {
+    unit.lastMovedTick = state.tick;
   }
 }
 

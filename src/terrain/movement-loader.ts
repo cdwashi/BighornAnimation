@@ -51,11 +51,15 @@ function minimumFinite(values: Float32Array): number {
 
 /** Node-side adapter; engine/src only sees the injected EngineTerrain interface. */
 export class TerrainMovementLoader implements EngineTerrain {
+  readonly minimumResolutionMeters: number;
+
   private constructor(
     private readonly terrain: TerrainLoader,
     private readonly manifest: RasterManifest,
     private readonly grids: Record<TerrainTierName, MovementGrid>,
-  ) {}
+  ) {
+    this.minimumResolutionMeters = terrain.minimumResolutionMeters;
+  }
 
   static async fromDirectory(directory: string): Promise<TerrainMovementLoader> {
     const [{ readFile }, { join }, { brotliDecompressSync }] = await Promise.all([
@@ -137,6 +141,14 @@ export class TerrainMovementLoader implements EngineTerrain {
 
   toLocal(lat: number, lon: number): [number, number] {
     return this.terrain.toLocal(lat, lon);
+  }
+
+  elevationAtMeters(x: number, y: number): number {
+    return this.terrain.elevationAtMeters(x, y);
+  }
+
+  resolutionAtMeters(x: number, y: number): number {
+    return this.terrain.resolutionAtMeters(x, y);
   }
 
   gridForPath(start: PointMeters, goal: PointMeters): MovementGrid {

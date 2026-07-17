@@ -30,6 +30,9 @@ export interface EngineTerrain {
   toLocal(lat: number, lon: number): [number, number];
   gridForPath(start: PointMeters, goal: PointMeters): MovementGrid;
   movementAtMeters(x: number, y: number): MovementSample;
+  elevationAtMeters(x: number, y: number): number;
+  resolutionAtMeters?(x: number, y: number): number;
+  minimumResolutionMeters?: number;
 }
 
 export interface PathPoint extends PointMeters {

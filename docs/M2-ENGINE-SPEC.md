@@ -15,6 +15,13 @@ processed in declared array order). The engine exports pure functions over an
 explicit state value. Existing root tsconfig `tsc -b` picks it up; no workspace
 restructuring yet.
 
+- **Cache purity (D55, added 07-16):** all engine memoization must be a pure
+  function of current SimState — cache validity may never depend on *when* a
+  verdict was computed, only on *what* the state is. History-dependent auxiliary
+  state is forbidden (the D31 replay invariant made explicit). Enforced by the
+  permanent cache-equivalence gate: a full-day run with caching disabled must be
+  bit-identical to the cached run.
+
 ## 2. Determinism & RNG
 
 **D31a — PRNG: mulberry32, seeded from scenario + user seed; PRNG state is part of

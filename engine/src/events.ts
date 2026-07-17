@@ -8,6 +8,7 @@ export type SimEventType =
   | 'order-superseded'
   | 'arrived'
   | 'contact-pending'
+  | 'camp-defense-activated'
   | 'resupply-proximity'
   | 'move-blocked';
 
@@ -20,6 +21,8 @@ export interface SimEvent {
   supersededOrderId?: string;
   waypointIndex?: number;
   reason?: string;
+  campUnitId?: string;
+  threatUnitId?: string;
 }
 
 export function emitEvent(

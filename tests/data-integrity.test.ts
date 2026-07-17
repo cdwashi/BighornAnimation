@@ -243,7 +243,7 @@ describe('Little Bighorn scenario data integrity', () => {
     expect(Object.keys(scenario.tacticsProfiles)).toHaveLength(3);
     expect(scenario.orders).toHaveLength(23);
     expect(scenario.checkpoints).toHaveLength(10);
-    expect(scenario.observationEvents).toHaveLength(9);
+    expect(scenario.observationEvents).toHaveLength(14);
     expect(scenario.variants).toHaveLength(7);
     expect(scenario.terrain.landmarks.length).toBeGreaterThanOrEqual(20);
   });
@@ -260,6 +260,48 @@ describe('Little Bighorn scenario data integrity', () => {
     const camps = campIds.map((id) => scenario.units.find((unit) => unit.id === id));
     camps.forEach((camp, index) => expect(camp?.strength.best, campIds[index]).toBeGreaterThan(0));
     expect(camps.reduce((sum, camp) => sum + (camp?.strength.best ?? 0), 0)).toBe(5250);
+
+    const village = scenario.terrain.cover.find((cover) => cover.id === 'village-strip');
+    if (!village) throw new Error('D53 village strip missing');
+    const insideVillage = (point: { lat: number; lon: number }): boolean => {
+      let inside = false;
+      const ring = village.area.ring;
+      for (let index = 0, previous = ring.length - 1;
+        index < ring.length; previous = index, index += 1) {
+        const a = ring[index];
+        const b = ring[previous];
+        if ((a.lat > point.lat) !== (b.lat > point.lat) &&
+          point.lon < (b.lon - a.lon) * (point.lat - a.lat) / (b.lat - a.lat) + a.lon) {
+          inside = !inside;
+        }
+      }
+      return inside;
+    };
+    const centers = camps.map((camp) => {
+      if (!camp || !('ring' in camp.startPosition)) throw new Error('D53 camp center missing');
+      expect(camp.provenance.confidence, camp.id).toBe('LOW');
+      expect(camp.provenance.note, camp.id).toContain('D53');
+      expect(insideVillage(camp.startPosition.ring[0]), camp.id).toBe(true);
+      return camp.startPosition.ring[0];
+    });
+    centers.forEach((center, index) => {
+      if (index > 0) expect(center.lat, campIds[index]).toBeGreaterThan(centers[index - 1].lat);
+    });
+    const dependentIds = [
+      'hunkpapa-pool', 'gall-band', 'crow-king-band', 'oglala-pool',
+      'crazy-horse-band', 'minneconjou-pool', 'sans-arc-pool',
+      'blackfeet-santee-pool', 'cheyenne-pool', 'lwm-band',
+    ];
+    dependentIds.forEach((id) => {
+      const unit = scenario.units.find((candidate) => candidate.id === id);
+      if (!unit || 'ring' in unit.startPosition) throw new Error(`D53 dependent ${id} missing`);
+      expect(insideVillage(unit.startPosition), id).toBe(true);
+      expect(unit.provenance.note, id).toContain('D53');
+    });
+    expect(scenario.terrain.landmarks.find((landmark) => landmark.id === 'village-s-end'))
+      .toMatchObject({ position: { lat: 45.51833, lon: -107.38873 }, provenance: { confidence: 'LOW' } });
+    expect(scenario.terrain.landmarks.find((landmark) => landmark.id === 'village-n-end'))
+      .toMatchObject({ position: { lat: 45.556, lon: -107.44657 }, provenance: { confidence: 'LOW' } });
   });
 
   it('13. every unit strength Estimate has integer low/best/high (D26)', () => {

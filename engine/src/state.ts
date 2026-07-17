@@ -11,6 +11,18 @@ export type SpeedClass = 'CAVALRY_WALK' | 'CAVALRY_TROT' | 'CAVALRY_GALLOP' |
 
 export interface PositionMeters { x: number; y: number }
 
+export interface BelievedContact {
+  status: 'spotted' | 'lastKnown' | 'never';
+  lastSeenTick: number;
+  lastSeenPos: PositionMeters;
+}
+
+export interface ObserverContact extends BelievedContact {
+  observerUnitId: string;
+  observerSideId: string;
+  targetUnitId: string;
+}
+
 export interface UnitRuntime {
   id: string;
   unitIndex: number;
@@ -40,6 +52,10 @@ export interface UnitRuntime {
     lastTargetPosition: PositionMeters;
     contactEmitted: boolean;
   };
+  defaultBehavior?: 'DEFEND_CAMP';
+  campDefense?: { campUnitId: string; threatUnitId: string };
+  lastMovedTick?: number;
+  lastSpottingSweepTick?: number;
 }
 
 export interface OrderDelivery {
@@ -63,6 +79,8 @@ export interface SimState {
   units: UnitRuntime[];
   deliveryQueue: OrderDelivery[];
   deliveredOrders: DeliveredOrder[];
+  observerContacts: Record<string, ObserverContact>;
+  believedPictures: Record<string, Record<string, BelievedContact>>;
   emittedEventCursor: number;
 }
 
@@ -114,6 +132,9 @@ export function initializeState(
   terrain: EngineTerrain,
   scenarioSeed: number,
 ): SimState {
+  const scheduledUnitIds = new Set(
+    scenario.orders.flatMap((order) => order.recipientUnitIds),
+  );
   const units: UnitRuntime[] = scenario.units.map((unit, unitIndex) => {
     const position = polygonCentroid(unit, terrain);
     return {
@@ -134,6 +155,12 @@ export function initializeState(
       strengthTotal: unit.strength.best,
       strengthAvailable: unit.strength.best,
       horseHolderStrength: 0,
+      // TODO-AMBIGUOUS(M3-A): the schema has DEFEND_CAMP as an order type but
+      // no explicit default-behavior field. Treat only otherwise-unscheduled
+      // warrior bands as the idle defensive pools described by D47.
+      defaultBehavior: unit.kind === 'WARRIOR_BAND' && !scheduledUnitIds.has(unit.id)
+        ? 'DEFEND_CAMP'
+        : undefined,
     };
   });
   const deliveries: OrderDelivery[] = [];
@@ -168,6 +195,8 @@ export function initializeState(
     units,
     deliveryQueue: deliveries,
     deliveredOrders: [],
+    observerContacts: {},
+    believedPictures: Object.fromEntries(scenario.sides.map((side) => [side.id, {}])),
     emittedEventCursor: 0,
   };
 }

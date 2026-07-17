@@ -1,11 +1,18 @@
 import type { Scenario } from '../../src/schema/scenario-schema.js';
 import { applyVariants } from '../../src/scenario/apply-variants.js';
 import type { SimEvent } from './events.js';
+import { updateCampDefense } from './camp-defense.js';
 import { moveUnits } from './movement.js';
 import type { PathCache } from './objectives.js';
 import { deliverOrders } from './orders.js';
 import type { EngineTerrain } from './pathfind.js';
 import type { TrackSample } from './score.js';
+import {
+  createSpottingRuntime,
+  performSpottingSweep,
+  type SpottingEvent,
+  type SpottingRuntime,
+} from './spotting.js';
 import {
   cloneState,
   fnv1a,
@@ -20,6 +27,8 @@ export interface CreateSimOptions {
   seed?: string | number;
   terrain: EngineTerrain;
   parameterOverrides?: Readonly<Record<string, number>>;
+  /** D55 cache-equivalence gate hook: recompute every ray instead of memoizing. */
+  disableSpottingCache?: boolean;
 }
 
 export interface LoadOptions { useKeyframes?: boolean; targetTick?: number }
@@ -33,6 +42,7 @@ export interface Simulator {
   save(includeKeyframes?: boolean): SaveFile;
   load(save: SaveFile, options?: LoadOptions): SimState;
   events(): readonly SimEvent[];
+  spottingEvents(): readonly SpottingEvent[];
   state(): SimState;
   tracks(): readonly (readonly TrackSample[])[];
 }
@@ -51,6 +61,13 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
   const parameters = { ...(options.parameterOverrides ?? {}) };
   let current = initializeState(scenario, options.terrain, scenarioSeed);
   let eventLog: SimEvent[] = [];
+  let spottingEventLog: SpottingEvent[] = [];
+  let spottingRuntime: SpottingRuntime = createSpottingRuntime(
+    scenario,
+    options.terrain,
+    options.parameterOverrides,
+    options.disableSpottingCache !== true,
+  );
   let pathCache: PathCache = new Map();
   let unitTracks: TrackSample[][] = current.units.map((unit) => [{
     tick: current.tick,
@@ -69,6 +86,14 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
   };
   const processCurrentTick = (): void => {
     deliverOrders(scenario, current, options.terrain, eventLog, pathCache);
+    performSpottingSweep(
+      scenario,
+      current,
+      options.terrain,
+      spottingRuntime,
+      spottingEventLog,
+    );
+    updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, eventLog);
   };
   processCurrentTick();
   keyframes.push({ tick: 0, state: cloneState(current) });
@@ -76,8 +101,16 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
 
   const step = (): SimState => {
     current.tick += 1;
-    processCurrentTick();
+    deliverOrders(scenario, current, options.terrain, eventLog, pathCache);
     moveUnits(scenario, current, options.terrain, eventLog, pathCache);
+    performSpottingSweep(
+      scenario,
+      current,
+      options.terrain,
+      spottingRuntime,
+      spottingEventLog,
+    );
+    updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, eventLog);
     recordTracks();
     captureKeyframe();
     return current;
@@ -94,6 +127,13 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
   const resetRuntime = (state: SimState): void => {
     current = cloneState(state);
     eventLog = [];
+    spottingEventLog = [];
+    spottingRuntime = createSpottingRuntime(
+      scenario,
+      options.terrain,
+      options.parameterOverrides,
+      options.disableSpottingCache !== true,
+    );
     pathCache = new Map();
     unitTracks = current.units.map((unit) => [{ tick: current.tick, ...unit.position }]);
     keyframes = [];
@@ -146,16 +186,19 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
     }),
     load,
     events: () => eventLog,
+    spottingEvents: () => spottingEventLog,
     state: () => current,
     tracks: () => unitTracks,
   };
 }
 
 export * from './clock.js';
+export * from './camp-defense.js';
 export * from './events.js';
 export * from './movement.js';
 export * from './pathfind.js';
 export * from './rng.js';
 export * from './score.js';
 export * from './serialize.js';
+export * from './spotting.js';
 export * from './state.js';
