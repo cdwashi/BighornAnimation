@@ -17,12 +17,7 @@ import {
 } from './spotting.js';
 import type { SimState, UnitRuntime } from './state.js';
 
-const CROWS_NEST_EVENT_IDS = new Set([
-  'obs-scouts-pony-herd',
-  'obs-custer-crows-nest-haze',
-]);
-
-export type ExamScope = 'gateable' | 'informational-o3' | 'excluded-confidence';
+export type ExamScope = 'gateable' | 'excluded-confidence';
 
 export interface ObservationExamRow {
   eventId: string;
@@ -53,7 +48,6 @@ export interface ObservationExamResult {
 }
 
 function scopeFor(event: ObservationEvent): ExamScope {
-  if (CROWS_NEST_EVENT_IDS.has(event.id)) return 'informational-o3';
   return event.provenance.confidence === 'HIGH' || event.provenance.confidence === 'MEDIUM'
     ? 'gateable'
     : 'excluded-confidence';
@@ -267,7 +261,6 @@ function tuningTable(config: SpottingConfig): string {
 
 export function formatObservationExam(result: Omit<ObservationExamResult, 'report'>): string {
   const gateable = result.rows.filter((row) => row.scope === 'gateable');
-  const informational = result.rows.filter((row) => row.scope === 'informational-o3');
   const excluded = result.rows.filter((row) => row.scope === 'excluded-confidence');
   const mismatches = gateable.filter((row) => !row.matched);
   return [
@@ -275,7 +268,7 @@ export function formatObservationExam(result: Omit<ObservationExamResult, 'repor
     '',
     `- Gateable result: **${result.reproducedCount}/${result.gateableCount} ` +
       `(${(result.reproductionRate * 100).toFixed(1)}%) — ${result.passed ? 'PASS' : 'FAIL'}**`,
-    '- Required: at least 80.0% of HIGH/MEDIUM events, excluding the two Crow\'s Nest/O3 rows.',
+    '- Required: at least 80.0% of HIGH/MEDIUM events, including the two D60-promoted Crow\'s Nest rows.',
     '- Model: production deterministic spotting score; no RNG consumed; event-recorded atmosphericFactor only.',
     '',
     '## Global [CAL] tuning audit',
@@ -295,12 +288,6 @@ export function formatObservationExam(result: Omit<ObservationExamResult, 'repor
     mismatches.length === 0
       ? 'None.'
       : mismatches.map((row) => `- ${row.eventId}: ${row.failingFactor ?? 'prediction mismatch'}`).join('\n'),
-    '',
-    '## Informational/O3 — Crow\'s Nest (excluded from gate)',
-    '',
-    eventTable(informational),
-    '',
-    factorDetails(informational),
     '',
     '## Confidence-excluded events',
     '',

@@ -78,18 +78,18 @@
         },
         "ne": {
           "lat": 45.6,
-          "lon": -107.15
+          "lon": -107.11
         }
       },
       "localBounds": {
         "minX": 0,
-        "minY": -743.4227297920734,
-        "maxX": 26370,
-        "maxY": 20016.577270207927
+        "minY": -826.3263724818826,
+        "maxX": 29490,
+        "maxY": 20023.673627518117
       },
       "resolutionMeters": 30,
-      "width": 880,
-      "height": 693,
+      "width": 984,
+      "height": 696,
       "rowOrder": "south-to-north",
       "elevation": {
         "path": "elevation-full.i16",

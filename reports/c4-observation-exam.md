@@ -1,7 +1,7 @@
 # C4 Observation-Event Exam
 
-- Gateable result: **10/11 (90.9%) — PASS**
-- Required: at least 80.0% of HIGH/MEDIUM events, excluding the two Crow's Nest/O3 rows.
+- Gateable result: **12/13 (92.3%) — PASS**
+- Required: at least 80.0% of HIGH/MEDIUM events, including the two D60-promoted Crow's Nest rows.
 - Model: production deterministic spotting score; no RNG consumed; event-recorded atmosphericFactor only.
 
 ## Global [CAL] tuning audit
@@ -36,6 +36,8 @@
 
 | Event | Min | Expected | Predicted | Score | T_spot | Margin | Result |
 |---|---:|---|---|---:|---:|---:|---|
+| obs-scouts-pony-herd | 60 | seen | seen | 2.2237e-2 | 1.3000e-3 | 2.0937e-2 | PASS |
+| obs-custer-crows-nest-haze | 300 | unseen | unseen | 0.0000e+0 | 1.3000e-3 | 1.3000e-3 | PASS |
 | obs-warriors-divide-column | 360 | seen | seen | Infinity | 1.3000e-3 | Infinity | PASS |
 | obs-reno-village-hunkpapa | 720 | seen | seen | 4.7228e-2 | 1.3000e-3 | 4.5928e-2 | PASS |
 | obs-reno-village-oglala | 720 | seen | seen | 1.6376e-3 | 1.3000e-3 | 3.3761e-4 | PASS |
@@ -50,6 +52,8 @@
 
 ### Gateable factor audit
 
+- **obs-scouts-pony-herd (PASS):** distance=26982.2m; angular=2.2237e-2; terrain=visible; cover=1.0000e+0; coverPath=0.0m; atmosphere=1.0000e+0; transmittance=1.0000e+0; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; target unit.
+- **obs-custer-crows-nest-haze (PASS):** distance=21317.1m; angular=1.3660e-3; terrain=blocked; cover=0.0000e+0; coverPath=0.0m; atmosphere=5.0000e-1; transmittance=0.0000e+0; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; nearest unit to target landmark village-s-end.
 - **obs-warriors-divide-column (PASS):** distance=0.0m; angular=Infinity; terrain=visible; cover=1.0000e+0; coverPath=0.0m; atmosphere=1.0000e+0; transmittance=1.0000e+0; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; no unit/leader, doctrine-average perception; target unit.
 - **obs-reno-village-hunkpapa (PASS):** distance=1405.3m; angular=3.1548e-1; terrain=visible; cover=1.4970e-1; coverPath=575.4m; atmosphere=1.0000e+0; transmittance=1.4970e-1; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; target unit.
 - **obs-reno-village-oglala (PASS):** distance=1270.9m; angular=3.4239e-1; terrain=visible; cover=4.7829e-3; coverPath=1044.1m; atmosphere=1.0000e+0; transmittance=4.7829e-3; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; target unit.
@@ -65,16 +69,6 @@
 ### Gateable mismatches
 
 - obs-cheyenne-custer-column: score below T_spot by 1.247e-3
-
-## Informational/O3 — Crow's Nest (excluded from gate)
-
-| Event | Min | Expected | Predicted | Score | T_spot | Margin | Result |
-|---|---:|---|---|---:|---:|---:|---|
-| obs-scouts-pony-herd | 60 | seen | unseen | 0.0000e+0 | 1.3000e-3 | -1.3000e-3 | FAIL |
-| obs-custer-crows-nest-haze | 300 | unseen | unseen | 0.0000e+0 | 1.3000e-3 | 1.3000e-3 | PASS |
-
-- **obs-scouts-pony-herd (FAIL):** distance=26029.1m; angular=4.6102e-4; terrain=blocked; cover=0.0000e+0; coverPath=0.0m; atmosphere=1.0000e+0; transmittance=0.0000e+0; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; target unit. Failing factor: terrain-blocked (transmittance 0).
-- **obs-custer-crows-nest-haze (PASS):** distance=20507.4m; angular=1.4199e-3; terrain=blocked; cover=0.0000e+0; coverPath=0.0m; atmosphere=5.0000e-1; transmittance=0.0000e+0; motion=1.0000e+0; perception=1.0000e+0. Resolution: event-recorded observer position; nearest unit to target landmark village-s-end.
 
 ## Confidence-excluded events
 

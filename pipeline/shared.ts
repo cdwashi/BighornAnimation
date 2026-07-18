@@ -108,7 +108,7 @@ export const SOURCE_METADATA_PATH = join(CACHE_DIR, 'dem-source.json');
 
 export const FULL_BOUNDS: GeoBounds = {
   sw: { lat: 45.42, lon: -107.48 },
-  ne: { lat: 45.6, lon: -107.15 },
+  ne: { lat: 45.6, lon: -107.11 },
 };
 export const CORE_BOUNDS: GeoBounds = {
   sw: { lat: 45.49, lon: -107.48 },

@@ -89,8 +89,8 @@ describe('M3-A exit gates', () => {
   });
 
   it('V2 C4 exam — one global table reproduces at least 80% of gateable events', () => {
-    expect(exam.gateableCount).toBe(11);
-    expect(exam.reproducedCount).toBe(10);
+    expect(exam.gateableCount).toBe(13);
+    expect(exam.reproducedCount).toBe(12);
     expect(exam.rows.every((row) => row.factors?.quantizedTerrainRay !== true)).toBe(true);
     expect(exam.reproductionRate).toBeGreaterThanOrEqual(0.8);
     expect(exam.passed).toBe(true);

@@ -40,19 +40,31 @@ describe('M3-B exit gates', () => {
     ));
     runtime = createSpottingRuntime(scenario, terrain);
 
-    const withoutSweeps = createSim(scenario, {
-      terrain,
-      parameterOverrides: { K: 0, sweepCadenceTicks: 100_000 },
-    });
-    const baselineStart = performance.now();
-    withoutSweeps.run(2160);
-    baselineMilliseconds = performance.now() - baselineStart;
+    // V4 hardening (Chuck, 07-18): single-shot wall-clock ratios wobble on loaded
+    // machines (37.8% observed on a sandbox re-run of the same commit). Measure the
+    // overhead ratio per paired run and take the median of three.
+    const overheadRatios: number[] = [];
+    for (let trial = 0; trial < 3; trial += 1) {
+      const withoutSweeps = createSim(scenario, {
+        terrain,
+        parameterOverrides: { K: 0, sweepCadenceTicks: 100_000 },
+      });
+      const baselineStart = performance.now();
+      withoutSweeps.run(2160);
+      const trialBaseline = performance.now() - baselineStart;
 
-    const withSweeps = createSim(scenario, { terrain, parameterOverrides: { K: 0 } });
-    const sweepStart = performance.now();
-    withSweeps.run(2160);
-    sweepMilliseconds = performance.now() - sweepStart;
-    spottingOverheadPercent = (sweepMilliseconds / baselineMilliseconds - 1) * 100;
+      const withSweeps = createSim(scenario, { terrain, parameterOverrides: { K: 0 } });
+      const sweepStart = performance.now();
+      withSweeps.run(2160);
+      const trialSweep = performance.now() - sweepStart;
+      overheadRatios.push(trialSweep / trialBaseline);
+      if (trial === 0) {
+        baselineMilliseconds = trialBaseline;
+        sweepMilliseconds = trialSweep;
+      }
+    }
+    const medianRatio = [...overheadRatios].sort((a, b) => a - b)[1];
+    spottingOverheadPercent = (medianRatio - 1) * 100;
     const production = createSim(scenario, { terrain });
     production.run(2160);
     fullEvents = [...production.events()];
@@ -73,8 +85,9 @@ describe('M3-B exit gates', () => {
       atmosphericFactor: 1,
     });
     viewshedMilliseconds = performance.now() - viewshedStart;
-    expect(raster.width).toBe(880);
-    expect(raster.height).toBe(693);
+    const fullGrid = terrain.viewshedElevationGrid();
+    expect(raster.width).toBe(fullGrid.width);
+    expect(raster.height).toBe(fullGrid.height);
   }, 180_000);
 
   it('V4 performance — 30 m viewshed and full-day spotting stay within generous CI ceilings', () => {

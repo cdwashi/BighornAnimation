@@ -1,7 +1,7 @@
 # E5 Movement-only Checkpoint Baseline
 
 - Seed: `18760625`
-- Scenario FNV-1a: `083e7f2c`
+- Scenario FNV-1a: `a22a2d67`
 - Target tick: `2160`
 - Result: `4/10 checkpoints hit`
 
