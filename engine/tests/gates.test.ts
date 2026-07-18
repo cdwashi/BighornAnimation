@@ -44,9 +44,9 @@ describe('M2 exit gates', () => {
     terrain = await TerrainMovementLoader.fromDirectory(join(
       process.cwd(), 'data', 'terrain', 'little-bighorn-1876',
     ));
-    sameA = createSim(scenario, { seed: 18760625, terrain });
-    sameB = createSim(scenario, { seed: 18760625, terrain });
-    different = createSim(scenario, { seed: 42, terrain });
+    sameA = createSim(scenario, { seed: 18760625, terrain, combatEnabled: false });
+    sameB = createSim(scenario, { seed: 18760625, terrain, combatEnabled: false });
+    different = createSim(scenario, { seed: 42, terrain, combatEnabled: false });
     hashesA = collectHashes(sameA);
     hashesB = collectHashes(sameB);
     hashesDifferent = collectHashes(different);
@@ -167,6 +167,10 @@ describe('M2 exit gates', () => {
       deliveredOrders: [],
       observerContacts: {},
       believedPictures: Object.fromEntries(scenario.sides.map((side) => [side.id, {}])),
+      engagements: [],
+      engagementActive: false,
+      leaders: [],
+      couriers: [],
       emittedEventCursor: 0,
     };
     const heldAt = { ...heldUnit.position };

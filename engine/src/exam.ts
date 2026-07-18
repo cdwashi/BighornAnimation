@@ -305,7 +305,10 @@ export function runObservationExam(
 ): ObservationExamResult {
   const config = spottingConfig(parameterOverrides);
   const runtime = createSpottingRuntime(scenario, terrain, parameterOverrides);
-  const sim = createSim(scenario, { seed: 18760625, terrain, parameterOverrides });
+  // C4 is a pre-combat observation gate; F3 requires its legacy byte behavior.
+  const sim = createSim(scenario, {
+    seed: 18760625, terrain, parameterOverrides, combatEnabled: false,
+  });
   const rows: ObservationExamRow[] = [];
   const indexed = scenario.observationEvents
     .map((event, index) => ({ event, index }))

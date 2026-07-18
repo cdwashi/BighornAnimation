@@ -3,6 +3,7 @@ import { emitEvent, type SimEvent } from './events.js';
 import { pursuitNeedsRepath, repathPursuit, type PathCache } from './objectives.js';
 import type { EngineTerrain } from './pathfind.js';
 import type { Formation, SimState, SpeedClass, UnitRuntime } from './state.js';
+import type { CombatConfig } from './combat-config.js';
 
 /** [CAL] D32 movement rates in meters per simulated second. */
 export const SPEED_METERS_PER_SECOND: Readonly<Record<SpeedClass, number>> = {
@@ -57,8 +58,8 @@ function completeTransition(
     unit.mounted = false;
     unit.formation = 'SKIRMISH';
     unit.speedClass = 'DISMOUNTED_SKIRMISH';
-    unit.horseHolderStrength = unit.strengthTotal * holderFraction;
-    unit.strengthAvailable = unit.strengthTotal - unit.horseHolderStrength;
+    unit.horseHolderStrength = Math.floor(unit.strengthCurrent * holderFraction);
+    unit.strengthAvailable = unit.strengthCurrent - unit.horseHolderStrength;
     appendEvent(state, events, {
       tick: state.tick,
       type: 'dismounted',
@@ -70,7 +71,7 @@ function completeTransition(
     unit.formation = 'COLUMN';
     unit.speedClass = 'CAVALRY_WALK';
     unit.horseHolderStrength = 0;
-    unit.strengthAvailable = unit.strengthTotal;
+    unit.strengthAvailable = unit.strengthCurrent;
     appendEvent(state, events, {
       tick: state.tick,
       type: 'mounted',
@@ -101,13 +102,15 @@ function moveOneUnit(
   terrain: EngineTerrain,
   events: SimEvent[],
   cache: PathCache,
+  combat?: CombatConfig,
+  memoizeCombatPaths = true,
 ): void {
   const startingPosition = { ...unit.position };
   if (completeTransition(scenario, state, unit, events)) return;
   if (unit.path.length === 0 || unit.pathIndex >= unit.path.length || unit.blockedReason) return;
 
-  if (pursuitNeedsRepath(state, unit)) {
-    const result = repathPursuit(scenario, state, unit, terrain, cache);
+  if (pursuitNeedsRepath(state, unit, combat?.pursuitRepathCadenceTicks)) {
+    const result = repathPursuit(scenario, state, unit, terrain, cache, memoizeCombatPaths);
     if (result.status === 'unreachable') {
       markBlocked(state, unit, events, result.reason);
       return;
@@ -117,13 +120,17 @@ function moveOneUnit(
   }
 
   if (unit.pursuit) {
-    const target = state.units.find((item) => item.id === unit.pursuit?.targetUnitId);
+    const target = state.units.find((item) => item.id === unit.pursuit?.targetUnitId) ??
+      state.couriers.find((item) => item.id === unit.pursuit?.targetUnitId && item.active && item.alive);
     if (target) {
       const distance = Math.hypot(
         target.position.x - unit.position.x,
         target.position.y - unit.position.y,
       );
-      if (distance <= PURSUIT_STANDOFF_METERS) {
+      const standoffMeters = unit.pursuit.kind === 'COMBAT'
+        ? combat?.pursuitCloseRangeMeters ?? PURSUIT_STANDOFF_METERS
+        : unit.posture === 'CHARGE' ? 0 : PURSUIT_STANDOFF_METERS;
+      if (distance <= standoffMeters) {
         if (!unit.pursuit.contactEmitted) {
           appendEvent(state, events, {
             tick: state.tick,
@@ -169,14 +176,17 @@ function moveOneUnit(
     unit.posture === 'SCREEN',
   ) * scenario.clock.tickSeconds;
   if (unit.pursuit) {
-    const target = state.units.find((item) => item.id === unit.pursuit?.targetUnitId);
+    const target = state.units.find((item) => item.id === unit.pursuit?.targetUnitId) ??
+      state.couriers.find((item) => item.id === unit.pursuit?.targetUnitId && item.active && item.alive);
     if (target) {
       remaining = Math.min(
         remaining,
         Math.max(0, Math.hypot(
           target.position.x - unit.position.x,
           target.position.y - unit.position.y,
-        ) - PURSUIT_STANDOFF_METERS),
+        ) - (unit.pursuit.kind === 'COMBAT'
+          ? combat?.pursuitCloseRangeMeters ?? PURSUIT_STANDOFF_METERS
+          : unit.posture === 'CHARGE' ? 0 : PURSUIT_STANDOFF_METERS)),
       );
     }
   }
@@ -222,6 +232,15 @@ function moveOneUnit(
   }
 
   if (unit.pathIndex >= unit.path.length && !unit.pursuit) {
+    if (unit.scoutWithdrawal) {
+      unit.withdrawnOffField = true;
+      unit.scoutWithdrawal = false;
+      unit.posture = 'INERT';
+      appendEvent(state, events, {
+        tick: state.tick, type: 'scout-withdrew-off-field', unitId: unit.id,
+      });
+      return;
+    }
     appendEvent(state, events, {
       tick: state.tick,
       type: unit.activeOrderId && scenario.orders[unit.activeOrderIndex ?? -1]?.type === 'RESUPPLY'
@@ -242,7 +261,11 @@ export function moveUnits(
   terrain: EngineTerrain,
   events: SimEvent[],
   cache: PathCache,
+  combat?: CombatConfig,
+  memoizeCombatPaths = true,
 ): void {
   // Declared unit order is a determinism contract (D30).
-  for (const unit of state.units) moveOneUnit(scenario, state, unit, terrain, events, cache);
+  for (const unit of state.units) moveOneUnit(
+    scenario, state, unit, terrain, events, cache, combat, memoizeCombatPaths,
+  );
 }

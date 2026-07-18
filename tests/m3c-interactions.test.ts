@@ -36,8 +36,20 @@ function runtimeUnit(overrides: Partial<UnitRuntime> = {}): UnitRuntime {
     fordHoldTicks: 0,
     insideFord: false,
     strengthTotal: 100,
+    strengthCurrent: 100,
+    casualties: 0,
     strengthAvailable: 84,
     horseHolderStrength: 0,
+    morale: 60,
+    moraleState: 'SHAKEN',
+    cohesion: 100,
+    fatigue: 0,
+    ammunition: {},
+    initialAmmunition: {},
+    jammedWeapons: {},
+    suppression: 0,
+    flankedThisTick: false,
+    casualtiesThisTick: 0,
     ...overrides,
   };
 }
@@ -51,6 +63,10 @@ function simState(unit: UnitRuntime, tick = 1520): SimState {
     deliveredOrders: [],
     observerContacts: {},
     believedPictures: {},
+    engagements: [],
+    engagementActive: false,
+    leaders: [],
+    couriers: [],
     emittedEventCursor: 0,
   };
 }

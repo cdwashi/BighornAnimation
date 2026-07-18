@@ -58,7 +58,7 @@ describe('M3-A exit gates', () => {
       process.cwd(), 'data', 'terrain', 'little-bighorn-1876',
     ));
     exam = runObservationExam(scenario, terrain);
-    const movement = createSim(scenario, { seed: 18760625, terrain });
+    const movement = createSim(scenario, { seed: 18760625, terrain, combatEnabled: false });
     movement.run(2160);
     currentE5Table = formatCheckpointTable(scoreCheckpoints(
       movement.scenario,
@@ -72,9 +72,9 @@ describe('M3-A exit gates', () => {
   it('V1 Determinism — same-seed and different-seed full-day states are identical; spotting consumes no RNG', () => {
     const small = smallSpottingScenario();
     const flat = new FlatTerrain();
-    const sameA = createSim(small, { seed: 18760625, terrain: flat });
-    const sameB = createSim(small, { seed: 18760625, terrain: flat });
-    const different = createSim(small, { seed: 42, terrain: flat });
+    const sameA = createSim(small, { seed: 18760625, terrain: flat, combatEnabled: false });
+    const sameB = createSim(small, { seed: 18760625, terrain: flat, combatEnabled: false });
+    const different = createSim(small, { seed: 42, terrain: flat, combatEnabled: false });
     sameA.run(2160);
     sameB.run(2160);
     different.run(2160);

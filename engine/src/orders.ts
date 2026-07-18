@@ -3,6 +3,7 @@ import { emitEvent, type SimEvent } from './events.js';
 import { resolveObjective, type PathCache } from './objectives.js';
 import type { EngineTerrain } from './pathfind.js';
 import type { Posture, SimState, SpeedClass, UnitRuntime } from './state.js';
+import type { CombatConfig } from './combat-config.js';
 
 const MOVEMENT_TYPES = new Set<Order['type']>([
   'MOVE', 'SCREEN', 'WITHDRAW', 'ATTACK', 'CHARGE', 'HOLD', 'RESUPPLY',
@@ -43,6 +44,7 @@ function activateOrder(
   terrain: EngineTerrain,
   events: SimEvent[],
   cache: PathCache,
+  combat?: CombatConfig,
 ): void {
   appendEvent(state, events, {
     tick: state.tick,
@@ -100,10 +102,35 @@ function activateOrder(
   if (order.type === 'HOLD' && pathDistance <= 0.01) return;
   unit.path = result.path;
   unit.pathIndex = Math.min(1, Math.max(0, result.path.length - 1));
+  if (combat && result.path.length > 1) {
+    const cavalryRecipients = order.recipientUnitIds.filter((unitId) => {
+      const runtime = state.units.find((item) => item.id === unitId);
+      return runtime && scenario.units[runtime.unitIndex].kind === 'CAVALRY_COMPANY';
+    }).sort((left, right) =>
+      scenario.units.findIndex((item) => item.id === left) -
+      scenario.units.findIndex((item) => item.id === right));
+    const ordinal = cavalryRecipients.indexOf(unit.id);
+    const leader = state.units.find((item) => item.id === cavalryRecipients[0]);
+    if (ordinal > 0 && leader && Math.hypot(
+      unit.position.x - leader.position.x,
+      unit.position.y - leader.position.y,
+    ) < 5) {
+      const next = result.path[1];
+      const dx = next.x - unit.position.x;
+      const dy = next.y - unit.position.y;
+      const length = Math.hypot(dx, dy);
+      if (length > 0) {
+        unit.position.x -= dx / length * combat.marchSpacingMeters * ordinal;
+        unit.position.y -= dy / length * combat.marchSpacingMeters * ordinal;
+        unit.path[0] = { ...unit.position };
+      }
+    }
+  }
   if (result.targetUnitId) {
     const target = state.units.find((item) => item.id === result.targetUnitId);
     if (target) {
       unit.pursuit = {
+        kind: 'ORDER',
         targetUnitId: result.targetUnitId,
         lastRepathTick: state.tick,
         lastTargetPosition: { ...target.position },
@@ -125,16 +152,21 @@ export function deliverOrders(
   terrain: EngineTerrain,
   events: SimEvent[],
   cache: PathCache,
+  combat?: CombatConfig,
 ): void {
   const remaining = [];
   for (const delivery of state.deliveryQueue) {
-    if (delivery.arrivalTick !== state.tick) {
+    const courier = delivery.courierId
+      ? state.couriers.find((item) => item.id === delivery.courierId)
+      : undefined;
+    if (delivery.courierId && (!courier || !courier.delivered) ||
+      !delivery.courierId && delivery.arrivalTick !== state.tick) {
       remaining.push(delivery);
       continue;
     }
     const order = scenario.orders[delivery.orderIndex];
     const unit = state.units[delivery.recipientUnitIndex];
-    activateOrder(scenario, state, unit, order, delivery.orderIndex, terrain, events, cache);
+    activateOrder(scenario, state, unit, order, delivery.orderIndex, terrain, events, cache, combat);
     state.deliveredOrders.push({ ...delivery, deliveredTick: state.tick });
   }
   state.deliveryQueue = remaining;

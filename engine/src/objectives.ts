@@ -1,5 +1,5 @@
 import type { Order, Scenario } from '../../src/schema/scenario-schema.js';
-import { findPath, type EngineTerrain, type PathPoint, type PointMeters } from './pathfind.js';
+import { findPath, findStraightPath, type EngineTerrain, type PathPoint, type PointMeters } from './pathfind.js';
 import type { SimState, UnitRuntime } from './state.js';
 
 export type ObjectiveResult =
@@ -80,15 +80,29 @@ export function resolveObjective(
   return { status: 'reachable', path: combined, targetUnitId: resolved.targetUnitId };
 }
 
-export function pursuitNeedsRepath(state: SimState, unit: UnitRuntime): boolean {
+function pursuitTarget(state: SimState, targetId: string): PointMeters | undefined {
+  const unit = state.units.find((item) => item.id === targetId);
+  if (unit) return unit.position;
+  const courier = state.couriers.find((item) => item.id === targetId && item.active && item.alive);
+  return courier?.position;
+}
+
+export function pursuitNeedsRepath(
+  state: SimState,
+  unit: UnitRuntime,
+  combatCadenceTicks = 10,
+): boolean {
   const pursuit = unit.pursuit;
   if (!pursuit) return false;
-  const target = state.units.find((item) => item.id === pursuit.targetUnitId);
+  const target = pursuitTarget(state, pursuit.targetUnitId);
   if (!target) return false;
-  return state.tick - pursuit.lastRepathTick >= 10 ||
+  const cadence = pursuit.kind === 'COMBAT' || pursuit.kind === 'INITIATIVE'
+    ? combatCadenceTicks
+    : 10;
+  return state.tick - pursuit.lastRepathTick >= cadence ||
     Math.hypot(
-      target.position.x - pursuit.lastTargetPosition.x,
-      target.position.y - pursuit.lastTargetPosition.y,
+      target.x - pursuit.lastTargetPosition.x,
+      target.y - pursuit.lastTargetPosition.y,
     ) > 250;
 }
 
@@ -98,21 +112,40 @@ export function repathPursuit(
   unit: UnitRuntime,
   terrain: EngineTerrain,
   cache: PathCache,
+  memoizeCombat = true,
 ): ObjectiveResult {
-  if (unit.activeOrderIndex === undefined || !unit.pursuit) {
+  if (!unit.pursuit) {
     return { status: 'unreachable', reason: 'unit has no active pursuit' };
   }
-  const target = state.units.find((item) => item.id === unit.pursuit?.targetUnitId);
+  const target = pursuitTarget(state, unit.pursuit.targetUnitId);
   if (!target) return { status: 'unreachable', reason: 'pursuit target is missing' };
-  const result = resolveObjective(
-    scenario,
-    state,
-    unit,
-    scenario.orders[unit.activeOrderIndex],
-    terrain,
-    cache,
-  );
+  const targetUnit = state.units.find((item) => item.id === unit.pursuit?.targetUnitId);
+  const result = targetUnit && unit.activeOrderIndex !== undefined && unit.pursuit.kind === 'ORDER' ? resolveObjective(
+    scenario, state, unit,
+    { ...scenario.orders[unit.activeOrderIndex], objective: { targetUnitId: targetUnit.id } },
+    terrain, cache,
+  ) : (() => {
+    const grid = terrain.gridForPath(unit.position, target);
+    const cell = (point: PointMeters): string => `${Math.round((point.x - grid.minX) / grid.resolutionMeters)},${
+      Math.round((point.y - grid.minY) / grid.resolutionMeters)}`;
+    const key = `combat:${grid.id}:${cell(unit.position)}:${cell(target)}`;
+    const cached = memoizeCombat ? cache.get(key) : undefined;
+    const cachedPath = cached?.map((point) => ({ ...point }));
+    if (cachedPath) {
+      cachedPath[0] = { ...cachedPath[0], ...unit.position };
+      cachedPath[cachedPath.length - 1] = { ...cachedPath[cachedPath.length - 1], ...target };
+    }
+    const path = cachedPath
+      ? { status: 'reachable' as const, path: cachedPath }
+      : findStraightPath(grid, unit.position, target) ?? findPath(grid, unit.position, target);
+    if (memoizeCombat && !cached && path.status === 'reachable') {
+      cache.set(key, path.path.map((point) => ({ ...point })));
+    }
+    return path.status === 'reachable'
+      ? { status: 'reachable' as const, path: path.path, targetUnitId: unit.pursuit?.targetUnitId }
+      : path;
+  })();
   unit.pursuit.lastRepathTick = state.tick;
-  unit.pursuit.lastTargetPosition = { ...target.position };
+  unit.pursuit.lastTargetPosition = { ...target };
   return result;
 }

@@ -10,7 +10,24 @@ export type SimEventType =
   | 'contact-pending'
   | 'camp-defense-activated'
   | 'resupply-proximity'
-  | 'move-blocked';
+  | 'move-blocked'
+  | 'engagement-state'
+  | 'casualty-resolution'
+  | 'leader-killed'
+  | 'unit-destroyed'
+  | 'scout-withdrawal-started'
+  | 'scout-withdrew-off-field'
+  | 'morale-state'
+  | 'weapon-malfunction'
+  | 'weapon-cleared'
+  | 'ammo-resupplied'
+  | 'courier-departed'
+  | 'courier-delivered'
+  | 'courier-killed'
+  | 'pursuit-started'
+  | 'pursuit-ended'
+  | 'initiative-retargeted'
+  | 'rout-reintegrated';
 
 export interface SimEvent {
   sequence: number;
@@ -23,6 +40,16 @@ export interface SimEvent {
   reason?: string;
   campUnitId?: string;
   threatUnitId?: string;
+  targetUnitId?: string;
+  engagementId?: string;
+  engagementState?: string;
+  casualties?: number;
+  position?: { x: number; y: number };
+  leaderId?: string;
+  moraleState?: string;
+  weaponId?: string;
+  rounds?: number;
+  courierId?: string;
 }
 
 export function emitEvent(

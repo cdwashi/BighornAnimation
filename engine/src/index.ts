@@ -2,6 +2,14 @@ import type { Scenario } from '../../src/schema/scenario-schema.js';
 import { applyVariants } from '../../src/scenario/apply-variants.js';
 import type { SimEvent } from './events.js';
 import { updateCampDefense } from './camp-defense.js';
+import { updateResupply } from './ammunition.js';
+import { combatConfig, type CombatConfig } from './combat-config.js';
+import { createCombatRuntime, resolveCombat, type CombatRuntime } from './combat.js';
+import { updateCouriers } from './couriers.js';
+import { updateEngagements } from './engagement.js';
+import { updateFatigue } from './fatigue.js';
+import { resolveLeaderExposure } from './leaders.js';
+import { startScoutWithdrawals, updateMorale } from './morale.js';
 import { moveUnits } from './movement.js';
 import type { PathCache } from './objectives.js';
 import { deliverOrders } from './orders.js';
@@ -29,6 +37,10 @@ export interface CreateSimOptions {
   parameterOverrides?: Readonly<Record<string, number>>;
   /** D55 cache-equivalence gate hook: recompute every ray instead of memoizing. */
   disableSpottingCache?: boolean;
+  /** M4-A combat switch. Default ON; false bypasses every M4 path and PRNG draw. */
+  combatEnabled?: boolean;
+  /** F6/D55 hook: recompute exact pursuit paths instead of memoizing them. */
+  disableCombatPathCache?: boolean;
 }
 
 export interface LoadOptions { useKeyframes?: boolean; targetTick?: number }
@@ -59,7 +71,10 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
   const userSeed = typeof seed === 'number' ? seed >>> 0 : Number.parseInt(fnv1a(seed), 16) >>> 0;
   const scenarioSeed = Number.parseInt(scenarioHash, 16) >>> 0;
   const parameters = { ...(options.parameterOverrides ?? {}) };
-  let current = initializeState(scenario, options.terrain, scenarioSeed);
+  const combatEnabled = options.combatEnabled !== false;
+  const combat: CombatConfig = combatConfig(options.parameterOverrides);
+  const combatRuntime: CombatRuntime = createCombatRuntime(scenario, options.terrain, combat);
+  let current = initializeState(scenario, options.terrain, scenarioSeed, combatEnabled);
   let eventLog: SimEvent[] = [];
   let spottingEventLog: SpottingEvent[] = [];
   let spottingRuntime: SpottingRuntime = createSpottingRuntime(
@@ -85,7 +100,8 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
     }));
   };
   const processCurrentTick = (): void => {
-    deliverOrders(scenario, current, options.terrain, eventLog, pathCache);
+    if (combatEnabled) updateCouriers(scenario, current, options.terrain, eventLog);
+    deliverOrders(scenario, current, options.terrain, eventLog, pathCache, combatEnabled ? combat : undefined);
     performSpottingSweep(
       scenario,
       current,
@@ -94,6 +110,16 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
       spottingEventLog,
     );
     updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, eventLog);
+    if (combatEnabled) {
+      updateEngagements(scenario, current, combat, eventLog);
+      startScoutWithdrawals(scenario, current, options.terrain, eventLog);
+      resolveCombat(scenario, current, options.terrain, combatRuntime, userSeed, eventLog);
+      resolveLeaderExposure(scenario, current, combat, userSeed, eventLog);
+      updateMorale(scenario, current, options.terrain, combat, eventLog,
+        options.disableCombatPathCache ? undefined : pathCache);
+      updateResupply(scenario, current, combat, eventLog);
+      updateFatigue(current, combat);
+    }
   };
   processCurrentTick();
   keyframes.push({ tick: 0, state: cloneState(current) });
@@ -101,8 +127,10 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
 
   const step = (): SimState => {
     current.tick += 1;
-    deliverOrders(scenario, current, options.terrain, eventLog, pathCache);
-    moveUnits(scenario, current, options.terrain, eventLog, pathCache);
+    if (combatEnabled) updateCouriers(scenario, current, options.terrain, eventLog);
+    deliverOrders(scenario, current, options.terrain, eventLog, pathCache, combatEnabled ? combat : undefined);
+    moveUnits(scenario, current, options.terrain, eventLog, pathCache,
+      combatEnabled ? combat : undefined, options.disableCombatPathCache !== true);
     performSpottingSweep(
       scenario,
       current,
@@ -111,6 +139,16 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
       spottingEventLog,
     );
     updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, eventLog);
+    if (combatEnabled) {
+      updateEngagements(scenario, current, combat, eventLog);
+      startScoutWithdrawals(scenario, current, options.terrain, eventLog);
+      resolveCombat(scenario, current, options.terrain, combatRuntime, userSeed, eventLog);
+      resolveLeaderExposure(scenario, current, combat, userSeed, eventLog);
+      updateMorale(scenario, current, options.terrain, combat, eventLog,
+        options.disableCombatPathCache ? undefined : pathCache);
+      updateResupply(scenario, current, combat, eventLog);
+      updateFatigue(current, combat);
+    }
     recordTracks();
     captureKeyframe();
     return current;
@@ -152,7 +190,7 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
     if (saveFile.seed !== seed) throw new Error('Save seed does not match this simulation');
     void userSeed;
     const targetTick = loadOptions.targetTick ?? saveFile.targetTick;
-    let startingState = initializeState(scenario, options.terrain, scenarioSeed);
+    let startingState = initializeState(scenario, options.terrain, scenarioSeed, combatEnabled);
     if (loadOptions.useKeyframes && saveFile.keyframes) {
       for (const keyframe of saveFile.keyframes) {
         if (keyframe.tick <= targetTick && keyframe.tick >= startingState.tick) {
@@ -193,8 +231,16 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
 }
 
 export * from './clock.js';
+export * from './ammunition.js';
 export * from './camp-defense.js';
+export * from './combat-config.js';
+export * from './combat.js';
+export * from './couriers.js';
+export * from './engagement.js';
 export * from './events.js';
+export * from './fatigue.js';
+export * from './leaders.js';
+export * from './morale.js';
 export * from './movement.js';
 export * from './pathfind.js';
 export * from './rng.js';

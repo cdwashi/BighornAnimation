@@ -558,7 +558,7 @@ function recordContact(
   state: SimState,
   observer: UnitRuntime,
   observerSideId: string,
-  target: UnitRuntime,
+  target: Pick<UnitRuntime, 'id' | 'position'>,
   kind: SpottingEventKind,
   events: SpottingEvent[],
 ): void {
@@ -613,20 +613,39 @@ export function performSpottingSweep(
 ): void {
   if (state.tick % runtime.config.sweepCadenceTicks !== 0) return;
   for (const unit of state.units) unit.lastSpottingSweepTick = state.tick;
-  const targetViews = state.units.map((unit) => targetSignature(scenario, unit));
-  const sources = state.units.map((unit) => scenario.units[unit.unitIndex]);
+  const unitTargets = state.units.filter((unit) => !unit.withdrawnOffField).map((unit) => ({
+    entity: unit as Pick<UnitRuntime, 'id' | 'position'>,
+    view: targetSignature(scenario, unit),
+    sideId: scenario.units[unit.unitIndex].sideId,
+    unitIndex: unit.unitIndex,
+  }));
+  const courierTargets = state.couriers.filter((courier) => courier.active && courier.alive).map((courier) => ({
+    entity: courier as Pick<UnitRuntime, 'id' | 'position'>,
+    view: {
+      id: courier.id,
+      position: { ...courier.position },
+      effectiveStrength: 1,
+      formation: 'COLUMN' as const,
+      mounted: true,
+      moving: true,
+      kind: 'SCOUT_DETACHMENT' as const,
+    },
+    sideId: courier.sideId,
+    unitIndex: -1,
+  }));
+  const targets = [...unitTargets, ...courierTargets];
   for (let observerIndex = 0; observerIndex < state.units.length; observerIndex += 1) {
     const observer = state.units[observerIndex];
+    if (observer.withdrawnOffField) continue;
     const observerSource = scenario.units[observer.unitIndex];
     const observerView = observerSignature(scenario, observer, runtime.config);
-    for (let targetIndex = 0; targetIndex < state.units.length; targetIndex += 1) {
-      const target = state.units[targetIndex];
-      const targetSource = sources[targetIndex];
-      if (observerSource.sideId === targetSource.sideId) continue;
-      const key = runtime.pairKeys?.[observerIndex]?.[targetIndex] ??
-        contactKey(observer.id, target.id);
+    for (let targetIndex = 0; targetIndex < targets.length; targetIndex += 1) {
+      const target = targets[targetIndex];
+      if (observerSource.sideId === target.sideId) continue;
+      const key = target.unitIndex >= 0 ? runtime.pairKeys?.[observerIndex]?.[targetIndex] ??
+        contactKey(observer.id, target.entity.id) : contactKey(observer.id, target.entity.id);
       const existing = state.observerContacts[key];
-      const targetView = targetViews[targetIndex];
+      const targetView = target.view;
       const maximumScore = unobstructedScore(observerView, targetView, runtime.config);
       if ((!existing || existing.status !== 'spotted') &&
         maximumScore < runtime.config.spotThreshold) continue;
@@ -673,12 +692,12 @@ export function performSpottingSweep(
       }
       if (!existing || existing.status !== 'spotted') {
         if (score >= runtime.config.spotThreshold) {
-          recordContact(state, observer, observerSource.sideId, target, 'gained', events);
+          recordContact(state, observer, observerSource.sideId, target.entity, 'gained', events);
         }
       } else if (score <= runtime.config.loseThreshold) {
-        recordContact(state, observer, observerSource.sideId, target, 'lost', events);
+        recordContact(state, observer, observerSource.sideId, target.entity, 'lost', events);
       } else {
-        recordContact(state, observer, observerSource.sideId, target, 'updated', events);
+        recordContact(state, observer, observerSource.sideId, target.entity, 'updated', events);
       }
     }
   }

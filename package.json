@@ -6,8 +6,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run",
-    "build": "tsc -b && node scripts/prepare-app-assets.mjs && next build",
+    "test": "vitest run --fileParallelism=false",
+    "build": "tsc -p tsconfig.engine.json && tsc -b && node scripts/prepare-app-assets.mjs && next build",
     "build:ts": "tsc -b",
     "dev": "node scripts/prepare-app-assets.mjs && next dev",
     "sim": "npm run build --silent && node dist/engine/cli.js",

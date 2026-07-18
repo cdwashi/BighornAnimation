@@ -53,47 +53,117 @@ const DIRECTIONS = [
 ] as const;
 
 class MinHeap {
-  private readonly nodes: Array<{ index: number; score: number }> = [];
+  private indices = new Int32Array(1024);
+  private scores = new Float64Array(1024);
+  private length = 0;
+
+  reset(): void { this.length = 0; }
+
+  private grow(): void {
+    const indices = new Int32Array(this.indices.length * 2);
+    const scores = new Float64Array(this.scores.length * 2);
+    indices.set(this.indices);
+    scores.set(this.scores);
+    this.indices = indices;
+    this.scores = scores;
+    pathfindMetrics.heapGrowths += 1;
+  }
 
   push(index: number, score: number): void {
-    const item = { index, score };
-    this.nodes.push(item);
-    let child = this.nodes.length - 1;
+    if (this.length >= this.indices.length) this.grow();
+    let child = this.length++;
     while (child > 0) {
       const parent = Math.floor((child - 1) / 2);
-      const parentNode = this.nodes[parent];
-      if (parentNode.score < score || (parentNode.score === score && parentNode.index <= index)) break;
-      this.nodes[child] = parentNode;
+      const parentScore = this.scores[parent];
+      const parentIndex = this.indices[parent];
+      if (parentScore < score || (parentScore === score && parentIndex <= index)) break;
+      this.indices[child] = parentIndex;
+      this.scores[child] = parentScore;
       child = parent;
     }
-    this.nodes[child] = item;
+    this.indices[child] = index;
+    this.scores[child] = score;
   }
 
   pop(): { index: number; score: number } | undefined {
-    const first = this.nodes[0];
-    const last = this.nodes.pop();
-    if (!first || !last || this.nodes.length === 0) return first;
+    if (this.length === 0) return undefined;
+    const firstIndex = this.indices[0];
+    const firstScore = this.scores[0];
+    this.length -= 1;
+    if (this.length === 0) return { index: firstIndex, score: firstScore };
+    const lastIndex = this.indices[this.length];
+    const lastScore = this.scores[this.length];
     let parent = 0;
     while (true) {
       const left = parent * 2 + 1;
-      if (left >= this.nodes.length) break;
+      if (left >= this.length) break;
       const right = left + 1;
       let child = left;
-      if (right < this.nodes.length) {
-        const leftNode = this.nodes[left];
-        const rightNode = this.nodes[right];
-        if (rightNode.score < leftNode.score ||
-          (rightNode.score === leftNode.score && rightNode.index < leftNode.index)) child = right;
+      if (right < this.length) {
+        if (this.scores[right] < this.scores[left] ||
+          (this.scores[right] === this.scores[left] && this.indices[right] < this.indices[left])) child = right;
       }
-      const childNode = this.nodes[child];
-      if (childNode.score > last.score ||
-        (childNode.score === last.score && childNode.index >= last.index)) break;
-      this.nodes[parent] = childNode;
+      if (this.scores[child] > lastScore ||
+        (this.scores[child] === lastScore && this.indices[child] >= lastIndex)) break;
+      this.indices[parent] = this.indices[child];
+      this.scores[parent] = this.scores[child];
       parent = child;
     }
-    this.nodes[parent] = last;
-    return first;
+    this.indices[parent] = lastIndex;
+    this.scores[parent] = lastScore;
+    return { index: firstIndex, score: firstScore };
   }
+}
+
+interface PathScratch {
+  count: number;
+  generation: number;
+  scores: Float64Array;
+  previous: Int32Array;
+  seen: Uint32Array;
+  closed: Uint32Array;
+  heap: MinHeap;
+  blockedPoint: PointMeters;
+}
+
+const scratchBySize = new Map<number, PathScratch>();
+const pathfindMetrics = { calls: 0, expandedNodes: 0, scratchAllocations: 0, heapGrowths: 0 };
+
+export function resetPathfindMetrics(): void {
+  pathfindMetrics.calls = 0;
+  pathfindMetrics.expandedNodes = 0;
+  pathfindMetrics.scratchAllocations = 0;
+  pathfindMetrics.heapGrowths = 0;
+}
+
+export function getPathfindMetrics(): Readonly<typeof pathfindMetrics> {
+  return { ...pathfindMetrics };
+}
+
+function scratchFor(count: number): PathScratch {
+  let scratch = scratchBySize.get(count);
+  if (!scratch) {
+    scratch = {
+      count,
+      generation: 0,
+      scores: new Float64Array(count),
+      previous: new Int32Array(count),
+      seen: new Uint32Array(count),
+      closed: new Uint32Array(count),
+      heap: new MinHeap(),
+      blockedPoint: { x: 0, y: 0 },
+    };
+    scratchBySize.set(count, scratch);
+    pathfindMetrics.scratchAllocations += 1;
+  }
+  scratch.generation = (scratch.generation + 1) >>> 0;
+  if (scratch.generation === 0) {
+    scratch.seen.fill(0);
+    scratch.closed.fill(0);
+    scratch.generation = 1;
+  }
+  scratch.heap.reset();
+  return scratch;
 }
 
 function cellFor(grid: MovementGrid, point: PointMeters): [number, number] | undefined {
@@ -119,7 +189,7 @@ function cellPoint(grid: MovementGrid, index: number): PathPoint {
   };
 }
 
-function cellsOnLine(grid: MovementGrid, from: number, to: number): number[] {
+function canPullStraight(grid: MovementGrid, from: number, to: number): boolean {
   let x0 = from % grid.width;
   let y0 = Math.floor(from / grid.width);
   const x1 = to % grid.width;
@@ -129,9 +199,8 @@ function cellsOnLine(grid: MovementGrid, from: number, to: number): number[] {
   const sx = x0 < x1 ? 1 : -1;
   const sy = y0 < y1 ? 1 : -1;
   let error = dx - dy;
-  const cells: number[] = [];
+  let previous = from;
   while (true) {
-    cells.push(y0 * grid.width + x0);
     if (x0 === x1 && y0 === y1) break;
     const twice = error * 2;
     if (twice > -dy) {
@@ -142,17 +211,10 @@ function cellsOnLine(grid: MovementGrid, from: number, to: number): number[] {
       error += dx;
       y0 += sy;
     }
-  }
-  return cells;
-}
-
-function canPullStraight(grid: MovementGrid, from: number, to: number): boolean {
-  const cells = cellsOnLine(grid, from, to);
-  for (let offset = 1; offset < cells.length; offset += 1) {
-    const index = cells[offset];
-    if (offset < cells.length - 1 && !Number.isFinite(grid.costs[index])) return false;
-    if (offset < cells.length - 1 && grid.coverKinds?.[index] === grid.fordCode) return false;
-    const previous = cells[offset - 1];
+    const index = y0 * grid.width + x0;
+    const final = x0 === x1 && y0 === y1;
+    if (!final && !Number.isFinite(grid.costs[index])) return false;
+    if (!final && grid.coverKinds?.[index] === grid.fordCode) return false;
     const previousColumn = previous % grid.width;
     const previousRow = Math.floor(previous / grid.width);
     const column = index % grid.width;
@@ -164,8 +226,35 @@ function canPullStraight(grid: MovementGrid, from: number, to: number): boolean 
         return false;
       }
     }
+    previous = index;
   }
   return true;
+}
+
+export type PathCellBlocked = (point: PointMeters) => boolean;
+
+/** Exact shortcut used only when a caller accepts the existing smoother's straight pull. */
+export function findStraightPath(
+  grid: MovementGrid,
+  start: PointMeters,
+  goal: PointMeters,
+): PathResult | undefined {
+  const startCell = cellFor(grid, start);
+  const goalCell = cellFor(grid, goal);
+  if (!startCell || !goalCell) return undefined;
+  const startIndex = startCell[1] * grid.width + startCell[0];
+  const goalIndex = goalCell[1] * grid.width + goalCell[0];
+  if (!Number.isFinite(grid.costs[startIndex]) || !Number.isFinite(grid.costs[goalIndex]) ||
+    !canPullStraight(grid, startIndex, goalIndex)) return undefined;
+  return {
+    status: 'reachable',
+    path: [
+      { ...cellPoint(grid, startIndex), ...start },
+      { ...cellPoint(grid, goalIndex), ...goal },
+    ],
+    totalCost: 0,
+    visitedNodes: 2,
+  };
 }
 
 function smooth(grid: MovementGrid, raw: number[]): number[] {
@@ -188,7 +277,9 @@ export function findPath(
   grid: MovementGrid,
   start: PointMeters,
   goal: PointMeters,
+  blocked?: PathCellBlocked,
 ): PathResult {
+  pathfindMetrics.calls += 1;
   const startCell = cellFor(grid, start);
   const goalCell = cellFor(grid, goal);
   if (!startCell || !goalCell) {
@@ -196,7 +287,8 @@ export function findPath(
   }
   const startIndex = startCell[1] * grid.width + startCell[0];
   const goalIndex = goalCell[1] * grid.width + goalCell[0];
-  if (!Number.isFinite(grid.costs[startIndex]) || !Number.isFinite(grid.costs[goalIndex])) {
+  if (!Number.isFinite(grid.costs[startIndex]) || !Number.isFinite(grid.costs[goalIndex]) ||
+    blocked?.(cellPoint(grid, startIndex)) || blocked?.(cellPoint(grid, goalIndex))) {
     return { status: 'unreachable', reason: 'endpoint is impassable', visitedNodes: 0 };
   }
   if (startIndex === goalIndex) {
@@ -204,13 +296,12 @@ export function findPath(
   }
 
   const count = grid.width * grid.height;
-  const scores = new Float64Array(count);
-  scores.fill(Number.POSITIVE_INFINITY);
-  const previous = new Int32Array(count);
-  previous.fill(-1);
-  const closed = new Uint8Array(count);
-  const heap = new MinHeap();
+  const scratch = scratchFor(count);
+  const { scores, previous, seen, closed, heap } = scratch;
+  const generation = scratch.generation;
   scores[startIndex] = 0;
+  seen[startIndex] = generation;
+  previous[startIndex] = -1;
   const heuristic = (column: number, row: number): number =>
     Math.hypot(goalCell[0] - column, goalCell[1] - row) *
       grid.resolutionMeters * grid.minimumCost;
@@ -221,8 +312,8 @@ export function findPath(
     const next = heap.pop();
     if (!next) break;
     const current = next.index;
-    if (closed[current]) continue;
-    closed[current] = 1;
+    if (closed[current] === generation) continue;
+    closed[current] = generation;
     visitedNodes += 1;
     if (current === goalIndex) {
       const raw: number[] = [];
@@ -232,10 +323,13 @@ export function findPath(
         cursor = previous[cursor];
       }
       raw.reverse();
-      const pulled = smooth(grid, raw);
+      // Interdiction paths retain their cell-by-cell route: smoothing across a
+      // blocked disk would reintroduce the forbidden corridor geometrically.
+      const pulled = blocked ? raw : smooth(grid, raw);
       const path = pulled.map((index) => cellPoint(grid, index));
       path[0] = { ...path[0], ...start };
       path[path.length - 1] = { ...path[path.length - 1], ...goal };
+      pathfindMetrics.expandedNodes += visitedNodes;
       return { status: 'reachable', path, totalCost: scores[current], visitedNodes };
     }
     const column = current % grid.width;
@@ -246,21 +340,29 @@ export function findPath(
       if (neighborColumn < 0 || neighborRow < 0 ||
         neighborColumn >= grid.width || neighborRow >= grid.height) continue;
       const neighbor = neighborRow * grid.width + neighborColumn;
-      if (closed[neighbor] || !Number.isFinite(grid.costs[neighbor])) continue;
+      if (closed[neighbor] === generation || !Number.isFinite(grid.costs[neighbor])) continue;
+      if (blocked) {
+        scratch.blockedPoint.x = grid.minX + neighborColumn * grid.resolutionMeters;
+        scratch.blockedPoint.y = grid.minY + neighborRow * grid.resolutionMeters;
+        if (blocked(scratch.blockedPoint)) continue;
+      }
       if (columnOffset !== 0 && rowOffset !== 0) {
         const horizontal = row * grid.width + neighborColumn;
         const vertical = neighborRow * grid.width + column;
-        if (!Number.isFinite(grid.costs[horizontal]) || !Number.isFinite(grid.costs[vertical])) continue;
+        if (!Number.isFinite(grid.costs[horizontal]) || !Number.isFinite(grid.costs[vertical]) ||
+          blocked?.(cellPoint(grid, horizontal)) || blocked?.(cellPoint(grid, vertical))) continue;
       }
       const stepDistance = grid.resolutionMeters *
         (columnOffset !== 0 && rowOffset !== 0 ? Math.SQRT2 : 1);
       const tentative = scores[current] + stepDistance *
         ((grid.costs[current] + grid.costs[neighbor]) / 2);
-      if (tentative >= scores[neighbor]) continue;
+      if (seen[neighbor] === generation && tentative >= scores[neighbor]) continue;
       scores[neighbor] = tentative;
+      seen[neighbor] = generation;
       previous[neighbor] = current;
       heap.push(neighbor, tentative + heuristic(neighborColumn, neighborRow));
     }
   }
+  pathfindMetrics.expandedNodes += visitedNodes;
   return { status: 'unreachable', reason: 'no passable route', visitedNodes };
 }
