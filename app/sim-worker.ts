@@ -43,6 +43,10 @@ function seek(tick: number): void {
 
 function advance(tick: number): void {
   if (tick < sim.state().tick) seek(tick);
+  else if (tick - sim.state().tick > 10) {
+    sim.load(fullSave, { useKeyframes: true, targetTick: tick });
+    send({ type: 'state', state: sim.state() });
+  }
   else {
     sim.run(tick);
     send({ type: 'state', state: sim.state() });

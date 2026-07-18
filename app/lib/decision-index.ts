@@ -13,6 +13,10 @@ export interface DecisionEntry {
   orderId?: string;
 }
 
+export function decisionKindLabel(kind: DecisionEntry['kind']): 'ORDER' | 'EMERGENT' {
+  return kind === 'order' ? 'ORDER' : 'EMERGENT';
+}
+
 function orderLabel(order: Scenario['orders'][number]): string {
   if (order.id === 'martini-msg') return 'Cooke note: come on — be quick — bring packs';
   if (order.historicalText && !order.historicalText.startsWith('BASELINE')) {

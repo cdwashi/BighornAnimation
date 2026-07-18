@@ -9,7 +9,8 @@ import type { SpottingEvent } from '../engine/src/spotting';
 import type { SimState } from '../engine/src/state';
 import type { Scenario } from '../src/schema/scenario-schema';
 import { BattleMap } from './battle-map';
-import { buildDecisionIndex } from './lib/decision-index';
+import { buildDecisionIndex, decisionKindLabel } from './lib/decision-index';
+import { interpolateState, sliderFromSpeed, speedFromSlider } from './lib/map-interactions';
 import type { WorkerRequest, WorkerResponse } from './lib/sim-messages';
 
 const scenario = scenarioData as unknown as Scenario;
@@ -27,8 +28,13 @@ interface ViewshedState {
 
 export function BattleView() {
   const workerRef = useRef<Worker>();
+  const stateRef = useRef<SimState>();
+  const playingRef = useRef(false);
+  const advancePendingRef = useRef(false);
+  const transitionRef = useRef<{ from: SimState; to: SimState; started: number }>();
   const decisionListRef = useRef<HTMLOListElement>(null);
   const [state, setState] = useState<SimState>();
+  const [renderState, setRenderState] = useState<SimState>();
   const [events, setEvents] = useState<SimEvent[]>([]);
   const [spottingEvents, setSpottingEvents] = useState<SpottingEvent[]>([]);
   const [selectedLeader, setSelectedLeader] = useState('');
@@ -48,6 +54,7 @@ export function BattleView() {
     const presetLeader = parameters.get('leader');
     const presetMode = parameters.get('mode');
     const cookePreset = parameters.get('index') === 'cooke';
+    const renoPreset = parameters.get('scene') === 'reno-1620';
     queueMicrotask(() => {
       if (presetLeader && scenario.leaders.some((leader) => leader.id === presetLeader)) {
         setSelectedLeader(presetLeader);
@@ -61,25 +68,65 @@ export function BattleView() {
         setSelectedLeader('custer');
         setMode('belief');
       }
+      if (renoPreset) {
+        setSelectedLeader('reno');
+        setMode('belief');
+      }
     });
     const worker = new Worker(new URL('./sim-worker.ts', import.meta.url), { type: 'module' });
     workerRef.current = worker;
     worker.onmessage = (event: MessageEvent<WorkerResponse>) => {
       const message = event.data;
       if (message.type === 'ready') {
+        stateRef.current = message.state;
         setState(message.state);
+        setRenderState(message.state);
         setEvents(message.events);
         setSpottingEvents(message.spottingEvents);
         setRunMilliseconds(message.runMilliseconds);
-      } else if (message.type === 'state') setState(message.state);
+      } else if (message.type === 'state') {
+        advancePendingRef.current = false;
+        const previous = stateRef.current;
+        stateRef.current = message.state;
+        setState(message.state);
+        if (playingRef.current && previous) {
+          transitionRef.current = { from: previous, to: message.state, started: performance.now() };
+        } else {
+          transitionRef.current = undefined;
+          setRenderState(message.state);
+        }
+      }
       else if (message.type === 'viewshed') setViewshed(message);
       else setError(message.message);
     };
     const cookeTick = scenario.orders.find((order) => order.id === 'martini-msg')?.issuedAtMinute;
-    worker.postMessage({
-      type: 'init', tick: cookePreset && cookeTick !== undefined ? cookeTick * 2 : initialTick,
-    } satisfies WorkerRequest);
+    worker.postMessage({ type: 'init', tick: cookePreset && cookeTick !== undefined
+      ? cookeTick * 2
+      : renoPreset ? 1600 : initialTick } satisfies WorkerRequest);
     return () => worker.terminate();
+  }, []);
+
+  useEffect(() => {
+    playingRef.current = playing;
+    if (!playing && stateRef.current) {
+      transitionRef.current = undefined;
+      queueMicrotask(() => setRenderState(stateRef.current));
+    }
+  }, [playing]);
+
+  useEffect(() => {
+    let frame = 0;
+    const render = (now: number) => {
+      const transition = transitionRef.current;
+      if (transition) {
+        const fraction = Math.min(1, (now - transition.started) / 250);
+        setRenderState(interpolateState(transition.from, transition.to, fraction));
+        if (fraction >= 1) transitionRef.current = undefined;
+      }
+      frame = window.requestAnimationFrame(render);
+    };
+    frame = window.requestAnimationFrame(render);
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
@@ -92,7 +139,9 @@ export function BattleView() {
   useEffect(() => {
     if (!playing || !state) return;
     const timer = window.setInterval(() => {
-      const next = Math.min(endTick, state.tick + speed);
+      if (advancePendingRef.current) return;
+      const next = Math.min(endTick, Math.max(state.tick + 1, Math.round(state.tick + speed)));
+      advancePendingRef.current = true;
       workerRef.current?.postMessage({ type: 'advance', tick: next } satisfies WorkerRequest);
       if (next === endTick) setPlaying(false);
     }, 250);
@@ -119,6 +168,7 @@ export function BattleView() {
 
   const seek = (tick: number) => {
     setPlaying(false);
+    advancePendingRef.current = true;
     workerRef.current?.postMessage({ type: 'seek', tick } satisfies WorkerRequest);
   };
   const selectMode = (nextMode: typeof mode) => {
@@ -129,7 +179,7 @@ export function BattleView() {
   return (
     <main className="battle-shell">
       <BattleMap
-        state={state}
+        state={renderState ?? state}
         leaderId={selectedLeader}
         mode={mode}
         viewshed={viewshed?.leaderId === selectedLeader && viewshed.tick === currentTick ? viewshed : undefined}
@@ -195,7 +245,11 @@ export function BattleView() {
             <span>{decisions.length} entries {indexOpen ? '−' : '+'}</span>
           </button>
           {indexOpen && (
-            <ol ref={decisionListRef} className="decision-list">
+            <>
+              <p className="index-explainer">
+                <b>ORDER</b> reconstructs a historical instruction; <b>EMERGENT</b> is engine-generated.
+              </p>
+              <ol ref={decisionListRef} className="decision-list">
               {decisions.map((decision) => {
                 const issuer = scenario.leaders.find((leader) => leader.id === decision.issuerLeaderId);
                 return (
@@ -203,6 +257,7 @@ export function BattleView() {
                     <button
                       type="button"
                       data-decision-id={decision.id}
+                      data-decision-kind={decision.kind}
                       aria-current={selectedDecision === decision.id ? 'true' : undefined}
                       onClick={() => {
                         setSelectedDecision(decision.id);
@@ -212,6 +267,9 @@ export function BattleView() {
                       }}
                     >
                       <time>{decision.wallClock}</time>
+                      <b className={`decision-badge ${decision.kind}`}>
+                        {decisionKindLabel(decision.kind)}
+                      </b>
                       <strong>{decision.label}</strong>
                       <span>{issuer?.name ?? decision.issuerLeaderId}</span>
                       <small>to {decision.recipients.join(', ')}</small>
@@ -219,7 +277,8 @@ export function BattleView() {
                   </li>
                 );
               })}
-            </ol>
+              </ol>
+            </>
           )}
 
           <footer className="rail-metrics">
@@ -235,7 +294,11 @@ export function BattleView() {
           {playing ? 'PAUSE' : 'PLAY'}
         </button>
         <time className="clock">
-          {tickToWallClock(scenario.clock.start, state?.tick ?? initialTick, scenario.clock.tickSeconds)}
+          {tickToWallClock(
+            scenario.clock.start,
+            renderState?.tick ?? state?.tick ?? initialTick,
+            scenario.clock.tickSeconds,
+          )}
         </time>
         <div className="scrubber-wrap">
           <div className="event-marks" aria-hidden="true">
@@ -254,12 +317,18 @@ export function BattleView() {
           />
           <div className="timeline-labels"><span>03:00</span><span>12:00</span><span>21:00</span></div>
         </div>
-        <div className="speed" role="group" aria-label="Playback speed">
-          {[1, 4, 12].map((value) => (
-            <button key={value} type="button" aria-pressed={speed === value} onClick={() => setSpeed(value)}>
-              {value}×
-            </button>
-          ))}
+        <div className="speed">
+          <label htmlFor="playback-speed">Speed <output>{speed.toFixed(speed < 10 ? 1 : 0)}×</output></label>
+          <input
+            id="playback-speed"
+            aria-label="Playback speed"
+            type="range"
+            min={0}
+            max={1000}
+            step={1}
+            value={sliderFromSpeed(speed)}
+            onChange={(event) => setSpeed(speedFromSlider(Number(event.target.value)))}
+          />
         </div>
       </section>
     </main>

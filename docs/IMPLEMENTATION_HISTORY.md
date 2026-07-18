@@ -96,6 +96,7 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D55 | 07-16 | Engine cache-purity rule: all memoization must be a pure function of current SimState; history-dependent auxiliary state is forbidden (D31 invariant made explicit). Applied: spotting LOS cache re-keyed by 100 m-quantized endpoint cell pairs. New permanent gate: cache-equivalence test — full-day run with caching disabled vs enabled must be bit-identical. Invalidation-semantics change may shift spotting verdicts by a tick; exam/E5 re-run with verdicts accepted per standing policy. | Found by E6 going red after D53a's track change; latent through all prior E6 passes (scrub-point luck). Defect originated in Fable's M3-A work-order cache sentence — owned. Bug becomes rule becomes gate, per house pattern (D26, D29 lineage). | Approved |
 | D53a | 07-16 | reno-advance objective changed from raw waypoint {45.52,−107.43} (stale terrace coordinate) to landmarkId village-s-end; sole stale-coordinate order (verified by count). E5 co-a track change accepted as it falls, diff itemized. | Completes D53's order-objective coherence: the raw coordinate is how the staleness occurred; the landmark reference is self-healing against future geometry corrections. Checkpoints untouched — unit track changes are source coherence, not tuning. | Approved |
 | D56 | 07-17 | Engine full-day reconstruction re-targeted: ≤ 6 s with worker progress indication (was "<1 s" — an unvalidated D31 movement-only estimate; M2 gate timings already showed ~5 s/day pre-M3-B). Scrubbing unaffected (instant via D37 keyframes). Engine optimization → M6 backlog, revisit after M4 reshapes the profile (A* + spotting dominate today). | Measurement correcting an estimate, not a regression. Codex profiled, attempted, reverted, and declined to game the number. | Approved |
+| D57 | 07-17 | M3-C UX round from first user review (Chuck): pan/zoom + zoom-to-marker (spec-gap omission, Fable owned), unit tooltips, in-app legend, ghost-marker clarity, decision-index ORDER/EMERGENT badges, inter-tick position interpolation (PRD compliance), continuous speed slider, viewshed contrast pass. UI-only; engine untouched. Encounter action tooltips deferred to M4 spec (no engine actions exist to describe until combat). | First real-user evaluation; comprehension fixes precede new capability. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -127,6 +128,8 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | `codex-report-m3b.md` | 07-17 | M3-B execution report: V4 timings, V5 exact parity 200/200, V6 counts, gzip weight table, D50 perf finding (→ D56). |
 | `docs/screenshots/` (m3b-*) | 07-17 | First rendered proof: full map 15:40, Custer POV at Weir vicinity with belief on, decision index at the Cooke note. |
 | `.claude/launch.json` + `.claude/static-server.mjs` | 07-17 | Dev-only static-export preview tooling (dependency-free node server on :4173) used for live UI verification. |
+| `CODEX-WORKORDER-M3C.md` | 07-17 | UI-only D57 work order implementing the first-user comprehension and navigation fixes with gates U1–U3. |
+| `docs/screenshots/` (m3c-*) | 07-17 | U2 visual proof set: three M3-B frames re-captured at identical viewport framing plus the Reno Hill 16:20 viewshed contrast before/after. |
 
 ## 4. Open Items
 
