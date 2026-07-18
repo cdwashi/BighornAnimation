@@ -10,6 +10,7 @@ import type { SimState, UnitRuntime } from '../engine/src/state';
 import { FORMATION_LEGEND, STATE_LEGEND } from './lib/legend-data';
 import {
   buildUnitTooltip,
+  fanOutMarkerProjections,
   focusMapView,
   panMapView,
   resetMapView,
@@ -48,10 +49,19 @@ interface MarkerHit {
   y: number;
   base: ScreenPoint;
   ghosted: boolean;
+  clustered: boolean;
   tooltip: UnitTooltipContent;
 }
 
 interface TooltipState extends MarkerHit { left: number; top: number }
+
+interface RenderableMarker {
+  unit: UnitRuntime;
+  x: number;
+  y: number;
+  ghosted: boolean;
+  ghostLastSeenTick?: number;
+}
 
 function localPoint(lat: number, lon: number): [number, number] {
   const [easting, northing] = proj4(
@@ -235,17 +245,17 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
     markerHitsRef.current = [];
     const selectedLeader = scenario.leaders.find((leader) => leader.id === leaderId);
     const drawUnit = (
-      unit: UnitRuntime,
-      x: number,
-      y: number,
-      ghosted: boolean,
-      ghostLastSeenTick?: number,
+      marker: RenderableMarker,
+      base: ScreenPoint,
+      displayPoint: ScreenPoint,
+      clusterSize: number,
+      hitBounds?: { minimumX: number; maximumX: number },
     ) => {
       if (!state) return;
+      const { unit, ghosted, ghostLastSeenTick } = marker;
       const source = scenario.units[unit.unitIndex];
       const side = scenario.sides.find((item) => item.id === source.sideId);
-      const base = baseScreen(x, y);
-      const projected = transformPoint(base, view);
+      const projected = displayPoint;
       context.save();
       context.globalAlpha = ghosted ? 0.4 : 0.94;
       context.strokeStyle = side?.color ?? '#222';
@@ -282,51 +292,97 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
         );
       }
       context.restore();
+      if (hitBounds && (projected.x < hitBounds.minimumX || projected.x >= hitBounds.maximumX)) return;
       markerHitsRef.current.push({
         unitId: unit.id,
         x: projected.x,
         y: projected.y,
         base,
         ghosted,
+        clustered: clusterSize > 1,
         tooltip: buildUnitTooltip(scenario, state, unit, ghostLastSeenTick),
       });
     };
 
-    const drawReality = () => state?.units.forEach((unit) =>
-      drawUnit(unit, unit.position.x, unit.position.y, false));
-    const drawBelief = () => {
-      if (!state || !selectedLeader) return;
+    const drawMarkers = (
+      markers: readonly RenderableMarker[],
+      hitBounds?: { minimumX: number; maximumX: number },
+    ) => {
+      const projected = markers.map((marker) => ({
+        id: marker.unit.id,
+        point: screen(marker.x, marker.y),
+      }));
+      const layout = fanOutMarkerProjections(projected);
+      const byId = new Map(markers.map((marker) => [marker.unit.id, marker]));
+      context.save();
+      context.strokeStyle = 'rgba(54,48,39,.42)';
+      context.fillStyle = 'rgba(54,48,39,.48)';
+      context.lineWidth = 0.7;
+      for (const placement of layout) {
+        if (placement.clusterSize < 2) continue;
+        context.beginPath();
+        context.moveTo(placement.point.x, placement.point.y);
+        context.lineTo(placement.displayPoint.x, placement.displayPoint.y);
+        context.stroke();
+        context.beginPath();
+        context.arc(placement.point.x, placement.point.y, 1.2, 0, Math.PI * 2);
+        context.fill();
+      }
+      context.restore();
+      for (const placement of layout) {
+        const marker = byId.get(placement.id);
+        if (!marker) continue;
+        drawUnit(
+          marker,
+          baseScreen(marker.x, marker.y),
+          placement.displayPoint,
+          placement.clusterSize,
+          hitBounds,
+        );
+      }
+    };
+
+    const realityMarkers = (): RenderableMarker[] => state?.units.map((unit) => ({
+      unit,
+      x: unit.position.x,
+      y: unit.position.y,
+      ghosted: false,
+    })) ?? [];
+    const beliefMarkers = (): RenderableMarker[] => {
+      if (!state || !selectedLeader) return [];
       const picture = state.believedPictures[selectedLeader.sideId] ?? {};
+      const markers: RenderableMarker[] = [];
       state.units.forEach((unit) => {
         const source = scenario.units[unit.unitIndex];
         if (source.sideId === selectedLeader.sideId) {
-          drawUnit(unit, unit.position.x, unit.position.y, false);
+          markers.push({ unit, x: unit.position.x, y: unit.position.y, ghosted: false });
           return;
         }
         const contact = picture[unit.id];
         if (!contact) return;
         const ghosted = contact.status === 'lastKnown';
-        drawUnit(
+        markers.push({
           unit,
-          contact.lastSeenPos.x,
-          contact.lastSeenPos.y,
+          x: contact.lastSeenPos.x,
+          y: contact.lastSeenPos.y,
           ghosted,
-          ghosted ? contact.lastSeenTick : undefined,
-        );
+          ghostLastSeenTick: ghosted ? contact.lastSeenTick : undefined,
+        });
       });
+      return markers;
     };
     if (mode === 'split') {
       context.save();
       context.beginPath();
       context.rect(0, 0, width / 2, height);
       context.clip();
-      drawReality();
+      drawMarkers(realityMarkers(), { minimumX: 0, maximumX: width / 2 });
       context.restore();
       context.save();
       context.beginPath();
       context.rect(width / 2, 0, width / 2, height);
       context.clip();
-      drawBelief();
+      drawMarkers(beliefMarkers(), { minimumX: width / 2, maximumX: width });
       context.restore();
       context.strokeStyle = 'rgba(35,31,26,.7)';
       context.beginPath();
@@ -337,8 +393,8 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
       context.fillStyle = '#342f28';
       context.fillText('REALITY', width / 2 - 52, 22);
       context.fillText('BELIEF', width / 2 + 16, 22);
-    } else if (mode === 'belief') drawBelief();
-    else drawReality();
+    } else if (mode === 'belief') drawMarkers(beliefMarkers());
+    else drawMarkers(realityMarkers());
 
     const important = new Set([
       'ford-a', 'ford-b', 'reno-hill', 'weir-point', 'last-stand-hill',
@@ -514,6 +570,9 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
             <div><dt>Order</dt><dd>{tooltip.tooltip.order}</dd></div>
           </dl>
           {tooltip.tooltip.stale && <p>{tooltip.tooltip.stale}</p>}
+          {tooltip.clustered && (
+            <p>Company marker fanned for clarity. Its tether returns to the recorded position; true march-order spacing is not simulated.</p>
+          )}
         </aside>
       )}
     </div>

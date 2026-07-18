@@ -11,6 +11,7 @@ import type { Scenario } from '../src/schema/scenario-schema';
 import { BattleMap } from './battle-map';
 import { buildDecisionIndex, decisionKindLabel } from './lib/decision-index';
 import { interpolateState, sliderFromSpeed, speedFromSlider } from './lib/map-interactions';
+import { viewshedPresetEnabled } from './lib/pov-controls';
 import type { WorkerRequest, WorkerResponse } from './lib/sim-messages';
 
 const scenario = scenarioData as unknown as Scenario;
@@ -40,6 +41,7 @@ export function BattleView() {
   const [selectedLeader, setSelectedLeader] = useState('');
   const [mode, setMode] = useState<'reality' | 'belief' | 'split'>('reality');
   const [viewshed, setViewshed] = useState<ViewshedState>();
+  const [viewshedEnabled, setViewshedEnabled] = useState(false);
   const [railOpen, setRailOpen] = useState(true);
   const [indexOpen, setIndexOpen] = useState(false);
   const [selectedDecision, setSelectedDecision] = useState('');
@@ -55,7 +57,9 @@ export function BattleView() {
     const presetMode = parameters.get('mode');
     const cookePreset = parameters.get('index') === 'cooke';
     const renoPreset = parameters.get('scene') === 'reno-1620';
+    const fordPreset = parameters.get('scene') === 'ford-a';
     queueMicrotask(() => {
+      setViewshedEnabled(viewshedPresetEnabled(parameters));
       if (presetLeader && scenario.leaders.some((leader) => leader.id === presetLeader)) {
         setSelectedLeader(presetLeader);
       }
@@ -71,6 +75,10 @@ export function BattleView() {
       if (renoPreset) {
         setSelectedLeader('reno');
         setMode('belief');
+      }
+      if (fordPreset) {
+        setSelectedLeader('reno');
+        setMode('reality');
       }
     });
     const worker = new Worker(new URL('./sim-worker.ts', import.meta.url), { type: 'module' });
@@ -102,7 +110,7 @@ export function BattleView() {
     const cookeTick = scenario.orders.find((order) => order.id === 'martini-msg')?.issuedAtMinute;
     worker.postMessage({ type: 'init', tick: cookePreset && cookeTick !== undefined
       ? cookeTick * 2
-      : renoPreset ? 1600 : initialTick } satisfies WorkerRequest);
+      : renoPreset ? 1600 : fordPreset ? 1360 : initialTick } satisfies WorkerRequest);
     return () => worker.terminate();
   }, []);
 
@@ -130,11 +138,11 @@ export function BattleView() {
   }, []);
 
   useEffect(() => {
-    if (!selectedLeader || currentTick === undefined) return;
+    if (!viewshedEnabled || !selectedLeader || currentTick === undefined) return;
     workerRef.current?.postMessage({
       type: 'viewshed', leaderId: selectedLeader, atmosphericFactor: 1,
     } satisfies WorkerRequest);
-  }, [selectedLeader, currentTick]);
+  }, [currentTick, selectedLeader, viewshedEnabled]);
 
   useEffect(() => {
     if (!playing || !state) return;
@@ -182,7 +190,9 @@ export function BattleView() {
         state={renderState ?? state}
         leaderId={selectedLeader}
         mode={mode}
-        viewshed={viewshed?.leaderId === selectedLeader && viewshed.tick === currentTick ? viewshed : undefined}
+        viewshed={viewshedEnabled && viewshed?.leaderId === selectedLeader && viewshed.tick === currentTick
+          ? viewshed
+          : undefined}
       />
 
       <button
@@ -236,6 +246,18 @@ export function BattleView() {
           </p>
 
           <button
+            className="viewshed-toggle"
+            type="button"
+            role="switch"
+            aria-checked={viewshedEnabled}
+            disabled={!selectedLeader}
+            onClick={() => setViewshedEnabled((enabled) => !enabled)}
+          >
+            <span>Viewshed</span>
+            <b>{viewshedEnabled ? 'ON' : 'OFF'}</b>
+          </button>
+
+          <button
             className="index-heading"
             type="button"
             aria-expanded={indexOpen}
@@ -263,6 +285,7 @@ export function BattleView() {
                         setSelectedDecision(decision.id);
                         setSelectedLeader(decision.issuerLeaderId);
                         setMode('belief');
+                        setViewshedEnabled(true);
                         seek(decision.tick);
                       }}
                     >
@@ -283,7 +306,9 @@ export function BattleView() {
 
           <footer className="rail-metrics">
             {runMilliseconds === undefined ? 'Loading terrain and reconstruction…' :
-              `Full day ${runMilliseconds.toFixed(0)} ms · viewshed ${viewshed ? `${viewshed.milliseconds.toFixed(1)} ms` : 'off'}`}
+              `Full day ${runMilliseconds.toFixed(0)} ms · viewshed ${viewshedEnabled && viewshed
+                ? `${viewshed.milliseconds.toFixed(1)} ms`
+                : 'off'}`}
             {error && <span className="error">{error}</span>}
           </footer>
         </aside>

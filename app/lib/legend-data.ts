@@ -12,5 +12,7 @@ export const STATE_LEGEND = [
   { symbol: 'bar', label: 'Strength bar', detail: 'current effective strength' },
   { symbol: 'ghost', label: 'Dashed ghost', detail: 'last-known, potentially stale position' },
   { symbol: 'light', label: 'Lit / shadow', detail: 'visible / masked terrain from this POV' },
+  { symbol: 'viewshed', label: 'Viewshed switch', detail: 'shows or hides POV light and shadow' },
+  { symbol: 'cluster', label: 'Fanned companies', detail: 'display-only offsets; tethers return to recorded positions' },
   { symbol: 'tick', label: 'Scrubber tick', detail: 'order, spotting change, or activation' },
 ] as const;

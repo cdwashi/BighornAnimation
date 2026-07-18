@@ -85,6 +85,8 @@ button { color: inherit; }
 .legend-symbol.bar { height: 3px; border: 1px solid var(--ink); }
 .legend-symbol.ghost { border: 1px dashed var(--coalition); opacity: .45; }
 .legend-symbol.light { background: #ddd3bd; border-right: 7px solid #65635c; }
+.legend-symbol.viewshed { border: 1px solid var(--ink); background: rgba(48,43,35,.16); }
+.legend-symbol.cluster { height: 6px; border-bottom: 2px dotted var(--ink); }
 .legend-symbol.tick { width: 2px; background: var(--ink); }
 
 .unit-tooltip {
@@ -178,6 +180,25 @@ select {
 .segmented button:last-child, .speed button:last-child { border-right: 0; }
 .segmented button[aria-pressed="true"] { background: var(--ink); color: var(--parchment); }
 .legend-copy { margin: 6px 0 14px; font: 10px/1.4 Georgia, serif; color: var(--muted); }
+.viewshed-toggle {
+  width: 100%;
+  margin: -5px 0 12px;
+  padding: 6px 7px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.viewshed-toggle b { color: var(--ink); font-size: 8px; }
+.viewshed-toggle[aria-checked="true"] { border-color: rgba(48,43,35,.62); color: var(--ink); }
+.viewshed-toggle:disabled { cursor: default; opacity: .45; }
 
 .index-heading {
   width: 100%;

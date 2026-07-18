@@ -5,6 +5,16 @@ import { tickToWallClock } from '../../engine/src/clock';
 export interface ScreenPoint { x: number; y: number }
 export interface MapView { scale: number; translateX: number; translateY: number }
 
+export interface MarkerProjection {
+  id: string;
+  point: ScreenPoint;
+}
+
+export interface DisplayMarkerProjection extends MarkerProjection {
+  displayPoint: ScreenPoint;
+  clusterSize: number;
+}
+
 export const RESET_MAP_VIEW: Readonly<MapView> = Object.freeze({
   scale: 1,
   translateX: 0,
@@ -52,6 +62,73 @@ export function focusMapView(
 
 export function resetMapView(): MapView {
   return { ...RESET_MAP_VIEW };
+}
+
+/**
+ * Display-only marker decluttering. Source points are never mutated or
+ * returned as replacements for geographic/simulation coordinates.
+ */
+export function fanOutMarkerProjections(
+  projections: readonly MarkerProjection[],
+  collisionDistance = 16,
+): DisplayMarkerProjection[] {
+  const ordered = projections
+    .map((projection) => ({ id: projection.id, point: { ...projection.point } }))
+    .sort((left, right) => left.id.localeCompare(right.id));
+  const parent = ordered.map((_, index) => index);
+  const root = (index: number): number => {
+    let cursor = index;
+    while (parent[cursor] !== cursor) cursor = parent[cursor];
+    while (parent[index] !== index) {
+      const next = parent[index];
+      parent[index] = cursor;
+      index = next;
+    }
+    return cursor;
+  };
+  for (let left = 0; left < ordered.length; left += 1) {
+    for (let right = left + 1; right < ordered.length; right += 1) {
+      if (Math.hypot(
+        ordered[left].point.x - ordered[right].point.x,
+        ordered[left].point.y - ordered[right].point.y,
+      ) < collisionDistance) {
+        const leftRoot = root(left);
+        const rightRoot = root(right);
+        if (leftRoot !== rightRoot) parent[rightRoot] = leftRoot;
+      }
+    }
+  }
+  const groups = new Map<number, typeof ordered>();
+  ordered.forEach((projection, index) => {
+    const key = root(index);
+    const group = groups.get(key) ?? [];
+    group.push(projection);
+    groups.set(key, group);
+  });
+  const result: DisplayMarkerProjection[] = [];
+  for (const group of groups.values()) {
+    if (group.length === 1) {
+      result.push({ ...group[0], displayPoint: { ...group[0].point }, clusterSize: 1 });
+      continue;
+    }
+    const center = group.reduce((sum, marker) => ({
+      x: sum.x + marker.point.x / group.length,
+      y: sum.y + marker.point.y / group.length,
+    }), { x: 0, y: 0 });
+    const radius = Math.min(19, 9 + group.length * 2);
+    group.forEach((marker, index) => {
+      const angle = -Math.PI / 2 + index * Math.PI * 2 / group.length;
+      result.push({
+        ...marker,
+        displayPoint: {
+          x: center.x + Math.cos(angle) * radius,
+          y: center.y + Math.sin(angle) * radius,
+        },
+        clusterSize: group.length,
+      });
+    });
+  }
+  return result.sort((left, right) => left.id.localeCompare(right.id));
 }
 
 export function interpolateState(

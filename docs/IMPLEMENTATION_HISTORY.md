@@ -97,6 +97,7 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | D53a | 07-16 | reno-advance objective changed from raw waypoint {45.52,−107.43} (stale terrace coordinate) to landmarkId village-s-end; sole stale-coordinate order (verified by count). E5 co-a track change accepted as it falls, diff itemized. | Completes D53's order-objective coherence: the raw coordinate is how the staleness occurred; the landmark reference is self-healing against future geometry corrections. Checkpoints untouched — unit track changes are source coherence, not tuning. | Approved |
 | D56 | 07-17 | Engine full-day reconstruction re-targeted: ≤ 6 s with worker progress indication (was "<1 s" — an unvalidated D31 movement-only estimate; M2 gate timings already showed ~5 s/day pre-M3-B). Scrubbing unaffected (instant via D37 keyframes). Engine optimization → M6 backlog, revisit after M4 reshapes the profile (A* + spotting dominate today). | Measurement correcting an estimate, not a regression. Codex profiled, attempted, reverted, and declined to game the number. | Approved |
 | D57 | 07-17 | M3-C UX round from first user review (Chuck): pan/zoom + zoom-to-marker (spec-gap omission, Fable owned), unit tooltips, in-app legend, ghost-marker clarity, decision-index ORDER/EMERGENT badges, inter-tick position interpolation (PRD compliance), continuous speed slider, viewshed contrast pass. UI-only; engine untouched. Encounter action tooltips deferred to M4 spec (no engine actions exist to describe until combat). | First real-user evaluation; comprehension fixes precede new capability. | Approved |
+| D58 | 07-17 | M3-D from continued user review: (1) viewshed overlay becomes an explicit manual toggle, independent of leader selection — positions/movement viewable without POV shading; (2) co-located unit markers declutter at zoom into display-only fan-out (clearly cosmetic offsets; tooltips identify each company). Underlying data confirmed already company-granular (12 companies as separate units since O1); true march-order column spacing → M4 spec (engine change). | Stacked rendering, not data granularity, was the limitation; display fix now, fidelity fix in M4. | Approved |
 
 ## 3. Artifacts Delivered
 
@@ -130,6 +131,8 @@ Maintained across sessions. Newest entries appended at the bottom of each sectio
 | `.claude/launch.json` + `.claude/static-server.mjs` | 07-17 | Dev-only static-export preview tooling (dependency-free node server on :4173) used for live UI verification. |
 | `CODEX-WORKORDER-M3C.md` | 07-17 | UI-only D57 work order implementing the first-user comprehension and navigation fixes with gates U1–U3. |
 | `docs/screenshots/` (m3c-*) | 07-17 | U2 visual proof set: three M3-B frames re-captured at identical viewport framing plus the Reno Hill 16:20 viewshed contrast before/after. |
+| `CODEX WORK ORDER-M3D.md` | 07-18 | UI-only D58 work order for the independent viewshed switch and display-only marker decluttering. |
+| `docs/screenshots/m3d-reno-battalion-ford-a-1420-decluttered.png` | 07-18 | Zoomed Ford A proof showing Reno's company-granular battalion fanned for legibility with cosmetic tether cues. |
 
 ## 4. Open Items
 
