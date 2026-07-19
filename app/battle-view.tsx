@@ -19,19 +19,15 @@ import { buildDecisionIndex, decisionKindLabel } from './lib/decision-index';
 import { interpolateState, sliderFromSpeed, speedFromSlider } from './lib/map-interactions';
 import { viewshedPresetEnabled } from './lib/pov-controls';
 import type { WorkerRequest, WorkerResponse } from './lib/sim-messages';
+import {
+  advanceViewshedTransition,
+  receiveViewshedFrame,
+  type ViewshedTransition,
+} from './lib/viewshed-presentation';
 
 const scenario = scenarioData as unknown as Scenario;
 const initialTick = 760 * 2;
 const endTick = 18 * 60 * 2;
-
-interface ViewshedState {
-  leaderId: string;
-  tick: number;
-  width: number;
-  height: number;
-  values: Uint8ClampedArray;
-  milliseconds: number;
-}
 
 export function BattleView() {
   const workerRef = useRef<Worker>();
@@ -39,6 +35,9 @@ export function BattleView() {
   const playingRef = useRef(false);
   const advancePendingRef = useRef(false);
   const transitionRef = useRef<{ from: SimState; to: SimState; started: number }>();
+  const viewshedTransitionRef = useRef<ViewshedTransition>();
+  const viewshedEnabledRef = useRef(false);
+  const selectedLeaderRef = useRef('');
   const decisionListRef = useRef<HTMLOListElement>(null);
   const [state, setState] = useState<SimState>();
   const [renderState, setRenderState] = useState<SimState>();
@@ -46,7 +45,7 @@ export function BattleView() {
   const [spottingEvents, setSpottingEvents] = useState<SpottingEvent[]>([]);
   const [selectedLeader, setSelectedLeader] = useState('');
   const [mode, setMode] = useState<'reality' | 'belief' | 'split'>('reality');
-  const [viewshed, setViewshed] = useState<ViewshedState>();
+  const [viewshedTransition, setViewshedTransition] = useState<ViewshedTransition>();
   const [viewshedEnabled, setViewshedEnabled] = useState(false);
   const [railOpen, setRailOpen] = useState(true);
   const [indexOpen, setIndexOpen] = useState(false);
@@ -115,7 +114,16 @@ export function BattleView() {
           setRenderState(message.state);
         }
       }
-      else if (message.type === 'viewshed') setViewshed(message);
+      else if (message.type === 'viewshed') {
+        if (!viewshedEnabledRef.current || message.leaderId !== selectedLeaderRef.current) return;
+        const next = receiveViewshedFrame(
+          viewshedTransitionRef.current,
+          message,
+          performance.now(),
+        );
+        viewshedTransitionRef.current = next;
+        setViewshedTransition(next);
+      }
       else setError(message.message);
     };
     const cookeTick = scenario.orders.find((order) => order.id === 'martini-msg')?.issuedAtMinute;
@@ -126,6 +134,17 @@ export function BattleView() {
       : renoPreset ? 1600 : fordPreset ? 1360 : initialTick } satisfies WorkerRequest);
     return () => worker.terminate();
   }, []);
+
+  useEffect(() => {
+    viewshedEnabledRef.current = viewshedEnabled;
+    selectedLeaderRef.current = selectedLeader;
+    const transition = viewshedTransitionRef.current;
+    if (!viewshedEnabled || !selectedLeader ||
+      transition?.current.leaderId !== selectedLeader) {
+      viewshedTransitionRef.current = undefined;
+      queueMicrotask(() => setViewshedTransition(undefined));
+    }
+  }, [selectedLeader, viewshedEnabled]);
 
   useEffect(() => {
     playingRef.current = playing;
@@ -143,6 +162,12 @@ export function BattleView() {
         const fraction = Math.min(1, (now - transition.started) / 250);
         setRenderState(interpolateState(transition.from, transition.to, fraction));
         if (fraction >= 1) transitionRef.current = undefined;
+      }
+      const lighting = viewshedTransitionRef.current;
+      if (lighting?.previous) {
+        const advanced = advanceViewshedTransition(lighting, now);
+        viewshedTransitionRef.current = advanced;
+        setViewshedTransition(advanced);
       }
       frame = window.requestAnimationFrame(render);
     };
@@ -213,9 +238,8 @@ export function BattleView() {
         events={events}
         leaderId={selectedLeader}
         mode={mode}
-        viewshed={viewshedEnabled && viewshed?.leaderId === selectedLeader && viewshed.tick === currentTick
-          ? viewshed
-          : undefined}
+        viewshedEnabled={viewshedEnabled && Boolean(selectedLeader)}
+        viewshed={viewshedTransition}
       />
 
       <aside className={`losses-panel${lossesOpen ? ' open' : ''}`} aria-label="losses">
@@ -372,8 +396,8 @@ export function BattleView() {
 
           <footer className="rail-metrics">
             {runMilliseconds === undefined ? 'Loading terrain and reconstruction…' :
-              `Full day ${runMilliseconds.toFixed(0)} ms · viewshed ${viewshedEnabled && viewshed
-                ? `${viewshed.milliseconds.toFixed(1)} ms`
+              `Full day ${runMilliseconds.toFixed(0)} ms · viewshed ${viewshedEnabled && viewshedTransition
+                ? `${viewshedTransition.current.milliseconds.toFixed(1)} ms`
                 : 'off'}`}
             {error && <span className="error">{error}</span>}
           </footer>

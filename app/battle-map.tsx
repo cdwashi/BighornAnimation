@@ -33,6 +33,11 @@ import {
   type ScreenPoint,
   type UnitTooltipContent,
 } from './lib/map-interactions';
+import {
+  blendedViewshedValue,
+  viewshedLayerPlan,
+  type ViewshedTransition,
+} from './lib/viewshed-presentation';
 
 const scenario = scenarioData as unknown as Scenario;
 const manifest = manifestData;
@@ -43,18 +48,13 @@ interface ContourFeature {
   geometry: { coordinates: number[][][] };
 }
 
-interface ViewshedImage {
-  width: number;
-  height: number;
-  values: Uint8ClampedArray;
-}
-
 interface BattleMapProps {
   state?: SimState;
   events: readonly SimEvent[];
   leaderId: string;
   mode: 'reality' | 'belief' | 'split';
-  viewshed?: ViewshedImage;
+  viewshedEnabled: boolean;
+  viewshed?: ViewshedTransition;
 }
 
 interface MarkerHit {
@@ -112,8 +112,9 @@ function distance(left: ScreenPoint, right: ScreenPoint): number {
   return Math.hypot(right.x - left.x, right.y - left.y);
 }
 
-export function BattleMap({ state, events, leaderId, mode, viewshed }: BattleMapProps) {
+export function BattleMap({ state, events, leaderId, mode, viewshedEnabled, viewshed }: BattleMapProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const viewshedCanvasRef = useRef<HTMLCanvasElement>(null);
   const contoursRef = useRef<ContourFeature[]>([]);
   const imageRef = useRef<HTMLImageElement>();
   const markerHitsRef = useRef<MarkerHit[]>([]);
@@ -276,30 +277,6 @@ export function BattleMap({ state, events, leaderId, mode, viewshed }: BattleMap
       context.stroke();
     }
     context.globalAlpha = 1;
-
-    if (leaderId && viewshed) {
-      const overlay = document.createElement('canvas');
-      overlay.width = viewshed.width;
-      overlay.height = viewshed.height;
-      const overlayContext = overlay.getContext('2d');
-      if (overlayContext) {
-        const pixels = overlayContext.createImageData(viewshed.width, viewshed.height);
-        for (let row = 0; row < viewshed.height; row += 1) {
-          const northRow = viewshed.height - 1 - row;
-          for (let column = 0; column < viewshed.width; column += 1) {
-            const source = row * viewshed.width + column;
-            const target = (northRow * viewshed.width + column) * 4;
-            pixels.data[target] = 31;
-            pixels.data[target + 1] = 30;
-            pixels.data[target + 2] = 28;
-            pixels.data[target + 3] = Math.round((255 - viewshed.values[source]) * 0.64);
-          }
-        }
-        overlayContext.putImageData(pixels, 0, 0);
-        context.imageSmoothingEnabled = true;
-        context.drawImage(overlay, mapOrigin.x, mapOrigin.y, displayMapWidth, displayMapHeight);
-      }
-    }
 
     if (fallMarkersEnabled && state) {
       const falls = clusterFallMarkers(
@@ -633,7 +610,77 @@ export function BattleMap({ state, events, leaderId, mode, viewshed }: BattleMap
     context.fillText('Little Bighorn', width - 22, 34);
     context.font = '9px system-ui';
     context.fillText('JUNE 25, 1876 · LOCAL SUN TIME', width - 22, 51);
-  }, [assetRevision, events, fallMarkersEnabled, leaderId, mode, state, view, viewshed, viewportRevision]);
+  }, [assetRevision, events, fallMarkersEnabled, leaderId, mode, state, view, viewportRevision]);
+
+  useEffect(() => {
+    const canvas = viewshedCanvasRef.current;
+    if (!canvas || !viewshedEnabled || !leaderId) return;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    const ratio = window.devicePixelRatio || 1;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const pixelWidth = Math.round(width * ratio);
+    const pixelHeight = Math.round(height * ratio);
+    if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+    if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const active = viewshed?.current.leaderId === leaderId ? viewshed : undefined;
+    const plan = viewshedLayerPlan(true, active);
+    // Repaint the stable darkness directly; never clear the overlay between worker results.
+    context.globalCompositeOperation = 'source-over';
+    context.globalAlpha = 1;
+    context.fillStyle = `rgba(31,30,28,${plan.scrimAlpha})`;
+    context.fillRect(0, 0, width, height);
+    if (!active) return;
+
+    const mask = document.createElement('canvas');
+    mask.width = active.current.width;
+    mask.height = active.current.height;
+    const maskContext = mask.getContext('2d');
+    if (!maskContext) return;
+    const pixels = maskContext.createImageData(mask.width, mask.height);
+    const compatiblePrevious = active.previous &&
+      active.previous.width === active.current.width &&
+      active.previous.height === active.current.height
+      ? active.previous.values : undefined;
+    for (let row = 0; row < mask.height; row += 1) {
+      const northRow = mask.height - 1 - row;
+      for (let column = 0; column < mask.width; column += 1) {
+        const source = row * mask.width + column;
+        const target = (northRow * mask.width + column) * 4;
+        pixels.data[target] = 255;
+        pixels.data[target + 1] = 255;
+        pixels.data[target + 2] = 255;
+        pixels.data[target + 3] = blendedViewshedValue(
+          compatiblePrevious,
+          active.current.values,
+          source,
+          active.mix,
+        );
+      }
+    }
+    maskContext.putImageData(pixels, 0, 0);
+
+    const mapWidth = fullBounds.maxX - fullBounds.minX;
+    const mapHeight = fullBounds.maxY - fullBounds.minY;
+    const baseScale = Math.min(width / mapWidth, height / mapHeight);
+    const offsetX = (width - mapWidth * baseScale) / 2;
+    const offsetY = (height - mapHeight * baseScale) / 2;
+    const mapOrigin = transformPoint({ x: offsetX, y: offsetY }, view);
+    context.globalCompositeOperation = 'destination-out';
+    context.imageSmoothingEnabled = true;
+    context.drawImage(
+      mask,
+      mapOrigin.x,
+      mapOrigin.y,
+      mapWidth * baseScale * view.scale,
+      mapHeight * baseScale * view.scale,
+    );
+    context.globalCompositeOperation = 'source-over';
+  }, [leaderId, view, viewshed, viewshedEnabled, viewportRevision]);
 
   const canvasPoint = (event: React.MouseEvent<HTMLCanvasElement>): ScreenPoint => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -757,6 +804,17 @@ export function BattleMap({ state, events, leaderId, mode, viewshed }: BattleMap
           if (marker) focusMarker(marker);
         }}
       />
+      {viewshedLayerPlan(viewshedEnabled && Boolean(leaderId), viewshed).renderOverlay && (
+        <canvas
+          ref={viewshedCanvasRef}
+          className="viewshed-overlay"
+          aria-hidden="true"
+          data-crossfade={Boolean(viewshed?.previous)}
+          data-mix={viewshed?.mix ?? 0}
+          data-current-tick={viewshed?.current.tick ?? ''}
+          data-previous-tick={viewshed?.previous?.tick ?? ''}
+        />
+      )}
 
       <div className="map-tools" aria-label="Map controls">
         <button type="button" onClick={() => { setView(resetMapView()); clearTooltips(); }}>
