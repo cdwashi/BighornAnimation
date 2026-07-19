@@ -6,8 +6,21 @@ import proj4 from 'proj4';
 import scenarioData from '../data/scenarios/little-bighorn-1876/scenario.json';
 import manifestData from '../data/terrain/little-bighorn-1876/manifest.json';
 import type { Scenario } from '../src/schema/scenario-schema';
+import type { SimEvent } from '../engine/src/events';
 import type { SimState, UnitRuntime } from '../engine/src/state';
 import { FORMATION_LEGEND, STATE_LEGEND } from './lib/legend-data';
+import {
+  buildEncounterTooltip,
+  buildScaleRuler,
+  clusterFallMarkers,
+  DEFAULT_FALL_MARKERS_ENABLED,
+  nextFallMarkerVisibility,
+  positionedLosses,
+  recentReintegrations,
+  unitMarkerTreatment,
+  type EncounterTooltipContent,
+  type ScaleRuler,
+} from './lib/combat-ui';
 import {
   buildUnitTooltip,
   fanOutMarkerProjections,
@@ -38,6 +51,7 @@ interface ViewshedImage {
 
 interface BattleMapProps {
   state?: SimState;
+  events: readonly SimEvent[];
   leaderId: string;
   mode: 'reality' | 'belief' | 'split';
   viewshed?: ViewshedImage;
@@ -54,6 +68,15 @@ interface MarkerHit {
 }
 
 interface TooltipState extends MarkerHit { left: number; top: number }
+
+interface EncounterHit {
+  engagementId: string;
+  x: number;
+  y: number;
+  tooltip: EncounterTooltipContent;
+}
+
+interface EncounterTooltipState extends EncounterHit { left: number; top: number }
 
 interface RenderableMarker {
   unit: UnitRuntime;
@@ -89,17 +112,24 @@ function distance(left: ScreenPoint, right: ScreenPoint): number {
   return Math.hypot(right.x - left.x, right.y - left.y);
 }
 
-export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
+export function BattleMap({ state, events, leaderId, mode, viewshed }: BattleMapProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contoursRef = useRef<ContourFeature[]>([]);
   const imageRef = useRef<HTMLImageElement>();
   const markerHitsRef = useRef<MarkerHit[]>([]);
+  const encounterHitsRef = useRef<EncounterHit[]>([]);
   const pointersRef = useRef(new Map<number, ScreenPoint>());
   const pointerMovedRef = useRef(false);
   const lastTapRef = useRef<{ time: number; point: ScreenPoint }>();
+  const mapPresetAppliedRef = useRef(false);
+  const contactPresetAppliedRef = useRef(false);
   const [view, setView] = useState<MapView>(resetMapView());
   const [tooltip, setTooltip] = useState<TooltipState>();
+  const [encounterTooltip, setEncounterTooltip] = useState<EncounterTooltipState>();
   const [legendOpen, setLegendOpen] = useState(false);
+  const [fallMarkersEnabled, setFallMarkersEnabled] = useState(DEFAULT_FALL_MARKERS_ENABLED);
+  const [scaleRuler, setScaleRuler] = useState<ScaleRuler>();
+  const [viewportRevision, setViewportRevision] = useState(0);
   const [assetRevision, setAssetRevision] = useState(0);
 
   useEffect(() => {
@@ -121,6 +151,14 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    const observer = new ResizeObserver(() => setViewportRevision((revision) => revision + 1));
+    observer.observe(canvas);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
     const context = canvas.getContext('2d');
     if (!context) return;
 
@@ -133,12 +171,33 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
     const mapWidth = fullBounds.maxX - fullBounds.minX;
     const mapHeight = fullBounds.maxY - fullBounds.minY;
     const baseScale = Math.min(width / mapWidth, height / mapHeight);
+    const nextScaleRuler = buildScaleRuler(
+      baseScale * view.scale,
+      manifest.tiers.full.resolutionMeters,
+    );
+    setScaleRuler((current) => current?.groundMeters === nextScaleRuler.groundMeters &&
+      current.screenPixels === nextScaleRuler.screenPixels ? current : nextScaleRuler);
     const offsetX = (width - mapWidth * baseScale) / 2;
     const offsetY = (height - mapHeight * baseScale) / 2;
     const baseScreen = (x: number, y: number): ScreenPoint => ({
       x: offsetX + (x - fullBounds.minX) * baseScale,
       y: offsetY + (fullBounds.maxY - y) * baseScale,
     });
+    if (!mapPresetAppliedRef.current) {
+      const parameters = new URLSearchParams(window.location.search);
+      const focusX = Number(parameters.get('focusX'));
+      const focusY = Number(parameters.get('focusY'));
+      const focusZoom = Number(parameters.get('zoom'));
+      if (parameters.has('focusX') && parameters.has('focusY') &&
+        Number.isFinite(focusX) && Number.isFinite(focusY)) {
+        mapPresetAppliedRef.current = true;
+        setView(focusMapView(
+          baseScreen(focusX, focusY),
+          { width, height },
+          Number.isFinite(focusZoom) ? Math.max(1, Math.min(8, focusZoom)) : 3.5,
+        ));
+      }
+    }
     const screen = (x: number, y: number): ScreenPoint => transformPoint(baseScreen(x, y), view);
 
     context.fillStyle = '#d8d0bd';
@@ -242,7 +301,49 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
       }
     }
 
+    if (fallMarkersEnabled && state) {
+      const falls = clusterFallMarkers(
+        positionedLosses(state, events),
+        (point) => screen(point.x, point.y),
+        view.scale,
+      );
+      context.save();
+      context.strokeStyle = 'rgba(60,54,45,.7)';
+      context.fillStyle = 'rgba(238,231,214,.74)';
+      context.lineWidth = 0.75;
+      for (const fall of falls) {
+        if (fall.x < -12 || fall.x > width + 12 || fall.y < -12 || fall.y > height + 12) continue;
+        if (fall.weight === 1) {
+          context.fillRect(fall.x - 1.1, fall.y - 2.2, 2.2, 4.4);
+          context.strokeRect(fall.x - 1.1, fall.y - 2.2, 2.2, 4.4);
+          context.beginPath();
+          context.moveTo(fall.x - 1.5, fall.y + 2.7);
+          context.lineTo(fall.x + 1.5, fall.y + 2.7);
+          context.stroke();
+        } else {
+          const radius = Math.min(9, 2.2 + Math.sqrt(fall.weight) * 0.5);
+          context.beginPath();
+          context.arc(fall.x, fall.y, radius, 0, Math.PI * 2);
+          context.fill();
+          context.stroke();
+          if (fall.weight >= 10) {
+            context.globalAlpha = 0.58;
+            context.beginPath();
+            context.arc(fall.x, fall.y, radius + 2.2, 0, Math.PI * 2);
+            context.stroke();
+            context.globalAlpha = 1;
+          }
+          context.beginPath();
+          context.moveTo(fall.x, fall.y - radius + 1);
+          context.lineTo(fall.x, fall.y + radius - 1);
+          context.stroke();
+        }
+      }
+      context.restore();
+    }
+
     markerHitsRef.current = [];
+    encounterHitsRef.current = [];
     const selectedLeader = scenario.leaders.find((leader) => leader.id === leaderId);
     const drawUnit = (
       marker: RenderableMarker,
@@ -256,14 +357,50 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
       const source = scenario.units[unit.unitIndex];
       const side = scenario.sides.find((item) => item.id === source.sideId);
       const projected = displayPoint;
+      const treatment = unitMarkerTreatment(unit);
       context.save();
       context.globalAlpha = ghosted ? 0.4 : 0.94;
       context.strokeStyle = side?.color ?? '#222';
       context.fillStyle = side?.color ?? '#222';
-      context.lineWidth = ghosted ? 1.7 : 1.2;
-      context.setLineDash(ghosted ? [4, 3] : []);
+      context.lineWidth = treatment.morale === 'ROUTED' ? 1.8 : ghosted ? 1.7 : 1.2;
+      context.setLineDash(ghosted ? [4, 3] :
+        treatment.morale === 'SHAKEN' ? [2, 2] :
+          treatment.morale === 'BROKEN' ? [4, 2] : []);
+      const facingX = Math.cos(unit.facingRadians);
+      const facingY = -Math.sin(unit.facingRadians);
+      if (treatment.fleeing) {
+        context.setLineDash([]);
+        context.globalAlpha *= 0.7;
+        for (let trail = 0; trail < 3; trail += 1) {
+          const back = 9 + trail * 4;
+          const lateral = (trail - 1) * 2.3;
+          const x = projected.x - facingX * back - facingY * lateral;
+          const y = projected.y - facingY * back + facingX * lateral;
+          context.beginPath();
+          context.moveTo(x, y);
+          context.lineTo(x - facingX * (4 + trail), y - facingY * (4 + trail));
+          context.stroke();
+        }
+        context.globalAlpha = ghosted ? 0.4 : 0.94;
+        context.beginPath();
+        context.moveTo(projected.x + facingX * 11, projected.y + facingY * 11);
+        context.lineTo(projected.x + facingX * 5 - facingY * 3, projected.y + facingY * 5 + facingX * 3);
+        context.lineTo(projected.x + facingX * 5 + facingY * 3, projected.y + facingY * 5 - facingX * 3);
+        context.closePath();
+        context.fill();
+      }
       context.beginPath();
-      if (source.sideId === 'us-7th-cavalry') {
+      if (treatment.terminal) {
+        context.setLineDash([]);
+        context.arc(projected.x, projected.y, 5, 0, Math.PI * 2);
+        context.stroke();
+        context.beginPath();
+        context.moveTo(projected.x - 3.5, projected.y - 3.5);
+        context.lineTo(projected.x + 3.5, projected.y + 3.5);
+        context.moveTo(projected.x + 3.5, projected.y - 3.5);
+        context.lineTo(projected.x - 3.5, projected.y + 3.5);
+        context.stroke();
+      } else if (source.sideId === 'us-7th-cavalry') {
         context.rect(projected.x - 5, projected.y - 5, 10, 10);
       } else {
         context.moveTo(projected.x, projected.y - 6);
@@ -272,14 +409,22 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
         context.lineTo(projected.x - 6, projected.y);
         context.closePath();
       }
-      if (!ghosted) context.fill();
-      context.stroke();
-      context.fillStyle = ghosted ? side?.color ?? '#222' : '#f4eddc';
-      context.font = 'bold 8px system-ui';
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.fillText(formationGlyph(unit.formation), projected.x, projected.y - 0.5);
-      if (!ghosted) {
+      if (!treatment.terminal) {
+        if (!ghosted) context.fill();
+        context.stroke();
+        if (treatment.morale === 'BROKEN') {
+          context.setLineDash([]);
+          context.beginPath();
+          context.arc(projected.x, projected.y, 8, -Math.PI * 0.8, Math.PI * 0.3);
+          context.stroke();
+        }
+        context.fillStyle = ghosted ? side?.color ?? '#222' : '#f4eddc';
+        context.font = 'bold 8px system-ui';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText(formationGlyph(unit.formation), projected.x, projected.y - 0.5);
+      }
+      if (!ghosted && treatment.strengthBar) {
         context.setLineDash([]);
         context.fillStyle = 'rgba(28,25,21,.35)';
         context.fillRect(projected.x - 6, projected.y + 8, 12, 2);
@@ -396,6 +541,75 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
     } else if (mode === 'belief') drawMarkers(beliefMarkers());
     else drawMarkers(realityMarkers());
 
+    if (state) {
+      const entityPosition = (id: string) => state.units.find((unit) => unit.id === id)?.position ??
+        state.couriers.find((courier) => courier.id === id)?.position;
+      context.save();
+      for (const engagement of state.engagements.filter((item) => item.active)) {
+        const left = entityPosition(engagement.unitIds[0]);
+        const right = entityPosition(engagement.unitIds[1]);
+        if (!left || !right) continue;
+        const leftScreen = screen(left.x, left.y);
+        const rightScreen = screen(right.x, right.y);
+        const midpoint = {
+          x: (leftScreen.x + rightScreen.x) / 2,
+          y: (leftScreen.y + rightScreen.y) / 2,
+        };
+        context.strokeStyle = engagement.state === 'PURSUIT'
+          ? 'rgba(111,42,31,.75)'
+          : 'rgba(48,43,35,.45)';
+        context.lineWidth = engagement.state === 'PURSUIT' ? 1.4 : 0.75;
+        context.setLineDash(engagement.state === 'FIREFIGHT' ? [2, 3] : []);
+        context.beginPath();
+        context.moveTo(leftScreen.x, leftScreen.y);
+        context.lineTo(rightScreen.x, rightScreen.y);
+        context.stroke();
+        context.setLineDash([]);
+        context.fillStyle = '#eee7d6';
+        context.beginPath();
+        context.arc(midpoint.x, midpoint.y, 3.3, 0, Math.PI * 2);
+        context.fill();
+        context.stroke();
+        encounterHitsRef.current.push({
+          engagementId: engagement.id,
+          ...midpoint,
+          tooltip: buildEncounterTooltip(scenario, engagement),
+        });
+      }
+      if (!contactPresetAppliedRef.current) {
+        const requestedState = new URLSearchParams(window.location.search).get('contact');
+        const requested = requestedState
+          ? state.engagements.find((engagement) => engagement.active &&
+            engagement.state === requestedState)
+          : undefined;
+        const hit = requested
+          ? encounterHitsRef.current.find((candidate) => candidate.engagementId === requested.id)
+          : undefined;
+        if (hit) {
+          contactPresetAppliedRef.current = true;
+          setEncounterTooltip({
+            ...hit,
+            left: Math.min(hit.x + 14, width - 244),
+            top: Math.max(10, hit.y - 18),
+          });
+        }
+      }
+      context.strokeStyle = 'rgba(42,67,55,.72)';
+      context.setLineDash([2, 2]);
+      for (const event of recentReintegrations(events, state.tick)) {
+        const protector = event.targetUnitId ? entityPosition(event.targetUnitId) : undefined;
+        if (!protector) continue;
+        const point = screen(protector.x, protector.y);
+        const age = state.tick - event.tick;
+        for (const ring of [0, 1]) {
+          context.beginPath();
+          context.arc(point.x, point.y, 9 + age * 0.7 + ring * 5, 0, Math.PI * 2);
+          context.stroke();
+        }
+      }
+      context.restore();
+    }
+
     const important = new Set([
       'ford-a', 'ford-b', 'reno-hill', 'weir-point', 'last-stand-hill',
       'timber', 'village-s-end', 'village-n-end',
@@ -419,7 +633,7 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
     context.fillText('Little Bighorn', width - 22, 34);
     context.font = '9px system-ui';
     context.fillText('JUNE 25, 1876 · LOCAL SUN TIME', width - 22, 51);
-  }, [assetRevision, leaderId, mode, state, view, viewshed]);
+  }, [assetRevision, events, fallMarkersEnabled, leaderId, mode, state, view, viewshed, viewportRevision]);
 
   const canvasPoint = (event: React.MouseEvent<HTMLCanvasElement>): ScreenPoint => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -427,16 +641,30 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
   };
   const hitAt = (point: ScreenPoint): MarkerHit | undefined => markerHitsRef.current
     .find((marker) => Math.hypot(marker.x - point.x, marker.y - point.y) <= 12);
-  const showTooltip = (marker: MarkerHit, point: ScreenPoint) => setTooltip({
-    ...marker,
-    left: Math.min(point.x + 14, (canvasRef.current?.clientWidth ?? point.x + 250) - 244),
-    top: Math.max(10, point.y - 18),
-  });
+  const encounterAt = (point: ScreenPoint): EncounterHit | undefined => encounterHitsRef.current
+    .find((engagement) => Math.hypot(engagement.x - point.x, engagement.y - point.y) <= 11);
+  const clearTooltips = () => { setTooltip(undefined); setEncounterTooltip(undefined); };
+  const tooltipLeft = (point: ScreenPoint) => Math.min(
+    point.x + 14,
+    (canvasRef.current?.clientWidth ?? point.x + 250) - 244,
+  );
+  const showTooltip = (marker: MarkerHit, point: ScreenPoint) => {
+    setEncounterTooltip(undefined);
+    setTooltip({ ...marker, left: tooltipLeft(point), top: Math.max(10, point.y - 18) });
+  };
+  const showEncounterTooltip = (engagement: EncounterHit, point: ScreenPoint) => {
+    setTooltip(undefined);
+    setEncounterTooltip({
+      ...engagement,
+      left: tooltipLeft(point),
+      top: Math.max(10, point.y - 18),
+    });
+  };
   const focusMarker = (marker: MarkerHit) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     setView(focusMapView(marker.base, { width: canvas.clientWidth, height: canvas.clientHeight }));
-    setTooltip(undefined);
+    clearTooltips();
   };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLCanvasElement>) => {
@@ -449,9 +677,14 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
     const point = canvasPoint(event);
     const previous = pointersRef.current.get(event.pointerId);
     if (!previous) {
+      const encounter = encounterAt(point);
+      if (encounter) {
+        showEncounterTooltip(encounter, point);
+        return;
+      }
       const marker = hitAt(point);
       if (marker) showTooltip(marker, point);
-      else setTooltip(undefined);
+      else clearTooltips();
       return;
     }
     const pointers = pointersRef.current;
@@ -461,7 +694,7 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
       if (Math.hypot(deltaX, deltaY) > 0) {
         pointerMovedRef.current = true;
         setView((current) => panMapView(current, deltaX, deltaY));
-        setTooltip(undefined);
+        clearTooltips();
       }
     } else if (pointers.size === 2) {
       const other = [...pointers.entries()].find(([id]) => id !== event.pointerId)?.[1];
@@ -475,7 +708,7 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
           factor,
           nextCenter,
         ));
-        setTooltip(undefined);
+        clearTooltips();
       }
     }
     pointers.set(event.pointerId, point);
@@ -484,8 +717,10 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
     const point = canvasPoint(event);
     pointersRef.current.delete(event.pointerId);
     if (!pointerMovedRef.current) {
+      const encounter = encounterAt(point);
+      if (encounter) showEncounterTooltip(encounter, point);
       const marker = hitAt(point);
-      if (marker) showTooltip(marker, point);
+      if (!encounter && marker) showTooltip(marker, point);
       if (event.pointerType === 'touch' && marker) {
         const now = performance.now();
         const lastTap = lastTapRef.current;
@@ -507,7 +742,7 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={(event) => pointersRef.current.delete(event.pointerId)}
-        onPointerLeave={() => { if (pointersRef.current.size === 0) setTooltip(undefined); }}
+        onPointerLeave={() => { if (pointersRef.current.size === 0) clearTooltips(); }}
         onWheel={(event) => {
           event.preventDefault();
           const bounds = event.currentTarget.getBoundingClientRect();
@@ -515,7 +750,7 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
             x: event.clientX - bounds.left,
             y: event.clientY - bounds.top,
           }));
-          setTooltip(undefined);
+          clearTooltips();
         }}
         onDoubleClick={(event) => {
           const marker = hitAt(canvasPoint(event));
@@ -524,8 +759,16 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
       />
 
       <div className="map-tools" aria-label="Map controls">
-        <button type="button" onClick={() => { setView(resetMapView()); setTooltip(undefined); }}>
+        <button type="button" onClick={() => { setView(resetMapView()); clearTooltips(); }}>
           Reset view
+        </button>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={fallMarkersEnabled}
+          onClick={() => setFallMarkersEnabled(nextFallMarkerVisibility)}
+        >
+          Falls {fallMarkersEnabled ? 'on' : 'off'}
         </button>
         <button type="button" aria-expanded={legendOpen} onClick={() => setLegendOpen((open) => !open)}>
           Legend {legendOpen ? '−' : '+'}
@@ -554,6 +797,18 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
         )}
       </div>
 
+      {scaleRuler && scaleRuler.groundMeters > 0 && (
+        <div
+          className="scale-ruler"
+          aria-label={`Map scale ${scaleRuler.label}`}
+          data-ground-meters={scaleRuler.groundMeters}
+          data-screen-pixels={scaleRuler.screenPixels}
+          style={{ width: scaleRuler.screenPixels }}
+        >
+          <span>{scaleRuler.label}</span>
+        </div>
+      )}
+
       {tooltip && (
         <aside
           className={`unit-tooltip${tooltip.ghosted ? ' ghost-tooltip' : ''}`}
@@ -567,12 +822,31 @@ export function BattleMap({ state, leaderId, mode, viewshed }: BattleMapProps) {
             <div><dt>Strength</dt><dd>{tooltip.tooltip.strength}</dd></div>
             <div><dt>Formation</dt><dd>{tooltip.tooltip.formation}</dd></div>
             <div><dt>State</dt><dd>{tooltip.tooltip.mounted}</dd></div>
+            <div><dt>Morale</dt><dd>{tooltip.tooltip.morale}</dd></div>
             <div><dt>Order</dt><dd>{tooltip.tooltip.order}</dd></div>
           </dl>
+          {tooltip.tooltip.condition && <p>{tooltip.tooltip.condition}</p>}
           {tooltip.tooltip.stale && <p>{tooltip.tooltip.stale}</p>}
           {tooltip.clustered && (
-            <p>Company marker fanned for clarity. Its tether returns to the recorded position; true march-order spacing is not simulated.</p>
+            <p>Co-located marker fanned for clarity. Its tether returns to the recorded position; moving columns retain their simulated march spacing.</p>
           )}
+        </aside>
+      )}
+      {encounterTooltip && (
+        <aside
+          className="unit-tooltip encounter-tooltip"
+          style={{ left: encounterTooltip.left, top: encounterTooltip.top }}
+          role="tooltip"
+          data-engagement-id={encounterTooltip.engagementId}
+        >
+          <strong>{encounterTooltip.tooltip.title}</strong>
+          <span>{encounterTooltip.tooltip.description}</span>
+          <dl>
+            <div><dt>State</dt><dd>{encounterTooltip.tooltip.state}</dd></div>
+            <div><dt>Units</dt><dd>{encounterTooltip.tooltip.unitPair}</dd></div>
+            <div><dt>Range</dt><dd>{encounterTooltip.tooltip.rangeBand}</dd></div>
+            <div><dt>Intensity</dt><dd>{encounterTooltip.tooltip.intensity}</dd></div>
+          </dl>
         </aside>
       )}
     </div>

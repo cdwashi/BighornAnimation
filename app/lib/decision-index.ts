@@ -44,7 +44,7 @@ export function buildDecisionIndex(
       kind: 'order',
     };
   });
-  const emergent = events
+  const campActivations = events
     .filter((event) => event.type === 'camp-defense-activated')
     .map((event): DecisionEntry => ({
       id: `camp:${event.sequence}`,
@@ -57,6 +57,20 @@ export function buildDecisionIndex(
       recipients: [event.unitId],
       kind: 'emergent',
     }));
-  return [...orders, ...emergent].sort((left, right) =>
+  const leaderDeaths = events
+    .filter((event) => event.type === 'leader-killed' && event.leaderId)
+    .map((event): DecisionEntry => {
+      const leader = scenario.leaders.find((candidate) => candidate.id === event.leaderId);
+      return {
+        id: `leader-death:${event.sequence}`,
+        tick: event.tick,
+        wallClock: tickToWallClock(scenario.clock.start, event.tick, scenario.clock.tickSeconds),
+        issuerLeaderId: event.leaderId as string,
+        label: `Leader killed · ${leader?.name ?? event.leaderId}`,
+        recipients: [event.unitId],
+        kind: 'emergent',
+      };
+    });
+  return [...orders, ...campActivations, ...leaderDeaths].sort((left, right) =>
     left.tick - right.tick || (left.kind === 'order' ? -1 : 1) || left.id.localeCompare(right.id));
 }

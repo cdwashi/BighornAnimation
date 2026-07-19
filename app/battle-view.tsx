@@ -9,6 +9,12 @@ import type { SpottingEvent } from '../engine/src/spotting';
 import type { SimState } from '../engine/src/state';
 import type { Scenario } from '../src/schema/scenario-schema';
 import { BattleMap } from './battle-map';
+import {
+  buildCombatTimelineTicks,
+  buildLossSummary,
+  effectivePlaybackSpeed,
+  ENGAGEMENT_SPEED_CAP,
+} from './lib/combat-ui';
 import { buildDecisionIndex, decisionKindLabel } from './lib/decision-index';
 import { interpolateState, sliderFromSpeed, speedFromSlider } from './lib/map-interactions';
 import { viewshedPresetEnabled } from './lib/pov-controls';
@@ -44,12 +50,14 @@ export function BattleView() {
   const [viewshedEnabled, setViewshedEnabled] = useState(false);
   const [railOpen, setRailOpen] = useState(true);
   const [indexOpen, setIndexOpen] = useState(false);
+  const [lossesOpen, setLossesOpen] = useState(false);
   const [selectedDecision, setSelectedDecision] = useState('');
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(4);
   const [runMilliseconds, setRunMilliseconds] = useState<number>();
   const [error, setError] = useState('');
   const currentTick = state?.tick;
+  const effectiveSpeed = effectivePlaybackSpeed(speed, state?.engagementActive ?? false);
 
   useEffect(() => {
     const parameters = new URLSearchParams(window.location.search);
@@ -58,6 +66,7 @@ export function BattleView() {
     const cookePreset = parameters.get('index') === 'cooke';
     const renoPreset = parameters.get('scene') === 'reno-1620';
     const fordPreset = parameters.get('scene') === 'ford-a';
+    const requestedTick = parameters.has('tick') ? Number(parameters.get('tick')) : Number.NaN;
     queueMicrotask(() => {
       setViewshedEnabled(viewshedPresetEnabled(parameters));
       if (presetLeader && scenario.leaders.some((leader) => leader.id === presetLeader)) {
@@ -80,6 +89,8 @@ export function BattleView() {
         setSelectedLeader('reno');
         setMode('reality');
       }
+      if (parameters.get('rail') === 'closed') setRailOpen(false);
+      if (parameters.get('losses') === 'open') setLossesOpen(true);
     });
     const worker = new Worker(new URL('./sim-worker.ts', import.meta.url), { type: 'module' });
     workerRef.current = worker;
@@ -108,7 +119,9 @@ export function BattleView() {
       else setError(message.message);
     };
     const cookeTick = scenario.orders.find((order) => order.id === 'martini-msg')?.issuedAtMinute;
-    worker.postMessage({ type: 'init', tick: cookePreset && cookeTick !== undefined
+    worker.postMessage({ type: 'init', tick: Number.isFinite(requestedTick)
+      ? Math.max(0, Math.min(endTick, requestedTick))
+      : cookePreset && cookeTick !== undefined
       ? cookeTick * 2
       : renoPreset ? 1600 : fordPreset ? 1360 : initialTick } satisfies WorkerRequest);
     return () => worker.terminate();
@@ -148,15 +161,21 @@ export function BattleView() {
     if (!playing || !state) return;
     const timer = window.setInterval(() => {
       if (advancePendingRef.current) return;
-      const next = Math.min(endTick, Math.max(state.tick + 1, Math.round(state.tick + speed)));
+      const next = Math.min(endTick, Math.max(
+        state.tick + 1,
+        Math.round(state.tick + effectiveSpeed),
+      ));
       advancePendingRef.current = true;
       workerRef.current?.postMessage({ type: 'advance', tick: next } satisfies WorkerRequest);
       if (next === endTick) setPlaying(false);
     }, 250);
     return () => window.clearInterval(timer);
-  }, [playing, speed, state]);
+  }, [effectiveSpeed, playing, state]);
 
   const decisions = useMemo(() => buildDecisionIndex(scenario, events), [events]);
+  const lossSummary = useMemo(() => state
+    ? buildLossSummary(scenario, state, events)
+    : { units: [], sides: [], total: 0 }, [events, state]);
 
   useEffect(() => {
     if (!indexOpen || !selectedDecision) return;
@@ -171,7 +190,10 @@ export function BattleView() {
     spottingEvents.forEach((event) => kinds.set(event.tick, 'spot'));
     events.filter((event) => event.type === 'camp-defense-activated')
       .forEach((event) => kinds.set(event.tick, 'camp'));
-    return [...kinds.entries()];
+    return [
+      ...[...kinds.entries()].map(([tick, kind]) => ({ id: `${kind}:${tick}`, tick, kind })),
+      ...buildCombatTimelineTicks(events),
+    ];
   }, [events, spottingEvents]);
 
   const seek = (tick: number) => {
@@ -188,12 +210,56 @@ export function BattleView() {
     <main className="battle-shell">
       <BattleMap
         state={renderState ?? state}
+        events={events}
         leaderId={selectedLeader}
         mode={mode}
         viewshed={viewshedEnabled && viewshed?.leaderId === selectedLeader && viewshed.tick === currentTick
           ? viewshed
           : undefined}
       />
+
+      <aside className={`losses-panel${lossesOpen ? ' open' : ''}`} aria-label="losses">
+        <button
+          type="button"
+          className="losses-heading"
+          aria-expanded={lossesOpen}
+          onClick={() => setLossesOpen((open) => !open)}
+        >
+          <span>losses</span>
+          <b>{lossSummary.total}</b>
+          <i>{lossesOpen ? '−' : '+'}</i>
+        </button>
+        {lossesOpen && (
+          <div className="losses-body">
+            <div className="loss-side-totals">
+              {lossSummary.sides.map((side) => (
+                <p key={side.sideId}><span>{side.sideName}</span><b>{side.losses}</b></p>
+              ))}
+            </div>
+            <p className="losses-pending">
+              Killed / wounded split pending the M5 model. Reserved blank columns do not mean zero.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Unit</th><th>Losses</th>
+                  <th aria-disabled="true">Killed</th><th aria-disabled="true">Wounded</th>
+                </tr>
+              </thead>
+              <tbody>
+                {lossSummary.units.map((unit) => (
+                  <tr key={unit.unitId}>
+                    <th scope="row">{unit.unitName}</th>
+                    <td>{unit.losses}</td>
+                    <td className="reserved" aria-label="Pending M5" aria-disabled="true" />
+                    <td className="reserved" aria-label="Pending M5" aria-disabled="true" />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </aside>
 
       <button
         className="rail-tab"
@@ -327,8 +393,8 @@ export function BattleView() {
         </time>
         <div className="scrubber-wrap">
           <div className="event-marks" aria-hidden="true">
-            {timelineTicks.map(([tick, kind]) => (
-              <i key={`${tick}:${kind}`} className={kind} style={{ left: `${tick / endTick * 100}%` }} />
+            {timelineTicks.map(({ id, tick, kind }) => (
+              <i key={id} className={kind} style={{ left: `${tick / endTick * 100}%` }} />
             ))}
           </div>
           <input
@@ -354,6 +420,13 @@ export function BattleView() {
             value={sliderFromSpeed(speed)}
             onChange={(event) => setSpeed(speedFromSlider(Number(event.target.value)))}
           />
+          {state?.engagementActive && (
+            <small className="speed-cap" role="status">
+              contact · {speed > ENGAGEMENT_SPEED_CAP
+                ? `capped at ${effectiveSpeed.toFixed(0)}×`
+                : `ceiling ${ENGAGEMENT_SPEED_CAP}×`}
+            </small>
+          )}
         </div>
       </section>
     </main>

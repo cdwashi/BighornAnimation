@@ -170,6 +170,8 @@ export interface UnitTooltipContent {
   formation: string;
   mounted: string;
   order: string;
+  morale: string;
+  condition?: string;
   stale?: string;
 }
 
@@ -199,6 +201,8 @@ export function buildUnitTooltip(
     formation: unit.formation.toLowerCase(),
     mounted: unit.mounted ? 'Mounted' : 'Dismounted',
     order,
+    morale: unit.moraleState.toLowerCase(),
+    condition: unit.endState === 'DESTROYED' ? 'Destroyed · terminal position' : undefined,
     stale: ghostLastSeenTick === undefined
       ? undefined
       : `Last seen ${tickToWallClock(

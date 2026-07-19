@@ -139,14 +139,19 @@ describe('M3-B exit gates', () => {
     console.info('[gate] V5 PASS exact=200/200');
   }, 60_000);
 
-  it('V6 decision index — one entry per 23 orders plus each camp-defense activation', () => {
+  it('V6 decision index — orders plus camp activations and M4-B leader deaths', () => {
     const activations = fullEvents.filter((event) => event.type === 'camp-defense-activated');
+    const leaderDeaths = fullEvents.filter((event) => event.type === 'leader-killed');
     const index = buildDecisionIndex(scenario, fullEvents);
     expect(scenario.orders).toHaveLength(23);
     expect(index.filter((entry) => entry.kind === 'order')).toHaveLength(23);
-    expect(index.filter((entry) => entry.kind === 'emergent')).toHaveLength(activations.length);
-    expect(index).toHaveLength(23 + activations.length);
+    expect(index.filter((entry) => entry.kind === 'emergent'))
+      .toHaveLength(activations.length + leaderDeaths.length);
+    expect(index.filter((entry) => entry.id.startsWith('leader-death:')))
+      .toHaveLength(leaderDeaths.length);
+    expect(index).toHaveLength(23 + activations.length + leaderDeaths.length);
     expect(index.filter((entry) => entry.orderId === 'martini-msg')).toHaveLength(1);
-    console.info(`[gate] V6 PASS entries=${index.length} orders=23 activations=${activations.length}`);
+    console.info(`[gate] V6 PASS entries=${index.length} orders=23 ` +
+      `activations=${activations.length} leaderDeaths=${leaderDeaths.length}`);
   });
 });
