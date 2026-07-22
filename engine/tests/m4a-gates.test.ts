@@ -34,7 +34,7 @@ describe('M4-A F1-F6 closeout gates', () => {
     const same = createSim(scenario, { seed: 18760625, terrain });
     same.run(2160);
     expect(hashState(same.state())).toBe(hashState(baseline.state()));
-    expect(hashState(baseline.state())).toBe('59e2a98a');
+    expect(hashState(baseline.state())).toBe('7f00bd23');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -55,9 +55,12 @@ describe('M4-A F1-F6 closeout gates', () => {
   it('F2 conservation — integer casualties/strength/ammo and conserved strength', () => {
     for (const unit of baseline.state().units) {
       expect(Number.isInteger(unit.strengthCurrent), unit.id).toBe(true);
+      expect(Number.isInteger(unit.killed), unit.id).toBe(true);
+      expect(Number.isInteger(unit.wounded), unit.id).toBe(true);
       expect(Number.isInteger(unit.casualties), unit.id).toBe(true);
       expect(unit.casualties).toBeLessThanOrEqual(unit.strengthTotal);
-      expect(unit.strengthCurrent + unit.casualties).toBe(unit.strengthTotal);
+      expect(unit.killed + unit.wounded).toBe(unit.casualties);
+      expect(unit.killed + unit.wounded + unit.strengthCurrent).toBe(unit.strengthTotal);
       for (const ammo of Object.values(unit.ammunition)) {
         expect(Number.isInteger(ammo), unit.id).toBe(true);
         expect(ammo).toBeGreaterThanOrEqual(0);
@@ -95,18 +98,22 @@ describe('M4-A F1-F6 closeout gates', () => {
     expect(baseline.events().some((event) => event.type === 'scout-withdrew-off-field')).toBe(true);
   });
 
-  it('F6 bare full-day median-of-three completes within 10 seconds with pooled A*', () => {
+  it('F6 pooled-A* work metrics are bounded; wall clock is informational', () => {
     const timings = [elapsedMs];
     for (let index = 0; index < 2; index += 1) {
       const sim = createSim(scenario, { seed: 18760625, terrain });
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('59e2a98a');
+      expect(hashState(sim.state())).toBe('7f00bd23');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
-    expect(median).toBeLessThanOrEqual(10_000);
+    // M5-SPEC G-M5-5 ports this gate to deterministic work metrics so host
+    // scheduling cannot make the quartet flaky. The historic 10 s target is
+    // retained in the emitted timing, not as the primary assertion.
+    expect(pathMetrics.calls).toBe(158);
+    expect(pathMetrics.expandedNodes).toBeLessThanOrEqual(11_100_000);
     expect(pathMetrics.scratchAllocations).toBeLessThanOrEqual(3);
     console.info(`[gate] F6 median=${median.toFixed(1)}ms timings=${timings.map((value) =>
       value.toFixed(1)).join(',')} pathfind=${JSON.stringify(pathMetrics)}`);

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "seedList": [
+    18760600, 18760601, 18760602, 18760603, 18760604,
+    18760605, 18760606, 18760607, 18760608, 18760609,
+    18760610, 18760611, 18760612, 18760613, 18760614,
+    18760615, 18760616, 18760617, 18760618, 18760619,
+    18760620, 18760621, 18760622, 18760623, 18760624,
+    18760625, 18760626, 18760627, 18760628, 18760629,
+    18760630, 18760631, 18760632, 18760633, 18760634,
+    18760635, 18760636, 18760637, 18760638, 18760639,
+    18760640, 18760641, 18760642, 18760643, 18760644,
+    18760645, 18760646, 18760647, 18760648, 18760649
+  ],
+  "medianCompositePercentileBand": [0.4, 0.6],
+  "rareCategoricalFrequencyMaximum": 0.1,
+  "numericTypicalBand": "interquartile",
+  "numericOutcomes": ["arikaraLosses", "wingDestructionTick"],
+  "categoricalOutcomes": ["leaderDeaths", "routComposition", "fordChokeComposition"],
+  "tieBreak": ["absoluteDistanceFromMedianComposite", "numericSeedAscending"],
+  "historicalEnvelope": {
+    "leaderDeaths": {
+      "documentedModeledLeaderIds": ["custer", "yates", "keogh", "calhoun", "lame-white-man"],
+      "source": "docs/research/little-bighorn-research.md §I; only leaders represented in scenario.json"
+    },
+    "arikaraKilled": {
+      "low": 3,
+      "high": 3,
+      "source": "docs/research/little-bighorn-research.md §A/§I: Bloody Knife, Bobtailed Bull, Little Brave"
+    },
+    "routComposition": {
+      "requiredUnitIds": ["co-a", "co-g", "co-m"],
+      "source": "docs/research/little-bighorn-research.md §C/§F: Reno battalion withdrawal became a rout"
+    },
+    "wingDestructionMinute": {
+      "low": 825,
+      "high": 840,
+      "source": "docs/research/little-bighorn-research.md §C: Keogh sector ~16:45 through Last Stand Hill ~17:00"
+    },
+    "fordChokeComposition": {
+      "expectedUnitIds": ["co-a", "co-g", "co-m"],
+      "radiusMeters": 250,
+      "source": "D75/D82 pre-registered prediction: broken troopers, not scouts"
+    }
+  }
+}

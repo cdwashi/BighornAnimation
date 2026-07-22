@@ -83,6 +83,8 @@ export interface UnitRuntime {
   insideFord: boolean;
   transition?: { kind: 'DISMOUNT' | 'MOUNT'; remainingTicks: number };
   strengthTotal: number;
+  killed: number;
+  wounded: number;
   strengthCurrent: number;
   casualties: number;
   strengthAvailable: number;
@@ -227,6 +229,8 @@ export function initializeState(
       fordHoldTicks: 0,
       insideFord: false,
       strengthTotal: unit.strength.best,
+      killed: 0,
+      wounded: 0,
       strengthCurrent: unit.strength.best,
       casualties: 0,
       strengthAvailable: unit.strength.best,

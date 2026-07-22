@@ -36,6 +36,8 @@ function runtimeUnit(overrides: Partial<UnitRuntime> = {}): UnitRuntime {
     fordHoldTicks: 0,
     insideFord: false,
     strengthTotal: 100,
+    killed: 0,
+    wounded: 0,
     strengthCurrent: 100,
     casualties: 0,
     strengthAvailable: 84,

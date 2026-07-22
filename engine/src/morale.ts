@@ -198,6 +198,10 @@ export function updateMorale(
     if (unit.strengthCurrent <= config.destructionStrengthFloor ||
       unit.cohesion <= config.destructionCohesionFloor) {
       unit.endState = 'DESTROYED';
+      // D81 terminal accounting: remaining effective troops become killed;
+      // previously wounded troops remain wounded and are never relabeled dead.
+      const terminalKilled = unit.strengthCurrent;
+      unit.killed += terminalKilled;
       unit.strengthCurrent = 0;
       unit.strengthAvailable = 0;
       unit.horseHolderStrength = 0;
@@ -205,7 +209,8 @@ export function updateMorale(
       unit.path = [];
       unit.pathIndex = 0;
       appendEvent(state, events, {
-        tick: state.tick, type: 'unit-destroyed', unitId: unit.id, position: { ...unit.position },
+        tick: state.tick, type: 'unit-destroyed', unitId: unit.id,
+        killed: terminalKilled, position: { ...unit.position },
       });
     }
   }

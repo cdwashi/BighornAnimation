@@ -70,13 +70,44 @@ export interface CombatConfig {
   pursuitRangeLossToleranceMeters: number;
   engagementComplexAdjacencyTicks: number;
   enemyInterdictionRadiusMeters: number;
+  /** D81 global side-level ratios. Override key: killedToWoundedRatio.<sideId>. */
+  killedToWoundedRatioBySide: Readonly<Record<string, number>>;
 }
 
-export type CombatConfigProvenance = 'spec-given' | 'proposed-flagged';
+export interface SourcedCombatRange {
+  low: number;
+  best: number;
+  high: number;
+  provenance: string;
+}
+
+export type CombatConfigProvenance = 'spec-given' | 'proposed-flagged' | 'sourced-range';
 export const COMBAT_FRICTION_PROVENANCE =
   'anchored by historical-totals arithmetic (268 US / 53 Reno-Benteen / <=300 coalition imply 10-20x reduction from unfrictioned rates); M5 calibrates the digit.';
 
-/** All numeric values below are proposed [CAL] except lowAmmoFraction and marchSpacingMeters. */
+/**
+ * D81 preserves the calibration-target spreads instead of averaging them.
+ * US low/high use the unit-keyed target bounds (235/60 and 285/45); the best
+ * is the spec's hilltop-inclusive 268/52 anchor. Coalition bounds are the
+ * most conservative cross-products of K 31-300 and W 100-200.
+ */
+export const KILLED_TO_WOUNDED_RATIO_RANGES: Readonly<Record<string, SourcedCombatRange>> =
+  Object.freeze({
+    'us-7th-cavalry': Object.freeze({
+      low: 235 / 60,
+      best: 268 / 52,
+      high: 285 / 45,
+      provenance: 'M5-SPEC D81; calibration.casualties unit bands; research §I hilltop-inclusive 268 K / 52 W',
+    }),
+    'lakota-cheyenne-coalition': Object.freeze({
+      low: 31 / 200,
+      best: 60 / 160,
+      high: 300 / 100,
+      provenance: 'M5-SPEC D81; calibration.sideCasualties DISPUTED K 31-300 / W 100-200',
+    }),
+  });
+
+/** Scalar values are proposed [CAL] except the two spec-given slots; D81 ratios use sourced ranges above. */
 export const DEFAULT_COMBAT_CONFIG: Readonly<CombatConfig> = Object.freeze({
   engagementRangeMeters: 700,
   meleeRangeMeters: 25,
@@ -144,23 +175,37 @@ export const DEFAULT_COMBAT_CONFIG: Readonly<CombatConfig> = Object.freeze({
   pursuitRangeLossToleranceMeters: 15,
   engagementComplexAdjacencyTicks: 120,
   enemyInterdictionRadiusMeters: 250,
+  killedToWoundedRatioBySide: Object.freeze(Object.fromEntries(
+    Object.entries(KILLED_TO_WOUNDED_RATIO_RANGES).map(([sideId, range]) => [sideId, range.best]),
+  )),
 });
 
 export const COMBAT_CONFIG_PROVENANCE: Readonly<Record<keyof CombatConfig, CombatConfigProvenance>> =
   Object.freeze(Object.fromEntries(
     (Object.keys(DEFAULT_COMBAT_CONFIG) as Array<keyof CombatConfig>).map((key) => [
       key,
-      key === 'lowAmmoFraction' || key === 'marchSpacingMeters'
+      key === 'killedToWoundedRatioBySide'
+        ? 'sourced-range'
+        : key === 'lowAmmoFraction' || key === 'marchSpacingMeters'
         ? 'spec-given'
         : 'proposed-flagged',
     ]),
   ) as Record<keyof CombatConfig, CombatConfigProvenance>);
 
 export function combatConfig(overrides: Readonly<Record<string, number>> = {}): CombatConfig {
-  const result = { ...DEFAULT_COMBAT_CONFIG };
+  const result: CombatConfig = {
+    ...DEFAULT_COMBAT_CONFIG,
+    killedToWoundedRatioBySide: { ...DEFAULT_COMBAT_CONFIG.killedToWoundedRatioBySide },
+  };
   for (const key of Object.keys(DEFAULT_COMBAT_CONFIG) as Array<keyof CombatConfig>) {
+    if (key === 'killedToWoundedRatioBySide') continue;
     const value = overrides[key];
-    if (value !== undefined) result[key] = value;
+    if (value !== undefined) (result[key] as number) = value;
   }
-  return result;
+  const ratios = { ...result.killedToWoundedRatioBySide };
+  for (const sideId of Object.keys(ratios)) {
+    const value = overrides[`killedToWoundedRatio.${sideId}`];
+    if (value !== undefined) ratios[sideId] = value;
+  }
+  return { ...result, killedToWoundedRatioBySide: ratios };
 }

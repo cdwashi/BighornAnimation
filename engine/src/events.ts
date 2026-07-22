@@ -44,6 +44,9 @@ export interface SimEvent {
   engagementId?: string;
   engagementState?: string;
   casualties?: number;
+  /** D81 additive split; casualties remains killed + wounded for old consumers. */
+  killed?: number;
+  wounded?: number;
   position?: { x: number; y: number };
   leaderId?: string;
   moraleState?: string;

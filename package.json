@@ -12,6 +12,8 @@
     "dev": "node scripts/prepare-app-assets.mjs && next dev",
     "sim": "npm run build --silent && node dist/engine/cli.js",
     "exam": "npm run build --silent && node dist/engine/exam-cli.js",
+    "score": "tsc -p tsconfig.engine.json && node dist/engine/score-cli.js",
+    "envelope": "tsc -p tsconfig.engine.json && node dist/engine/envelope-cli.js",
     "terrain": "npm run build && node dist/pipeline/fetch-dem.js && node dist/pipeline/build-grids.js && node dist/pipeline/derive.js && node dist/pipeline/rasterize-vectors.js"
   },
   "devDependencies": {

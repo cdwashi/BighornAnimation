@@ -42,6 +42,8 @@ function runtimeUnit(index: number, overrides: Partial<UnitRuntime> = {}): UnitR
     fordHoldTicks: 0,
     insideFord: false,
     strengthTotal: source.strength.best,
+    killed: 0,
+    wounded: 0,
     strengthCurrent: source.strength.best,
     casualties: 0,
     strengthAvailable: source.strength.best,

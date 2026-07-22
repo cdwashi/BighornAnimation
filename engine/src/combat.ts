@@ -58,6 +58,21 @@ function stochasticInteger(state: SimState, expectation: number, userSeed: numbe
   return whole + (draw(state, userSeed) < remainder ? 1 : 0);
 }
 
+export function splitCasualties(
+  state: SimState,
+  casualties: number,
+  killedToWoundedRatio: number,
+  userSeed: number,
+): { killed: number; wounded: number } {
+  if (!Number.isInteger(casualties) || casualties < 0 || !(killedToWoundedRatio >= 0)) {
+    throw new RangeError('Casualty split requires integer casualties and a non-negative ratio');
+  }
+  const killedExpectation = casualties * killedToWoundedRatio / (killedToWoundedRatio + 1);
+  // D26/D81: floor plus exactly one seeded roll on the fractional remainder.
+  const killed = Math.min(casualties, stochasticInteger(state, killedExpectation, userSeed));
+  return { killed, wounded: casualties - killed };
+}
+
 function exposure(formation: Formation, config: CombatConfig): number {
   switch (formation) {
     case 'COLUMN': return config.exposureColumn;
@@ -237,7 +252,14 @@ function resolveCourierFire(
   };
 }
 
-function applyResult(state: SimState, result: FireResult, events: SimEvent[]): void {
+function applyResult(
+  scenario: Scenario,
+  state: SimState,
+  result: FireResult,
+  config: CombatConfig,
+  userSeed: number,
+  events: SimEvent[],
+): void {
   if (result.rounds <= 0) return;
   const target = state.units.find((unit) => unit.id === result.targetId);
   if (target) {
@@ -245,7 +267,13 @@ function applyResult(state: SimState, result: FireResult, events: SimEvent[]): v
     target.flankedThisTick ||= result.flanked;
     const losses = Math.min(target.strengthCurrent, result.casualties);
     if (losses <= 0) return;
+    const sideId = scenario.units[target.unitIndex].sideId;
+    const ratio = config.killedToWoundedRatioBySide[sideId];
+    if (!(ratio >= 0)) throw new Error(`Missing killed:wounded ratio for side ${sideId}`);
+    const { killed, wounded } = splitCasualties(state, losses, ratio, userSeed);
     target.strengthCurrent -= losses;
+    target.killed += killed;
+    target.wounded += wounded;
     target.casualties += losses;
     target.casualtiesThisTick += losses;
     const holderFraction = target.strengthCurrent > 0 && !target.mounted
@@ -255,7 +283,7 @@ function applyResult(state: SimState, result: FireResult, events: SimEvent[]): v
     target.strengthAvailable = target.strengthCurrent - target.horseHolderStrength;
     appendEvent(state, events, {
       tick: state.tick, type: 'casualty-resolution', unitId: result.attacker.id,
-      targetUnitId: target.id, casualties: losses, position: result.position,
+      targetUnitId: target.id, casualties: losses, killed, wounded, position: result.position,
     });
     return;
   }
@@ -362,5 +390,7 @@ export function resolveCombat(
     }
     engagement.intensity = Math.min(1, intensity / config.intensityExpectedHitsScale);
   }
-  for (const result of pending) applyResult(state, result, events);
+  for (const result of pending) {
+    applyResult(scenario, state, result, runtime.config, userSeed, events);
+  }
 }
