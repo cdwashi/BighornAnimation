@@ -1,14 +1,14 @@
 # E5 Movement-only Checkpoint Baseline
 
 - Seed: `18760625`
-- Scenario FNV-1a: `a22a2d67`
+- Scenario FNV-1a: `be1954da`
 - Target tick: `2160`
 - Result: `4/10 checkpoints hit`
 
 | Checkpoint | Unit | Target min | Nearest min | Distance m | Delta min | Result |
 |---|---|---:|---:|---:|---:|---|
 | cp-scouts-crows-nest | crow-scouts | 0.0 | 0.0 | 0.0 | 0.0 | HIT |
-| cp-reno-ford-a | co-a | 675.0 | 582.0 | 0.0 | -93.0 | MISS |
+| cp-reno-ford-a | co-a | 675.0 | 677.5 | 5.1 | 2.5 | HIT |
 | cp-reno-skirmish-line | co-a | 720.0 | 787.5 | 515.2 | 67.5 | MISS |
 | cp-reno-timber | co-a | 750.0 | 787.5 | 1447.7 | 37.5 | MISS |
 | cp-reno-hill | co-a | 765.0 | 807.5 | 0.0 | 42.5 | MISS |

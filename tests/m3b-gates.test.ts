@@ -143,15 +143,15 @@ describe('M3-B exit gates', () => {
     const activations = fullEvents.filter((event) => event.type === 'camp-defense-activated');
     const leaderDeaths = fullEvents.filter((event) => event.type === 'leader-killed');
     const index = buildDecisionIndex(scenario, fullEvents);
-    expect(scenario.orders).toHaveLength(23);
-    expect(index.filter((entry) => entry.kind === 'order')).toHaveLength(23);
+    expect(scenario.orders).toHaveLength(26);
+    expect(index.filter((entry) => entry.kind === 'order')).toHaveLength(26);
     expect(index.filter((entry) => entry.kind === 'emergent'))
       .toHaveLength(activations.length + leaderDeaths.length);
     expect(index.filter((entry) => entry.id.startsWith('leader-death:')))
       .toHaveLength(leaderDeaths.length);
-    expect(index).toHaveLength(23 + activations.length + leaderDeaths.length);
+    expect(index).toHaveLength(26 + activations.length + leaderDeaths.length);
     expect(index.filter((entry) => entry.orderId === 'martini-msg')).toHaveLength(1);
-    console.info(`[gate] V6 PASS entries=${index.length} orders=23 ` +
+    console.info(`[gate] V6 PASS entries=${index.length} orders=26 ` +
       `activations=${activations.length} leaderDeaths=${leaderDeaths.length}`);
   });
 });

@@ -4,8 +4,8 @@ import criteriaData from '../../data/calibration/baseline-seed-criteria.json';
 import scenarioData from '../../data/scenarios/little-bighorn-1876/scenario.json';
 import type { Scenario } from '../../src/schema/scenario-schema.js';
 import type { BaselineSeedCriteria, SeedEnvelopeOutcome } from '../src/baseline-selection.js';
-import { splitCasualties } from '../src/combat.js';
-import { KILLED_TO_WOUNDED_RATIO_RANGES } from '../src/combat-config.js';
+import { infiltrationOutputMultipliers, splitCasualties } from '../src/combat.js';
+import { DEFAULT_COMBAT_CONFIG, KILLED_TO_WOUNDED_RATIO_RANGES } from '../src/combat-config.js';
 import { formatSeedEnvelope } from '../src/envelope.js';
 import type { ObservationExamRow } from '../src/exam.js';
 import { createSim } from '../src/index.js';
@@ -168,5 +168,20 @@ describe('M5-A scorer, split, envelope, and variant gates', () => {
       .toEqual(['co-a', 'co-g', 'co-m']);
     expect([...counterfactualExcludedUnitIds(scenario, ['v-benteen-prompt'])].sort())
       .toEqual(['co-d', 'co-h', 'co-k']);
+  });
+
+  it('D87 infiltration requires real cover occupancy and a formed enemy', () => {
+    expect(infiltrationOutputMultipliers(
+      'CONSENSUS_INITIATIVE', 90, 1, 'LINE', DEFAULT_COMBAT_CONFIG,
+    )).toEqual({ kill: 1, suppression: 1 });
+    expect(infiltrationOutputMultipliers(
+      'CONSENSUS_INITIATIVE', 90, 0.6, 'DISPERSED', DEFAULT_COMBAT_CONFIG,
+    )).toEqual({ kill: 1, suppression: 1 });
+    expect(infiltrationOutputMultipliers(
+      'CONSENSUS_INITIATIVE', 90, 0.6, 'LINE', DEFAULT_COMBAT_CONFIG,
+    )).toEqual({
+      kill: DEFAULT_COMBAT_CONFIG.infiltrationKillMultiplier,
+      suppression: DEFAULT_COMBAT_CONFIG.infiltrationSuppressionMultiplier,
+    });
   });
 });

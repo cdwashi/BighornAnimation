@@ -38,6 +38,7 @@ interface FireResult {
   casualties: number;
   expectedHits: number;
   rounds: number;
+  suppressionRounds: number;
   flanked: boolean;
   position: { x: number; y: number };
 }
@@ -106,6 +107,22 @@ function coverFactorAt(projectedCover: readonly ProjectedCombatCover[], position
   return result;
 }
 
+/** D87: adoption is impossible on open ground; mapped cover occupancy is the architecture gate. */
+export function infiltrationOutputMultipliers(
+  commandModel: Scenario['sides'][number]['commandModel'],
+  infiltrationWeight: number,
+  attackerCoverFactor: number,
+  targetFormation: Formation,
+  config: CombatConfig,
+): { kill: number; suppression: number } {
+  const formedEnemy = targetFormation !== 'DISPERSED' && targetFormation !== 'CAMP';
+  const adopted = commandModel === 'CONSENSUS_INITIATIVE' && attackerCoverFactor < 1 &&
+    formedEnemy && infiltrationWeight >= config.infiltrationAdoptionThreshold;
+  return adopted
+    ? { kill: config.infiltrationKillMultiplier, suppression: config.infiltrationSuppressionMultiplier }
+    : { kill: 1, suppression: 1 };
+}
+
 function bestLeaderSkill(scenario: Scenario, state: SimState, unit: UnitRuntime): number {
   const skills = scenario.leaders.filter((leader) =>
     leader.attachedToUnitId === unit.id && state.leaders.find((item) => item.id === leader.id)?.alive)
@@ -162,6 +179,14 @@ function resolveFire(
   const source = scenario.units[attacker.unitIndex];
   const targetSource = scenario.units[target.unitIndex];
   const profile = scenario.tacticsProfiles[source.tacticsProfileId];
+  const side = scenario.sides.find((item) => item.id === source.sideId);
+  const infiltration = infiltrationOutputMultipliers(
+    side?.commandModel ?? 'HIERARCHICAL',
+    profile.weights.infiltration,
+    coverFactorAt(projectedCover, attacker.position),
+    target.formation,
+    config,
+  );
   const targetCover = Math.max(config.coverFloor, coverFactorAt(projectedCover, target.position));
   const flanked = isFlanking(attacker, target, config);
   for (const [weaponId, mix] of Object.entries(source.weaponMix)) {
@@ -207,7 +232,8 @@ function resolveFire(
     expectedHits += shootersEffective * (rounds / Math.max(1, shootersEffective)) * hitProbability *
       formationExposure * coverFactor * (flanked ? config.flankingMultiplier : 1) *
       tacticsModifier * (bestLeaderSkill(scenario, state, attacker) / 50) *
-      discipline(attacker, config) * fatigueModifier * config.combatFrictionFactor;
+      discipline(attacker, config) * fatigueModifier * config.combatFrictionFactor *
+      infiltration.kill;
   }
   const casualties = stochasticInteger(state, expectedHits, userSeed);
   return {
@@ -216,6 +242,7 @@ function resolveFire(
     casualties,
     expectedHits,
     rounds: totalRounds,
+    suppressionRounds: totalRounds * infiltration.suppression,
     flanked,
     position: { ...target.position },
   };
@@ -247,7 +274,7 @@ function resolveCourierFire(
   const courier = state.couriers.find((item) => item.id === targetId);
   return {
     attacker, targetId, casualties: Math.min(1, stochasticInteger(state, expectation, userSeed)),
-    expectedHits: expectation, rounds: roundsTotal, flanked: false,
+    expectedHits: expectation, rounds: roundsTotal, suppressionRounds: roundsTotal, flanked: false,
     position: courier ? { ...courier.position } : { x: 0, y: 0 },
   };
 }
@@ -263,7 +290,7 @@ function applyResult(
   if (result.rounds <= 0) return;
   const target = state.units.find((unit) => unit.id === result.targetId);
   if (target) {
-    target.suppression += result.rounds;
+    target.suppression += result.suppressionRounds;
     target.flankedThisTick ||= result.flanked;
     const losses = Math.min(target.strengthCurrent, result.casualties);
     if (losses <= 0) return;

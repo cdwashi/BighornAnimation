@@ -70,6 +70,12 @@ export interface CombatConfig {
   pursuitRangeLossToleranceMeters: number;
   engagementComplexAdjacencyTicks: number;
   enemyInterdictionRadiusMeters: number;
+  /** D87 global adoption threshold on the tactics-profile infiltration weight. */
+  infiltrationAdoptionThreshold: number;
+  /** D87 kill-output share while physically occupying mapped cover. */
+  infiltrationKillMultiplier: number;
+  /** D87 suppression-output multiplier while physically occupying mapped cover. */
+  infiltrationSuppressionMultiplier: number;
   /** D81 global side-level ratios. Override key: killedToWoundedRatio.<sideId>. */
   killedToWoundedRatioBySide: Readonly<Record<string, number>>;
 }
@@ -84,6 +90,32 @@ export interface SourcedCombatRange {
 export type CombatConfigProvenance = 'spec-given' | 'proposed-flagged' | 'sourced-range';
 export const COMBAT_FRICTION_PROVENANCE =
   'anchored by historical-totals arithmetic (268 US / 53 Reno-Benteen / <=300 coalition imply 10-20x reduction from unfrictioned rates); M5 calibrates the digit.';
+
+/** D79 ranges derived and documented before the first M5-B tuning move. */
+export const M5B_DERIVED_CALIBRATION_RANGES = Object.freeze({
+  combatFrictionFactor: Object.freeze({ low: 0.05, high: 0.1,
+    provenance: 'codex-report-m4a-d74.md historical-totals anchor: 10-20x reduction => reciprocal 0.05-0.10' }),
+  moraleCasualtyDrain: Object.freeze({ low: 50, high: 100,
+    provenance: 'DERIVED: normalized casualty fraction 0-1 may remove one-half to one full 0-100 morale scale at total loss' }),
+  moraleSuppressionDrain: Object.freeze({ low: 0, high: 1,
+    provenance: 'DERIVED: suppression input is clamped 0-1; bounded at 0-1 morale point per tick' }),
+  moraleFlankedDrain: Object.freeze({ low: 0, high: 5,
+    provenance: 'DERIVED: binary flanked input; bounded at 0-5 morale points per tick, below the 10-point order-of-magnitude' }),
+  moraleLullRecovery: Object.freeze({ low: 0, high: 0.18,
+    provenance: 'DERIVED: zero-to-existing M4-A starting scale; no evidence authorizes recovery above the audited starting value' }),
+  moraleFriendlyRecovery: Object.freeze({ low: 0, high: 0.12,
+    provenance: 'DERIVED: zero-to-existing M4-A starting scale; no evidence authorizes recovery above the audited starting value' }),
+  moraleLeaderRallyScale: Object.freeze({ low: 0, high: 0.004,
+    provenance: 'DERIVED: zero-to-existing M4-A starting scale; no evidence authorizes rally above the audited starting value' }),
+  infiltrationAdoptionThreshold: Object.freeze({ low: 20, high: 90,
+    provenance: 'D87 DERIVED: rails are the sourced scenario tactics weights (US 20 through warrior 90); 50 is the doctrine midpoint' }),
+  infiltrationKillMultiplier: Object.freeze({ low: 0.2, high: 0.8,
+    provenance: 'D87 DERIVED: sustained-suppression posture assigns a minority 20-80% of ordinary lethal output; never zero and never full ordinary fire' }),
+  infiltrationSuppressionMultiplier: Object.freeze({ low: 1, high: 10,
+    provenance: 'D87 DERIVED: ordinary suppression is the 1x floor; tactics weights use a 0-100 scale, bounding amplification to one order of magnitude' }),
+  withdrawalDisciplineThreshold: Object.freeze({ low: 55, high: 70,
+    provenance: 'D75/D87 SOURCED: scenario tactics-profile withdrawalDiscipline weights span formed US cavalry 55, scouts 65, and warrior bands 70' }),
+});
 
 /**
  * D81 preserves the calibration-target spreads instead of averaging them.
@@ -175,6 +207,9 @@ export const DEFAULT_COMBAT_CONFIG: Readonly<CombatConfig> = Object.freeze({
   pursuitRangeLossToleranceMeters: 15,
   engagementComplexAdjacencyTicks: 120,
   enemyInterdictionRadiusMeters: 250,
+  infiltrationAdoptionThreshold: 50,
+  infiltrationKillMultiplier: 0.35,
+  infiltrationSuppressionMultiplier: 5,
   killedToWoundedRatioBySide: Object.freeze(Object.fromEntries(
     Object.entries(KILLED_TO_WOUNDED_RATIO_RANGES).map(([sideId, range]) => [sideId, range.best]),
   )),

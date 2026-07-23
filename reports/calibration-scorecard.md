@@ -5,13 +5,13 @@
 - Variants: `baseline`
 - Review tier: **baseline**
 - Counterfactual provenance flag: **no**
-- Composite: **59.68%**
+- Composite: **60.41%**
 - Composite gates: **FAIL**
 
 | Component | Weight | Included score | Gate |
 |---|---:|---:|---|
-| C1 Checkpoints | 0.35 | 40.00% | FAIL — HIGH 25.0% ≥ 70%; overall 40.0% ≥ 50% |
-| C2 Casualties | 0.25 | 88.89% | FAIL — both killed/wounded side bands and every flagship end-state exact |
+| C1 Checkpoints | 0.35 | 50.00% | FAIL — HIGH 25.0% ≥ 70%; overall 50.0% ≥ 50% |
+| C2 Casualties | 0.25 | 77.78% | FAIL — both killed/wounded side bands and every flagship end-state exact |
 | C3 End states | 0.25 | 38.46% | FAIL — 100% of HIGH-confidence assertions by their minute |
 | C4 Observations | 0.15 | 92.31% | PASS — 92.3% ≥ 80% of HIGH/MEDIUM events |
 
@@ -20,12 +20,12 @@
 
 ## C1 — Checkpoints
 
-Gate: **FAIL** — HIGH 25.0% ≥ 70%; overall 40.0% ≥ 50%.
+Gate: **FAIL** — HIGH 25.0% ≥ 70%; overall 50.0% ≥ 50%.
 
 | Item | Confidence | Scope | Expected | Actual | Result |
 |---|---|---|---|---|---|
 | cp-scouts-crows-nest | LOW | included | ≤1000 m and ±40 min | 0.0 m, 0.0 min | PASS |
-| cp-reno-ford-a | MEDIUM | included | ≤150 m and ±25 min | 0.0 m, -95.0 min | FAIL |
+| cp-reno-ford-a | MEDIUM | included | ≤150 m and ±25 min | 5.1 m, 0.5 min | PASS |
 | cp-reno-skirmish-line | MEDIUM | included | ≤300 m and ±25 min | 515.2 m, 67.5 min | FAIL |
 | cp-reno-timber | MEDIUM | included | ≤200 m and ±25 min | 1447.7 m, 37.5 min | FAIL |
 | cp-reno-hill | HIGH | included | ≤50 m and ±15 min | 0.0 m, 42.5 min | FAIL |
@@ -41,9 +41,9 @@ Gate: **FAIL** — both killed/wounded side bands and every flagship end-state e
 
 | Item | Confidence | Scope | Expected | Actual | Result |
 |---|---|---|---|---|---|
-| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 195 | FAIL |
-| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 51 | PASS |
-| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 67 | PASS |
+| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 189 | FAIL |
+| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 39 | FAIL |
+| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 63 | PASS |
 | lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 174 | PASS |
 | flagship:co-c | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-e | HIGH | included | DESTROYED exactly | DESTROYED | PASS |

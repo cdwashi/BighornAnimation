@@ -34,7 +34,7 @@ describe('M4-A F1-F6 closeout gates', () => {
     const same = createSim(scenario, { seed: 18760625, terrain });
     same.run(2160);
     expect(hashState(same.state())).toBe(hashState(baseline.state()));
-    expect(hashState(baseline.state())).toBe('7f00bd23');
+    expect(hashState(baseline.state())).toBe('80ccd48a');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -105,14 +105,14 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('7f00bd23');
+      expect(hashState(sim.state())).toBe('80ccd48a');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
     // M5-SPEC G-M5-5 ports this gate to deterministic work metrics so host
     // scheduling cannot make the quartet flaky. The historic 10 s target is
     // retained in the emitted timing, not as the primary assertion.
-    expect(pathMetrics.calls).toBe(158);
+    expect(pathMetrics.calls).toBe(164);
     expect(pathMetrics.expandedNodes).toBeLessThanOrEqual(11_100_000);
     expect(pathMetrics.scratchAllocations).toBeLessThanOrEqual(3);
     console.info(`[gate] F6 median=${median.toFixed(1)}ms timings=${timings.map((value) =>

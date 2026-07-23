@@ -238,10 +238,10 @@ describe('Little Bighorn scenario data integrity', () => {
 
   it('10. expected entity counts match exactly', () => {
     expect(scenario.units).toHaveLength(33);
-    expect(scenario.leaders).toHaveLength(18);
+    expect(scenario.leaders).toHaveLength(19);
     expect(Object.keys(scenario.weapons)).toHaveLength(6);
     expect(Object.keys(scenario.tacticsProfiles)).toHaveLength(3);
-    expect(scenario.orders).toHaveLength(23);
+    expect(scenario.orders).toHaveLength(26);
     expect(scenario.checkpoints).toHaveLength(10);
     expect(scenario.observationEvents).toHaveLength(14);
     expect(scenario.variants).toHaveLength(7);
