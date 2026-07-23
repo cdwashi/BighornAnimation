@@ -139,3 +139,18 @@ wing dying, belief shows nothing there.
 
 Clone the repo, read docs/IMPLEMENTATION_HISTORY.md + this file, then:
 **"Fable — write the M5 spec."** Everything else follows from there.
+
+---
+
+## 8. Addendum — 2026-07-22 (supersedes §2's next action)
+
+M5-SPEC written and executed through M5-A (scorer/split/envelope, D78–D83)
+and M5-B rounds 0–4 (D84–D87). Ford A closed (5.1 m / +0.5 min). Current
+state: **D79.3 mechanism STOP at round 3 (composite 60.41%)**; next action is
+the H1 terrain probe (where do the warrior bands stand in the valley-fight
+window?), H1 gating H2 — pre-registered rulings in ledger Session 3.
+
+**v1 exit criteria amended (Chuck, 07-22): O5 publication-grade sourcing is
+v1-blocking; post-v1 deliverable #1 = prompt for an academic methods paper
+(motivations, research→model mapping, decision process, replication pipeline
+for other battles).**
