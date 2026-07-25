@@ -18,7 +18,11 @@ Raised in good faith during investigation, then killed by measurement. Recorded 
 | 4 | Path failure is a tier switch — endpoints outside core drop pathing to the coarse full grid | Design review | Tier probe, 07-24 | **Refuted.** Both endpoints inside core; 10 m grid used; all 15 ford cells present; fords are passable. The goal cell was simply river. |
 | 5 | `HISTORICAL_CORRECTION` encodes 1876-vs-modern channel migration | Design review | Full-core scan, 07-24 | **Refuted as unsupported.** Zero cells, no manifest note. Purpose unknown; no interpretation asserted. |
 
+| 6 | WO-D93 had been dispatched to Codex and was running ("still in verification") | Conversational assertion, repeated across all three parties without verification | Machine check, 07-25: on-disk Codex session logs contain no trace of the work order; the presumed-running process was identified by command line as the VS Code extension's companion server | **Refuted.** No dispatch ever occurred. The pre-registration commit therefore preceded dispatch itself, not merely results. Corrected in `PREDICTIONS.md` by dated note; the work order was then genuinely frozen (`docs/WO-D93.md`) before first dispatch. |
+
 **Pattern worth noting:** four of five were raised by design-side reasoning ahead of measurement, and each correction cost more than the check would have. Recorded as a methodological lesson, not only as five facts.
+
+**Row 6 is a methods lesson of its own:** a claim asserted in conversation became a documented fact in the audit record without any of three parties verifying it, and it was caught by checking the machine, not by re-reading the document. The error entered the record through the exact channel the record exists to discipline — and the verification culture caught it inside its own audit trail. The correction is dated, the original wording preserved, and the discovered state was better than the asserted one.
 
 ## 2. Missed predictions
 
