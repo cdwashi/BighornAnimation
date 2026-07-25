@@ -61,6 +61,9 @@ Coalition losses remain inside their sourced band in the great majority of seeds
 **PR-7 — F6 scales with participation.**
 Expansion count scales approximately linearly with active participant count. The re-baselined ceiling is exceeded in fewer than 5% of seeds.
 
+**PR-8 — co-d overshoot, observation registered.** *(Appended 2026-07-25, before first dispatch — see the correction note above; PR-1–PR-7 are from commit `ff57568`.)*
+F4 fails on the committed baseline partly through co-d overshooting. No ruling addresses this and no directional prediction is made. Registered so that any post-run claim about it is checkable against a prior record rather than formed after the result.
+
 ### Pre-committed responses to anticipated misses
 
 - **If PR-3 misses again**, numerical superiority is insufficient as a closing trigger. The next candidate is **flank exposure**, which is the historically attested mechanism (warriors against Reno's left and rear on an unanchored flank). That trigger is **not currently computable** — units are dimensionless points and Reno's three companies occupy one position (D91 rider) — so the frontage adjudication becomes its prerequisite. **Not a parameter change, in either case.**
