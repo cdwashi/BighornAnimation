@@ -1,7 +1,7 @@
 import type { Scenario } from '../../src/schema/scenario-schema.js';
 import { emitEvent, type SimEvent } from './events.js';
 import { pursuitNeedsRepath, repathPursuit, type PathCache } from './objectives.js';
-import type { EngineTerrain } from './pathfind.js';
+import { nearestPassablePoint, type EngineTerrain } from './pathfind.js';
 import type { Formation, SimState, SpeedClass, UnitRuntime } from './state.js';
 import type { CombatConfig } from './combat-config.js';
 
@@ -106,6 +106,22 @@ function moveOneUnit(
   memoizeCombatPaths = true,
 ): void {
   const startingPosition = { ...unit.position };
+  const startingTerrain = terrain.movementAtMeters(unit.position.x, unit.position.y);
+  if (!Number.isFinite(startingTerrain.cost)) {
+    const grid = terrain.gridForPath(unit.position, unit.position);
+    const recovery = nearestPassablePoint(grid, unit.position);
+    if (!recovery) {
+      markBlocked(state, unit, events, 'no passable recovery cell');
+      return;
+    }
+    // D91 stranded-unit guard: recovery is an atomic relocation to the exact
+    // nearest finite-cost cell, so no simulation tick retains an impassable
+    // intermediate position.
+    unit.position.x = recovery.x;
+    unit.position.y = recovery.y;
+    unit.lastMovedTick = state.tick;
+    if (unit.path.length > 0) unit.blockedReason = undefined;
+  }
   if (completeTransition(scenario, state, unit, events)) return;
   if (unit.path.length === 0 || unit.pathIndex >= unit.path.length || unit.blockedReason) return;
 
@@ -164,7 +180,7 @@ function moveOneUnit(
     unit.fordHoldTicks -= 1;
     return;
   }
-  if (!(sample.movementFactor > 0)) {
+  if (!Number.isFinite(sample.cost) || !(sample.movementFactor > 0)) {
     markBlocked(state, unit, events, 'current terrain cell is impassable');
     return;
   }
@@ -209,8 +225,21 @@ function moveOneUnit(
     }
     const step = Math.min(remaining, distance);
     const heading = Math.atan2(dy, dx);
-    unit.position.x += dx / distance * step;
-    unit.position.y += dy / distance * step;
+    const candidate = {
+      x: unit.position.x + dx / distance * step,
+      y: unit.position.y + dy / distance * step,
+    };
+    const candidateTerrain = terrain.movementAtMeters(candidate.x, candidate.y);
+    if (!Number.isFinite(candidateTerrain.cost)) {
+      // D91: movement may never place a unit on a non-finite-cost cell.
+      markBlocked(state, unit, events, 'next terrain cell is impassable');
+      if (unit.position.x !== startingPosition.x || unit.position.y !== startingPosition.y) {
+        unit.lastMovedTick = state.tick;
+      }
+      return;
+    }
+    unit.position.x = candidate.x;
+    unit.position.y = candidate.y;
     unit.facingRadians = unit.posture === 'WITHDRAW'
       ? (heading + Math.PI) % (Math.PI * 2)
       : heading;

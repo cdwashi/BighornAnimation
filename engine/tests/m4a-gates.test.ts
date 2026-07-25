@@ -34,7 +34,11 @@ describe('M4-A F1-F6 closeout gates', () => {
     const same = createSim(scenario, { seed: 18760625, terrain });
     same.run(2160);
     expect(hashState(same.state())).toBe(hashState(baseline.state()));
-    expect(hashState(baseline.state())).toBe('80ccd48a');
+    // D91/D92 camp-defence commitments and turnout delay intentionally change
+    // the full-state baseline while preserving same-seed determinism. The
+    // scenario content hash feeds the PRNG (D31a), so the schemaVersion 0.3
+    // bump re-rolled the stream and refreshed this pin again.
+    expect(hashState(baseline.state())).toBe('8e16fefd');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -105,14 +109,18 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('80ccd48a');
+      expect(hashState(sim.state())).toBe('8e16fefd');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
     // M5-SPEC G-M5-5 ports this gate to deterministic work metrics so host
     // scheduling cannot make the quartet flaky. The historic 10 s target is
     // retained in the emitted timing, not as the primary assertion.
-    expect(pathMetrics.calls).toBe(164);
+    // Measured deterministic whole-run oracle: findPath call count depends on
+    // the full day's combat stream, so it moves with any scenario-content
+    // change (D31a seeds the PRNG from the content hash). 164 pre-D91, 168 at
+    // schemaVersion 0.2 post-D91, 190 at 0.3.
+    expect(pathMetrics.calls).toBe(190);
     expect(pathMetrics.expandedNodes).toBeLessThanOrEqual(11_100_000);
     expect(pathMetrics.scratchAllocations).toBeLessThanOrEqual(3);
     console.info(`[gate] F6 median=${median.toFixed(1)}ms timings=${timings.map((value) =>

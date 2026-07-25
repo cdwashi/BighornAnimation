@@ -109,7 +109,7 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
       spottingRuntime,
       spottingEventLog,
     );
-    updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, eventLog);
+    updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, combat, eventLog);
     if (combatEnabled) {
       updateEngagements(scenario, current, combat, eventLog);
       startScoutWithdrawals(scenario, current, options.terrain, eventLog);
@@ -138,7 +138,7 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
       spottingRuntime,
       spottingEventLog,
     );
-    updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, eventLog);
+    updateCampDefense(scenario, current, options.terrain, spottingRuntime.config, combat, eventLog);
     if (combatEnabled) {
       updateEngagements(scenario, current, combat, eventLog);
       startScoutWithdrawals(scenario, current, options.terrain, eventLog);

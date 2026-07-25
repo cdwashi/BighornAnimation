@@ -33,7 +33,7 @@ describe('Little Bighorn scenario data integrity', () => {
     const result = validateScenario(scenarioData);
     expect(result.errors).toEqual([]);
     expect(result.valid).toBe(true);
-    expect(scenario.meta.schemaVersion).toBe('0.2');
+    expect(scenario.meta.schemaVersion).toBe('0.3');
   });
 
   it('2. every ID reference resolves', () => {

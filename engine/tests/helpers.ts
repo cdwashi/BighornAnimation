@@ -36,7 +36,12 @@ export class FlatTerrain implements EngineTerrain {
   movementAtMeters(x: number, y: number): MovementSample {
     const column = Math.round(x / this.grid.resolutionMeters);
     const row = Math.round(y / this.grid.resolutionMeters);
-    return { movementFactor: 1, coverKind: 0, cellKey: `flat:${row * this.grid.width + column}` };
+    return {
+      movementFactor: 1,
+      cost: 1,
+      coverKind: 0,
+      cellKey: `flat:${row * this.grid.width + column}`,
+    };
   }
 
   elevationAtMeters(x: number, y: number): number {

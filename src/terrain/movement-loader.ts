@@ -3,6 +3,7 @@ import type {
   MovementGrid,
   MovementSample,
   PointMeters,
+  TerrainCoverFeature,
 } from '../../engine/src/pathfind.js';
 import { TerrainLoader, type TerrainManifestData, type TerrainTierName } from './loader.js';
 
@@ -51,6 +52,54 @@ function minimumFinite(values: Float32Array): number {
   return minimum;
 }
 
+/**
+ * D92: immutable TIMBER substrate cells become deterministic 8-connected
+ * runtime features. The eight-neighbour rule matches the movement grid's
+ * existing connectivity; ids follow the first cell in raster order.
+ */
+function clusterTimberFeatures(
+  grid: MovementGrid,
+  timberCode: number | undefined,
+): TerrainCoverFeature[] {
+  if (timberCode === undefined || !grid.coverKinds) return [];
+  const visited = new Uint8Array(grid.coverKinds.length);
+  const features: TerrainCoverFeature[] = [];
+  const neighbors = [-1, 0, 1];
+  for (let start = 0; start < grid.coverKinds.length; start += 1) {
+    if (visited[start] || grid.coverKinds[start] !== timberCode) continue;
+    const queue = [start];
+    visited[start] = 1;
+    const points: PointMeters[] = [];
+    for (let cursor = 0; cursor < queue.length; cursor += 1) {
+      const index = queue[cursor];
+      const column = index % grid.width;
+      const row = Math.floor(index / grid.width);
+      points.push({
+        x: grid.minX + column * grid.resolutionMeters,
+        y: grid.minY + row * grid.resolutionMeters,
+      });
+      for (const rowOffset of neighbors) {
+        for (const columnOffset of neighbors) {
+          if (columnOffset === 0 && rowOffset === 0) continue;
+          const nextColumn = column + columnOffset;
+          const nextRow = row + rowOffset;
+          if (nextColumn < 0 || nextRow < 0 ||
+            nextColumn >= grid.width || nextRow >= grid.height) continue;
+          const next = nextRow * grid.width + nextColumn;
+          if (visited[next] || grid.coverKinds[next] !== timberCode) continue;
+          visited[next] = 1;
+          queue.push(next);
+        }
+      }
+    }
+    features.push({
+      id: `substrate-timber-${String(features.length + 1).padStart(4, '0')}`,
+      points,
+    });
+  }
+  return features;
+}
+
 /** Node-side adapter; engine/src only sees the injected EngineTerrain interface. */
 export class TerrainMovementLoader implements EngineTerrain {
   readonly minimumResolutionMeters: number;
@@ -59,6 +108,7 @@ export class TerrainMovementLoader implements EngineTerrain {
     private readonly terrain: TerrainLoader,
     private readonly manifest: RasterManifest,
     private readonly grids: Record<TerrainTierName, MovementGrid>,
+    private readonly derivedCoverFeatures: readonly TerrainCoverFeature[],
   ) {
     this.minimumResolutionMeters = terrain.minimumResolutionMeters;
   }
@@ -146,7 +196,12 @@ export class TerrainMovementLoader implements EngineTerrain {
         movementFactors: fullFactors,
       },
     };
-    return new TerrainMovementLoader(terrain, manifest, grids);
+    return new TerrainMovementLoader(
+      terrain,
+      manifest,
+      grids,
+      clusterTimberFeatures(grids.core, manifest.rasterLayers.coverKind.codes.TIMBER),
+    );
   }
 
   static async fromUrl(manifestUrl: string | URL): Promise<TerrainMovementLoader> {
@@ -234,7 +289,12 @@ export class TerrainMovementLoader implements EngineTerrain {
       },
       full: { id: 'full', ...common('full', fullCosts), movementFactors: fullFactors },
     };
-    return new TerrainMovementLoader(terrain, manifest, grids);
+    return new TerrainMovementLoader(
+      terrain,
+      manifest,
+      grids,
+      clusterTimberFeatures(grids.core, manifest.rasterLayers.coverKind.codes.TIMBER),
+    );
   }
 
   toLocal(lat: number, lon: number): [number, number] {
@@ -243,6 +303,10 @@ export class TerrainMovementLoader implements EngineTerrain {
 
   elevationAtMeters(x: number, y: number): number {
     return this.terrain.elevationAtMeters(x, y);
+  }
+
+  coverFeatures(): readonly TerrainCoverFeature[] {
+    return this.derivedCoverFeatures;
   }
 
   resolutionAtMeters(x: number, y: number): number {
@@ -265,6 +329,7 @@ export class TerrainMovementLoader implements EngineTerrain {
     const coverKind = grid.coverKinds?.[index] ?? 0;
     return {
       movementFactor: grid.movementFactors?.[index] ?? 1,
+      cost: grid.costs[index],
       coverKind,
       cellKey: `${name}:${index}`,
       crossingPenaltyMinutes: coverKind === grid.fordCode ? grid.crossingPenaltyMinutes : undefined,

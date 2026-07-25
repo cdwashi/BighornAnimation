@@ -106,7 +106,18 @@ export interface UnitRuntime {
   scoutWithdrawal?: boolean;
   withdrawnOffField?: boolean;
   defaultBehavior?: 'DEFEND_CAMP';
-  campDefense?: { campUnitId: string; threatUnitId: string };
+  campDefenseAlert?: {
+    tick: number;
+    campUnitId: string;
+    threatUnitId: string;
+  };
+  campDefense?: {
+    campUnitId: string;
+    threatUnitId: string;
+    featureId?: string;
+    goal?: PositionMeters;
+    lastPathAttemptTick: number;
+  };
   lastMovedTick?: number;
   lastSpottingSweepTick?: number;
   morale: number;

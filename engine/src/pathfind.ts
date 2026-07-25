@@ -21,15 +21,23 @@ export interface MovementGrid {
 
 export interface MovementSample {
   movementFactor: number;
+  cost: number;
   coverKind: number;
   cellKey: string;
   crossingPenaltyMinutes?: number;
+}
+
+export interface TerrainCoverFeature {
+  id: string;
+  points: readonly PointMeters[];
 }
 
 export interface EngineTerrain {
   toLocal(lat: number, lon: number): [number, number];
   gridForPath(start: PointMeters, goal: PointMeters): MovementGrid;
   movementAtMeters(x: number, y: number): MovementSample;
+  /** D92 substrate features derived by the terrain loader, not scenario JSON. */
+  coverFeatures?(): readonly TerrainCoverFeature[];
   elevationAtMeters(x: number, y: number): number;
   resolutionAtMeters?(x: number, y: number): number;
   minimumResolutionMeters?: number;
@@ -189,6 +197,30 @@ function cellPoint(grid: MovementGrid, index: number): PathPoint {
   };
 }
 
+/** Exact nearest finite-cost grid cell, with stable cell-index tie-breaking. */
+export function nearestPassablePoint(
+  grid: MovementGrid,
+  point: PointMeters,
+): PathPoint | undefined {
+  const origin = cellFor(grid, point);
+  if (!origin) return undefined;
+  let nearestIndex = -1;
+  let nearestSquaredCells = Number.POSITIVE_INFINITY;
+  for (let index = 0; index < grid.costs.length; index += 1) {
+    if (!Number.isFinite(grid.costs[index])) continue;
+    const column = index % grid.width;
+    const row = Math.floor(index / grid.width);
+    const dx = column - origin[0];
+    const dy = row - origin[1];
+    const squaredCells = dx * dx + dy * dy;
+    if (squaredCells < nearestSquaredCells) {
+      nearestSquaredCells = squaredCells;
+      nearestIndex = index;
+    }
+  }
+  return nearestIndex >= 0 ? cellPoint(grid, nearestIndex) : undefined;
+}
+
 function canPullStraight(grid: MovementGrid, from: number, to: number): boolean {
   let x0 = from % grid.width;
   let y0 = Math.floor(from / grid.width);
@@ -285,14 +317,27 @@ export function findPath(
   if (!startCell || !goalCell) {
     return { status: 'unreachable', reason: 'endpoint outside selected terrain tier', visitedNodes: 0 };
   }
-  const startIndex = startCell[1] * grid.width + startCell[0];
+  const requestedStartIndex = startCell[1] * grid.width + startCell[0];
   const goalIndex = goalCell[1] * grid.width + goalCell[0];
-  if (!Number.isFinite(grid.costs[startIndex]) || !Number.isFinite(grid.costs[goalIndex]) ||
-    blocked?.(cellPoint(grid, startIndex)) || blocked?.(cellPoint(grid, goalIndex))) {
+  if (!Number.isFinite(grid.costs[goalIndex]) || blocked?.(cellPoint(grid, goalIndex))) {
     return { status: 'unreachable', reason: 'endpoint is impassable', visitedNodes: 0 };
   }
+  const recoveredStart = Number.isFinite(grid.costs[requestedStartIndex]) &&
+    !blocked?.(cellPoint(grid, requestedStartIndex))
+    ? cellPoint(grid, requestedStartIndex)
+    : nearestPassablePoint(grid, start);
+  if (!recoveredStart || recoveredStart.cellIndex === undefined ||
+    blocked?.(recoveredStart)) {
+    return { status: 'unreachable', reason: 'no passable recovery cell', visitedNodes: 0 };
+  }
+  const startIndex = recoveredStart.cellIndex;
   if (startIndex === goalIndex) {
-    return { status: 'reachable', path: [{ ...start }, { ...goal }], totalCost: 0, visitedNodes: 1 };
+    return {
+      status: 'reachable',
+      path: [{ ...recoveredStart }, { ...recoveredStart, ...goal }],
+      totalCost: 0,
+      visitedNodes: 1,
+    };
   }
 
   const count = grid.width * grid.height;
@@ -327,7 +372,9 @@ export function findPath(
       // blocked disk would reintroduce the forbidden corridor geometrically.
       const pulled = blocked ? raw : smooth(grid, raw);
       const path = pulled.map((index) => cellPoint(grid, index));
-      path[0] = { ...path[0], ...start };
+      path[0] = Number.isFinite(grid.costs[requestedStartIndex])
+        ? { ...path[0], ...start }
+        : { ...recoveredStart };
       path[path.length - 1] = { ...path[path.length - 1], ...goal };
       pathfindMetrics.expandedNodes += visitedNodes;
       return { status: 'reachable', path, totalCost: scores[current], visitedNodes };

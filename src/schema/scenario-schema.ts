@@ -75,6 +75,10 @@ export interface Scenario {
   meta: ScenarioMeta;
   clock: ClockSpec;
   terrain: TerrainSpec;
+  /** Optional doctrine data (distinct from UnitRuntime.campDefense simulation state). Absent = no turnout delay is modelled. */
+  campDefense?: CampDefenseSpec;
+  /** Optional; a scenario declaring none relies solely on substrate-derived features (D92d). */
+  coverFeatures?: CoverFeature[];
   weapons: Record<string, WeaponSpec>;
   tacticsProfiles: Record<string, TacticsProfile>;
   sides: Side[];
@@ -85,6 +89,23 @@ export interface Scenario {
   observationEvents: ObservationEvent[];
   variants: Variant[];
   calibration: CalibrationTargets;
+}
+
+export interface CampDefenseSpec {
+  /** D91/O6 alarm-to-defence-established delay; the engine uses best by default. */
+  turnoutDelayMinutes: Estimate;
+}
+
+/**
+ * Scenario-authored defensive ground with no substrate representation.
+ * D92 reserves raster-derived substrate (currently TIMBER) to the terrain
+ * loader, so the Little Bighorn scenario declares only D90's Bench here.
+ */
+export interface CoverFeature {
+  id: string;
+  name: string;
+  position: GeoPoint;
+  provenance: Provenance;
 }
 
 export interface ScenarioMeta {

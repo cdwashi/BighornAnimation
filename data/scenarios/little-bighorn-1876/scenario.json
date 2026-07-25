@@ -3,7 +3,7 @@
     "id": "little-bighorn-1876",
     "title": "Battle of the Little Bighorn",
     "date": "1876-06-25",
-    "schemaVersion": "0.2",
+    "schemaVersion": "0.3",
     "timeAnchor": "Local apparent (sun) time per Gray (1991). Officer watch times (RCOI, Godfrey) run ~45–70 min ahead of this clock; offsets applied per research doc.",
     "bibliography": {
       "GRAY1991": { "citation": "Gray (1991)" },
@@ -4134,6 +4134,47 @@
       }
     ]
   },
+  "campDefense": {
+    "turnoutDelayMinutes": {
+      "low": 10,
+      "best": 15,
+      "high": 20,
+      "provenance": {
+        "confidence": "MEDIUM",
+        "sources": [
+          {
+            "key": "GRAY1991",
+            "locus": "chronology via O6 secondary synthesis"
+          },
+          {
+            "key": "MICHNO1997",
+            "locus": "alarm-to-defence sequence"
+          }
+        ],
+        "note": "D91/O6 turnout delay; low/best/high preserved per house Estimate convention."
+      }
+    }
+  },
+  "coverFeatures": [
+    {
+      "id": "bench",
+      "name": "Low hill / Bench",
+      "position": {
+        "lat": 45.51659,
+        "lon": -107.38996
+      },
+      "provenance": {
+        "confidence": "MEDIUM",
+        "sources": [
+          {
+            "key": "MICHNO1997",
+            "locus": "p.105, low hill / Bench"
+          }
+        ],
+        "note": "D90: in-frame terrace-search result; rise 3-18 m above local floor, <=3.5 m relief across a 60 m neighbourhood, downhill break toward Reno's line. Selected on absolute geometry; no computable flank is asserted."
+      }
+    }
+  ],
   "weapons": {
     "springfield-1873-carbine": {
       "id": "springfield-1873-carbine", "name": "Springfield M1873 carbine (.45-55)", "class": "CARBINE",

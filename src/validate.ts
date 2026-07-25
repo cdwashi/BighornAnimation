@@ -246,6 +246,23 @@ export function validateScenario(value: unknown): ValidationResult {
     });
   }
 
+  // Both keys are optional: a battle-agnostic scenario may declare neither
+  // (validated only when present; the engine defaults them).
+  if (root.campDefense !== undefined) {
+    const campDefense = objectAt(root.campDefense, '$.campDefense');
+    if (campDefense) {
+      estimateAt(campDefense.turnoutDelayMinutes, '$.campDefense.turnoutDelayMinutes');
+    }
+  }
+  if (root.coverFeatures !== undefined) arrayAt(root.coverFeatures, '$.coverFeatures').forEach((item, index) => {
+    const feature = objectAt(item, `$.coverFeatures[${index}]`);
+    if (!feature) return;
+    stringAt(feature.id, `$.coverFeatures[${index}].id`);
+    stringAt(feature.name, `$.coverFeatures[${index}].name`);
+    pointAt(feature.position, `$.coverFeatures[${index}].position`);
+    provenanceAt(feature.provenance, `$.coverFeatures[${index}].provenance`);
+  });
+
   const weapons = objectAt(root.weapons, '$.weapons');
   if (weapons) Object.entries(weapons).forEach(([key, item]) => {
     const weapon = objectAt(item, `$.weapons.${key}`);

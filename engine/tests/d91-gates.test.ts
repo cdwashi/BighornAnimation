@@ -1,0 +1,196 @@
+import { join } from 'node:path';
+
+import { describe, expect, it } from 'vitest';
+
+import scenarioData from '../../data/scenarios/little-bighorn-1876/scenario.json';
+import type { Scenario } from '../../src/schema/scenario-schema.js';
+import { TerrainMovementLoader } from '../../src/terrain/movement-loader.js';
+import { updateCampDefense } from '../src/camp-defense.js';
+import { combatConfig } from '../src/combat-config.js';
+import type { SimEvent } from '../src/events.js';
+import { createSim } from '../src/index.js';
+import { moveUnits } from '../src/movement.js';
+import { findPath, type MovementSample, type TerrainCoverFeature } from '../src/pathfind.js';
+import { spottingConfig } from '../src/spotting.js';
+import { initializeState } from '../src/state.js';
+import { cloneScenario, FlatTerrain } from './helpers.js';
+
+const scenario = scenarioData as unknown as Scenario;
+
+class FeatureTerrain extends FlatTerrain {
+  constructor(private readonly features: readonly TerrainCoverFeature[]) {
+    super();
+  }
+
+  coverFeatures(): readonly TerrainCoverFeature[] {
+    return this.features;
+  }
+}
+
+class CostTerrain extends FlatTerrain {
+  constructor() {
+    super(120, 120, 10);
+  }
+
+  override movementAtMeters(x: number, y: number): MovementSample {
+    const column = Math.max(0, Math.min(
+      this.grid.width - 1,
+      Math.round((x - this.grid.minX) / this.grid.resolutionMeters),
+    ));
+    const row = Math.max(0, Math.min(
+      this.grid.height - 1,
+      Math.round((y - this.grid.minY) / this.grid.resolutionMeters),
+    ));
+    const index = row * this.grid.width + column;
+    const cost = this.grid.costs[index];
+    return {
+      movementFactor: Number.isFinite(cost) ? 1 : 0,
+      cost,
+      coverKind: 0,
+      cellKey: `cost:${index}`,
+    };
+  }
+}
+
+describe('D91/D92 camp-defence reconstruction gates', () => {
+  it('D92 derives deterministic TIMBER feature clusters and scenario data declares only the Bench', async () => {
+    const terrain = await TerrainMovementLoader.fromDirectory(join(
+      process.cwd(), 'data', 'terrain', 'little-bighorn-1876',
+    ));
+    const features = terrain.coverFeatures();
+    expect(features.length).toBeGreaterThan(0);
+    expect(features.every((feature, index) =>
+      feature.id === `substrate-timber-${String(index + 1).padStart(4, '0')}` &&
+      feature.points.length > 0)).toBe(true);
+    expect(new Set(features.flatMap((feature) =>
+      feature.points.map((point) => terrain.movementAtMeters(point.x, point.y).cellKey))).size)
+      .toBe(features.reduce((total, feature) => total + feature.points.length, 0));
+    expect(scenario.coverFeatures).toEqual([expect.objectContaining({
+      id: 'bench',
+      position: { lat: 45.51659, lon: -107.38996 },
+      provenance: expect.objectContaining({ confidence: 'MEDIUM' }),
+    })]);
+    expect(scenario.campDefense?.turnoutDelayMinutes).toMatchObject({
+      low: 10,
+      best: 15,
+      high: 20,
+      provenance: { confidence: 'MEDIUM' },
+    });
+  });
+
+  it('D91 delays turnout, commits threat and feature, switches at 250 m, and retries blocked paths at 10 ticks', () => {
+    const synthetic = cloneScenario(scenario);
+    const ids = new Set(['hunkpapa-pool', 'hunkpapa-camp', 'co-a', 'co-g']);
+    synthetic.units = synthetic.units.filter((unit) => ids.has(unit.id));
+    synthetic.leaders = [];
+    synthetic.orders = [];
+    synthetic.checkpoints = [];
+    synthetic.observationEvents = [];
+    synthetic.variants = [];
+    synthetic.coverFeatures = [];
+    const terrain = new FeatureTerrain([
+      { id: 'feature-a', points: [{ x: 900, y: 0 }] },
+      { id: 'feature-b', points: [{ x: 600, y: 0 }] },
+    ]);
+    const state = initializeState(synthetic, terrain, 1);
+    const band = state.units.find((unit) => unit.id === 'hunkpapa-pool');
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const companyA = state.units.find((unit) => unit.id === 'co-a');
+    const companyG = state.units.find((unit) => unit.id === 'co-g');
+    if (!band || !camp || !companyA || !companyG) throw new Error('synthetic units missing');
+    band.position = { x: 50, y: 0 };
+    camp.position = { x: 0, y: 0 };
+    companyA.position = { x: 1_000, y: 0 };
+    companyG.position = { x: 1_100, y: 0 };
+    state.believedPictures['lakota-cheyenne-coalition'] = {
+      'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...companyA.position } },
+      'co-g': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...companyG.position } },
+    };
+    const events: SimEvent[] = [];
+    const update = (tick: number): void => {
+      state.tick = tick;
+      updateCampDefense(
+        synthetic,
+        state,
+        terrain,
+        spottingConfig(),
+        combatConfig(),
+        events,
+      );
+    };
+
+    update(0);
+    update(29);
+    expect(band.campDefense).toBeUndefined();
+    update(30);
+    expect(band.campDefense).toMatchObject({
+      threatUnitId: 'co-a',
+      featureId: 'feature-a',
+      lastPathAttemptTick: 30,
+    });
+    expect(events.filter((event) => event.type === 'camp-defense-activated')).toHaveLength(1);
+
+    state.believedPictures['lakota-cheyenne-coalition']['co-g'].lastSeenPos = { x: 800, y: 0 };
+    update(31);
+    expect(band.campDefense?.threatUnitId).toBe('co-a');
+    state.believedPictures['lakota-cheyenne-coalition']['co-g'].lastSeenPos = { x: 700, y: 0 };
+    update(32);
+    expect(band.campDefense).toMatchObject({
+      threatUnitId: 'co-g',
+      featureId: 'feature-b',
+      lastPathAttemptTick: 32,
+    });
+
+    band.path = [];
+    band.pathIndex = 0;
+    band.blockedReason = 'synthetic blockage';
+    update(41);
+    expect(band.path).toHaveLength(0);
+    update(42);
+    expect(band.path.length).toBeGreaterThan(0);
+    expect(band.campDefense?.featureId).toBe('feature-b');
+    expect(events.filter((event) => event.type === 'camp-defense-activated')).toHaveLength(1);
+  });
+
+  it('D91 recovers an impassable path start and movement refuses an impassable destination cell', () => {
+    const terrain = new CostTerrain();
+    const blockedIndex = 2;
+    terrain.grid.costs[blockedIndex] = Number.POSITIVE_INFINITY;
+    const recovered = findPath(terrain.grid, { x: 20, y: 0 }, { x: 40, y: 0 });
+    expect(recovered.status).toBe('reachable');
+    if (recovered.status !== 'reachable') return;
+    expect(recovered.path[0]).toMatchObject({ x: 10, y: 0 });
+
+    const synthetic = cloneScenario(scenario);
+    synthetic.orders = [];
+    const state = initializeState(synthetic, terrain, 1);
+    const unit = state.units[0];
+    unit.position = { x: 10, y: 0 };
+    unit.path = [{ x: 10, y: 0 }, { x: 20, y: 0 }];
+    unit.pathIndex = 1;
+    unit.posture = 'MARCH';
+    unit.formation = 'COLUMN';
+    unit.speedClass = 'ON_FOOT';
+    unit.blockedReason = undefined;
+    const events: SimEvent[] = [];
+    moveUnits(synthetic, { ...state, units: [unit] }, terrain, events, new Map());
+    expect(unit.position).toEqual({ x: 10, y: 0 });
+    expect(unit.blockedReason).toBe('next terrain cell is impassable');
+    expect(Number.isFinite(terrain.movementAtMeters(unit.position.x, unit.position.y).cost)).toBe(true);
+  });
+
+  it('D91 permanent invariant — no baseline unit occupies a non-finite-cost cell at any full-day tick', async () => {
+    const terrain = await TerrainMovementLoader.fromDirectory(join(
+      process.cwd(), 'data', 'terrain', 'little-bighorn-1876',
+    ));
+    const sim = createSim(scenario, { seed: 18760625, terrain });
+    for (let tick = 0; tick <= 2160; tick += 1) {
+      sim.run(tick);
+      for (const unit of sim.state().units) {
+        const sample = terrain.movementAtMeters(unit.position.x, unit.position.y);
+        expect(Number.isFinite(sample.cost), `${unit.id} at tick ${tick} on ${sample.cellKey}`)
+          .toBe(true);
+      }
+    }
+  }, 120_000);
+});
