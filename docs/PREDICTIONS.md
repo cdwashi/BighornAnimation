@@ -74,3 +74,31 @@ F4 fails on the committed baseline partly through co-d overshooting. No ruling a
 ### Judging
 
 Distributions across N=50 per D80, not single favourable runs. Verdicts recorded as they fall, in a commit that does not modify this file.
+
+---
+
+## WO-D97 — sequence-inversion fix: no-crossing camp defence, scout exclusion
+
+**Tier A.** Committed alone, before the work order was frozen and before any dispatch. Rulings D97–D99; the work order follows at `docs/WO-D97.md`, written to match these predictions.
+
+### Predictions
+
+Judged per D80, N=50, seeds 18760600–18760649; verdicts recorded as they fall, in a commit that does not modify this file.
+
+**PR-9 — Sequence restored.** In 50/50 seeds: no wing company (co-c/e/f/i/l) takes a casualty before minute 675 (Reno's Ford A crossing), and the first wing-company casualty occurs after the first A/G/M engagement. *Scoring rationale, registered in advance:* scored on first casualty rather than engagement-open, because post-D98 the west-bank timber fringe sits ~713 m from the bluff route and brief cross-river APPROACH contacts near the 700 m engagement radius remain possible — benign harassment fire across the river must not fail this prediction on a technicality. (Pre-fix: wing engagements opened at minute 641.5 and destruction completed at 653.5 in the worst seed.)
+
+**PR-10 — Early cluster eliminated.** Complete wing destruction before minute 800 occurs in 0/50 seeds (pre-fix: 9/50 complete before 858, minimum 653.5).
+
+**PR-11 — Wing timing.** Among seeds with complete wing destruction, the completion-minute median is at or after 825. *Registered expectation, not scored (PR-8 class):* the destruction count is expected to FALL from 17/50 as interceptions are removed — including from the late cluster, since baseline-seed bands re-cross at 808.5 against co-e — and a falling count is the fix working, not a regression. PR-1's more-than-25/50 target is explicitly not chased by this work order.
+
+**PR-12 — Coalition casualties move toward band.** Scored: coalition wounded median falls below 85.5 AND wounded maximum falls below 237. *Registered directional observation, not scored:* seeds with both killed and wounded inside their sourced bands rise from 14/50. No pre-D93 magnitude anchor exists; an honest directional beats a fake-precise threshold.
+
+**PR-13 — Scout exclusion.** Camp-defence commitments to `irregular-scout`-profile units occur in 0/50 seeds (pre-fix observation: pool bands committed to crow-scouts at minute 650 and arikara-scouts at 660).
+
+**Registered observations, no direction:** P3 (A/G/M BROKEN) is expected unchanged at 0/50 — these rulings do not touch the valley fight; registered so an unchanged miss is not read as this work order failing, and so any movement is visible. PR-5's overshoot stop remains armed verbatim.
+
+### Pre-committed responses to anticipated misses
+
+- **If PR-9 or PR-10 misses**, the no-crossing predicate failed its purpose. STOP class: redesign, not adjustment.
+- **If PR-12's scored legs miss while PR-9/PR-10 hit**, coalition wounded has a second source beyond the interception; that becomes its own diagnostic before any ruling.
+- **If PR-13 misses**, the exclusion was mis-scoped; re-examine against the D75 profile-scoping precedent before touching anything else.
