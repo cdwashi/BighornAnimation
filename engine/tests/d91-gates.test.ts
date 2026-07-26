@@ -179,6 +179,124 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     expect(Number.isFinite(terrain.movementAtMeters(unit.position.x, unit.position.y).cost)).toBe(true);
   });
 
+  it('D93 releases a commitment when its threat leaves the activation radius', () => {
+    const synthetic = cloneScenario(scenario);
+    const ids = new Set(['hunkpapa-pool', 'hunkpapa-camp', 'co-a']);
+    synthetic.units = synthetic.units.filter((unit) => ids.has(unit.id));
+    synthetic.leaders = [];
+    synthetic.orders = [];
+    synthetic.checkpoints = [];
+    synthetic.observationEvents = [];
+    synthetic.variants = [];
+    synthetic.coverFeatures = [];
+    if (synthetic.campDefense) synthetic.campDefense.turnoutDelayMinutes.best = 0;
+    const terrain = new FeatureTerrain([
+      { id: 'feature-a', points: [{ x: 600, y: 0 }] },
+    ]);
+    const state = initializeState(synthetic, terrain, 1);
+    const band = state.units.find((unit) => unit.id === 'hunkpapa-pool');
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const threat = state.units.find((unit) => unit.id === 'co-a');
+    if (!band || !camp || !threat) throw new Error('synthetic units missing');
+    band.position = { x: 500, y: 0 };
+    camp.position = { x: 0, y: 0 };
+    threat.position = { x: 1_000, y: 0 };
+    state.believedPictures['lakota-cheyenne-coalition'] = {
+      'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
+    };
+    const events: SimEvent[] = [];
+    const update = (tick: number): void => {
+      state.tick = tick;
+      updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    };
+
+    update(0);
+    update(1);
+    expect(band.campDefense?.threatUnitId).toBe('co-a');
+    band.posture = 'CHARGE';
+    band.pursuit = {
+      targetUnitId: 'co-a',
+      lastRepathTick: 1,
+      lastTargetPosition: { ...threat.position },
+      contactEmitted: false,
+    };
+
+    state.believedPictures['lakota-cheyenne-coalition']['co-a'].lastSeenPos = {
+      x: 3_001,
+      y: 0,
+    };
+    update(2);
+    expect(band.campDefense).toBeUndefined();
+    expect(band.campDefenseAlert).toBeUndefined();
+    expect(band.pursuit).toBeUndefined();
+    expect(band.posture).toBe('HOLD');
+  });
+
+  it('D96 holds CHARGE after degraded cohesion and bare target-centered local superiority', () => {
+    const synthetic = cloneScenario(scenario);
+    const ids = new Set(['hunkpapa-pool', 'gall-band', 'hunkpapa-camp', 'co-a']);
+    synthetic.units = synthetic.units.filter((unit) => ids.has(unit.id));
+    synthetic.leaders = [];
+    synthetic.orders = [];
+    synthetic.checkpoints = [];
+    synthetic.observationEvents = [];
+    synthetic.variants = [];
+    synthetic.coverFeatures = [];
+    if (synthetic.campDefense) synthetic.campDefense.turnoutDelayMinutes.best = 0;
+    const terrain = new FeatureTerrain([
+      { id: 'feature-a', points: [{ x: 600, y: 0 }] },
+    ]);
+    const state = initializeState(synthetic, terrain, 1);
+    const band = state.units.find((unit) => unit.id === 'hunkpapa-pool');
+    const support = state.units.find((unit) => unit.id === 'gall-band');
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const threat = state.units.find((unit) => unit.id === 'co-a');
+    if (!band || !support || !camp || !threat) throw new Error('synthetic units missing');
+    band.position = { x: 600, y: 0 };
+    band.strengthAvailable = 60;
+    support.position = { x: 1_400, y: 0 };
+    support.strengthAvailable = 100;
+    support.moraleState = 'BROKEN';
+    camp.position = { x: 0, y: 0 };
+    threat.position = { x: 1_000, y: 0 };
+    threat.strengthAvailable = 100;
+    threat.moraleState = 'SHAKEN';
+    state.believedPictures['lakota-cheyenne-coalition'] = {
+      'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
+    };
+    const events: SimEvent[] = [];
+    const update = (tick: number): void => {
+      state.tick = tick;
+      updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    };
+
+    update(0);
+    update(1);
+    update(2);
+    expect(band.posture).not.toBe('CHARGE');
+
+    support.moraleState = 'STEADY';
+    threat.moraleState = 'STEADY';
+    update(3);
+    expect(band.posture).not.toBe('CHARGE');
+
+    threat.moraleState = 'SHAKEN';
+    update(4);
+    expect(band.posture).toBe('CHARGE');
+    expect(band.speedClass).toBe('CAVALRY_GALLOP');
+    expect(band.pursuit).toMatchObject({
+      targetUnitId: 'co-a',
+      lastRepathTick: 4,
+    });
+    expect(band.path.at(-1)).toMatchObject(threat.position);
+
+    support.moraleState = 'BROKEN';
+    threat.moraleState = 'STEADY';
+    update(5);
+    expect(band.posture).toBe('CHARGE');
+    expect(band.pursuit?.targetUnitId).toBe('co-a');
+  });
+
   it('D91 permanent invariant — no baseline unit occupies a non-finite-cost cell at any full-day tick', async () => {
     const terrain = await TerrainMovementLoader.fromDirectory(join(
       process.cwd(), 'data', 'terrain', 'little-bighorn-1876',

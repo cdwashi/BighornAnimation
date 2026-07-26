@@ -113,6 +113,7 @@ function hasScheduledOrActiveOrder(state: SimState, unit: UnitRuntime): boolean 
 function release(unit: UnitRuntime): void {
   unit.campDefense = undefined;
   unit.campDefenseAlert = undefined;
+  unit.pursuit = undefined;
   unit.path = [];
   unit.pathIndex = 0;
   unit.pathProgressMeters = 0;
@@ -251,12 +252,99 @@ function switchThreat(
   radiusMeters: number,
 ): void {
   if (!unit.campDefense) return;
+  unit.pursuit = undefined;
+  unit.posture = 'MARCH';
+  unit.speedClass = unit.mounted ? 'CAVALRY_WALK' : 'ON_FOOT';
   unit.campDefense.campUnitId = threat.camp.id;
   unit.campDefense.threatUnitId = threat.threat.id;
   unit.campDefense.lastPathAttemptTick = state.tick;
   unit.campDefense.featureId = undefined;
   unit.campDefense.goal = undefined;
   selectReachableFeature(unit, threat, terrain, features, radiusMeters);
+}
+
+function committedThreatOutsideRadius(
+  state: SimState,
+  sideId: string,
+  commitment: ThreatCommitment,
+  radiusMeters: number,
+): boolean {
+  const camp = state.units.find((unit) => unit.id === commitment.campUnitId);
+  const belief = state.believedPictures[sideId]?.[commitment.threatUnitId];
+  if (!camp || !belief) return false;
+  return Math.hypot(
+    belief.lastSeenPos.x - camp.position.x,
+    belief.lastSeenPos.y - camp.position.y,
+  ) > radiusMeters;
+}
+
+function localAvailableStrength(
+  scenario: Scenario,
+  state: SimState,
+  sideId: string,
+  center: PointMeters,
+  radiusMeters: number,
+  closingSide: boolean,
+): number {
+  return state.units.filter((candidate) => {
+    const source = scenario.units[candidate.unitIndex];
+    if (source.sideId !== sideId || source.kind === 'NONCOMBATANT_CAMP') return false;
+    if (candidate.endState === 'DESTROYED') return false;
+    if (closingSide && (candidate.moraleState === 'BROKEN' ||
+      candidate.moraleState === 'ROUTED')) return false;
+    return Math.hypot(
+      candidate.position.x - center.x,
+      candidate.position.y - center.y,
+    ) <= radiusMeters;
+  }).reduce((sum, candidate) => sum + candidate.strengthAvailable, 0);
+}
+
+function shouldClose(
+  scenario: Scenario,
+  state: SimState,
+  unit: UnitRuntime,
+  threat: UnitRuntime,
+  radiusMeters: number,
+): boolean {
+  if (threat.moraleState === 'STEADY') return false;
+  const closingSideId = scenario.units[unit.unitIndex].sideId;
+  const threatSideId = scenario.units[threat.unitIndex].sideId;
+  const closingStrength = localAvailableStrength(
+    scenario,
+    state,
+    closingSideId,
+    threat.position,
+    radiusMeters,
+    true,
+  );
+  const threatStrength = localAvailableStrength(
+    scenario,
+    state,
+    threatSideId,
+    threat.position,
+    radiusMeters,
+    false,
+  );
+  return closingStrength > threatStrength;
+}
+
+function startClosing(
+  state: SimState,
+  unit: UnitRuntime,
+  threat: UnitRuntime,
+  terrain: EngineTerrain,
+): boolean {
+  if (!setPath(unit, terrain, threat.position)) return false;
+  unit.posture = 'CHARGE';
+  unit.speedClass = unit.mounted ? 'CAVALRY_GALLOP' : 'ON_FOOT';
+  unit.distanceMovedOnActiveOrder = 0;
+  unit.pursuit = {
+    targetUnitId: threat.id,
+    lastRepathTick: state.tick,
+    lastTargetPosition: { ...threat.position },
+    contactEmitted: false,
+  };
+  return true;
 }
 
 export function updateCampDefense(
@@ -324,6 +412,16 @@ export function updateCampDefense(
     }
 
     const previousThreatId = unit.campDefense.threatUnitId;
+    // D93: release uses the same believed camp-to-threat radius as activation.
+    if (committedThreatOutsideRadius(
+      state,
+      source.sideId,
+      unit.campDefense,
+      config.campDefenseRadiusMeters,
+    )) {
+      release(unit);
+      continue;
+    }
     const threat = nearestCampThreat(
       scenario,
       state,
@@ -344,6 +442,21 @@ export function updateCampDefense(
         features,
         config.campDefenseRadiusMeters,
       );
+      continue;
+    }
+    // D96: the first passed trigger is held for this threat commitment. CHARGE
+    // posture and target-following movement enter D65 shock resolution without
+    // reusing either INITIATIVE or COMBAT pursuit.
+    if (unit.posture === 'CHARGE' && unit.pursuit?.targetUnitId === threat.threat.id) {
+      continue;
+    }
+    if (shouldClose(
+      scenario,
+      state,
+      unit,
+      threat.threat,
+      combat.friendlyRadiusMeters,
+    ) && startClosing(state, unit, threat.threat, terrain)) {
       continue;
     }
     if (!unit.blockedReason ||

@@ -5,13 +5,13 @@
 - Variants: `baseline`
 - Review tier: **baseline**
 - Counterfactual provenance flag: **no**
-- Composite: **55.71%**
+- Composite: **58.48%**
 - Composite gates: **FAIL**
 
 | Component | Weight | Included score | Gate |
 |---|---:|---:|---|
 | C1 Checkpoints | 0.35 | 50.00% | FAIL — HIGH 25.0% ≥ 70%; overall 50.0% ≥ 50% |
-| C2 Casualties | 0.25 | 66.67% | FAIL — both killed/wounded side bands and every flagship end-state exact |
+| C2 Casualties | 0.25 | 77.78% | FAIL — both killed/wounded side bands and every flagship end-state exact |
 | C3 End states | 0.25 | 30.77% | FAIL — 100% of HIGH-confidence assertions by their minute |
 | C4 Observations | 0.15 | 92.31% | PASS — 92.3% ≥ 80% of HIGH/MEDIUM events |
 
@@ -41,10 +41,10 @@ Gate: **FAIL** — both killed/wounded side bands and every flagship end-state e
 
 | Item | Confidence | Scope | Expected | Actual | Result |
 |---|---|---|---|---|---|
-| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 222 | FAIL |
-| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 42 | FAIL |
-| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 77 | PASS |
-| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 209 | FAIL |
+| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 217 | FAIL |
+| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 47 | PASS |
+| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 80 | PASS |
+| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 203 | FAIL |
 | flagship:co-c | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-e | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-f | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
@@ -66,7 +66,7 @@ Gate: **FAIL** — 100% of HIGH-confidence assertions by their minute.
 | co-g:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |
 | co-m:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |
 | co-h:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 2032.4 m from reno-hill | FAIL |
-| co-d:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 676.1 m from reno-hill; destroyed | FAIL |
+| co-d:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 626.5 m from reno-hill; destroyed | FAIL |
 | co-k:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 2032.4 m from reno-hill | FAIL |
 | co-b:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 3966.1 m from reno-hill | FAIL |
 | pack-train:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |

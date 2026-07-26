@@ -38,7 +38,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // the full-state baseline while preserving same-seed determinism. The
     // scenario content hash feeds the PRNG (D31a), so the schemaVersion 0.3
     // bump re-rolled the stream and refreshed this pin again.
-    expect(hashState(baseline.state())).toBe('8e16fefd');
+    // D93/D96 release and held-CHARGE behavior intentionally change the
+    // full-state oracle without changing scenario content or its PRNG stream.
+    expect(hashState(baseline.state())).toBe('78e4771e');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -109,7 +111,7 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('8e16fefd');
+      expect(hashState(sim.state())).toBe('78e4771e');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
@@ -119,9 +121,14 @@ describe('M4-A F1-F6 closeout gates', () => {
     // Measured deterministic whole-run oracle: findPath call count depends on
     // the full day's combat stream, so it moves with any scenario-content
     // change (D31a seeds the PRNG from the content hash). 164 pre-D91, 168 at
-    // schemaVersion 0.2 post-D91, 190 at 0.3.
-    expect(pathMetrics.calls).toBe(190);
-    expect(pathMetrics.expandedNodes).toBeLessThanOrEqual(11_100_000);
+    // schemaVersion 0.2 post-D91, 190 at 0.3, and 205 after D93/D96 adds
+    // symmetric release plus the existing target-following CHARGE path.
+    expect(pathMetrics.calls).toBe(205);
+    // D94 participant-scaled ceiling: the pre-D91 11.1M ceiling covered 447
+    // active warriors. D91 raised participation to 964, so the resource ceiling
+    // scales by 964 / 447 and is deliberately not fitted to the observed run.
+    const participantScaledExpansionCeiling = Math.ceil(11_100_000 * 964 / 447);
+    expect(pathMetrics.expandedNodes).toBeLessThanOrEqual(participantScaledExpansionCeiling);
     expect(pathMetrics.scratchAllocations).toBeLessThanOrEqual(3);
     console.info(`[gate] F6 median=${median.toFixed(1)}ms timings=${timings.map((value) =>
       value.toFixed(1)).join(',')} pathfind=${JSON.stringify(pathMetrics)}`);
