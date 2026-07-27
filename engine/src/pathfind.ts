@@ -32,12 +32,16 @@ export interface TerrainCoverFeature {
   points: readonly PointMeters[];
 }
 
+export type ChannelSide = 'WEST' | 'EAST' | 'ON_CHANNEL';
+
 export interface EngineTerrain {
   toLocal(lat: number, lon: number): [number, number];
   gridForPath(start: PointMeters, goal: PointMeters): MovementGrid;
   movementAtMeters(x: number, y: number): MovementSample;
   /** D92 substrate features derived by the terrain loader, not scenario JSON. */
   coverFeatures?(): readonly TerrainCoverFeature[];
+  /** D98 bank side derived from the committed S-to-N channel geometry loaded with terrain. */
+  channelSideAtMeters?(x: number, y: number): ChannelSide;
   elevationAtMeters(x: number, y: number): number;
   resolutionAtMeters?(x: number, y: number): number;
   minimumResolutionMeters?: number;

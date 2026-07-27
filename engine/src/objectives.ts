@@ -1,4 +1,5 @@
 import type { Order, Scenario } from '../../src/schema/scenario-schema.js';
+import { campDefensePathBlocker, findCampDefensePath } from './camp-defense.js';
 import { findPath, findStraightPath, type EngineTerrain, type PathPoint, type PointMeters } from './pathfind.js';
 import type { SimState, UnitRuntime } from './state.js';
 
@@ -126,10 +127,11 @@ export function repathPursuit(
     terrain, cache,
   ) : (() => {
     const grid = terrain.gridForPath(unit.position, target);
+    const blocked = campDefensePathBlocker(state, unit, terrain);
     const cell = (point: PointMeters): string => `${Math.round((point.x - grid.minX) / grid.resolutionMeters)},${
       Math.round((point.y - grid.minY) / grid.resolutionMeters)}`;
     const key = `combat:${grid.id}:${cell(unit.position)}:${cell(target)}`;
-    const cached = memoizeCombat ? cache.get(key) : undefined;
+    const cached = memoizeCombat && !blocked ? cache.get(key) : undefined;
     const cachedPath = cached?.map((point) => ({ ...point }));
     if (cachedPath) {
       cachedPath[0] = { ...cachedPath[0], ...unit.position };
@@ -137,8 +139,10 @@ export function repathPursuit(
     }
     const path = cachedPath
       ? { status: 'reachable' as const, path: cachedPath }
-      : findStraightPath(grid, unit.position, target) ?? findPath(grid, unit.position, target);
-    if (memoizeCombat && !cached && path.status === 'reachable') {
+      : blocked
+        ? findCampDefensePath(state, unit, terrain, target)
+        : findStraightPath(grid, unit.position, target) ?? findPath(grid, unit.position, target);
+    if (memoizeCombat && !blocked && !cached && path.status === 'reachable') {
       cache.set(key, path.path.map((point) => ({ ...point })));
     }
     return path.status === 'reachable'

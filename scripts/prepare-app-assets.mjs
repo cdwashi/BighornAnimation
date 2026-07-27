@@ -16,4 +16,8 @@ const assets = [
 ];
 
 await mkdir(target, { recursive: true });
-await Promise.all(assets.map((asset) => cp(join(source, asset), join(target, asset))));
+await Promise.all([
+  ...assets.map((asset) => cp(join(source, asset), join(target, asset))),
+  cp(join(process.cwd(), 'docs', 'o4-corrections-data.json'),
+    join(target, 'o4-corrections-data.json')),
+]);

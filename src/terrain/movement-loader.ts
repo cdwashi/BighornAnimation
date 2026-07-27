@@ -1,4 +1,5 @@
 import type {
+  ChannelSide,
   EngineTerrain,
   MovementGrid,
   MovementSample,
@@ -28,6 +29,12 @@ interface RasterManifest extends TerrainManifestData {
       byteOrder: 'little-endian';
       noData: 'Infinity';
     };
+  };
+}
+
+interface ChannelCorrections {
+  channel: {
+    points: Array<[number, number]>;
   };
 }
 
@@ -100,17 +107,47 @@ function clusterTimberFeatures(
   return features;
 }
 
+/**
+ * D98: project the committed 298-point S-to-N correction geometry at load.
+ * Runtime classification uses the same nearest-segment cross-product as the
+ * pre-freeze crossing probe; an exact channel point is neither bank.
+ */
+function deriveChannelClassifier(
+  terrain: TerrainLoader,
+  corrections: ChannelCorrections,
+): readonly PointMeters[] {
+  if (corrections.channel.points.length !== 298) {
+    throw new Error('D98 channel geometry must contain all 298 committed points');
+  }
+  const channel = corrections.channel.points.map(([lat, lon]) => {
+    const [x, y] = terrain.toLocal(lat, lon);
+    return { x, y };
+  });
+  for (let index = 1; index < channel.length; index += 1) {
+    if (channel[index].y < channel[index - 1].y) {
+      throw new Error('D98 channel geometry must remain ordered south-to-north');
+    }
+  }
+  return channel;
+}
+
 /** Node-side adapter; engine/src only sees the injected EngineTerrain interface. */
 export class TerrainMovementLoader implements EngineTerrain {
   readonly minimumResolutionMeters: number;
+  private readonly channelSideCache: Record<TerrainTierName, Uint8Array>;
 
   private constructor(
     private readonly terrain: TerrainLoader,
     private readonly manifest: RasterManifest,
     private readonly grids: Record<TerrainTierName, MovementGrid>,
     private readonly derivedCoverFeatures: readonly TerrainCoverFeature[],
+    private readonly channel: readonly PointMeters[],
   ) {
     this.minimumResolutionMeters = terrain.minimumResolutionMeters;
+    this.channelSideCache = {
+      core: new Uint8Array(grids.core.width * grids.core.height),
+      full: new Uint8Array(grids.full.width * grids.full.height),
+    };
   }
 
   fullBounds(): RasterManifest['tiers']['full']['localBounds'] {
@@ -122,7 +159,7 @@ export class TerrainMovementLoader implements EngineTerrain {
   }
 
   static async fromDirectory(directory: string): Promise<TerrainMovementLoader> {
-    const [{ readFile }, { join }, { brotliDecompressSync }] = await Promise.all([
+    const [{ readFile }, { join, resolve }, { brotliDecompressSync }] = await Promise.all([
       import(/* webpackIgnore: true */ 'node:fs/promises'),
       import(/* webpackIgnore: true */ 'node:path'),
       import(/* webpackIgnore: true */ 'node:zlib'),
@@ -141,11 +178,12 @@ export class TerrainMovementLoader implements EngineTerrain {
     const terrain = await TerrainLoader.fromDirectory(directory);
     const coreTier = manifest.tiers.core;
     const fullTier = manifest.tiers.full;
-    const [movementBytes, coverKinds, coreSlope, fullSlope] = await Promise.all([
+    const [movementBytes, coverKinds, coreSlope, fullSlope, correctionsBytes] = await Promise.all([
       readMaybeBrotli(join(directory, manifest.rasterLayers.movementCost.path)),
       readMaybeBrotli(join(directory, manifest.rasterLayers.coverKind.path)),
       readMaybeBrotli(join(directory, coreTier.slope.path)),
       readMaybeBrotli(join(directory, fullTier.slope.path)),
+      readFile(resolve(directory, '..', '..', '..', 'docs', 'o4-corrections-data.json')),
     ]);
     const coreCosts = decodeFloat32LittleEndian(movementBytes);
     const expectedCore = coreTier.width * coreTier.height;
@@ -201,6 +239,10 @@ export class TerrainMovementLoader implements EngineTerrain {
       manifest,
       grids,
       clusterTimberFeatures(grids.core, manifest.rasterLayers.coverKind.codes.TIMBER),
+      deriveChannelClassifier(
+        terrain,
+        JSON.parse(new TextDecoder().decode(correctionsBytes)) as ChannelCorrections,
+      ),
     );
   }
 
@@ -222,11 +264,15 @@ export class TerrainMovementLoader implements EngineTerrain {
     const terrain = await TerrainLoader.fromUrl(manifestUrl);
     const coreTier = manifest.tiers.core;
     const fullTier = manifest.tiers.full;
-    const [movementBytes, coverKinds, coreSlope, fullSlope] = await Promise.all([
+    const [movementBytes, coverKinds, coreSlope, fullSlope, corrections] = await Promise.all([
       readAsset(manifest.rasterLayers.movementCost),
       readAsset(manifest.rasterLayers.coverKind),
       readAsset(coreTier.slope),
       readAsset(fullTier.slope),
+      fetch(new URL('o4-corrections-data.json', base)).then((item) => {
+        if (!item.ok) throw new Error(`D98 channel geometry fetch failed: ${item.status}`);
+        return item.json() as Promise<ChannelCorrections>;
+      }),
     ]);
     return TerrainMovementLoader.fromDecoded(
       terrain,
@@ -235,6 +281,7 @@ export class TerrainMovementLoader implements EngineTerrain {
       coverKinds,
       coreSlope,
       fullSlope,
+      corrections,
     );
   }
 
@@ -245,6 +292,7 @@ export class TerrainMovementLoader implements EngineTerrain {
     coverKinds: Uint8Array,
     coreSlope: Uint8Array,
     fullSlope: Uint8Array,
+    corrections: ChannelCorrections,
   ): TerrainMovementLoader {
     const coreTier = manifest.tiers.core;
     const fullTier = manifest.tiers.full;
@@ -294,6 +342,7 @@ export class TerrainMovementLoader implements EngineTerrain {
       manifest,
       grids,
       clusterTimberFeatures(grids.core, manifest.rasterLayers.coverKind.codes.TIMBER),
+      deriveChannelClassifier(terrain, corrections),
     );
   }
 
@@ -307,6 +356,85 @@ export class TerrainMovementLoader implements EngineTerrain {
 
   coverFeatures(): readonly TerrainCoverFeature[] {
     return this.derivedCoverFeatures;
+  }
+
+  channelSideAtMeters(x: number, y: number): ChannelSide {
+    for (const name of ['core', 'full'] as const) {
+      const grid = this.grids[name];
+      const gridColumn = (x - grid.minX) / grid.resolutionMeters;
+      const gridRow = (y - grid.minY) / grid.resolutionMeters;
+      const column = Math.round(gridColumn);
+      const row = Math.round(gridRow);
+      if (column < 0 || row < 0 || column >= grid.width || row >= grid.height ||
+        Math.abs(gridColumn - column) > 1e-8 || Math.abs(gridRow - row) > 1e-8) continue;
+      const cell = row * grid.width + column;
+      const cached = this.channelSideCache[name][cell];
+      if (cached !== 0) return cached === 1 ? 'WEST' : cached === 2 ? 'EAST' : 'ON_CHANNEL';
+      const side = this.classifyChannelSide(x, y);
+      this.channelSideCache[name][cell] = side === 'WEST' ? 1 : side === 'EAST' ? 2 : 3;
+      return side;
+    }
+    return this.classifyChannelSide(x, y);
+  }
+
+  private classifyChannelSide(x: number, y: number): ChannelSide {
+    let nearestSquaredMeters = Number.POSITIVE_INFINITY;
+    let selectedCross = 0;
+    let selectedIndex = Number.POSITIVE_INFINITY;
+    let low = 0;
+    let high = this.channel.length;
+    while (low < high) {
+      const middle = Math.floor((low + high) / 2);
+      if (this.channel[middle].y < y) low = middle + 1;
+      else high = middle;
+    }
+    let lowerSegment = Math.min(this.channel.length - 2, low - 1);
+    let upperSegment = Math.max(0, low);
+    const verticalDistance = (index: number): number => {
+      const startY = this.channel[index].y;
+      const endY = this.channel[index + 1].y;
+      return y < startY ? startY - y : y > endY ? y - endY : 0;
+    };
+    const inspect = (index: number): void => {
+      const start = this.channel[index];
+      const end = this.channel[index + 1];
+      const dx = end.x - start.x;
+      const dy = end.y - start.y;
+      const lengthSquared = dx * dx + dy * dy || 1;
+      const projection = Math.max(0, Math.min(
+        1,
+        ((x - start.x) * dx + (y - start.y) * dy) / lengthSquared,
+      ));
+      const offsetX = x - (start.x + projection * dx);
+      const offsetY = y - (start.y + projection * dy);
+      const squaredMeters = offsetX * offsetX + offsetY * offsetY;
+      if (squaredMeters < nearestSquaredMeters ||
+        (squaredMeters === nearestSquaredMeters && index < selectedIndex)) {
+        nearestSquaredMeters = squaredMeters;
+        selectedCross = dx * (y - start.y) - dy * (x - start.x);
+        selectedIndex = index;
+      }
+    };
+    while (lowerSegment >= 0 || upperSegment < this.channel.length - 1) {
+      const lowerDistance = lowerSegment >= 0
+        ? verticalDistance(lowerSegment)
+        : Number.POSITIVE_INFINITY;
+      const upperDistance = upperSegment < this.channel.length - 1
+        ? verticalDistance(upperSegment)
+        : Number.POSITIVE_INFINITY;
+      const nextDistance = Math.min(lowerDistance, upperDistance);
+      if (nextDistance * nextDistance > nearestSquaredMeters) break;
+      if (lowerDistance <= upperDistance) {
+        inspect(lowerSegment);
+        lowerSegment -= 1;
+      } else {
+        inspect(upperSegment);
+        upperSegment += 1;
+      }
+    }
+    return selectedCross > 0
+      ? 'WEST'
+      : selectedCross < 0 ? 'EAST' : 'ON_CHANNEL';
   }
 
   resolutionAtMeters(x: number, y: number): number {

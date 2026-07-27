@@ -2,7 +2,15 @@ import type { Scenario } from '../../src/schema/scenario-schema.js';
 import { minuteToTick } from './clock.js';
 import type { CombatConfig } from './combat-config.js';
 import { emitEvent, type SimEvent } from './events.js';
-import { findPath, type EngineTerrain, type PointMeters, type TerrainCoverFeature } from './pathfind.js';
+import {
+  findPath,
+  type ChannelSide,
+  type EngineTerrain,
+  type PathCellBlocked,
+  type PathResult,
+  type PointMeters,
+  type TerrainCoverFeature,
+} from './pathfind.js';
 import type { SpottingConfig } from './spotting.js';
 import type { SimState, UnitRuntime } from './state.js';
 
@@ -26,6 +34,15 @@ interface ThreatCommitment {
   threatUnitId: string;
 }
 
+const constrainedPathCache = new WeakMap<SimState, Map<string, PathResult>>();
+
+function isCampThreat(scenario: Scenario, threat: UnitRuntime, sideId: string): boolean {
+  const source = scenario.units[threat.unitIndex];
+  return source.sideId !== sideId &&
+    source.kind !== 'NONCOMBATANT_CAMP' &&
+    source.tacticsProfileId !== 'irregular-scout';
+}
+
 function campsForSide(scenario: Scenario, state: SimState, sideId: string): UnitRuntime[] {
   return state.units.filter((unit) => {
     const source = scenario.units[unit.unitIndex];
@@ -47,8 +64,7 @@ function spottedCampThreats(
     if (belief.status !== 'spotted') continue;
     const threat = state.units.find((unit) => unit.id === targetUnitId);
     if (!threat || threat.endState === 'DESTROYED' || threat.withdrawnOffField) continue;
-    const threatSource = scenario.units[threat.unitIndex];
-    if (threatSource.sideId === sideId || threatSource.kind === 'NONCOMBATANT_CAMP') continue;
+    if (!isCampThreat(scenario, threat, sideId)) continue;
     for (const camp of camps) {
       const distanceMeters = Math.hypot(
         belief.lastSeenPos.x - camp.position.x,
@@ -84,7 +100,8 @@ function nearestCampThreat(
   const candidates = spottedCampThreats(scenario, state, sideId, radiusMeters);
   if (!commitment) return candidates[0];
   const threat = state.units.find((unit) => unit.id === commitment.threatUnitId);
-  if (!threat || threat.endState === 'DESTROYED' || threat.withdrawnOffField) {
+  if (!threat || threat.endState === 'DESTROYED' || threat.withdrawnOffField ||
+    !isCampThreat(scenario, threat, sideId)) {
     return candidates[0];
   }
   const camp = state.units.find((unit) => unit.id === commitment.campUnitId);
@@ -147,15 +164,35 @@ function nearestPoint(points: readonly PointMeters[], target: PointMeters): {
   return { point: { ...selected }, distanceMeters };
 }
 
+function classifiedSide(
+  terrain: EngineTerrain,
+  point: PointMeters,
+): ChannelSide | undefined {
+  return terrain.channelSideAtMeters?.(point.x, point.y);
+}
+
+function campSide(
+  terrain: EngineTerrain,
+  camp: PointMeters,
+): Exclude<ChannelSide, 'ON_CHANNEL'> | undefined {
+  const side = classifiedSide(terrain, camp);
+  return side === 'WEST' || side === 'EAST' ? side : undefined;
+}
+
 function eligibleFeatures(
   features: readonly DefenseFeature[],
   camp: PointMeters,
   threat: PointMeters,
   radiusMeters: number,
+  terrain: EngineTerrain,
 ): Array<{ feature: DefenseFeature; goal: PointMeters; threatDistanceMeters: number }> {
+  const defendedSide = campSide(terrain, camp);
   return features.flatMap((feature) => {
-    if (nearestPoint(feature.points, camp).distanceMeters > radiusMeters) return [];
-    const nearest = nearestPoint(feature.points, threat);
+    const points = defendedSide
+      ? feature.points.filter((point) => classifiedSide(terrain, point) === defendedSide)
+      : feature.points;
+    if (points.length === 0 || nearestPoint(points, camp).distanceMeters > radiusMeters) return [];
+    const nearest = nearestPoint(points, threat);
     return [{
       feature,
       goal: nearest.point,
@@ -166,12 +203,67 @@ function eligibleFeatures(
     left.feature.id.localeCompare(right.feature.id));
 }
 
+/**
+ * D98 path constraint. A band already on its camp's side cannot path onto the
+ * channel or the opposite bank. A band starting away from home receives no
+ * blocker, preserving the ruling that movement toward its camp side is always
+ * permitted.
+ */
+export function campDefensePathBlocker(
+  state: SimState,
+  unit: UnitRuntime,
+  terrain: EngineTerrain,
+): PathCellBlocked | undefined {
+  if (!unit.campDefense || !terrain.channelSideAtMeters) return undefined;
+  const camp = state.units.find((candidate) => candidate.id === unit.campDefense?.campUnitId);
+  if (!camp) return undefined;
+  const defendedSide = campSide(terrain, camp.position);
+  if (!defendedSide || classifiedSide(terrain, unit.position) !== defendedSide) return undefined;
+  return (point): boolean => classifiedSide(terrain, point) !== defendedSide;
+}
+
+export function findCampDefensePath(
+  state: SimState,
+  unit: UnitRuntime,
+  terrain: EngineTerrain,
+  goal: PointMeters,
+): PathResult {
+  let cache = constrainedPathCache.get(state);
+  if (!cache) {
+    cache = new Map();
+    constrainedPathCache.set(state, cache);
+  }
+  const grid = terrain.gridForPath(unit.position, goal);
+  const key = `${unit.campDefense?.campUnitId ?? 'none'}:${grid.id}:` +
+    `${unit.position.x},${unit.position.y}:${goal.x},${goal.y}`;
+  const cached = cache.get(key);
+  if (cached) {
+    if (cached.status === 'unreachable') return { ...cached };
+    const path = cached.path.map((point) => ({ ...point }));
+    path[0] = { ...path[0], ...unit.position };
+    path[path.length - 1] = { ...path[path.length - 1], ...goal };
+    return { ...cached, path };
+  }
+  const blocked = campDefensePathBlocker(state, unit, terrain);
+  const result = findPath(
+    grid,
+    unit.position,
+    goal,
+    blocked,
+  );
+  cache.set(key, result.status === 'reachable'
+    ? { ...result, path: result.path.map((point) => ({ ...point })) }
+    : { ...result });
+  return result;
+}
+
 function setPath(
+  state: SimState,
   unit: UnitRuntime,
   terrain: EngineTerrain,
   goal: PointMeters,
 ): boolean {
-  const result = findPath(terrain.gridForPath(unit.position, goal), unit.position, goal);
+  const result = findCampDefensePath(state, unit, terrain, goal);
   unit.pathProgressMeters = 0;
   if (result.status === 'unreachable') {
     unit.path = [];
@@ -186,6 +278,7 @@ function setPath(
 }
 
 function selectReachableFeature(
+  state: SimState,
   unit: UnitRuntime,
   threat: CampThreat,
   terrain: EngineTerrain,
@@ -198,9 +291,10 @@ function selectReachableFeature(
     threat.camp.position,
     threat.threatPosition,
     radiusMeters,
+    terrain,
   )) {
     if (candidate.feature.id === excludedFeatureId) continue;
-    if (!setPath(unit, terrain, candidate.goal)) continue;
+    if (!setPath(state, unit, terrain, candidate.goal)) continue;
     if (!unit.campDefense) return false;
     unit.campDefense.featureId = candidate.feature.id;
     unit.campDefense.goal = candidate.goal;
@@ -233,7 +327,7 @@ function activate(
   unit.posture = 'MARCH';
   unit.speedClass = unit.mounted ? 'CAVALRY_WALK' : 'ON_FOOT';
   unit.distanceMovedOnActiveOrder = 0;
-  selectReachableFeature(unit, threat, terrain, features, radiusMeters);
+  selectReachableFeature(state, unit, threat, terrain, features, radiusMeters);
   state.emittedEventCursor = emitEvent(events, {
     tick: state.tick,
     type: 'camp-defense-activated',
@@ -260,7 +354,7 @@ function switchThreat(
   unit.campDefense.lastPathAttemptTick = state.tick;
   unit.campDefense.featureId = undefined;
   unit.campDefense.goal = undefined;
-  selectReachableFeature(unit, threat, terrain, features, radiusMeters);
+  selectReachableFeature(state, unit, threat, terrain, features, radiusMeters);
 }
 
 function committedThreatOutsideRadius(
@@ -334,7 +428,10 @@ function startClosing(
   threat: UnitRuntime,
   terrain: EngineTerrain,
 ): boolean {
-  if (!setPath(unit, terrain, threat.position)) return false;
+  const camp = state.units.find((candidate) => candidate.id === unit.campDefense?.campUnitId);
+  const defendedSide = camp && campSide(terrain, camp.position);
+  if (defendedSide && classifiedSide(terrain, threat.position) !== defendedSide) return false;
+  if (!setPath(state, unit, terrain, threat.position)) return false;
   unit.posture = 'CHARGE';
   unit.speedClass = unit.mounted ? 'CAVALRY_GALLOP' : 'ON_FOOT';
   unit.distanceMovedOnActiveOrder = 0;
@@ -468,8 +565,9 @@ export function updateCampDefense(
     unit.campDefense.lastPathAttemptTick = state.tick;
     const heldFeatureId = unit.campDefense.featureId;
     const heldGoal = unit.campDefense.goal;
-    if (heldFeatureId && heldGoal && setPath(unit, terrain, heldGoal)) continue;
+    if (heldFeatureId && heldGoal && setPath(state, unit, terrain, heldGoal)) continue;
     selectReachableFeature(
+      state,
       unit,
       threat,
       terrain,

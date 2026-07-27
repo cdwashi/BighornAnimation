@@ -10,7 +10,13 @@ import { combatConfig } from '../src/combat-config.js';
 import type { SimEvent } from '../src/events.js';
 import { createSim } from '../src/index.js';
 import { moveUnits } from '../src/movement.js';
-import { findPath, type MovementSample, type TerrainCoverFeature } from '../src/pathfind.js';
+import { repathPursuit } from '../src/objectives.js';
+import {
+  findPath,
+  type ChannelSide,
+  type MovementSample,
+  type TerrainCoverFeature,
+} from '../src/pathfind.js';
 import { spottingConfig } from '../src/spotting.js';
 import { initializeState } from '../src/state.js';
 import { cloneScenario, FlatTerrain } from './helpers.js';
@@ -18,12 +24,21 @@ import { cloneScenario, FlatTerrain } from './helpers.js';
 const scenario = scenarioData as unknown as Scenario;
 
 class FeatureTerrain extends FlatTerrain {
-  constructor(private readonly features: readonly TerrainCoverFeature[]) {
+  constructor(
+    private readonly features: readonly TerrainCoverFeature[],
+    private readonly channelX?: number,
+  ) {
     super();
   }
 
   coverFeatures(): readonly TerrainCoverFeature[] {
     return this.features;
+  }
+
+  channelSideAtMeters(x: number, y: number): ChannelSide {
+    void y;
+    if (this.channelX === undefined || x === this.channelX) return 'ON_CHANNEL';
+    return x < this.channelX ? 'WEST' : 'EAST';
   }
 }
 
@@ -76,6 +91,13 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
       high: 20,
       provenance: { confidence: 'MEDIUM' },
     });
+    const state = initializeState(scenario, terrain, 1);
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const bench = scenario.coverFeatures?.find((feature) => feature.id === 'bench');
+    if (!camp || !bench) throw new Error('D98 side-classification fixtures missing');
+    const [benchX, benchY] = terrain.toLocal(bench.position.lat, bench.position.lon);
+    expect(terrain.channelSideAtMeters(camp.position.x, camp.position.y)).toBe('WEST');
+    expect(terrain.channelSideAtMeters(benchX, benchY)).toBe('WEST');
   });
 
   it('D91 delays turnout, commits threat and feature, switches at 250 m, and retries blocked paths at 10 ticks', () => {
@@ -311,4 +333,123 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
       }
     }
   }, 120_000);
+
+  it('D98 confines feature goals and held closing paths to the defended camp side while order paths still cross', () => {
+    const synthetic = cloneScenario(scenario);
+    const ids = new Set([
+      'hunkpapa-pool',
+      'gall-band',
+      'hunkpapa-camp',
+      'co-a',
+    ]);
+    synthetic.units = synthetic.units.filter((unit) => ids.has(unit.id));
+    synthetic.leaders = [];
+    synthetic.orders = [];
+    synthetic.checkpoints = [];
+    synthetic.observationEvents = [];
+    synthetic.variants = [];
+    synthetic.coverFeatures = [];
+    if (synthetic.campDefense) synthetic.campDefense.turnoutDelayMinutes.best = 0;
+    const terrain = new FeatureTerrain([
+      { id: 'west-feature', points: [{ x: 300, y: 0 }] },
+      { id: 'east-feature', points: [{ x: 700, y: 0 }] },
+    ], 500);
+    const state = initializeState(synthetic, terrain, 1);
+    const band = state.units.find((unit) => unit.id === 'hunkpapa-pool');
+    const support = state.units.find((unit) => unit.id === 'gall-band');
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const threat = state.units.find((unit) => unit.id === 'co-a');
+    if (!band || !support || !camp || !threat) throw new Error('synthetic units missing');
+    band.position = { x: 200, y: 0 };
+    band.strengthAvailable = 100;
+    support.position = { x: 800, y: 0 };
+    support.strengthAvailable = 100;
+    camp.position = { x: 100, y: 0 };
+    threat.position = { x: 900, y: 0 };
+    threat.strengthAvailable = 10;
+    threat.moraleState = 'SHAKEN';
+    state.believedPictures['lakota-cheyenne-coalition'] = {
+      'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
+    };
+    const events: SimEvent[] = [];
+    const update = (tick: number): void => {
+      state.tick = tick;
+      updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    };
+
+    update(0);
+    update(1);
+    expect(band.campDefense).toMatchObject({
+      threatUnitId: 'co-a',
+      featureId: 'west-feature',
+      goal: { x: 300, y: 0 },
+    });
+    update(2);
+    expect(band.posture).not.toBe('CHARGE');
+
+    threat.position = { x: 400, y: 0 };
+    support.position = { x: 300, y: 0 };
+    update(3);
+    expect(band.posture).toBe('CHARGE');
+    expect(band.path.every((point) => terrain.channelSideAtMeters(point.x, point.y) === 'WEST'))
+      .toBe(true);
+
+    threat.position = { x: 700, y: 0 };
+    state.tick = 13;
+    const heldCharge = repathPursuit(synthetic, state, band, terrain, new Map());
+    expect(heldCharge.status).toBe('unreachable');
+    expect(band.position.x).toBeLessThan(500);
+
+    band.campDefense = undefined;
+    if (band.pursuit) band.pursuit.kind = 'ORDER';
+    const ordered = repathPursuit(synthetic, state, band, terrain, new Map());
+    expect(ordered.status).toBe('reachable');
+    if (ordered.status === 'reachable') {
+      expect(ordered.path.at(-1)).toMatchObject({ x: 700, y: 0 });
+    }
+  });
+
+  it('D99 excludes irregular-scout profiles from camp-threat eligibility regardless of unit kind', () => {
+    const synthetic = cloneScenario(scenario);
+    const ids = new Set(['hunkpapa-pool', 'hunkpapa-camp', 'co-a']);
+    synthetic.units = synthetic.units.filter((unit) => ids.has(unit.id));
+    synthetic.leaders = [];
+    synthetic.orders = [];
+    synthetic.checkpoints = [];
+    synthetic.observationEvents = [];
+    synthetic.variants = [];
+    synthetic.coverFeatures = [];
+    if (synthetic.campDefense) synthetic.campDefense.turnoutDelayMinutes.best = 0;
+    const sourceThreat = synthetic.units.find((unit) => unit.id === 'co-a');
+    if (!sourceThreat) throw new Error('synthetic source threat missing');
+    const regularProfileId = sourceThreat.tacticsProfileId;
+    sourceThreat.tacticsProfileId = 'irregular-scout';
+    const terrain = new FeatureTerrain([
+      { id: 'feature-a', points: [{ x: 600, y: 0 }] },
+    ]);
+    const state = initializeState(synthetic, terrain, 1);
+    const band = state.units.find((unit) => unit.id === 'hunkpapa-pool');
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const threat = state.units.find((unit) => unit.id === 'co-a');
+    if (!band || !camp || !threat) throw new Error('synthetic units missing');
+    band.position = { x: 500, y: 0 };
+    camp.position = { x: 0, y: 0 };
+    threat.position = { x: 1_000, y: 0 };
+    state.believedPictures['lakota-cheyenne-coalition'] = {
+      'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
+    };
+    const events: SimEvent[] = [];
+
+    state.tick = 0;
+    updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    expect(band.campDefenseAlert).toBeUndefined();
+    expect(band.campDefense).toBeUndefined();
+
+    sourceThreat.tacticsProfileId = regularProfileId;
+    state.tick = 1;
+    updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    state.tick = 2;
+    updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    expect(band.campDefense?.threatUnitId).toBe('co-a');
+  });
 });
