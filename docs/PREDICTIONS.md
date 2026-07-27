@@ -102,3 +102,18 @@ Judged per D80, N=50, seeds 18760600–18760649; verdicts recorded as they fall,
 - **If PR-9 or PR-10 misses**, the no-crossing predicate failed its purpose. STOP class: redesign, not adjustment.
 - **If PR-12's scored legs miss while PR-9/PR-10 hit**, coalition wounded has a second source beyond the interception; that becomes its own diagnostic before any ruling.
 - **If PR-13 misses**, the exclusion was mis-scoped; re-examine against the D75 profile-scoping precedent before touching anything else.
+
+---
+
+## Occupancy research — pre-registered out-of-sample check
+
+**Registered 2026-07-26, alone, before either input exists.** The ground-occupancy research prompt (O7-OCCUPANCY) had not been released and O5's B5 verdict had not returned when this entry was committed. Both branches and the tolerance are fixed now so that neither result can shape the check.
+
+**PR-14 — occupancy predicts Reno's line, out of sample.**
+Reno's skirmish-line length is derived as fielded men × linear ground-per-man (formed skirmish order, dismounted), using a figure sourced **independently of the Little Bighorn** — the O7 prompt excludes LBH-derived figures explicitly and by name, because the 2.0 m/man working figure this project previously used was itself derived from the 206 m line, and predicting a number from an input derived from that same number would be circular and worthless.
+
+- If O5's B5 returns a **range** for the line length: hit = the derived value falls inside it.
+- If B5 returns a **point figure**: hit = derived value within **±20%** of it.
+- If B5 returns **CONFIRMED-WEAK with no usable figure**: the check is **unscored** and recorded as such.
+
+Tolerance registered before either the occupancy research or B5 returned; not to be moved afterwards. The derivation's inputs (fielded-men count and the sourced ground-per-man figure, with its bound) are to be stated alongside the verdict.
