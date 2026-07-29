@@ -84,7 +84,9 @@ describe('M3-A exit gates', () => {
     expect(different.spottingEvents()).toEqual(sameA.spottingEvents());
     expect(sameA.state().rng.draws).toBe(0);
     expect(different.state().rng.draws).toBe(0);
-    expect(sameA.events().some((event) => event.type === 'camp-defense-activated')).toBe(true);
+    // D103: spotting alone is awareness, not a camp alarm. This movement-free
+    // fixture contains no ford commitment, so no activation is the oracle.
+    expect(sameA.events().some((event) => event.type === 'camp-defense-activated')).toBe(false);
     console.info('[gate] V1 PASS same/different seeds identical; rng.draws=0');
   });
 

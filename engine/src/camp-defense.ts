@@ -122,6 +122,44 @@ function nearestCampThreat(
   return alternative ?? current;
 }
 
+function isCampWardFordCommitment(
+  threat: CampThreat,
+  terrain: EngineTerrain,
+): boolean {
+  const believedTerrain = terrain.movementAtMeters(
+    threat.threatPosition.x,
+    threat.threatPosition.y,
+  );
+  if (!threat.threat.insideFord &&
+    believedTerrain.crossingPenaltyMinutes === undefined) return false;
+  const nextWaypoint = threat.threat.path[threat.threat.pathIndex];
+  if (!nextWaypoint) return false;
+  return Math.hypot(
+    nextWaypoint.x - threat.camp.position.x,
+    nextWaypoint.y - threat.camp.position.y,
+  ) < Math.hypot(
+    threat.threatPosition.x - threat.camp.position.x,
+    threat.threatPosition.y - threat.camp.position.y,
+  );
+}
+
+/**
+ * D103 T3 alarm: awareness inside the eligibility radius is not itself an
+ * alarm. The first alert requires ford occupancy and a path continuing toward
+ * the defended camp. Direction comes from movement machinery, never the
+ * channel-side classifier whose southern-terminus artifact is recorded.
+ */
+function nearestCampWardFordThreat(
+  scenario: Scenario,
+  state: SimState,
+  sideId: string,
+  radiusMeters: number,
+  terrain: EngineTerrain,
+): CampThreat | undefined {
+  return spottedCampThreats(scenario, state, sideId, radiusMeters)
+    .find((threat) => isCampWardFordCommitment(threat, terrain));
+}
+
 function hasScheduledOrActiveOrder(state: SimState, unit: UnitRuntime): boolean {
   return unit.activeOrderId !== undefined ||
     state.deliveryQueue.some((delivery) => delivery.recipientUnitId === unit.id);
@@ -325,7 +363,7 @@ function activate(
     lastPathAttemptTick: state.tick,
   };
   unit.posture = 'MARCH';
-  unit.speedClass = unit.mounted ? 'CAVALRY_WALK' : 'ON_FOOT';
+  unit.speedClass = unit.mounted ? 'CAVALRY_GALLOP' : 'ON_FOOT';
   unit.distanceMovedOnActiveOrder = 0;
   selectReachableFeature(state, unit, threat, terrain, features, radiusMeters);
   state.emittedEventCursor = emitEvent(events, {
@@ -468,11 +506,12 @@ export function updateCampDefense(
 
     if (!unit.campDefense) {
       if (!unit.campDefenseAlert) {
-        const spotted = nearestCampThreat(
+        const spotted = nearestCampWardFordThreat(
           scenario,
           state,
           source.sideId,
           config.campDefenseRadiusMeters,
+          terrain,
         );
         if (!spotted) continue;
         unit.campDefenseAlert = {

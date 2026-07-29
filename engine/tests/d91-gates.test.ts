@@ -67,6 +67,114 @@ class CostTerrain extends FlatTerrain {
   }
 }
 
+function markCampWardFordCommitment(
+  threat: ReturnType<typeof initializeState>['units'][number],
+  camp: ReturnType<typeof initializeState>['units'][number],
+): void {
+  threat.insideFord = true;
+  threat.path = [
+    { ...threat.position },
+    {
+      x: (threat.position.x + camp.position.x) / 2,
+      y: (threat.position.y + camp.position.y) / 2,
+    },
+  ];
+  threat.pathIndex = 1;
+}
+
+describe('D103 hostile-act alarm and attack-speed response gates', () => {
+  function fixture(): {
+    synthetic: Scenario;
+    terrain: FeatureTerrain;
+    state: ReturnType<typeof initializeState>;
+    band: ReturnType<typeof initializeState>['units'][number];
+    camp: ReturnType<typeof initializeState>['units'][number];
+    threat: ReturnType<typeof initializeState>['units'][number];
+    events: SimEvent[];
+    update: (tick: number) => void;
+  } {
+    const synthetic = cloneScenario(scenario);
+    const ids = new Set(['hunkpapa-pool', 'hunkpapa-camp', 'co-a']);
+    synthetic.units = synthetic.units.filter((unit) => ids.has(unit.id));
+    synthetic.leaders = [];
+    synthetic.orders = [];
+    synthetic.checkpoints = [];
+    synthetic.observationEvents = [];
+    synthetic.variants = [];
+    synthetic.coverFeatures = [];
+    if (synthetic.campDefense) synthetic.campDefense.turnoutDelayMinutes.best = 0;
+    const terrain = new FeatureTerrain([
+      { id: 'feature-a', points: [{ x: 300, y: 0 }] },
+    ]);
+    const state = initializeState(synthetic, terrain, 1);
+    const band = state.units.find((unit) => unit.id === 'hunkpapa-pool');
+    const camp = state.units.find((unit) => unit.id === 'hunkpapa-camp');
+    const threat = state.units.find((unit) => unit.id === 'co-a');
+    if (!band || !camp || !threat) throw new Error('synthetic units missing');
+    band.position = { x: 100, y: 0 };
+    camp.position = { x: 0, y: 0 };
+    threat.position = { x: 500, y: 0 };
+    state.believedPictures['lakota-cheyenne-coalition'] = {
+      'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
+    };
+    const events: SimEvent[] = [];
+    const update = (tick: number): void => {
+      state.tick = tick;
+      updateCampDefense(synthetic, state, terrain, spottingConfig(), combatConfig(), events);
+    };
+    return { synthetic, terrain, state, band, camp, threat, events, update };
+  }
+
+  it('no-alarm-on-approach: a spotted threat inside the radius but never ford-committed raises no alert', () => {
+    const { band, threat, update } = fixture();
+    threat.path = [{ ...threat.position }, { x: 400, y: 0 }];
+    threat.pathIndex = 1;
+
+    update(0);
+    update(1);
+
+    expect(band.campDefenseAlert).toBeUndefined();
+    expect(band.campDefense).toBeUndefined();
+  });
+
+  it('alarm-on-camp-ward-ford-commitment', () => {
+    const { band, camp, threat, update } = fixture();
+    markCampWardFordCommitment(threat, camp);
+
+    update(0);
+
+    expect(band.campDefenseAlert).toMatchObject({
+      tick: 0,
+      campUnitId: 'hunkpapa-camp',
+      threatUnitId: 'co-a',
+    });
+  });
+
+  it('no-alarm-on-outbound-crossing', () => {
+    const { band, threat, update } = fixture();
+    threat.insideFord = true;
+    threat.path = [{ ...threat.position }, { x: 600, y: 0 }];
+    threat.pathIndex = 1;
+
+    update(0);
+    update(1);
+
+    expect(band.campDefenseAlert).toBeUndefined();
+    expect(band.campDefense).toBeUndefined();
+  });
+
+  it('gallop-response-speed: activate uses CAVALRY_GALLOP for a mounted responder', () => {
+    const { band, camp, threat, update } = fixture();
+    markCampWardFordCommitment(threat, camp);
+
+    update(0);
+    update(1);
+
+    expect(band.campDefense?.threatUnitId).toBe('co-a');
+    expect(band.speedClass).toBe('CAVALRY_GALLOP');
+  });
+});
+
 describe('D91/D92 camp-defence reconstruction gates', () => {
   it('D92 derives deterministic TIMBER feature clusters and scenario data declares only the Bench', async () => {
     const terrain = await TerrainMovementLoader.fromDirectory(join(
@@ -124,6 +232,7 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     camp.position = { x: 0, y: 0 };
     companyA.position = { x: 1_000, y: 0 };
     companyG.position = { x: 1_100, y: 0 };
+    markCampWardFordCommitment(companyA, camp);
     state.believedPictures['lakota-cheyenne-coalition'] = {
       'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...companyA.position } },
       'co-g': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...companyG.position } },
@@ -223,6 +332,7 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     band.position = { x: 500, y: 0 };
     camp.position = { x: 0, y: 0 };
     threat.position = { x: 1_000, y: 0 };
+    markCampWardFordCommitment(threat, camp);
     state.believedPictures['lakota-cheyenne-coalition'] = {
       'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
     };
@@ -283,6 +393,7 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     threat.position = { x: 1_000, y: 0 };
     threat.strengthAvailable = 100;
     threat.moraleState = 'SHAKEN';
+    markCampWardFordCommitment(threat, camp);
     state.believedPictures['lakota-cheyenne-coalition'] = {
       'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
     };
@@ -368,6 +479,7 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     threat.position = { x: 900, y: 0 };
     threat.strengthAvailable = 10;
     threat.moraleState = 'SHAKEN';
+    markCampWardFordCommitment(threat, camp);
     state.believedPictures['lakota-cheyenne-coalition'] = {
       'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
     };
@@ -435,6 +547,7 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     band.position = { x: 500, y: 0 };
     camp.position = { x: 0, y: 0 };
     threat.position = { x: 1_000, y: 0 };
+    markCampWardFordCommitment(threat, camp);
     state.believedPictures['lakota-cheyenne-coalition'] = {
       'co-a': { status: 'spotted', lastSeenTick: 0, lastSeenPos: { ...threat.position } },
     };
