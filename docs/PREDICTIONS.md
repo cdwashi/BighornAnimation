@@ -203,3 +203,41 @@ Tolerance registered before either the occupancy research or B5 returned; not to
 **Why they diverged:** feature arrival was a proxy for "the mass reaches the fight while the line stands," and interception satisfies the intent while skipping the proxied step. Same error class as O5's B5 spacing-derivation finding: a proxy standing in for the thing of interest, diverging from it in the case that matters. PR-21 is **not rescored against any substitute metric chosen after seeing this result**; if a mass-timing prediction is wanted for a future round, it gets its own registration with the interception path named in advance.
 
 *Carried observation, not a ruling:* D96's `shouldClose` closing trigger never fired on any measured seed — combat pursuit preempts it every time — so the D96 closing mechanism is currently dormant in the valley. When en-route contact should legitimately preempt feature occupation is an open ruling (the pursuit-interception boundary), deliberately held to the bundle because dispersal across features changes interception geometry; recorded here so the dormancy is attributed to a named cause rather than discovered again.
+
+---
+
+## WO-D104 — rout pathing completed: no wipe, origin exemption, cadenced retry (tier A)
+
+**Tier A.** Committed alone, before the work order was frozen and before any dispatch. Ruling D104; work order follows at `docs/WO-D104.md`, written to match. No scenario byte changes — same stream. This work order dispatches ALONE; the D96/D72 ownership ruling follows separately against the baseline this work order produces, per the D104 sequencing clause.
+
+**Baseline disclosure:** the pre-fix tree is the accepted D103 candidate (`bd7b998`), whose registered campaign halted at N=1 under the re-armed stop (killed 109). No N=50 killed distribution exists for it; these predictions are therefore stated against absolute criteria, not deltas. The twentieth/twenty-first measurements' figures are previews from a probe-grade fix at N=1 and are NOT predictions; where they appear below they are labeled as previews.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-24 — The annihilation does not recur.** Scored: 0/50 seeds reach annihilation-class Reno A/G/M killed ≥ 100. (Preview: 36.)
+
+**PR-25 — Above the band, registered as the expected direction.** Scored: the Reno A/G/M killed median lands ABOVE the sourced band high (26.09). Registered so the above-band landing is the stated expectation rather than a discovery: the latch fix removes the pin, not the fire. A median inside or below the band is recorded as an informative surprise in the favourable direction — not a rescue, and not a hit on this prediction. No upper edge is scored; the re-armed stop below owns the upper tail.
+
+**PR-26 — The retreat crosses.** Scored: in at least 45/50 seeds, at least two of A/G/M end the day alive east of the channel, and ford episodes occur within or overlapping the registered retreat-crossing window (measured pre-fix at 767.5–776.5) in a majority of seeds.
+
+**PR-27 — The wing roster returns, both branches registered.** Scored: F4's five-destroyed criterion (C/E/F/I/L all DESTROYED, co-d survives) holds on the baseline seed, and complete wing destruction occurs in **at least 25/50 seeds — direction stated: the substantive claim is that mobile routing restores the roster, demonstrated by a large move off the 17/50 historical high-water mark, not by crossing 50%.** Registered mechanism: wing companies routing MOBILE during the northern fight (the 842–880 corridor-search cluster). *Other branch, registered now:* if E/F survive across many seeds, the latch-artifact conclusion weakens, F4 stays honestly red, and the Ford-B timing question reopens — that outcome is a finding, not a failure of this work order.
+
+**PR-28 — Coalition stays sourced.** Scored: coalition killed median (all coalition combat units) inside O5's rebuilt band 36–136. (Preview: 56.) *Registered observation with a threshold, not scored and not a stop:* coalition band destructions are expected in 0/50 seeds under this work order alone; any occurrence is reported as data, and occurrences in more than 5/50 seeds constitute a named finding for the ownership round's design. Band destruction was observed only under the ownership configuration this work order deliberately does not ship — if bands start dying under the latch fix alone, that is informative and we want to see it, not stop on it.
+
+**PR-29 — The ford choke stays empty, registered as expected.** Scored: zero casualty-resolution events within the preserved 250 m Ford A extraction in at least 45/50 seeds. Pre-registered interpretation, both directions: emptiness is the expected consequence of pursuit-versus-crossing timing (pursuers arrive at the bank after crossings complete — twentieth/twenty-first observation), NOT evidence the retreat is safe by nature. **A non-empty choke, arriving without any ruling having touched pursuit timing, is registered now as evidence that the choke was empty for latch-related reasons all along — a reading that reaches back into the east-bank sanctuary question and is recorded here so it cannot be constructed after the result.** Repopulation would also be the first model-generated crossing fight — an informative surprise in the historical direction, to be investigated (timing first, sanctuary rule second) before any celebration or ruling.
+
+**PR-30 — Same stream.** Scored: scenario content stream `ba288f09` byte-identical after implementation. The fix is engine-behavioral only; a scenario byte change is a STOP, not a miss.
+
+### Registered observations, no direction scored
+
+- **PR-3's two readings, held apart deliberately:** a company routing MOBILE and escaping is a different outcome from a company BREAKING under fire in the valley window, and only the latter is what PR-3 asked for. Record which occurs, per seed. (Twentieth preview: co-a never routs at all — it retreats under orders and crosses before breaking.)
+- **East-bank sanctuary data:** crossing minutes, killed-at-crossing, and post-crossing casualties (expected 0) for each surviving company — the invariant's reference measurements, carried forward from the fifteenth.
+- **Hilltop outcome as data:** hunkpapa-pool and the ordered trio's casualties against the (possibly intact) garrison. The hilltop over-lethality question stays open and is NOT this work order's to answer. (Preview under latch-alone: hunkpapa k5.)
+
+### RE-ARMED STOP (PR-5 class, fresh referents against the latch-fixed world)
+
+Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5/50** seeds (overshoot-class above the registered above-band expectation), **or** any seed reaches killed ≥ **100** (annihilation-class returns). Thresholds registered before dispatch; not to be moved.
+
+### Compounding-uncertainty disclosure (per adjudication, stated rather than implicit)
+
+Every figure feeding these predictions is N=1 on seed 18760625, at the end of a four-defect chain unwound sequentially on that one seed. The interactions between fixes are exactly where single-seed reasoning is weakest — the twentieth's L/LA sign-flip is the measured proof. This campaign is the first N=50 test of any link in the chain; surprises here are the register doing its job.
