@@ -106,6 +106,9 @@ function routeToSafety(
   config: CombatConfig,
 ): void {
   if (unit.routSafetyPath) return;
+  if (unit.routLastPathAttemptTick !== undefined &&
+    state.tick - unit.routLastPathAttemptTick < config.pursuitRepathCadenceTicks) return;
+  const origin = { ...unit.position };
   const friends = nearbyFriendlies(scenario, state, unit, Number.POSITIVE_INFINITY)
     .filter((friend) => friend.moraleState === 'STEADY')
     .filter((friend) => !state.engagements.some((engagement) =>
@@ -126,17 +129,22 @@ function routeToSafety(
   for (const safety of friends) {
     const result = findPath(
       terrain.gridForPath(unit.position, safety.position), unit.position, safety.position,
-      (point) => enemies.some((enemy) => Math.hypot(
-        enemy.position.x - point.x, enemy.position.y - point.y,
-      ) <= config.enemyInterdictionRadiusMeters),
+      (point) => Math.hypot(point.x - origin.x, point.y - origin.y) >
+        config.enemyInterdictionRadiusMeters && enemies.some((enemy) => Math.hypot(
+          enemy.position.x - point.x, enemy.position.y - point.y,
+        ) <= config.enemyInterdictionRadiusMeters),
     );
     if (result.status === 'reachable') { path = result; break; }
   }
   if (!path || path.status !== 'reachable') {
-    unit.path = [];
-    unit.pathIndex = 0;
-    unit.blockedReason = 'no non-interdicted corridor to steady friendly mass';
-    unit.routSafetyPath = true;
+    unit.routLastPathAttemptTick = state.tick;
+    if (unit.pathIndex >= unit.path.length) {
+      unit.path = [];
+      unit.pathIndex = 0;
+      unit.blockedReason = 'no non-interdicted corridor to steady friendly mass';
+    } else {
+      unit.blockedReason = undefined;
+    }
     return;
   }
   unit.path = path.path;

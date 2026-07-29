@@ -103,6 +103,7 @@ export interface UnitRuntime {
   initiativeComplexUnitIds?: string[];
   pursuitTerminatedTick?: number;
   routSafetyPath?: boolean;
+  routLastPathAttemptTick?: number;
   scoutWithdrawal?: boolean;
   withdrawnOffField?: boolean;
   defaultBehavior?: 'DEFEND_CAMP';
