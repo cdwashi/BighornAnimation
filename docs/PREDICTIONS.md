@@ -165,3 +165,29 @@ Tolerance registered before either the occupancy research or B5 returned; not to
 - **Endpoint-overlap flank events are reported as data only.** No baseline exists (the mechanism doesn't yet); angular flanking already runs 56–77% of engaged ticks, so endpoint flanking requires separate accounting before it could ever be scored. Instrumented separately for that reason.
 - **Warriors carry zero frontage**, disclosed simplification: their extent is their ground, and their ground arrives with the reseed bundle.
 - **Convergence observation, corroboration not proof** (recorded as observation because the answer is already known — registering it as a prediction would be pre-registration theatre): Upton prescribes 5 yards (¶610, verbatim); RCOI troopers testify "five to 10 yards apart"; the derivation from encoded strengths gives 102 firers → **466 m** of battalion front (O5's ~112-firer testimony variant: ~512 m). Doctrine and testimony agree; the encoded 206 m is doubly dead — unsourced per B5, and below the doctrine its own troopers followed.
+
+---
+
+## WO-D103 — hostile-act alarm and attack-speed response (tier A)
+
+**Tier A.** Committed alone, before the work order was frozen and before any dispatch. Ruling D103; work order follows at `docs/WO-D103.md`, written to match. No scenario byte changes — same stream.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-19 — The sequence forms.** In at least 45/50 seeds, at least one of A/G/M reaches dismounted SKIRMISH formation alive (a skirmish line exists). Pre-fix baseline: 0/50 — no line has ever formed outside the r=250 proxy.
+
+**PR-20 — Alarm fires on the hostile act.** In 50/50 seeds the first camp-defence alert occurs at or after minute 695 (T3: the ford commitment at ~700, not the approach march at 587), and turnout completes between 700 and 730.
+
+**PR-21 — The mass builds during the line phase.** Pool-band feature-arrival median falls within minutes 725–755 (alarm ~700 + 15 turnout + gallop ride), i.e., after contact begins and before the historical rout window closes — not pre-assembled, not post-fight.
+
+**PR-22 — Casualties move toward the band, both branches registered.** Scored: Reno A/G/M killed median lands **within the sourced band 19.24–26.09**. *Low branch, registered as informative:* a median below the band with ~900 warriors arriving mid-fight is not a null result — it is evidence the arriving mass is not converting to casualties, pointing at C and dispersal. *High branch:* the re-armed stop below. Baseline for this round: the r=250 proxy's killed 18 (ordered trio only).
+
+**PR-23 — No interception resurrection; Ford B stays honest.** In 50/50 seeds: zero camp-defence alerts before minute 675 (the approach march never alarms), and any northern-camp alarm at Ford B occurs only at or after an E/F ford commitment (measured pre-fix at ~798). Retreat crossings (measured 767.5–776.5) raise no alarm — the trigger is closing, camp-ward commitment only.
+
+**RE-ARMED STOP (PR-5 class, fresh referents per ruling — stated against the current band and this round's baseline):** work halts for adjudication if Reno A/G/M killed exceeds **40** (the band high plus roughly one band width — overshoot-class, not band-edge noise) in more than **5 of 50** seeds, **or** any seed reaches annihilation-class loss (killed ≥ 100, the pre-fix regime). Thresholds registered before dispatch; not to be moved.
+
+### Registered observations, not scored
+
+- **Wing/F4 effects reported as data** — the alarm change touches the north; movement is expected to be visible, not scored here.
+- **Ford-choke composition reported as data** — pursuit at the retreat crossing belongs to D93 release and D96 closing; if the choke does not repopulate, the finding is attributed there, never supplied by an alarm side-effect.
+- **Frontage activity reported as data** — the line now exists, so PR-16's instrument (effective ranges, endpoint-flank counts) produces its first live readings; unscored this round.
