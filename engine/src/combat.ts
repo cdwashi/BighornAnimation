@@ -1,6 +1,7 @@
 import type { Scenario, WeaponSpec } from '../../src/schema/scenario-schema.js';
 import type { CombatConfig } from './combat-config.js';
 import { emitEvent, type SimEvent } from './events.js';
+import { frontageMeters } from './frontage.js';
 import type { EngineTerrain } from './pathfind.js';
 import { nextRandom } from './rng.js';
 import type { EngagementDescriptor, Formation, SimState, UnitRuntime } from './state.js';
@@ -13,12 +14,37 @@ interface ProjectedCombatCover {
 export interface CombatRuntime {
   config: CombatConfig;
   projectedCover: ProjectedCombatCover[];
+  metrics: CombatMetrics;
+  collectFireResolutionMetrics: boolean;
+}
+
+export interface FlankStatus {
+  angular: boolean;
+  endpoint: boolean;
+  flanked: boolean;
+}
+
+export interface FireResolutionMetric {
+  tick: number;
+  attackerId: string;
+  targetId: string;
+  centroidRangeMeters: number;
+  effectiveRangeMeters: number;
+  angularFlank: boolean;
+  endpointFlank: boolean;
+}
+
+export interface CombatMetrics {
+  angularFlankEvents: number;
+  endpointFlankEvents: number;
+  fireResolutions: FireResolutionMetric[];
 }
 
 export function createCombatRuntime(
   scenario: Scenario,
   terrain: EngineTerrain,
   config: CombatConfig,
+  collectFireResolutionMetrics = false,
 ): CombatRuntime {
   return {
     config,
@@ -29,6 +55,12 @@ export function createCombatRuntime(
         return { x, y };
       }),
     })),
+    metrics: {
+      angularFlankEvents: 0,
+      endpointFlankEvents: 0,
+      fireResolutions: [],
+    },
+    collectFireResolutionMetrics,
   };
 }
 
@@ -40,6 +72,9 @@ interface FireResult {
   rounds: number;
   suppressionRounds: number;
   flanked: boolean;
+  angularFlank: boolean;
+  endpointFlank: boolean;
+  effectiveRangeMeters: number;
   position: { x: number; y: number };
 }
 
@@ -143,13 +178,40 @@ function discipline(unit: UnitRuntime, config: CombatConfig): number {
   return result;
 }
 
-function isFlanking(attacker: UnitRuntime, target: UnitRuntime, config: CombatConfig): boolean {
+export function isFlanking(
+  attacker: UnitRuntime,
+  target: UnitRuntime,
+  scenario: Scenario,
+  config: CombatConfig,
+): FlankStatus {
   const bearing = Math.atan2(attacker.position.y - target.position.y, attacker.position.x - target.position.x);
   const delta = Math.abs(Math.atan2(
     Math.sin(bearing - target.facingRadians),
     Math.cos(bearing - target.facingRadians),
   ));
-  return delta > config.flankingAngleRadians;
+  const angular = delta > config.flankingAngleRadians;
+  const offsetX = attacker.position.x - target.position.x;
+  const offsetY = attacker.position.y - target.position.y;
+  const alongAxis = offsetX * -Math.sin(target.facingRadians) +
+    offsetY * Math.cos(target.facingRadians);
+  const halfWidth = frontageMeters(target, scenario, config.metersPerFiringMan) / 2;
+  const endpoint = halfWidth > 0 && Math.abs(alongAxis) > halfWidth;
+  return { angular, endpoint, flanked: angular || endpoint };
+}
+
+export function effectiveFireRangeMeters(
+  attacker: UnitRuntime,
+  target: UnitRuntime,
+  scenario: Scenario,
+  config: CombatConfig,
+  centroidRangeMeters: number,
+): number {
+  return Math.max(
+    0,
+    centroidRangeMeters -
+      (frontageMeters(attacker, scenario, config.metersPerFiringMan) +
+       frontageMeters(target, scenario, config.metersPerFiringMan)) / 2,
+  );
 }
 
 function clearJams(state: SimState, unit: UnitRuntime, events: SimEvent[]): void {
@@ -188,12 +250,13 @@ function resolveFire(
     config,
   );
   const targetCover = Math.max(config.coverFloor, coverFactorAt(projectedCover, target.position));
-  const flanked = isFlanking(attacker, target, config);
+  const flank = isFlanking(attacker, target, scenario, config);
+  const effectiveRange = effectiveFireRangeMeters(attacker, target, scenario, config, range);
   for (const [weaponId, mix] of Object.entries(source.weaponMix)) {
     const weapon = scenario.weapons[weaponId];
     const availableAmmo = attacker.ammunition[weaponId] ?? 0;
     if (!weapon || availableAmmo <= 0) continue;
-    let hitProbability = rangeProbability(weapon, range);
+    let hitProbability = rangeProbability(weapon, effectiveRange);
     if (hitProbability <= 0) continue;
     const jammed = attacker.jammedWeapons[weaponId]?.length ?? 0;
     const shootersEffective = Math.max(0, (attacker.strengthAvailable * mix - jammed) * allocationFactor);
@@ -230,7 +293,7 @@ function resolveFire(
     const fatigueModifier = 1 - config.fatigueCombatPenaltyMaximum * attacker.fatigue / 100;
     // D64 formula, term-for-term. rounds/shooters is rpm*tickFraction after ammo capping.
     expectedHits += shootersEffective * (rounds / Math.max(1, shootersEffective)) * hitProbability *
-      formationExposure * coverFactor * (flanked ? config.flankingMultiplier : 1) *
+      formationExposure * coverFactor * (flank.flanked ? config.flankingMultiplier : 1) *
       tacticsModifier * (bestLeaderSkill(scenario, state, attacker) / 50) *
       discipline(attacker, config) * fatigueModifier * config.combatFrictionFactor *
       infiltration.kill;
@@ -243,7 +306,10 @@ function resolveFire(
     expectedHits,
     rounds: totalRounds,
     suppressionRounds: totalRounds * infiltration.suppression,
-    flanked,
+    flanked: flank.flanked,
+    angularFlank: flank.angular,
+    endpointFlank: flank.endpoint,
+    effectiveRangeMeters: effectiveRange,
     position: { ...target.position },
   };
 }
@@ -275,6 +341,7 @@ function resolveCourierFire(
   return {
     attacker, targetId, casualties: Math.min(1, stochasticInteger(state, expectation, userSeed)),
     expectedHits: expectation, rounds: roundsTotal, suppressionRounds: roundsTotal, flanked: false,
+    angularFlank: false, endpointFlank: false, effectiveRangeMeters: range,
     position: courier ? { ...courier.position } : { x: 0, y: 0 },
   };
 }
@@ -414,6 +481,21 @@ export function resolveCombat(
         : resolveCourierFire(scenario, state, attacker, targetId, engagement.rangeMeters, config, userSeed);
       pending.push(result);
       intensity += result.expectedHits;
+      if (target && result.rounds > 0) {
+        runtime.metrics.angularFlankEvents += result.angularFlank ? 1 : 0;
+        runtime.metrics.endpointFlankEvents += result.endpointFlank ? 1 : 0;
+        if (runtime.collectFireResolutionMetrics) {
+          runtime.metrics.fireResolutions.push({
+            tick: state.tick,
+            attackerId: attacker.id,
+            targetId,
+            centroidRangeMeters: engagement.rangeMeters,
+            effectiveRangeMeters: result.effectiveRangeMeters,
+            angularFlank: result.angularFlank,
+            endpointFlank: result.endpointFlank,
+          });
+        }
+      }
     }
     engagement.intensity = Math.min(1, intensity / config.intensityExpectedHitsScale);
   }

@@ -5,6 +5,8 @@
  */
 export interface CombatConfig {
   engagementRangeMeters: number;
+  /** [CAL] best 4.57 (Upton ¶610, SOURCED-verbatim) / low 0.914 (Carpenter, SOURCED-WEAK) / high NONE, deliberately — do not invent an upper bound. */
+  metersPerFiringMan: number;
   meleeRangeMeters: number;
   chargeRangeMeters: number;
   disengageRangeMeters: number;
@@ -87,9 +89,23 @@ export interface SourcedCombatRange {
   provenance: string;
 }
 
+export interface OneSidedSourcedCombatRange {
+  low: number;
+  best: number;
+  high: null;
+  provenance: string;
+}
+
 export type CombatConfigProvenance = 'spec-given' | 'proposed-flagged' | 'sourced-range';
 export const COMBAT_FRICTION_PROVENANCE =
   'anchored by historical-totals arithmetic (268 US / 53 Reno-Benteen / <=300 coalition imply 10-20x reduction from unfrictioned rates); M5 calibrates the digit.';
+
+export const METERS_PER_FIRING_MAN_RANGE: Readonly<OneSidedSourcedCombatRange> = Object.freeze({
+  low: 0.914,
+  best: 4.57,
+  high: null,
+  provenance: 'Upton 1874 ¶610 SOURCED-verbatim; Carpenter reinforced practice SOURCED-WEAK; high NONE, deliberately',
+});
 
 /** D79 ranges derived and documented before the first M5-B tuning move. */
 export const M5B_DERIVED_CALIBRATION_RANGES = Object.freeze({
@@ -142,6 +158,7 @@ export const KILLED_TO_WOUNDED_RATIO_RANGES: Readonly<Record<string, SourcedComb
 /** Scalar values are proposed [CAL] except the two spec-given slots; D81 ratios use sourced ranges above. */
 export const DEFAULT_COMBAT_CONFIG: Readonly<CombatConfig> = Object.freeze({
   engagementRangeMeters: 700,
+  metersPerFiringMan: 4.57,
   meleeRangeMeters: 25,
   chargeRangeMeters: 180,
   disengageRangeMeters: 900,
@@ -219,7 +236,7 @@ export const COMBAT_CONFIG_PROVENANCE: Readonly<Record<keyof CombatConfig, Comba
   Object.freeze(Object.fromEntries(
     (Object.keys(DEFAULT_COMBAT_CONFIG) as Array<keyof CombatConfig>).map((key) => [
       key,
-      key === 'killedToWoundedRatioBySide'
+      key === 'killedToWoundedRatioBySide' || key === 'metersPerFiringMan'
         ? 'sourced-range'
         : key === 'lowAmmoFraction' || key === 'marchSpacingMeters'
         ? 'spec-given'

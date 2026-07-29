@@ -15,7 +15,7 @@ The implementation records order 1 before creating the first simulation; the sam
 
 ## Selection result
 
-- Median composite: **52.07%**
+- Median composite: **46.30%**
 - Eligible no-rare-event candidates: **0** (none)
 - Rule: composite percentile 0.4–0.6; interquartile numeric outcomes; categorical occurrence frequency must exceed 10.0%.
 
@@ -23,40 +23,41 @@ The implementation records order 1 before creating the first simulation; the sam
 
 | Metric | Min | P25 | Median | P75 | Max | Mean |
 |---|---:|---:|---:|---:|---:|---:|
-| Composite | 49.29% | 49.29% | 52.07% | 59.93% | 66.52% | 54.40% |
+| Composite | 36.05% | 43.53% | 46.30% | 54.64% | 60.19% | 48.56% |
 
 ## Component distributions
 
 | Component | Min | P25 | Median | P75 | Max | Mean |
 |---|---:|---:|---:|---:|---:|---:|
-| C1 | 40.00% | 50.00% | 50.00% | 50.00% | 50.00% | 47.60% |
-| C2 | 33.33% | 33.33% | 44.44% | 75.00% | 88.89% | 51.56% |
-| C3 | 30.77% | 38.46% | 38.46% | 38.46% | 76.92% | 44.00% |
+| C1 | 50.00% | 50.00% | 50.00% | 50.00% | 50.00% | 50.00% |
+| C2 | 11.11% | 33.33% | 44.44% | 77.78% | 100.00% | 53.78% |
+| C3 | 7.69% | 15.38% | 15.38% | 15.38% | 15.38% | 15.08% |
 | C4 | 92.31% | 92.31% | 92.31% | 92.31% | 92.31% | 92.31% |
 
 ## Leader-death distribution
 
 | Death count | Seeds | Share |
 |---:|---:|---:|
-| 0 | 30 | 60.0% |
-| 1 | 15 | 30.0% |
-| 2 | 4 | 8.0% |
+| 0 | 21 | 42.0% |
+| 1 | 21 | 42.0% |
+| 2 | 6 | 12.0% |
 | 3 | 1 | 2.0% |
+| 4 | 1 | 2.0% |
 
 | Leader | Seeds killed | Share |
 |---|---:|---:|
-| calhoun | 6 | 12.0% |
+| reno | 8 | 16.0% |
+| lame-white-man | 5 | 10.0% |
+| moylan | 5 | 10.0% |
+| keogh | 4 | 8.0% |
+| two-moons | 4 | 8.0% |
 | crow-king | 3 | 6.0% |
-| gall | 3 | 6.0% |
-| keogh | 3 | 6.0% |
-| french | 2 | 4.0% |
-| hump | 2 | 4.0% |
-| white-bull | 2 | 4.0% |
-| crazy-horse | 1 | 2.0% |
+| french | 3 | 6.0% |
+| calhoun | 2 | 4.0% |
+| crazy-horse | 2 | 4.0% |
+| yates | 2 | 4.0% |
 | custer | 1 | 2.0% |
-| lame-white-man | 1 | 2.0% |
-| weir | 1 | 2.0% |
-| yates | 1 | 2.0% |
+| gall | 1 | 2.0% |
 
 ## Arikara loss distribution
 
@@ -70,15 +71,14 @@ The implementation records order 1 before creating the first simulation; the sam
 
 | Unit | Seeds routed | Share |
 |---|---:|---:|
-| crow-scouts | 50 | 100.0% |
-| co-d | 10 | 20.0% |
-| crow-king-band | 9 | 18.0% |
-| co-e | 8 | 16.0% |
-| co-f | 8 | 16.0% |
-| lwm-band | 8 | 16.0% |
-| co-h | 1 | 2.0% |
-| co-k | 1 | 2.0% |
-| gall-band | 1 | 2.0% |
+| crow-scouts | 30 | 60.0% |
+| co-e | 17 | 34.0% |
+| co-f | 17 | 34.0% |
+| lwm-band | 9 | 18.0% |
+| co-a | 5 | 10.0% |
+| co-d | 2 | 4.0% |
+| co-g | 2 | 4.0% |
+| co-m | 2 | 4.0% |
 
 ## Wing-destruction distribution
 
@@ -86,7 +86,7 @@ The implementation records order 1 before creating the first simulation; the sam
 
 | Metric | Min | P25 | Median | P75 | Max | Mean |
 |---|---:|---:|---:|---:|---:|---:|
-| Simulation minute | 653.50 | 697.50 | 697.50 | 859.50 | 862.00 | 765.29 |
+| Simulation minute | 866.00 | 869.00 | 870.00 | 871.00 | 873.50 | 869.88 |
 
 ## Ford-choke composition (within 250 m of Ford A)
 
@@ -97,10 +97,10 @@ The implementation records order 1 before creating the first simulation; the sam
 
 | Outcome | History inside observed envelope? | Comparison |
 |---|---|---|
-| Modeled documented leader identities | YES | required=custer, yates, keogh, calhoun, lame-white-man; observed=calhoun, crazy-horse, crow-king, custer, french, gall, hump, keogh, lame-white-man, weir, white-bull, yates |
+| Modeled documented leader identities | YES | required=custer, yates, keogh, calhoun, lame-white-man; observed=calhoun, crazy-horse, crow-king, custer, french, gall, keogh, lame-white-man, moylan, reno, two-moons, yates |
 | Arikara killed | NO | historical=3–3; observed=0–0 |
-| Rout composition | NO | required=co-a, co-g, co-m; observed=co-d, co-e, co-f, co-h, co-k, crow-king-band, crow-scouts, gall-band, lwm-band |
-| Wing destruction minute | YES | historical=825–840; observed=653.5–862.0 |
+| Rout composition | YES | required=co-a, co-g, co-m; observed=co-a, co-d, co-e, co-f, co-g, co-m, crow-scouts, lwm-band |
+| Wing destruction minute | NO | historical=825–840; observed=866.0–873.5 |
 | Ford-choke composition | NO | expected=co-a, co-g, co-m; observed=none |
 
 These checks are adjudicated by D80/G-M5-2 during M5-B.
@@ -112,53 +112,53 @@ These checks are adjudicated by D80/G-M5-2 during M5-B.
 
 | Seed | Composite | Leader deaths | Arikara K/W/L | Routed units | Wing destruction tick | Ford choke |
 |---:|---:|---|---|---|---:|---|
-| 18760600 | 55.71% | 1: calhoun | 0/0/0 | co-d, co-e, co-f, crow-scouts, lwm-band | 1722 | none |
-| 18760601 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760602 | 52.93% | 1: gall | 0/0/0 | co-d, co-h, co-k, crow-scouts | not destroyed | none |
-| 18760603 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760604 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760605 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760606 | 52.07% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760607 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760608 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760609 | 52.07% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760610 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760611 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760612 | 66.52% | 0: none | 0/0/0 | crow-king-band, crow-scouts | 1395 | none |
-| 18760613 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760614 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760615 | 63.18% | 0: none | 0/0/0 | co-d, co-e, co-f, crow-scouts, lwm-band | 1717 | none |
-| 18760616 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760617 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760618 | 52.21% | 1: crazy-horse | 0/0/0 | co-d, crow-scouts | not destroyed | none |
-| 18760619 | 66.52% | 2: calhoun, custer | 0/0/0 | crow-king-band, crow-scouts | 1395 | none |
-| 18760620 | 49.29% | 1: calhoun | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760621 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760622 | 63.74% | 2: crow-king, hump | 0/0/0 | crow-king-band, crow-scouts | 1351 | none |
-| 18760623 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760624 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760625 | 58.48% | 0: none | 0/0/0 | co-d, co-e, co-f, crow-scouts, lwm-band | 1718 | none |
-| 18760626 | 52.07% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760627 | 60.41% | 1: crow-king | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1724 | none |
-| 18760628 | 55.71% | 1: white-bull | 0/0/0 | co-d, co-e, co-f, crow-scouts, lwm-band | 1722 | none |
-| 18760629 | 49.29% | 3: calhoun, crow-king, white-bull | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760630 | 49.29% | 1: keogh | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760631 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760632 | 49.29% | 1: hump | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760633 | 49.29% | 1: french | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760634 | 52.21% | 0: none | 0/0/0 | co-d, crow-scouts | not destroyed | none |
-| 18760635 | 52.21% | 1: weir | 0/0/0 | co-d, crow-scouts | not destroyed | none |
-| 18760636 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760637 | 66.52% | 1: keogh | 0/0/0 | crow-king-band, crow-scouts | 1395 | none |
-| 18760638 | 52.07% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760639 | 66.52% | 1: gall | 0/0/0 | crow-king-band, crow-scouts, gall-band | 1313 | none |
-| 18760640 | 49.29% | 2: calhoun, french | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760641 | 49.29% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760642 | 66.52% | 0: none | 0/0/0 | crow-king-band, crow-scouts | 1312 | none |
-| 18760643 | 63.74% | 0: none | 0/0/0 | crow-king-band, crow-scouts | 1307 | none |
-| 18760644 | 61.26% | 1: calhoun | 0/0/0 | co-d, co-e, co-f, crow-scouts, lwm-band | 1717 | none |
-| 18760645 | 58.48% | 2: lame-white-man, yates | 0/0/0 | co-d, co-e, co-f, crow-scouts, lwm-band | 1719 | none |
-| 18760646 | 52.07% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
-| 18760647 | 60.41% | 0: none | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1723 | none |
-| 18760648 | 66.52% | 1: gall | 0/0/0 | crow-king-band, crow-scouts | 1395 | none |
-| 18760649 | 66.52% | 1: keogh | 0/0/0 | crow-king-band, crow-scouts | 1395 | none |
+| 18760600 | 49.08% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760601 | 54.64% | 1: reno | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1741 | none |
+| 18760602 | 49.08% | 1: french | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760603 | 54.64% | 0: none | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1742 | none |
+| 18760604 | 46.30% | 1: keogh | 0/0/0 | none | not destroyed | none |
+| 18760605 | 46.30% | 1: reno | 0/0/0 | none | not destroyed | none |
+| 18760606 | 43.53% | 0: none | 0/0/0 | none | not destroyed | none |
+| 18760607 | 46.30% | 1: reno | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760608 | 46.30% | 1: moylan | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760609 | 57.41% | 1: yates | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1739 | none |
+| 18760610 | 43.53% | 0: none | 0/0/0 | none | not destroyed | none |
+| 18760611 | 46.30% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760612 | 36.05% | 0: none | 0/0/0 | co-d, crow-scouts | not destroyed | none |
+| 18760613 | 43.53% | 0: none | 0/0/0 | none | not destroyed | none |
+| 18760614 | 54.64% | 1: moylan | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1742 | none |
+| 18760615 | 57.41% | 1: gall | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1742 | none |
+| 18760616 | 54.64% | 0: none | 0/0/0 | co-e, co-f, crow-scouts | 1737 | none |
+| 18760617 | 46.30% | 2: crazy-horse, moylan | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760618 | 43.53% | 1: reno | 0/0/0 | none | not destroyed | none |
+| 18760619 | 43.53% | 1: calhoun | 0/0/0 | none | not destroyed | none |
+| 18760620 | 46.30% | 1: keogh | 0/0/0 | co-a | not destroyed | none |
+| 18760621 | 49.08% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760622 | 54.64% | 0: none | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1738 | none |
+| 18760623 | 46.30% | 2: keogh, lame-white-man | 0/0/0 | none | not destroyed | none |
+| 18760624 | 43.53% | 1: reno | 0/0/0 | none | not destroyed | none |
+| 18760625 | 54.64% | 0: none | 0/0/0 | co-e, co-f | 1747 | none |
+| 18760626 | 43.53% | 1: lame-white-man | 0/0/0 | co-a | not destroyed | none |
+| 18760627 | 43.53% | 1: lame-white-man | 0/0/0 | co-a | not destroyed | none |
+| 18760628 | 43.53% | 1: french | 0/0/0 | co-a, co-g, co-m, crow-scouts | not destroyed | none |
+| 18760629 | 57.41% | 2: custer, yates | 0/0/0 | co-e, co-f, crow-scouts | 1743 | none |
+| 18760630 | 60.19% | 0: none | 0/0/0 | co-e, co-f, crow-scouts | 1743 | none |
+| 18760631 | 51.86% | 0: none | 0/0/0 | co-e, co-f | 1733 | none |
+| 18760632 | 46.30% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760633 | 38.82% | 3: crow-king, lame-white-man, moylan | 0/0/0 | co-d, crow-scouts | not destroyed | none |
+| 18760634 | 43.53% | 4: crow-king, french, moylan, two-moons | 0/0/0 | co-a, co-g, co-m, crow-scouts | not destroyed | none |
+| 18760635 | 43.53% | 0: none | 0/0/0 | none | not destroyed | none |
+| 18760636 | 46.30% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760637 | 46.30% | 0: none | 0/0/0 | none | not destroyed | none |
+| 18760638 | 51.86% | 2: lame-white-man, two-moons | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1740 | none |
+| 18760639 | 40.75% | 1: reno | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760640 | 57.41% | 1: keogh | 0/0/0 | co-e, co-f, crow-scouts | 1735 | none |
+| 18760641 | 57.41% | 1: two-moons | 0/0/0 | co-e, co-f, lwm-band | 1739 | none |
+| 18760642 | 46.30% | 2: crow-king, reno | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760643 | 46.30% | 0: none | 0/0/0 | none | not destroyed | none |
+| 18760644 | 46.30% | 0: none | 0/0/0 | crow-scouts | not destroyed | none |
+| 18760645 | 54.64% | 0: none | 0/0/0 | co-e, co-f, crow-scouts, lwm-band | 1740 | none |
+| 18760646 | 60.19% | 2: calhoun, two-moons | 0/0/0 | co-e, co-f, crow-scouts | 1743 | none |
+| 18760647 | 54.64% | 0: none | 0/0/0 | co-e, co-f, crow-scouts | 1732 | none |
+| 18760648 | 46.30% | 1: crazy-horse | 0/0/0 | none | not destroyed | none |
+| 18760649 | 43.53% | 1: reno | 0/0/0 | none | not destroyed | none |

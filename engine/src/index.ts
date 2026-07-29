@@ -4,7 +4,12 @@ import type { SimEvent } from './events.js';
 import { updateCampDefense } from './camp-defense.js';
 import { updateResupply } from './ammunition.js';
 import { combatConfig, type CombatConfig } from './combat-config.js';
-import { createCombatRuntime, resolveCombat, type CombatRuntime } from './combat.js';
+import {
+  createCombatRuntime,
+  resolveCombat,
+  type CombatMetrics,
+  type CombatRuntime,
+} from './combat.js';
 import { updateCouriers } from './couriers.js';
 import { updateEngagements } from './engagement.js';
 import { updateFatigue } from './fatigue.js';
@@ -41,6 +46,8 @@ export interface CreateSimOptions {
   combatEnabled?: boolean;
   /** F6/D55 hook: recompute exact pursuit paths instead of memoizing them. */
   disableCombatPathCache?: boolean;
+  /** D102 audit hook: retain per-fire range/flag records in addition to flank counters. */
+  collectCombatMetrics?: boolean;
 }
 
 export interface LoadOptions { useKeyframes?: boolean; targetTick?: number }
@@ -55,6 +62,7 @@ export interface Simulator {
   load(save: SaveFile, options?: LoadOptions): SimState;
   events(): readonly SimEvent[];
   spottingEvents(): readonly SpottingEvent[];
+  combatMetrics(): Readonly<CombatMetrics>;
   state(): SimState;
   tracks(): readonly (readonly TrackSample[])[];
 }
@@ -73,7 +81,12 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
   const parameters = { ...(options.parameterOverrides ?? {}) };
   const combatEnabled = options.combatEnabled !== false;
   const combat: CombatConfig = combatConfig(options.parameterOverrides);
-  const combatRuntime: CombatRuntime = createCombatRuntime(scenario, options.terrain, combat);
+  const combatRuntime: CombatRuntime = createCombatRuntime(
+    scenario,
+    options.terrain,
+    combat,
+    options.collectCombatMetrics === true,
+  );
   let current = initializeState(scenario, options.terrain, scenarioSeed, combatEnabled);
   let eventLog: SimEvent[] = [];
   let spottingEventLog: SpottingEvent[] = [];
@@ -166,6 +179,9 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
     current = cloneState(state);
     eventLog = [];
     spottingEventLog = [];
+    combatRuntime.metrics.angularFlankEvents = 0;
+    combatRuntime.metrics.endpointFlankEvents = 0;
+    combatRuntime.metrics.fireResolutions = [];
     spottingRuntime = createSpottingRuntime(
       scenario,
       options.terrain,
@@ -225,6 +241,11 @@ export function createSim(baseScenario: Scenario, options: CreateSimOptions): Si
     load,
     events: () => eventLog,
     spottingEvents: () => spottingEventLog,
+    combatMetrics: () => ({
+      angularFlankEvents: combatRuntime.metrics.angularFlankEvents,
+      endpointFlankEvents: combatRuntime.metrics.endpointFlankEvents,
+      fireResolutions: combatRuntime.metrics.fireResolutions.map((metric) => ({ ...metric })),
+    }),
     state: () => current,
     tracks: () => unitTracks,
   };
@@ -239,6 +260,7 @@ export * from './couriers.js';
 export * from './engagement.js';
 export * from './events.js';
 export * from './fatigue.js';
+export * from './frontage.js';
 export * from './leaders.js';
 export * from './morale.js';
 export * from './movement.js';
