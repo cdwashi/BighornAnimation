@@ -191,3 +191,15 @@ Tolerance registered before either the occupancy research or B5 returned; not to
 - **Wing/F4 effects reported as data** — the alarm change touches the north; movement is expected to be visible, not scored here.
 - **Ford-choke composition reported as data** — pursuit at the retreat crossing belongs to D93 release and D96 closing; if the choke does not repopulate, the finding is attributed there, never supplied by an alarm side-effect.
 - **Frontage activity reported as data** — the line now exists, so PR-16's instrument (effective ranges, endpoint-flank counts) produces its first live readings; unscored this round.
+
+---
+
+## PR-21 instrument supersession — recorded before any rescoring
+
+*Dated superseding entry (2026-07-29); PR-21's original text stands unedited above, and its status remains NOT JUDGED — the RE-ARMED STOP halted WO-D103's campaign at N=1, so there is no verdict to revise.* The thirteenth measurement (`.claude/feature-arrival-probe.mjs`: the stop seed in full, two secondary seeds reporting feature-path quantities only, casualty figures deliberately suppressed on the secondaries so the measurement cannot become a partial campaign) establishes that PR-21's metric and its intent diverge on the D103 candidate.
+
+**What was intended:** the mass builds during the line phase — not pre-assembled, not post-fight. **What was measured as the metric:** pool-band feature-arrival median within minutes 725–755. **What actually happens:** the pools activate at 719, select scenario-bench (goals 3.9–4.7 km out), and gallop toward it on a D92/D98-legal path; en route they come into engagement range of Reno's companies at 741–742 and open fire at 744 — inside the registered window — whereupon D72 combat pursuit (`pursuit-started`) replaces the camp-defence march 242–512 m short of the goal, so no `arrived` event ever fires on the stop seed. On a secondary seed with different interception geometry the bands do arrive (Bench at minute 747, 0 m; a later feature at 873): selection and pathing are intact, and arrival is preempted by contact rather than bypassed.
+
+**Why they diverged:** feature arrival was a proxy for "the mass reaches the fight while the line stands," and interception satisfies the intent while skipping the proxied step. Same error class as O5's B5 spacing-derivation finding: a proxy standing in for the thing of interest, diverging from it in the case that matters. PR-21 is **not rescored against any substitute metric chosen after seeing this result**; if a mass-timing prediction is wanted for a future round, it gets its own registration with the interception path named in advance.
+
+*Carried observation, not a ruling:* D96's `shouldClose` closing trigger never fired on any measured seed — combat pursuit preempts it every time — so the D96 closing mechanism is currently dormant in the valley. When en-route contact should legitimately preempt feature occupation is an open ruling (the pursuit-interception boundary), deliberately held to the bundle because dispersal across features changes interception geometry; recorded here so the dormancy is attributed to a named cause rather than discovered again.
