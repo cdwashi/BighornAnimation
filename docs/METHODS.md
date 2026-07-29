@@ -28,6 +28,8 @@ Weight when accounts conflict, highest first:
 
 Weak citations are **recorded faithfully rather than laundered** (D16). Where a claim rests on a low-tier source, the scenario file says so. Re-sourcing to publication grade is tracked as work item O5 and is v1-blocking.
 
+**The simulation's own output is never provenance.** The historical fact of an event is testimony-sourced; terrain analysis can explain an event, corroborate it, or flag it as implausible, but it cannot source it. This binds hardest where an event is gate ground truth: re-citing the C4 observation events to the project's own viewshed analysis would make the gate measure the model's agreement with itself, and it could never fail for the reason it exists to detect. The same rule applies to any claim whose proposed "upgrade" is something the simulation itself computes. Weak testimony honestly labeled beats strong-looking circular provenance.
+
 ## 3. Provenance and confidence
 
 Every datum in the scenario carries provenance: source keys, locus, and a confidence rating — HIGH (physical evidence or multiple independent primaries), MEDIUM (single credible primary or strong scholarly consensus), LOW (inference or reconstruction), DISPUTED (competing published interpretations).
