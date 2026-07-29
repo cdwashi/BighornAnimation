@@ -139,3 +139,29 @@ Tolerance registered before either the occupancy research or B5 returned; not to
 *Correction recorded against O5's B5: the "contradiction" finding was overstated.* O5 derived "~500+ yards" from "standard ~5-yard skirmish intervals"; O7 establishes 5 yards as the doctrinal HIGH bound, not the standard — Upton's best is 3 yards. At O5's ~112 men on the line, the doctrinal envelope spans ~170–512 m, and the encoded 206 m sits **inside** it, between the low and best bounds. B5's finding that the 225-yard figure is UNSOURCED stands entirely; its finding that a spacing derivation *contradicts* it does not. This correction is inherited by D101's forward note ("real frontage plausibly ~2.5× the 206 m") — the 2.5× multiple is the high-bound case only; the corrected statement is 0.8×–2.5× depending on bound. Each research job caught something the other got wrong; the uncontaminated-separate-sessions discipline is why either error was catchable at all. The Q1 best bound rests on index terms pending verbatim consultation of Upton para 665 (access register: one human download closes it).
 
 *Superseding note (2026-07-28, later the same day — the verbatim page corrects the correction).* The Upton PDF was obtained by human download and paragraphs 610 and 652 were transcribed and **eye-verified against the printed page** (`docs/research/UPTON-1874-VERBATIM-TRANSCRIPTION.md`). Three findings supersede parts of the note above: (1) **¶610: "The habitual interval between skirmishers is five yards"** — the figure O7 classified as the secondary HIGH bound is Upton's own habitual standard; (2) O7's "three yards" best bound was a **misattributed index term** — every three-yard index entry is the horse interval of the School of the Trooper, not a skirmish spacing; (3) ¶652's dismounted deploy-forward is clustered (three firers per four at five-yard intervals, fifteen yards between fours), giving **4.57–7.62 m of front per firing man** depending on how "interval between fours" is read — a ruling choice, recorded as such. Consequences: O5's B5 derivation is **rehabilitated** (RCOI's "five to 10 yards apart" matches the current manual; ~112 firers at habitual interval ≈ 512 m), and the encoded 206 m sits **below Upton 1874 doctrine entirely**, inside Cooke 1862's two-to-three-pace band. The correction chain now runs three layers — secondary → index terms → printed page — each from a better tier, each dated here before the next arrived. PR-14 remains UNSCORED on both registered grounds; nothing in this note rescores anything.
+
+---
+
+## WO-D102 — asymmetric unit frontage (tier A)
+
+**Tier A.** Committed alone, before the work order was frozen and before any dispatch. Ruling D102; the work order follows at `docs/WO-D102.md`, written to match these predictions. This work order changes **no scenario byte** — frontage is derived, not authored — so every comparison is same-stream.
+
+### PR-5 interim supersession — deliberate, visible, re-armed later
+
+*Dated note (2026-07-28), per the approved ruling:* the Reno annihilation is an **adjudicated known state** (PR-5 fired at WO-D97, 7/50, halted, adjudicated to the occupancy/dispersal chain). Interim work orders — this one included — **report Reno A/G/M killed as data**; no PR-5-class stop governs them. A stop of PR-5's class **re-arms with fresh referents in C's work order**, where dispersal is the actual fix. The stop was suspended deliberately and will be visibly re-armed — not quietly dropped after it fired.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-15 — Direction: frontage deepens the annihilation, and that is the predicted consequence of a sourced correction.** Scored: the Reno A/G/M killed median (N=50) does **not decrease** relative to the pre-WO baseline measured at dispatch; it is expected to increase. Registered in advance so a worse casualty picture reads as the named consequence of shorter sourced effective ranges — not as a regression — and the pressure stays on C and dispersal, which are the actual fix.
+
+**PR-16 — Effective range lands where the instrument predicted.** Scored: the median effective fire range in the valley window falls below the 216 m centroid baseline and within **±35 m of 144 m** (the pre-registered static counterfactual, `.claude`-preserved probe lineage, at the ruled 4.57 m bound).
+
+**PR-17 — Same stream.** Scored: scenario content stream `ba288f09` byte-identical after implementation. Frontage derived from strength and formation only; a scenario byte change is a STOP, not a miss.
+
+**PR-18 — Confinement holds.** Scored: C4 remains 12/13, the E5 checkpoint table diff is none, and F3 no-combat byte-identity holds — extent is read by fire range and flank determination only; spotting, LOS, movement, and the 700 m opening gate stay centroid, per the standing rulings.
+
+### Registered observations, not scored
+
+- **Endpoint-overlap flank events are reported as data only.** No baseline exists (the mechanism doesn't yet); angular flanking already runs 56–77% of engaged ticks, so endpoint flanking requires separate accounting before it could ever be scored. Instrumented separately for that reason.
+- **Warriors carry zero frontage**, disclosed simplification: their extent is their ground, and their ground arrives with the reseed bundle.
+- **Convergence observation, corroboration not proof** (recorded as observation because the answer is already known — registering it as a prediction would be pre-registration theatre): Upton prescribes 5 yards (¶610, verbatim); RCOI troopers testify "five to 10 yards apart"; the derivation from encoded strengths gives 102 firers → **466 m** of battalion front (O5's ~112-firer testimony variant: ~512 m). Doctrine and testimony agree; the encoded 206 m is doubly dead — unsourced per B5, and below the doctrine its own troopers followed.
