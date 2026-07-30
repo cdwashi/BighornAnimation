@@ -247,3 +247,45 @@ Every figure feeding these predictions is N=1 on seed 18760625, at the end of a 
 ## PR-29 interpretation superseded — ammunition, not timing
 
 *Dated superseding entry (2026-07-29, post-campaign); PR-29's original text and its judged HIT (zero choke events in all 45 completed seeds) stand unedited above.* PR-29's pre-registered interpretation named pursuit-versus-crossing **timing** as the expected cause of emptiness, with the sanctuary rule second. The twenty-fifth measurement supersedes both: the pursuers arriving at the bank during the retreat-crossing window (767.5–776.5) were already **nearly out of ammunition** — the coalition's repeaters empty by ~720, bows by ~765, everything by ~780, with no warrior resupply mechanism in the model — so the choke was bloodless primarily because the pursuers could not shoot, whatever their timing. The registered non-empty-choke reading (latch-related emptiness reaching into the sanctuary question) is likewise superseded at its cause: the latch, the timing, and the sanctuary were all downstream of the same dry-quiver fact. Recorded now, before the choke question ripens, so the correction is dated rather than reconstructed. The HIT itself is unaffected — the prediction scored an outcome, and the outcome stands; what is corrected is why.
+
+---
+
+## WO-D105 — the close-action bout: emergent outcomes, sourced finishing (tier A)
+
+**Tier A.** Committed alone, before the work order is frozen and before any dispatch. Ruling D105; work order follows at `docs/WO-D105.md`, written to match. No scenario byte changes — same stream.
+
+**First-unmeasured-design disclosure:** twelve designs in this arc died on pre-freeze probes; this design cannot be probed before it exists — its outcomes are emergent from dynamics no static query reaches, and the twenty-eighth through thirtieth measurements are the record of trying (every discriminator the record offers relies on state the model does not carry; NEGATIVE_RESULTS §7). These predictions therefore carry the load the probes cannot, are sized wider than usual, and register the unfavourable branch explicitly.
+
+**Baseline disclosure:** the pre-fix world is the committed WO-D104 halted tree (`5c87b25`): killed median 45 (fire-only 41), 5 complete seeds above 60 — all via the cohesion-floor dissolution this work order removes — 23 Reno company destructions, coalition killed median 66 with band destructions in 16/45, ford choke empty in 45/45, five-destroyed wing in 25/45. Its campaign stopped at 45 complete seeds + 1 partial; comparisons are against the 45 complete.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-31 — Direction: total killed falls, and the over-kill branch is registered LIVE.** Scored: the Reno A/G/M killed median falls below 45. The 348 dissolution deaths are removed by the drain interlock; bout conversions replace some; escapees now live. *Over-kill branch:* the thirty-first measurement's conversion ceiling (tight 1,012) sits roughly three times above the deaths removed, so a median at or above 45 is arithmetically possible and is the twenty-sixth's warned direction — anticipated, named, owned by the re-armed stop, never absorbed as noise.
+
+**PR-32 — Deaths relocate to contact, and the timer class is extinguished.** Scored, two audit legs graded from the new `melee-bout` event: (a) zero deaths from cohesion-floor conversion in 50/50 seeds (the mechanism no longer exists; failure = implementation error, not a miss); (b) killed − fire-killed − bout-converted = 0 per company per seed. The historical shape: dying at contact, not on a timer after escape.
+
+**PR-33 — The escapes persist.** Scored: in at least 45/50 seeds, at least two of A/G/M end the day alive east of the channel. The bout must not un-win the retreat.
+
+**PR-34 — The ford choke, both branches registered, scored on neither.** A populated choke (fire or bout events within the preserved 250 m Ford A extraction) would be the first model-generated crossing fight — bouts need no ammunition, so the dry-quiver explanation no longer forbids it — and **would supersede PR-29's ammunition reading in turn; that supersession is pre-registered here.** An empty choke means crossers outdistance pursuit through the window — informative for the junction question. Recorded per seed with locations.
+
+**PR-35 — Coalition nearly untouched, direction-scored, two legs.** Scored: (a) the coalition killed median does not rise above the baseline 66 (rationale: the twenty-seventh's 219:2 — the bout barely runs in the trooper-on-warrior direction); (b) coalition band destructions fall below the 16/45 reference — **the interlock reaches the coalition too**: the baseline's band destructions were substantially cohesion-floor deaths, and the mechanism producing them is deleted for everyone. Band destructions holding at the reference rate would be a genuine surprise; a one-legged "nearly untouched" would have let it pass unremarked. Actual medians reported as data; no band is invented.
+
+**PR-36 — The D81 exception's own prediction, with the registered ceiling.** Scored, exclusivity legs: wounded-to-killed conversions occur ONLY in break-outcome bouts — zero in flight, repulse, fire, or any other path, 50/50 seeds. **Registered upper bound, from the thirty-first measurement: total conversions cannot exceed the tight ceiling's order — 1,012 across 45 baseline-condition seeds (per-seed median 22, range 7–31); naive-sum 2,106 disclosed as the overcounting variant.** Magnitude within the ceiling reported as data; the ceiling is a bound, not a target, and conversions approaching it would themselves indicate the over-kill branch.
+
+**PR-37 — The wing roster holds.** Scored: F4's five-destroyed criterion holds on the baseline seed, and complete wing destruction occurs in at least 25/50 seeds (the WO-D104 threshold carried forward for cross-campaign comparability). *Other branch:* the bout changing the wing's outcome in either direction is a finding about the northern fight, not a failure.
+
+**PR-38 — Same stream.** Scored: scenario content stream `ba288f09` byte-identical. Engine-behavioral only; a scenario byte change is a STOP, not a miss.
+
+### Registered observations, no direction scored
+
+- **Bout counts against the planning bound:** ~610 episodes at the 50 m ring; realized bouts per seed reported against it.
+- **Repulse frequency:** the Wolf Mountain branch now exists; its rate is data, and a zero would itself be informative — shock at valley odds may never lose.
+- **PR-3's two readings continue** (mobile-escape vs breaking-under-fire, per seed); the rout-rally question stays open behind the junction ruling.
+
+### RE-ARMED STOP (PR-5 class, fresh referents against the post-resolver world)
+
+Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5/50** seeds, or any seed reaches killed ≥ **100**. The same numbers as WO-D104's stop, deliberately: the baseline hit the first branch via dissolution, which this work order removes — a re-fire can only mean bout over-kill, so the threshold's meaning sharpens without moving, and cross-round comparability is preserved. Registered before dispatch; not to be moved.
+
+### Compounding-uncertainty disclosure
+
+The chain is five defects deep on one seed-family, and this work order adds the arc's first never-probed mechanism. The N=50 campaign is simultaneously the design's first measurement and its judgment; the wider sizing, the explicit unfavourable branches, and the audit legs are what that costs.
