@@ -2,7 +2,11 @@ import tseslint from 'typescript-eslint';
 import reactHooks from 'eslint-plugin-react-hooks';
 
 export default tseslint.config(
-  { ignores: ['dist/**', '.next/**', 'out/**', 'coverage/**', 'node_modules/**'] },
+  // .claude/ holds preserved measurement probes and instrument logs —
+  // decision-record artifacts cited by ledger rulings, not product code.
+  // Editing them post-preservation would change evidence bytes, so they are
+  // excluded from lint rather than "fixed."
+  { ignores: ['dist/**', '.next/**', 'out/**', 'coverage/**', 'node_modules/**', '.claude/**'] },
   ...tseslint.configs.recommended,
   {
     files: ['app/**/*.{ts,tsx}'],
