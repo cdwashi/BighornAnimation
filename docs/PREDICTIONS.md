@@ -289,3 +289,41 @@ Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5
 ### Compounding-uncertainty disclosure
 
 The chain is five defects deep on one seed-family, and this work order adds the arc's first never-probed mechanism. The N=50 campaign is simultaneously the design's first measurement and its judgment; the wider sizing, the explicit unfavourable branches, and the audit legs are what that costs.
+
+---
+
+## WO-D106 — camp-defence command ownership: the plain gate (tier A)
+
+**Tier A.** Committed alone, before the work order is frozen and before any dispatch. Ruling D106; work order follows at `docs/WO-D106.md`, written to match. No scenario byte changes — same stream.
+
+**Preview disclosure, stated bluntly:** the thirty-third measurement ran this exact gate (dist-toggle form) over seeds 18760600–18760633 on this exact tree. Thirty-four of the campaign's fifty seeds are therefore *previewed, not predicted* — if the source implementation is faithful, they should reproduce the preview near-digit-exactly, and that reproduction is an implementation audit, not a prediction hit. **The predictions' real evidentiary content lives in the sixteen never-run seeds (18760634–18760649) and in the N=50 aggregates.** Sized accordingly.
+
+**Baseline disclosure:** the pre-fix world is the committed D105 tree (`bce2814`): killed median 48 (N=34), coalition 77, complete wing 4/34, hill killed 169 at 60/40 combat-pursuit/initiative, ≥2-east 34/34. Its campaign stopped at 34+1 under its own stop.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-39 — The gate's world holds at N=50.** Scored: Reno A/G/M killed median falls below the baseline 48, and no seed reaches killed ≥ 100. (Preview at N=34: median 34, max 51, zero stop-class — the sixteen unseen seeds are the test.)
+
+**PR-40 — The mode instrument moves as the ruling predicts, and stays moved.** Scored: hill-directed killed's combat-pursuit share falls below its baseline 60.4%, with the remaining hill killing initiative-dominant, at N=50. (Preview: 19 of 101.) This is the primary instrument per the standing adjudication — if casualties move but the mode split does not, something other than the ruling is doing the work, and that is reportable as a finding against the implementation, not a hit.
+
+**PR-41 — The valley holds.** Scored: at least two of A/G/M end alive east of the channel in at least 45/50 seeds. (Preview: 34/34.)
+
+**PR-42 — Coalition stays sourced.** Scored: coalition killed median inside 36–136. (Preview: 63.)
+
+**PR-43 — The audit leg.** Scored: in 50/50 seeds, no unit holding an active camp-defence commitment ever carries a COMBAT or INITIATIVE pursuit (checkable from serialized state each tick). Failure = implementation error, not a miss.
+
+**PR-44 — Same stream.** Scored: `ba288f09` byte-identical; a change is a STOP.
+
+### Registered observations, no direction scored
+
+- **Wing completion expected LOW and unchanged (~4–5/34-class rate):** the wing-completion deficit is the thirty-fourth's separately-owned finding (ammunition-starved bout loop), and this work order deliberately does not touch it. Registered so that a low wing count is read as the known deficit persisting, not as this ruling's regression — and so that any *movement* in it is visible as unexplained.
+- **Reopen-clause instrumentation:** D92 switching events per pool band, and any band holding a commitment while a nearer eligible threat stands unengaged for a sustained window — the commitment-switch starvation signature that would reopen the B-variant. Data only.
+- **Bout counts and hill/wing mode tables** reported in full for the bundle's baseline (this world, if it lands, is the bundle's pre-design referent).
+
+### RE-ARMED STOP (PR-5 class)
+
+Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5/50** seeds, or any seed reaches killed ≥ **100**. Same referents as WO-D104/WO-D105, deliberately, with the meaning restated for this world: the preview shows zero seeds above 60 in the 34 previewed — a re-fire therefore means either the unseen-seed tail or a source-vs-preview divergence, both of which are exactly what should halt a campaign. Registered before dispatch; not to be moved.
+
+### Compounding-uncertainty disclosure
+
+Thirty-four of fifty seeds are previewed; the sixteen unseen seeds carry the genuine uncertainty, and the wing-completion deficit rides through this campaign unfixed by design. The bundle's northern registrations are not to be sized from this campaign's wing numbers — that sizing waits on the wing-finisher ruling's own campaign.
