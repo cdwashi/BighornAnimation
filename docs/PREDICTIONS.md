@@ -241,3 +241,9 @@ Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5
 ### Compounding-uncertainty disclosure (per adjudication, stated rather than implicit)
 
 Every figure feeding these predictions is N=1 on seed 18760625, at the end of a four-defect chain unwound sequentially on that one seed. The interactions between fixes are exactly where single-seed reasoning is weakest — the twentieth's L/LA sign-flip is the measured proof. This campaign is the first N=50 test of any link in the chain; surprises here are the register doing its job.
+
+---
+
+## PR-29 interpretation superseded — ammunition, not timing
+
+*Dated superseding entry (2026-07-29, post-campaign); PR-29's original text and its judged HIT (zero choke events in all 45 completed seeds) stand unedited above.* PR-29's pre-registered interpretation named pursuit-versus-crossing **timing** as the expected cause of emptiness, with the sanctuary rule second. The twenty-fifth measurement supersedes both: the pursuers arriving at the bank during the retreat-crossing window (767.5–776.5) were already **nearly out of ammunition** — the coalition's repeaters empty by ~720, bows by ~765, everything by ~780, with no warrior resupply mechanism in the model — so the choke was bloodless primarily because the pursuers could not shoot, whatever their timing. The registered non-empty-choke reading (latch-related emptiness reaching into the sanctuary question) is likewise superseded at its cause: the latch, the timing, and the sanctuary were all downstream of the same dry-quiver fact. Recorded now, before the choke question ripens, so the correction is dated rather than reconstructed. The HIT itself is unaffected — the prediction scored an outcome, and the outcome stands; what is corrected is why.
