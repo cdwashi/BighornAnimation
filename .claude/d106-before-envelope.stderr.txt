@@ -1,0 +1,2 @@
+Error: Baseline criteria selected no typical seed; preserved diagnostic report at C:\Users\cdwas\Documents\Programming\BighornAnimation\reports\seed-envelope.md
+    at runEnvelopeCli (file:///C:/Users/cdwas/Documents/Programming/BighornAnimation/dist/engine/envelope-cli.js:51:15)

@@ -5,14 +5,14 @@
 - Variants: `baseline`
 - Review tier: **baseline**
 - Counterfactual provenance flag: **no**
-- Composite: **54.64%**
+- Composite: **57.63%**
 - Composite gates: **FAIL**
 
 | Component | Weight | Included score | Gate |
 |---|---:|---:|---|
 | C1 Checkpoints | 0.35 | 50.00% | FAIL — HIGH 25.0% ≥ 70%; overall 50.0% ≥ 50% |
-| C2 Casualties | 0.25 | 77.78% | FAIL — both killed/wounded side bands and every flagship end-state exact |
-| C3 End states | 0.25 | 15.38% | FAIL — 100% of HIGH-confidence assertions by their minute |
+| C2 Casualties | 0.25 | 66.67% | FAIL — both killed/wounded side bands and every flagship end-state exact |
+| C3 End states | 0.25 | 38.46% | FAIL — 100% of HIGH-confidence assertions by their minute |
 | C4 Observations | 0.15 | 92.31% | PASS — 92.3% ≥ 80% of HIGH/MEDIUM events |
 
 > Composite gate status is the conjunction of C1–C4; no minimum weighted-number gate is invented.
@@ -31,7 +31,7 @@ Gate: **FAIL** — HIGH 25.0% ≥ 70%; overall 50.0% ≥ 50%.
 | cp-reno-hill | HIGH | included | ≤50 m and ±15 min | 0.0 m, 42.5 min | FAIL |
 | cp-yates-ford-b | MEDIUM | included | ≤150 m and ±25 min | 9.3 m, 17.5 min | PASS |
 | cp-right-wing-calhoun | HIGH | included | ≤50 m and ±15 min | 0.0 m, 23.5 min | FAIL |
-| cp-keogh-sector | HIGH | included | ≤75 m and ±15 min | 415.6 m, -8.5 min | FAIL |
+| cp-keogh-sector | HIGH | included | ≤75 m and ±15 min | 210.9 m, 18.0 min | FAIL |
 | cp-custer-last-stand | HIGH | included | ≤30 m and ±15 min | 0.0 m, -10.5 min | PASS |
 | cp-weir-point | MEDIUM | included | ≤100 m and ±25 min | 0.0 m, -17.5 min | PASS |
 
@@ -41,10 +41,10 @@ Gate: **FAIL** — both killed/wounded side bands and every flagship end-state e
 
 | Item | Confidence | Scope | Expected | Actual | Result |
 |---|---|---|---|---|---|
-| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 278 | PASS |
-| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 57 | PASS |
-| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 17 | FAIL |
-| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 63 | FAIL |
+| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 207 | FAIL |
+| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 27 | FAIL |
+| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 90 | PASS |
+| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 206 | FAIL |
 | flagship:co-c | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-e | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-f | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
@@ -62,9 +62,9 @@ Gate: **FAIL** — 100% of HIGH-confidence assertions by their minute.
 | co-f:DESTROYED:840 | HIGH | included | DESTROYED by minute 840 | not destroyed by deadline | FAIL |
 | co-i:DESTROYED:840 | HIGH | included | DESTROYED by minute 840 | not destroyed by deadline | FAIL |
 | co-l:DESTROYED:840 | HIGH | included | DESTROYED by minute 840 | not destroyed by deadline | FAIL |
-| co-a:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill; destroyed | FAIL |
-| co-g:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill; destroyed | FAIL |
-| co-m:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill; destroyed | FAIL |
+| co-a:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |
+| co-g:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |
+| co-m:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |
 | co-h:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 2032.4 m from reno-hill | FAIL |
 | co-d:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 0.0 m from reno-hill | PASS |
 | co-k:HOLDING_AT:1080 | HIGH | included | HOLDING_AT by minute 1080 | 2032.4 m from reno-hill | FAIL |

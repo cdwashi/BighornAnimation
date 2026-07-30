@@ -42,7 +42,10 @@ describe('M4-A F1-F6 closeout gates', () => {
     // change this oracle without changing scenario content or its PRNG stream.
     // D103's hostile-act gate and gallop response change the behavioral stream
     // while scenario content and its PRNG seed remain byte-identical.
-    expect(hashState(baseline.state())).toBe('4d5ed785');
+    // D104 and D105 both accepted behavior changes but stopped before their
+    // registered refreshes. D106's camp-defence ownership gate therefore
+    // refreshes the two-round-stale combat pin directly to this ruled world.
+    expect(hashState(baseline.state())).toBe('38f6ce32');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -113,7 +116,7 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('4d5ed785');
+      expect(hashState(sim.state())).toBe('38f6ce32');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
@@ -125,8 +128,11 @@ describe('M4-A F1-F6 closeout gates', () => {
     // change (D31a seeds the PRNG from the content hash). 164 pre-D91, 168 at
     // schemaVersion 0.2 post-D91, 190 at 0.3, and 205 after D93/D96. D98's
     // constrained retry cache preserves that whole-run call count.
-    // D103's later alarms reduce the refreshed behavioral oracle to 171 calls.
-    expect(pathMetrics.calls).toBe(171);
+    // D103's later alarms set the old pin to 171 calls. D104 and D105 stopped
+    // before refresh; a separate whole-create probe reads 186/155 before/after
+    // because it includes two initialization calls. This gate resets after
+    // createSim, so D106's matching run-only oracle is 153 calls.
+    expect(pathMetrics.calls).toBe(153);
     // D94 participant-scaled ceiling: the pre-D91 11.1M ceiling covered 447
     // active warriors. D91 raised participation to 964, so the resource ceiling
     // scales by 964 / 447 and is deliberately not fitted to the observed run.

@@ -235,6 +235,7 @@ function startPursuit(
   complexUnitIds?: readonly string[],
   pathCache?: PathCache,
 ): boolean {
+  if (pursuer.campDefense) return false;
   const targetUnit = state.units.find((item) => item.id === targetId);
   const targetCourier = state.couriers.find((item) =>
     item.id === targetId && item.active && item.alive);

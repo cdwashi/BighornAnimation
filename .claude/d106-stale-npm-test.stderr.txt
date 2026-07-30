@@ -1,0 +1,35 @@
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  engine/tests/m4a-gates.test.ts > M4-A F1-F6 closeout gates > F1 seed flip — identical same-seed run; different seeds flip only at first contact
+AssertionError: expected '38f6ce32' to be '4d5ed785' // Object.is equality
+
+Expected: "4d5ed785"
+Received: "38f6ce32"
+
+ ❯ engine/tests/m4a-gates.test.ts:45:41
+     43|     // D103's hostile-act gate and gallop response change the behavior…
+     44|     // while scenario content and its PRNG seed remain byte-identical.
+     45|     expect(hashState(baseline.state())).toBe('4d5ed785');
+       |                                         ^
+     46| 
+     47|     const left = createSim(scenario, { seed: 18760625, terrain });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  engine/tests/m4a-gates.test.ts > M4-A F1-F6 closeout gates > F6 pooled-A* work metrics are bounded; wall clock is informational
+AssertionError: expected '38f6ce32' to be '4d5ed785' // Object.is equality
+
+Expected: "4d5ed785"
+Received: "38f6ce32"
+
+ ❯ engine/tests/m4a-gates.test.ts:116:38
+    114|       sim.run(2160);
+    115|       timings.push(performance.now() - started);
+    116|       expect(hashState(sim.state())).toBe('4d5ed785');
+       |                                      ^
+    117|     }
+    118|     timings.sort((left, right) => left - right);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

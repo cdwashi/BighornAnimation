@@ -1,0 +1,41 @@
+18760600: reno 35 coalition 91
+18760601: reno 32 coalition 83
+18760602: reno 18 coalition 63
+18760603: reno 39 coalition 39
+18760604: reno 33 coalition 48
+18760605: reno 43 coalition 84
+18760606: reno 43 coalition 84
+18760607: reno 33 coalition 83
+18760608: reno 36 coalition 72
+18760609: reno 22 coalition 76
+18760610: reno 32 coalition 44
+18760611: reno 41 coalition 46
+18760612: reno 42 coalition 63
+18760613: reno 28 coalition 54
+18760614: reno 30 coalition 37
+18760615: reno 32 coalition 45
+18760616: reno 30 coalition 32
+18760617: reno 37 coalition 47
+18760618: reno 51 coalition 91
+18760619: reno 32 coalition 68
+18760620: reno 36 coalition 86
+18760621: reno 29 coalition 90
+18760622: reno 50 coalition 85
+18760623: reno 38 coalition 40
+18760624: reno 33 coalition 37
+18760625: reno 31 coalition 90
+18760626: reno 34 coalition 71
+18760627: reno 34 coalition 62
+18760628: reno 36 coalition 87
+18760629: reno 27 coalition 49
+18760630: reno 33 coalition 45
+18760631: reno 40 coalition 49
+18760632: reno 40 coalition 44
+18760633: reno 26 coalition 101
+
+===== mode CD, 34 seeds =====
+Reno killed: median 34 mean 34.6 range 18-51 | >60: 0 | >=100: 0
+coalition killed: median 63 | band destructions (seed-units) 1
+complete wing 5/34 | >=2 east 34/34 | bouts total 448
+HILL killed 101: order-axis 0 | combat-pursuit 19 | initiative 81 | camp-defence 1 | unattributed 0
+WING killed 5147: order-axis 327 | combat-pursuit 3969 | initiative 849 | camp-defence 2 | unattributed 0
