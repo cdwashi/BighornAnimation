@@ -2,6 +2,7 @@ import type { Scenario, WeaponSpec } from '../../src/schema/scenario-schema.js';
 import type { CombatConfig } from './combat-config.js';
 import { emitEvent, type SimEvent } from './events.js';
 import { frontageMeters } from './frontage.js';
+import { endPursuit } from './morale.js';
 import type { EngineTerrain } from './pathfind.js';
 import { nextRandom } from './rng.js';
 import type { EngagementDescriptor, Formation, SimState, UnitRuntime } from './state.js';
@@ -410,12 +411,16 @@ function resolveShock(
   engagement: EngagementDescriptor,
   config: CombatConfig,
   unitsById: ReadonlyMap<string, UnitRuntime>,
+  events: SimEvent[],
 ): void {
-  if (engagement.state !== 'MELEE') return;
+  if (engagement.state !== 'MELEE' || engagement.meleeBoutResolved) return;
   const units = engagement.unitIds.map((id) => unitsById.get(id));
-  const attacker = units.find((unit) => unit?.posture === 'CHARGE');
+  const attacker = units.find((unit) => unit?.posture === 'CHARGE') ??
+    units.find((unit, index) => unit?.pursuit?.kind === 'COMBAT' &&
+      unit.pursuit.targetUnitId === engagement.unitIds[index === 0 ? 1 : 0]);
   const defender = units.find((unit) => unit && unit !== attacker);
   if (!attacker || !defender) return;
+  engagement.meleeBoutResolved = true;
   const source = scenario.units[attacker.unitIndex];
   const profile = scenario.tacticsProfiles[source.tacticsProfileId];
   const leader = scenario.leaders.filter((item) => item.attachedToUnitId === attacker.id &&
@@ -425,16 +430,37 @@ function resolveShock(
     config.chargeSpeedBonus * (leader?.ratings.aggression ?? 50) / 50 *
     profile.weights.shockCharge / 50;
   const defense = defender.strengthAvailable * Math.max(0.1, defender.morale / 100);
+  let outcome: 'break' | 'repel' | 'held';
+  let convertedWounded = 0;
   if (shock > defense * config.chargeBreakMargin) {
     defender.morale = Math.min(defender.morale, config.moraleBrokenThreshold - 1);
     defender.moraleState = 'ROUTED';
     engagement.state = 'ROUT';
+    outcome = 'break';
+    convertedWounded = defender.wounded;
+    defender.killed += convertedWounded;
+    defender.wounded = 0;
   } else if (shock < defense * config.chargeRepelMargin) {
     attacker.posture = 'WITHDRAW';
     engagement.state = 'WITHDRAWAL';
+    outcome = 'repel';
+    if (attacker.pursuit?.kind === 'COMBAT' &&
+      attacker.pursuit.targetUnitId === defender.id) {
+      endPursuit(scenario, state, attacker, 'repulsed', events);
+      attacker.posture = 'WITHDRAW';
+    }
   } else {
     engagement.state = 'FIREFIGHT';
+    outcome = 'held';
   }
+  appendEvent(state, events, {
+    tick: state.tick,
+    type: 'melee-bout',
+    unitId: attacker.id,
+    targetUnitId: defender.id,
+    outcome,
+    convertedWounded,
+  });
 }
 
 /** D64 simultaneous fire resolution; casualty events preserve the fall position. */
@@ -469,7 +495,7 @@ export function resolveCombat(
   }
   for (const engagement of state.engagements) {
     if (!engagement.active || engagement.state === 'APPROACH' || engagement.state === 'ROUT') continue;
-    resolveShock(scenario, state, engagement, config, unitsById);
+    resolveShock(scenario, state, engagement, config, unitsById, events);
     let intensity = 0;
     for (const { attacker, targetId } of directionsByEngagement.get(engagement) ?? []) {
       const target = unitsById.get(targetId);

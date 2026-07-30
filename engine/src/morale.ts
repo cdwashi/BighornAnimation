@@ -203,8 +203,7 @@ export function updateMorale(
     if (unit.moraleState !== previous) appendEvent(state, events, {
       tick: state.tick, type: 'morale-state', unitId: unit.id, moraleState: unit.moraleState,
     });
-    if (unit.strengthCurrent <= config.destructionStrengthFloor ||
-      unit.cohesion <= config.destructionCohesionFloor) {
+    if (unit.strengthCurrent <= config.destructionStrengthFloor) {
       unit.endState = 'DESTROYED';
       // D81 terminal accounting: remaining effective troops become killed;
       // previously wounded troops remain wounded and are never relabeled dead.
@@ -281,7 +280,7 @@ function startPursuit(
   return true;
 }
 
-function endPursuit(
+export function endPursuit(
   scenario: Scenario,
   state: SimState,
   pursuer: UnitRuntime,

@@ -144,7 +144,7 @@ function moveOneUnit(
         target.position.y - unit.position.y,
       );
       const standoffMeters = unit.pursuit.kind === 'COMBAT'
-        ? combat?.pursuitCloseRangeMeters ?? PURSUIT_STANDOFF_METERS
+        ? combat?.meleeRangeMeters ?? PURSUIT_STANDOFF_METERS
         : unit.posture === 'CHARGE' ? 0 : PURSUIT_STANDOFF_METERS;
       if (distance <= standoffMeters) {
         if (!unit.pursuit.contactEmitted) {
@@ -201,7 +201,7 @@ function moveOneUnit(
           target.position.x - unit.position.x,
           target.position.y - unit.position.y,
         ) - (unit.pursuit.kind === 'COMBAT'
-          ? combat?.pursuitCloseRangeMeters ?? PURSUIT_STANDOFF_METERS
+          ? combat?.meleeRangeMeters ?? PURSUIT_STANDOFF_METERS
           : unit.posture === 'CHARGE' ? 0 : PURSUIT_STANDOFF_METERS)),
       );
     }

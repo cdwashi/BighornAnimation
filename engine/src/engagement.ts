@@ -125,6 +125,9 @@ export function updateEngagements(
       seen.add(id);
       const next = desiredState(state, left, right, range, config);
       const changed = existing.state !== next;
+      if (existing.meleeBoutResolved && range > config.meleeRangeMeters) {
+        existing.meleeBoutResolved = false;
+      }
       existing.state = next;
       existing.rangeMeters = range;
       existing.rangeBand = band(range, config);

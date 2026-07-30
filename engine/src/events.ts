@@ -26,6 +26,7 @@ export type SimEventType =
   | 'courier-killed'
   | 'pursuit-started'
   | 'pursuit-ended'
+  | 'melee-bout'
   | 'initiative-retargeted'
   | 'rout-reintegrated';
 
@@ -47,6 +48,8 @@ export interface SimEvent {
   /** D81 additive split; casualties remains killed + wounded for old consumers. */
   killed?: number;
   wounded?: number;
+  outcome?: 'break' | 'repel' | 'held';
+  convertedWounded?: number;
   position?: { x: number; y: number };
   leaderId?: string;
   moraleState?: string;

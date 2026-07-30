@@ -38,6 +38,7 @@ export interface EngagementDescriptor {
   active: boolean;
   startedTick: number;
   updatedTick: number;
+  meleeBoutResolved?: boolean;
 }
 
 export interface LeaderRuntime {
