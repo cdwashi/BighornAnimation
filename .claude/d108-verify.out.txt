@@ -1,0 +1,27 @@
+﻿seed 18760625: Reno killed 31 (report: 31) | F4 roster: co-c:DESTROYED co-e:DESTROYED co-f:DESTROYED co-i:DESTROYED co-l:DESTROYED co-d:alive (report: five destroyed, co-d alive)
+
+seed 18760633 ANNIHILATION EVENT: tick 1628 (min 814), attacker undefined, terminalConverted 18, at (?,?) | report: tick 1628, crow-king-band, (7156,11480)
+co-m at catch: pos (7156,11480) side EAST endState DESTROYED
+
+WHICH FRIENDLY WHERE at the catch (all same-side combat units, distance from co-m, moraleState, withdrawn):
+  co-a: 1239 m | STEADY | withdrawn false | pos (8340,11112)
+  co-g: 1239 m | STEADY | withdrawn false | pos (8340,11112)
+  co-h: 865 m | STEADY | withdrawn false | pos (6575,12121)
+  co-d: 865 m | STEADY | withdrawn false | pos (6575,12121)
+  co-k: 865 m | STEADY | withdrawn false | pos (6575,12121)
+
+seed 18760633: Reno killed 66 (report: 66)
+
+co-m track (last 12 samples before catch, every 10 min from 700):
+  min 700: (6987,7973) EAST STEADY
+  min 710: (7465,10708) WEST STEADY
+  min 720: (7465,10708) WEST STEADY
+  min 730: (7557,10668) WEST STEADY
+  min 740: (7230,10813) WEST SHAKEN
+  min 750: (6904,10992) WEST BROKEN
+  min 760: (6985,11042) WEST SHAKEN
+  min 770: (6985,11042) WEST SHAKEN
+  min 780: (6985,11042) WEST SHAKEN
+  min 790: (7720,10976) EAST ROUTED
+  min 800: (7156,11480) EAST SHAKEN
+  min 810: (7156,11480) EAST BROKEN

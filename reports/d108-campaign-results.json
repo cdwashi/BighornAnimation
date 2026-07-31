@@ -1,0 +1,4439 @@
+{
+  "registeredRange": [
+    18760600,
+    18760649
+  ],
+  "benchPoint": {
+    "x": 7363.673139965045,
+    "y": 10517.300660950132
+  },
+  "rows": [
+    {
+      "seed": 18760600,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 553,
+        "centroid": {
+          "count": 553,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 215.36573645771662
+        },
+        "effective": {
+          "count": 553,
+          "min": 0,
+          "p25": 88.8547841470725,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 188.32449998559485
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 42,
+      "renoByCompany": {
+        "co-a": 9,
+        "co-g": 9,
+        "co-m": 24
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 41,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 262,
+      "composite": 0.6126068376068377,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.8888888888888888,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760601,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 567,
+        "centroid": {
+          "count": 567,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 168.52431043762425,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 222.6714041255137
+        },
+        "effective": {
+          "count": 567,
+          "min": 0,
+          "p25": 90.35095426824182,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 193.0590275186158
+        },
+        "centroidMedian": 168.52431043762425,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 36,
+      "renoByCompany": {
+        "co-a": 9,
+        "co-g": 8,
+        "co-m": 19
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 71,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 359,
+      "composite": 0.4737179487179487,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.3333333333333333,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760602,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 673,
+        "sampledTicksAtLeast3": 673,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 673
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 429,
+        "centroid": {
+          "count": 429,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 226.66278098793268,
+          "p75": 253.5652104381296,
+          "max": 672.1217159688931,
+          "mean": 254.6214012965982
+        },
+        "effective": {
+          "count": 429,
+          "min": 0,
+          "p25": 133.49362394928892,
+          "median": 226.66278098793268,
+          "p75": 226.66278098793268,
+          "max": 599.0017159688931,
+          "mean": 222.66593757819044
+        },
+        "centroidMedian": 226.66278098793268,
+        "effectiveMedian": 226.66278098793268
+      },
+      "renoKilled": 22,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 4,
+        "co-m": 12
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 74,
+      "endpointFlankEvents": 21,
+      "angularFlankEvents": 358,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760603,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 565,
+        "centroid": {
+          "count": 565,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 221.36063722218805
+        },
+        "effective": {
+          "count": 565,
+          "min": 0,
+          "p25": 92.87499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.1150219734699,
+          "mean": 192.51699556535425
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 27,
+      "renoByCompany": {
+        "co-a": 7,
+        "co-g": 4,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 43,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 345,
+      "composite": 0.6040598290598291,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760604,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 669,
+        "sampledTicksAtLeast3": 669,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 669
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 551,
+        "centroid": {
+          "count": 551,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 223.67140036646708
+        },
+        "effective": {
+          "count": 551,
+          "min": 0,
+          "p25": 88.30499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 193.1575564587148
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 24,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 4,
+        "co-m": 15
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 102,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 375,
+      "composite": 0.5570512820512821,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760605,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 539,
+        "centroid": {
+          "count": 539,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 218.27907716981085
+        },
+        "effective": {
+          "count": 539,
+          "min": 0,
+          "p25": 88.8547841470725,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 189.7851091381163
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 35,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 4,
+        "co-m": 25
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 68,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 548,
+      "composite": 0.5570512820512821,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760606,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 567,
+        "centroid": {
+          "count": 567,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 150.0310721769317,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 212.87157075775153
+        },
+        "effective": {
+          "count": 567,
+          "min": 0,
+          "p25": 86.03416228788545,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 183.42254575675076
+        },
+        "centroidMedian": 150.0310721769317,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 38,
+      "renoByCompany": {
+        "co-a": 10,
+        "co-g": 8,
+        "co-m": 20
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 34,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 376,
+      "composite": 0.5848290598290599,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760607,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 681,
+        "sampledTicksAtLeast3": 681,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 681
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 571,
+        "centroid": {
+          "count": 571,
+          "min": 14.278534388475551,
+          "p25": 149.92822797295128,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 219.20874666738266
+        },
+        "effective": {
+          "count": 571,
+          "min": 0,
+          "p25": 86.06305397551789,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 194.7399744516266
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 31,
+      "renoByCompany": {
+        "co-a": 8,
+        "co-g": 7,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 82,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 376,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760608,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 557,
+        "centroid": {
+          "count": 557,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 214.77766751999232
+        },
+        "effective": {
+          "count": 557,
+          "min": 0,
+          "p25": 88.8547841470725,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 187.62294800637773
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 37,
+      "renoByCompany": {
+        "co-a": 7,
+        "co-g": 7,
+        "co-m": 23
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 37,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 262,
+      "composite": 0.5292735042735043,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.5555555555555556,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760609,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 669,
+        "sampledTicksAtLeast3": 669,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 669
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 561,
+        "centroid": {
+          "count": 561,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 219.38517833938116
+        },
+        "effective": {
+          "count": 561,
+          "min": 0,
+          "p25": 90.58999999999966,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 189.94068102535
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 26,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 5,
+        "co-m": 15
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 55,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 379,
+      "composite": 0.6040598290598291,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760610,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 665,
+        "sampledTicksAtLeast3": 665,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 665
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 563,
+        "centroid": {
+          "count": 563,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 223.6374433187007
+        },
+        "effective": {
+          "count": 563,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 194.9428642899769
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 33,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 9,
+        "co-m": 18
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 64,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 383,
+      "composite": 0.6040598290598291,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760611,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 571,
+        "centroid": {
+          "count": 571,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 168.52431043762425,
+          "p75": 226.66278098793268,
+          "max": 640.1286871485987,
+          "mean": 217.99985707980696
+        },
+        "effective": {
+          "count": 571,
+          "min": 0,
+          "p25": 92.63595426824182,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.507951266067,
+          "mean": 190.27766104618763
+        },
+        "centroidMedian": 168.52431043762425,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 37,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 6,
+        "co-m": 27
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 37,
+      "endpointFlankEvents": 28,
+      "angularFlankEvents": 263,
+      "composite": 0.5292735042735043,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.5555555555555556,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760612,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 616,
+        "centroid": {
+          "count": 616,
+          "min": 9.821592298579395,
+          "p25": 140.85862510800317,
+          "median": 150.0122911478694,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 198.71456744193873
+        },
+        "effective": {
+          "count": 616,
+          "min": 0,
+          "p25": 90.35095426824182,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 172.29432040368016
+        },
+        "centroidMedian": 150.0122911478694,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 40,
+      "renoByCompany": {
+        "co-a": 9,
+        "co-g": 14,
+        "co-m": 17
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 81,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 377,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760613,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 598,
+        "centroid": {
+          "count": 598,
+          "min": 4.021887253167799,
+          "p25": 147.91532559743155,
+          "median": 150.02165956346673,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 212.54515016588056
+        },
+        "effective": {
+          "count": 598,
+          "min": 0,
+          "p25": 88.30499999999965,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 187.32614253182413
+        },
+        "centroidMedian": 150.02165956346673,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 28,
+      "renoByCompany": {
+        "co-a": 7,
+        "co-g": 6,
+        "co-m": 15
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 86,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 440,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760614,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 570,
+        "centroid": {
+          "count": 570,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 227.7044038404917
+        },
+        "effective": {
+          "count": 570,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 197.17897349141728
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 30,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 6,
+        "co-m": 18
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 39,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 347,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760615,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 585,
+        "centroid": {
+          "count": 585,
+          "min": 3.968853940711093,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 221.47771498333742
+        },
+        "effective": {
+          "count": 585,
+          "min": 0,
+          "p25": 91.44426595330381,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 192.557177827395
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 39,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 6,
+        "co-m": 28
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 52,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 395,
+      "composite": 0.6126068376068377,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.8888888888888888,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760616,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 602,
+        "centroid": {
+          "count": 602,
+          "min": 4.021887253167799,
+          "p25": 143.61295945714627,
+          "median": 150.0310721769317,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 210.12551557216133
+        },
+        "effective": {
+          "count": 602,
+          "min": 0,
+          "p25": 81.49305397551788,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 185.06648473301559
+        },
+        "centroidMedian": 150.0310721769317,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 27,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 7,
+        "co-m": 15
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 90,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 391,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760617,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 681,
+        "sampledTicksAtLeast3": 681,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 681
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 555,
+        "centroid": {
+          "count": 555,
+          "min": 0,
+          "p25": 143.88115920663648,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 220.029271693807
+        },
+        "effective": {
+          "count": 555,
+          "min": 0,
+          "p25": 90.31570746488126,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 196.147868206966
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 25,
+      "renoByCompany": {
+        "co-a": 7,
+        "co-g": 4,
+        "co-m": 14
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 67,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 347,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760618,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 565,
+        "centroid": {
+          "count": 565,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 217.52664419744107
+        },
+        "effective": {
+          "count": 565,
+          "min": 0,
+          "p25": 86.01999999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.507951266067,
+          "mean": 189.84646053534667
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 37,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 11,
+        "co-m": 22
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 42,
+      "endpointFlankEvents": 23,
+      "angularFlankEvents": 270,
+      "composite": 0.5292735042735043,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.5555555555555556,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760619,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 561,
+        "centroid": {
+          "count": 561,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 222.66641400792943
+        },
+        "effective": {
+          "count": 561,
+          "min": 0,
+          "p25": 94.80058479301186,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 193.5365386318107
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 28,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 6,
+        "co-m": 17
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 62,
+      "endpointFlankEvents": 21,
+      "angularFlankEvents": 355,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760620,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 572,
+        "centroid": {
+          "count": 572,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 168.52431043762425,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 222.94638201790792
+        },
+        "effective": {
+          "count": 572,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 193.7726188428885
+        },
+        "centroidMedian": 168.52431043762425,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 27,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 7,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 91,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 362,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760621,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 561,
+        "centroid": {
+          "count": 561,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 220.47817071068664
+        },
+        "effective": {
+          "count": 561,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 190.68756904203946
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 25,
+      "renoByCompany": {
+        "co-a": 2,
+        "co-g": 5,
+        "co-m": 18
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 91,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 350,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760622,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 158,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 552,
+        "centroid": {
+          "count": 552,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 159.64078166484813,
+          "p75": 226.66278098793268,
+          "max": 640.1286871485987,
+          "mean": 223.380497192825
+        },
+        "effective": {
+          "count": 552,
+          "min": 0,
+          "p25": 93.11931043762425,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 193.69405890442522
+        },
+        "centroidMedian": 159.64078166484813,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 25,
+      "renoByCompany": {
+        "co-a": 3,
+        "co-g": 6,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 70,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 377,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760623,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 651,
+        "sampledTicksAtLeast3": 651,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 651
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 561,
+        "centroid": {
+          "count": 561,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 150.01605940226682,
+          "p75": 226.66278098793268,
+          "max": 572.2417147424476,
+          "mean": 188.69827675492817
+        },
+        "effective": {
+          "count": 561,
+          "min": 0,
+          "p25": 79.16870847831353,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 496.8367147424476,
+          "mean": 156.6396669956157
+        },
+        "centroidMedian": 150.01605940226682,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 66,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 15,
+        "co-m": 45
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "DESTROYED",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "DESTROYED"
+      },
+      "completeWing": false,
+      "coalitionKilled": 72,
+      "endpointFlankEvents": 17,
+      "angularFlankEvents": 412,
+      "composite": 0.5655982905982906,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.23076923076923078,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760624,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 552,
+        "centroid": {
+          "count": 552,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 224.7588535162533
+        },
+        "effective": {
+          "count": 552,
+          "min": 0,
+          "p25": 88.30499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 194.1886315305446
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 27,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 4,
+        "co-m": 19
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 36,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 349,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760625,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 657,
+        "sampledTicksAtLeast3": 657,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 657
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 577,
+        "centroid": {
+          "count": 577,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 168.52431043762425,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 224.65346150415803
+        },
+        "effective": {
+          "count": 577,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 196.44126394233587
+        },
+        "centroidMedian": 168.52431043762425,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 31,
+      "renoByCompany": {
+        "co-a": 7,
+        "co-g": 5,
+        "co-m": 19
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 69,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 466,
+      "composite": 0.6318376068376068,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.8888888888888888,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760626,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 567,
+        "centroid": {
+          "count": 567,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 220.57506111350114
+        },
+        "effective": {
+          "count": 567,
+          "min": 0,
+          "p25": 87.61434699893098,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.1150219734699,
+          "mean": 191.34956281348147
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 36,
+      "renoByCompany": {
+        "co-a": 9,
+        "co-g": 7,
+        "co-m": 20
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 49,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 337,
+      "composite": 0.6040598290598291,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760627,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 566,
+        "centroid": {
+          "count": 566,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 225.15059781261098
+        },
+        "effective": {
+          "count": 566,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 195.85327884421685
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 35,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 10,
+        "co-m": 20
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 113,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 339,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760628,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 579,
+        "centroid": {
+          "count": 579,
+          "min": 3.87698487035767,
+          "p25": 144.84643676407444,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 216.6700290228246
+        },
+        "effective": {
+          "count": 579,
+          "min": 0,
+          "p25": 81.48107217693169,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 189.29535037827074
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 36,
+      "renoByCompany": {
+        "co-a": 12,
+        "co-g": 7,
+        "co-m": 17
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 66,
+      "endpointFlankEvents": 23,
+      "angularFlankEvents": 392,
+      "composite": 0.5014957264957265,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760629,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 567,
+        "centroid": {
+          "count": 567,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 224.85378017566262
+        },
+        "effective": {
+          "count": 567,
+          "min": 0,
+          "p25": 88.30499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 194.71347587917035
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 22,
+      "renoByCompany": {
+        "co-a": 1,
+        "co-g": 6,
+        "co-m": 15
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 82,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 351,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760630,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 559,
+        "centroid": {
+          "count": 559,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 223.25953596414237
+        },
+        "effective": {
+          "count": 559,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 193.98367275106335
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 28,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 6,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 85,
+      "endpointFlankEvents": 23,
+      "angularFlankEvents": 350,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760631,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 562,
+        "centroid": {
+          "count": 562,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 225.35033161358234
+        },
+        "effective": {
+          "count": 562,
+          "min": 0,
+          "p25": 90.9785498409925,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 195.56598297444228
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 25,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 5,
+        "co-m": 14
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 67,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 351,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760632,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 595,
+        "centroid": {
+          "count": 595,
+          "min": 0,
+          "p25": 149.9999999999996,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 640.1286871485987,
+          "mean": 214.56180270769957
+        },
+        "effective": {
+          "count": 595,
+          "min": 0,
+          "p25": 88.3360721769317,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 187.32799777459596
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 48,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 5,
+        "co-m": 39
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "DESTROYED",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 80,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 386,
+      "composite": 0.5848290598290599,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760633,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 658,
+        "sampledTicksAtLeast3": 658,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 658
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 597,
+        "centroid": {
+          "count": 597,
+          "min": 4.332975284411093,
+          "p25": 149.9999999999996,
+          "median": 153.6769192210794,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 211.5110097656979
+        },
+        "effective": {
+          "count": 597,
+          "min": 0,
+          "p25": 83.74916228788545,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 181.99742787027867
+        },
+        "centroidMedian": 153.6769192210794,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 66,
+      "renoByCompany": {
+        "co-a": 13,
+        "co-g": 8,
+        "co-m": 45
+      },
+      "eastRenoAnnihilations": [
+        {
+          "seed": 18760633,
+          "tick": 1628,
+          "minute": 814,
+          "targetUnitId": "co-m",
+          "unitId": "crow-king-band",
+          "position": {
+            "x": 7156.075540036013,
+            "y": 11479.543017412778
+          }
+        }
+      ],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "DESTROYED",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 71,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 456,
+      "composite": 0.5848290598290599,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760634,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 547,
+        "centroid": {
+          "count": 547,
+          "min": 0,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 219.54301252530624
+        },
+        "effective": {
+          "count": 547,
+          "min": 0,
+          "p25": 83.81677626014826,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 194.85700898746947
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 22,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 2,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 86,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 396,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760635,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 433,
+        "centroid": {
+          "count": 433,
+          "min": 14.278534388475551,
+          "p25": 149.99999999999986,
+          "median": 226.66278098793268,
+          "p75": 244.31306614547026,
+          "max": 656.2400219734699,
+          "mean": 252.90574799897672
+        },
+        "effective": {
+          "count": 433,
+          "min": 0,
+          "p25": 140.3486239492889,
+          "median": 226.66278098793268,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 223.26662805625855
+        },
+        "centroidMedian": 226.66278098793268,
+        "effectiveMedian": 226.66278098793268
+      },
+      "renoKilled": 27,
+      "renoByCompany": {
+        "co-a": 8,
+        "co-g": 5,
+        "co-m": 14
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 79,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 336,
+      "composite": 0.5292735042735043,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.5555555555555556,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760636,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 158,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 567,
+        "centroid": {
+          "count": 567,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 222.84073116455252
+        },
+        "effective": {
+          "count": 567,
+          "min": 0,
+          "p25": 92.87499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.1150219734699,
+          "mean": 193.77240217670223
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 28,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 5,
+        "co-m": 19
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 66,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 429,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760637,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 665,
+        "sampledTicksAtLeast3": 665,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 665
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 574,
+        "centroid": {
+          "count": 574,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 168.52431043762425,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 226.83175738034157
+        },
+        "effective": {
+          "count": 574,
+          "min": 0,
+          "p25": 90.58999999999978,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 198.4163776012972
+        },
+        "centroidMedian": 168.52431043762425,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 25,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 4,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 71,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 377,
+      "composite": 0.5014957264957265,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760638,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 539,
+        "centroid": {
+          "count": 539,
+          "min": 0,
+          "p25": 148.95400679111498,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 220.0749321964431
+        },
+        "effective": {
+          "count": 539,
+          "min": 0,
+          "p25": 83.81677626014826,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 195.1454722053545
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 25,
+      "renoByCompany": {
+        "co-a": 8,
+        "co-g": 5,
+        "co-m": 12
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 69,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 376,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760639,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 560,
+        "centroid": {
+          "count": 560,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 222.57827705942796
+        },
+        "effective": {
+          "count": 560,
+          "min": 0,
+          "p25": 92.87499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.1150219734699,
+          "mean": 193.28940645922947
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 32,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 6,
+        "co-m": 20
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 94,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 360,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760640,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 665,
+        "sampledTicksAtLeast3": 665,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 665
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 566,
+        "centroid": {
+          "count": 566,
+          "min": 10.787129230233202,
+          "p25": 149.9999999999996,
+          "median": 171.00646771788553,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 219.76313351118475
+        },
+        "effective": {
+          "count": 566,
+          "min": 0,
+          "p25": 81.0614680433271,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 189.7823737547203
+        },
+        "centroidMedian": 171.00646771788553,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 31,
+      "renoByCompany": {
+        "co-a": 8,
+        "co-g": 6,
+        "co-m": 17
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 85,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 550,
+      "composite": 0.5570512820512821,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760641,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 570,
+        "centroid": {
+          "count": 570,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 165.75595426824182,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 221.6606141907656
+        },
+        "effective": {
+          "count": 570,
+          "min": 0,
+          "p25": 92.87499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.1150219734699,
+          "mean": 192.91765360109713
+        },
+        "centroidMedian": 165.75595426824182,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 26,
+      "renoByCompany": {
+        "co-a": 3,
+        "co-g": 6,
+        "co-m": 17
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 53,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 356,
+      "composite": 0.5207264957264957,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760642,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 563,
+        "centroid": {
+          "count": 563,
+          "min": 10.787129230233202,
+          "p25": 149.9999999999996,
+          "median": 168.52431043762425,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 219.30864489891135
+        },
+        "effective": {
+          "count": 563,
+          "min": 0,
+          "p25": 79.18665956346672,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.1150219734699,
+          "mean": 188.60008479843472
+        },
+        "centroidMedian": 168.52431043762425,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 34,
+      "renoByCompany": {
+        "co-a": 9,
+        "co-g": 8,
+        "co-m": 17
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 44,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 342,
+      "composite": 0.6040598290598291,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.7777777777777778,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760643,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 558,
+        "centroid": {
+          "count": 558,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 159.64078166484813,
+          "p75": 226.66278098793268,
+          "max": 654.3103131600002,
+          "mean": 223.24853862949288
+        },
+        "effective": {
+          "count": 558,
+          "min": 0,
+          "p25": 92.87500000000054,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 599.4703131600002,
+          "mean": 193.87721437286797
+        },
+        "centroidMedian": 159.64078166484813,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 32,
+      "renoByCompany": {
+        "co-a": 6,
+        "co-g": 8,
+        "co-m": 18
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 42,
+      "endpointFlankEvents": 25,
+      "angularFlankEvents": 327,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760644,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 683,
+        "sampledTicksAtLeast3": 683,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 683
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 575,
+        "centroid": {
+          "count": 575,
+          "min": 14.278534388475551,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 223.75783374635694
+        },
+        "effective": {
+          "count": 575,
+          "min": 0,
+          "p25": 88.30499999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 195.7953312503627
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 22,
+      "renoByCompany": {
+        "co-a": 7,
+        "co-g": 3,
+        "co-m": 12
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 80,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 361,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760645,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 650,
+        "sampledTicksAtLeast3": 650,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 650
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 571,
+        "centroid": {
+          "count": 571,
+          "min": 0.9779189884737761,
+          "p25": 149.9999999999996,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 220.64751260139576
+        },
+        "effective": {
+          "count": 571,
+          "min": 0,
+          "p25": 90.9785498409925,
+          "median": 149.99999999999986,
+          "p75": 226.66278098793268,
+          "max": 594.507951266067,
+          "mean": 194.22588574465922
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.99999999999986
+      },
+      "renoKilled": 31,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 7,
+        "co-m": 19
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 57,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 373,
+      "composite": 0.6126068376068377,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.8888888888888888,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760646,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 159,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 583,
+        "centroid": {
+          "count": 583,
+          "min": 8.020117211286458,
+          "p25": 149.9999999999996,
+          "median": 150.0430539755179,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 210.83450758572937
+        },
+        "effective": {
+          "count": 583,
+          "min": 0,
+          "p25": 83.34646804332709,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.9725022601189,
+          "mean": 183.50263119602684
+        },
+        "centroidMedian": 150.0430539755179,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 74,
+      "renoByCompany": {
+        "co-a": 45,
+        "co-g": 10,
+        "co-m": 19
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "DESTROYED",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "ALIVE",
+        "co-f": "ALIVE",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 85,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 413,
+      "composite": 0.5014957264957265,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.4444444444444444,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760647,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 557,
+        "centroid": {
+          "count": 557,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 162.2637589395062,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 218.54428816424078
+        },
+        "effective": {
+          "count": 557,
+          "min": 0,
+          "p25": 86.01999999999977,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.507951266067,
+          "mean": 189.54762071525803
+        },
+        "centroidMedian": 162.2637589395062,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 30,
+      "renoByCompany": {
+        "co-a": 2,
+        "co-g": 7,
+        "co-m": 21
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 36,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 267,
+      "composite": 0.5292735042735043,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.5555555555555556,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760648,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 679,
+        "sampledTicksAtLeast3": 679,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 679
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 561,
+        "centroid": {
+          "count": 561,
+          "min": 10.787129230233202,
+          "p25": 149.9999999999996,
+          "median": 174.01477426732683,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 222.15644524082157
+        },
+        "effective": {
+          "count": 561,
+          "min": 0,
+          "p25": 83.7660721769317,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 596.8300219734699,
+          "mean": 192.6865979385607
+        },
+        "centroidMedian": 174.01477426732683,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 29,
+      "renoByCompany": {
+        "co-a": 5,
+        "co-g": 8,
+        "co-m": 16
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "DESTROYED",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": true,
+      "coalitionKilled": 104,
+      "endpointFlankEvents": 23,
+      "angularFlankEvents": 354,
+      "composite": 0.5762820512820512,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.6666666666666666,
+        "C3": 0.38461538461538464,
+        "C4": 0.9230769230769231
+      }
+    },
+    {
+      "seed": 18760649,
+      "complete": true,
+      "stopTick": null,
+      "scenarioHash": "ba288f09",
+      "peakPressureWithin30": 160,
+      "peakTimberPressure": 0,
+      "goalAudit": {
+        "sampledTicks": 723,
+        "sampledTicksAtLeast3": 723,
+        "minNorthSouthSpanMeters": 160,
+        "minPairSpanMeters": 164.92422502470643,
+        "spanViolationTicks": 0,
+        "violations": [],
+        "layouts": [
+          {
+            "layout": "blackfeet-santee-pool@14|minneconjou-pool@42|sans-arc-pool@70",
+            "firstTick": 1438,
+            "lastTick": 2160,
+            "sampledTicks": 723
+          }
+        ]
+      },
+      "standWindow": {
+        "events": 560,
+        "centroid": {
+          "count": 560,
+          "min": 13.02380970740182,
+          "p25": 149.9999999999996,
+          "median": 151.8964680433271,
+          "p75": 226.66278098793268,
+          "max": 656.2400219734699,
+          "mean": 214.72020424961494
+        },
+        "effective": {
+          "count": 560,
+          "min": 0,
+          "p25": 86.02000000000054,
+          "median": 149.9999999999996,
+          "p75": 226.66278098793268,
+          "max": 594.507951266067,
+          "mean": 186.6990278762519
+        },
+        "centroidMedian": 151.8964680433271,
+        "effectiveMedian": 149.9999999999996
+      },
+      "renoKilled": 33,
+      "renoByCompany": {
+        "co-a": 4,
+        "co-g": 6,
+        "co-m": 23
+      },
+      "eastRenoAnnihilations": [],
+      "companyEndStates": {
+        "co-a": "ALIVE",
+        "co-g": "ALIVE",
+        "co-m": "ALIVE",
+        "co-c": "ALIVE",
+        "co-e": "DESTROYED",
+        "co-f": "DESTROYED",
+        "co-i": "DESTROYED",
+        "co-l": "DESTROYED",
+        "co-d": "ALIVE"
+      },
+      "completeWing": false,
+      "coalitionKilled": 32,
+      "endpointFlankEvents": 22,
+      "angularFlankEvents": 270,
+      "composite": 0.5292735042735043,
+      "components": {
+        "C1": 0.5,
+        "C2": 0.5555555555555556,
+        "C3": 0.3076923076923077,
+        "C4": 0.9230769230769231
+      }
+    }
+  ],
+  "summary": {
+    "completedSeeds": 50,
+    "stop": {
+      "fired": false
+    },
+    "lip": {
+      "cells": 85,
+      "northSouthSpanMeters": 260,
+      "westCells": 85
+    },
+    "pressureWithin30": {
+      "count": 50,
+      "min": 158,
+      "p25": 160,
+      "median": 160,
+      "p75": 160,
+      "max": 160,
+      "mean": 159.72,
+      "sorted": [
+        158,
+        158,
+        159,
+        159,
+        159,
+        159,
+        159,
+        159,
+        159,
+        159,
+        159,
+        159,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ]
+    },
+    "pressureBelow615Seeds": 50,
+    "minGoalNorthSouthSpan": {
+      "count": 50,
+      "min": 160,
+      "p25": 160,
+      "median": 160,
+      "p75": 160,
+      "max": 160,
+      "mean": 160,
+      "sorted": [
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160,
+        160
+      ]
+    },
+    "minGoalPairSpan": {
+      "count": 50,
+      "min": 164.92422502470643,
+      "p25": 164.92422502470643,
+      "median": 164.92422502470643,
+      "p75": 164.92422502470643,
+      "max": 164.92422502470643,
+      "mean": 164.92422502470635,
+      "sorted": [
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643,
+        164.92422502470643
+      ]
+    },
+    "goalSpanViolationTicks": 0,
+    "goalAuditViolations": [],
+    "centroidRanges": {
+      "count": 28097,
+      "min": 0,
+      "p25": 149.9999999999996,
+      "median": 163.3903693020346,
+      "p75": 226.66278098793268,
+      "max": 672.1217159688931,
+      "mean": 220.025807574459
+    },
+    "effectiveRanges": {
+      "count": 28097,
+      "min": 0,
+      "p25": 88.30500000000053,
+      "median": 149.9999999999996,
+      "p75": 226.66278098793268,
+      "max": 599.4703131600002,
+      "mean": 191.56611218683253
+    },
+    "perSeedCentroidMedian": {
+      "count": 50,
+      "min": 150.0122911478694,
+      "p25": 150.0430539755179,
+      "median": 159.64078166484813,
+      "p75": 165.75595426824182,
+      "max": 226.66278098793268,
+      "mean": 161.34220332402649,
+      "sorted": [
+        150.0122911478694,
+        150.01605940226682,
+        150.02165956346673,
+        150.0310721769317,
+        150.0310721769317,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        150.0430539755179,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        151.8964680433271,
+        153.6769192210794,
+        159.64078166484813,
+        159.64078166484813,
+        162.2637589395062,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        165.75595426824182,
+        168.52431043762425,
+        168.52431043762425,
+        168.52431043762425,
+        168.52431043762425,
+        168.52431043762425,
+        168.52431043762425,
+        171.00646771788553,
+        174.01477426732683,
+        226.66278098793268,
+        226.66278098793268
+      ]
+    },
+    "perSeedEffectiveMedian": {
+      "count": 50,
+      "min": 149.9999999999996,
+      "p25": 149.9999999999996,
+      "median": 149.9999999999996,
+      "p75": 149.9999999999996,
+      "max": 226.66278098793268,
+      "mean": 153.06651123951707,
+      "sorted": [
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.9999999999996,
+        149.99999999999986,
+        226.66278098793268,
+        226.66278098793268
+      ]
+    },
+    "renoKilled": {
+      "count": 50,
+      "min": 22,
+      "p25": 26,
+      "median": 31,
+      "p75": 36,
+      "max": 74,
+      "mean": 32.8,
+      "sorted": [
+        22,
+        22,
+        22,
+        22,
+        24,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        26,
+        26,
+        27,
+        27,
+        27,
+        27,
+        27,
+        28,
+        28,
+        28,
+        28,
+        29,
+        30,
+        30,
+        31,
+        31,
+        31,
+        31,
+        32,
+        32,
+        33,
+        33,
+        34,
+        35,
+        35,
+        36,
+        36,
+        36,
+        37,
+        37,
+        37,
+        38,
+        39,
+        40,
+        42,
+        48,
+        66,
+        66,
+        74
+      ]
+    },
+    "over60Seeds": [
+      18760623,
+      18760633,
+      18760646
+    ],
+    "eastRenoAnnihilations": [
+      {
+        "seed": 18760633,
+        "tick": 1628,
+        "minute": 814,
+        "targetUnitId": "co-m",
+        "unitId": "crow-king-band",
+        "position": {
+          "x": 7156.075540036013,
+          "y": 11479.543017412778
+        }
+      }
+    ],
+    "completeWingSeeds": 28,
+    "companyDestruction": {
+      "co-c": 29,
+      "co-e": 39,
+      "co-f": 39,
+      "co-i": 50,
+      "co-l": 50
+    },
+    "coalitionKilled": {
+      "count": 50,
+      "min": 32,
+      "p25": 49,
+      "median": 69,
+      "p75": 82,
+      "max": 113,
+      "mean": 67.04,
+      "sorted": [
+        32,
+        34,
+        36,
+        36,
+        37,
+        37,
+        39,
+        41,
+        42,
+        42,
+        43,
+        44,
+        49,
+        52,
+        53,
+        55,
+        57,
+        62,
+        64,
+        66,
+        66,
+        67,
+        67,
+        68,
+        69,
+        69,
+        70,
+        71,
+        71,
+        71,
+        72,
+        74,
+        79,
+        80,
+        80,
+        81,
+        82,
+        82,
+        85,
+        85,
+        85,
+        86,
+        86,
+        90,
+        91,
+        91,
+        94,
+        102,
+        104,
+        113
+      ]
+    },
+    "compositePercent": {
+      "count": 50,
+      "min": 47.37179487179487,
+      "p25": 52.927350427350426,
+      "median": 57.628205128205124,
+      "p75": 57.628205128205124,
+      "max": 63.18376068376068,
+      "mean": 56.153846153846125,
+      "sorted": [
+        47.37179487179487,
+        50.14957264957265,
+        50.14957264957265,
+        50.14957264957265,
+        52.07264957264957,
+        52.07264957264957,
+        52.07264957264957,
+        52.07264957264957,
+        52.07264957264957,
+        52.07264957264957,
+        52.07264957264957,
+        52.927350427350426,
+        52.927350427350426,
+        52.927350427350426,
+        52.927350427350426,
+        52.927350427350426,
+        52.927350427350426,
+        55.705128205128204,
+        55.705128205128204,
+        55.705128205128204,
+        56.559829059829056,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        57.628205128205124,
+        58.48290598290598,
+        58.48290598290598,
+        58.48290598290598,
+        60.40598290598291,
+        60.40598290598291,
+        60.40598290598291,
+        60.40598290598291,
+        60.40598290598291,
+        61.26068376068376,
+        61.26068376068376,
+        61.26068376068376,
+        63.18376068376068
+      ]
+    },
+    "endpointFlankEvents": 1127,
+    "angularFlankEvents": 18373,
+    "timberPressure": {
+      "count": 50,
+      "min": 0,
+      "p25": 0,
+      "median": 0,
+      "p75": 0,
+      "max": 0,
+      "mean": 0,
+      "sorted": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "scenarioHashes": [
+      "ba288f09"
+    ]
+  },
+  "stop": {
+    "fired": false
+  }
+}

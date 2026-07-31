@@ -5,13 +5,13 @@
 - Variants: `baseline`
 - Review tier: **baseline**
 - Counterfactual provenance flag: **no**
-- Composite: **57.63%**
+- Composite: **63.18%**
 - Composite gates: **FAIL**
 
 | Component | Weight | Included score | Gate |
 |---|---:|---:|---|
 | C1 Checkpoints | 0.35 | 50.00% | FAIL — HIGH 25.0% ≥ 70%; overall 50.0% ≥ 50% |
-| C2 Casualties | 0.25 | 66.67% | FAIL — both killed/wounded side bands and every flagship end-state exact |
+| C2 Casualties | 0.25 | 88.89% | FAIL — both killed/wounded side bands and every flagship end-state exact |
 | C3 End states | 0.25 | 38.46% | FAIL — 100% of HIGH-confidence assertions by their minute |
 | C4 Observations | 0.15 | 92.31% | PASS — 92.3% ≥ 80% of HIGH/MEDIUM events |
 
@@ -41,10 +41,10 @@ Gate: **FAIL** — both killed/wounded side bands and every flagship end-state e
 
 | Item | Confidence | Scope | Expected | Actual | Result |
 |---|---|---|---|---|---|
-| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 225 | FAIL |
-| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 7 | FAIL |
-| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 72 | PASS |
-| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 212 | FAIL |
+| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 274 | PASS |
+| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 14 | FAIL |
+| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 69 | PASS |
+| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 168 | PASS |
 | flagship:co-c | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-e | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-f | HIGH | included | DESTROYED exactly | DESTROYED | PASS |

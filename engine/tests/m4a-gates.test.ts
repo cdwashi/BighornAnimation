@@ -47,7 +47,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // refreshes the two-round-stale combat pin directly to this ruled world.
     // D107's isolated-catch annihilation removes finished fragments and
     // intentionally refreshes this combat-only behavioral oracle.
-    expect(hashState(baseline.state())).toBe('baafb3c9');
+    // D108 Amendment 1's WEST-only bench lip moves camp-defence goals and the
+    // resulting combat stream without changing scenario content or RNG seeding.
+    expect(hashState(baseline.state())).toBe('2de157f8');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -84,9 +86,20 @@ describe('M4-A F1-F6 closeout gates', () => {
   it('F3 no-combat regression — legacy seeds remain byte-identical with zero draws', () => {
     const left = createSim(scenario, { seed: 18760625, terrain, combatEnabled: false });
     const right = createSim(scenario, { seed: 42, terrain, combatEnabled: false });
-    left.run(2160);
-    right.run(2160);
-    expect(hashState(right.state())).toBe(hashState(left.state()));
+    const expectedHashes = [
+      [1, 'baadad58'],
+      [360, '46f01a7a'],
+      [1080, '49bc6012'],
+      // D108 Amendment 1: goal geometry is movement-side and runs with combat
+      // disabled, legitimately refreshing only the late-day no-combat pin.
+      [2160, '4968ae62'],
+    ] as const;
+    for (const [tick, expectedHash] of expectedHashes) {
+      left.run(tick);
+      right.run(tick);
+      expect(hashState(left.state())).toBe(expectedHash);
+      expect(hashState(right.state())).toBe(expectedHash);
+    }
     expect(left.state().rng.draws).toBe(0);
     expect(right.state().rng.draws).toBe(0);
   }, 120_000);
@@ -118,7 +131,7 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('baafb3c9');
+      expect(hashState(sim.state())).toBe('2de157f8');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
@@ -136,7 +149,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // createSim, so D106's matching run-only oracle is 153 calls.
     // D107 removes ended fragments and their later path work: the independent
     // probe reads 148 whole-create calls and this gate's run-only protocol 146.
-    expect(pathMetrics.calls).toBe(146);
+    // D108's WEST-only lip changes held-goal paths: the independent probe reads
+    // 160 whole-create calls and this gate's run-only protocol 158.
+    expect(pathMetrics.calls).toBe(158);
     // D94 participant-scaled ceiling: the pre-D91 11.1M ceiling covered 447
     // active warriors. D91 raised participation to 964, so the resource ceiling
     // scales by 964 / 447 and is deliberately not fitted to the observed run.

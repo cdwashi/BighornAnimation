@@ -2,6 +2,7 @@ import type { Scenario } from '../../src/schema/scenario-schema.js';
 import { minuteToTick } from './clock.js';
 import type { CombatConfig } from './combat-config.js';
 import { emitEvent, type SimEvent } from './events.js';
+import { extractBenchLip } from './lip.js';
 import {
   findPath,
   type ChannelSide,
@@ -27,7 +28,16 @@ interface CampThreat {
 interface DefenseFeature {
   id: string;
   points: readonly PointMeters[];
+  lipPoints?: readonly PointMeters[];
 }
+
+export interface LipSlot {
+  unitId: string;
+  segment: readonly PointMeters[];
+  goal: PointMeters;
+}
+
+const BENCH_FEATURE_ID = 'scenario-bench';
 
 interface ThreatCommitment {
   campUnitId: string;
@@ -35,6 +45,28 @@ interface ThreatCommitment {
 }
 
 const constrainedPathCache = new WeakMap<SimState, Map<string, PathResult>>();
+const defenseFeatureCache = new WeakMap<EngineTerrain, WeakMap<Scenario, DefenseFeature[]>>();
+
+/** D108 equal contiguous partition, ordered by unit id. */
+export function partitionLipCells(
+  cells: readonly PointMeters[],
+  assignedUnitIds: readonly string[],
+): LipSlot[] {
+  const unitIds = [...new Set(assignedUnitIds)].sort((left, right) =>
+    left.localeCompare(right));
+  if (cells.length === 0 || unitIds.length === 0) return [];
+  return unitIds.flatMap((unitId, index) => {
+    const start = Math.floor(index * cells.length / unitIds.length);
+    const end = Math.floor((index + 1) * cells.length / unitIds.length);
+    const segment = cells.slice(start, end);
+    if (segment.length === 0) return [];
+    return [{
+      unitId,
+      segment,
+      goal: { ...segment[Math.floor(segment.length / 2)] },
+    }];
+  });
+}
 
 function isCampThreat(scenario: Scenario, threat: UnitRuntime, sideId: string): boolean {
   const source = scenario.units[threat.unitIndex];
@@ -177,13 +209,73 @@ function release(unit: UnitRuntime): void {
 }
 
 function defenseFeatures(scenario: Scenario, terrain: EngineTerrain): DefenseFeature[] {
+  let scenarioCache = defenseFeatureCache.get(terrain);
+  if (!scenarioCache) {
+    scenarioCache = new WeakMap();
+    defenseFeatureCache.set(terrain, scenarioCache);
+  }
+  const cached = scenarioCache.get(scenario);
+  if (cached) return cached;
   const scenarioFeatures: DefenseFeature[] = (scenario.coverFeatures ?? []).map((feature) => {
     const [x, y] = terrain.toLocal(feature.position.lat, feature.position.lon);
-    return { id: `scenario-${feature.id}`, points: [{ x, y }] };
+    const point = { x, y };
+    return {
+      id: `scenario-${feature.id}`,
+      points: [point],
+      lipPoints: feature.id === 'bench' ? extractBenchLip(terrain, point) : undefined,
+    };
   });
   const substrateFeatures: readonly TerrainCoverFeature[] = terrain.coverFeatures?.() ?? [];
-  return [...substrateFeatures, ...scenarioFeatures].sort((left, right) =>
+  const features = [...substrateFeatures, ...scenarioFeatures].sort((left, right) =>
     left.id.localeCompare(right.id));
+  scenarioCache.set(scenario, features);
+  return features;
+}
+
+function activeBenchHolders(state: SimState, assigning?: UnitRuntime): UnitRuntime[] {
+  return state.units.filter((unit) =>
+    unit.endState !== 'DESTROYED' &&
+    (unit.campDefense?.featureId === BENCH_FEATURE_ID || unit.id === assigning?.id))
+    .sort((left, right) => left.id.localeCompare(right.id));
+}
+
+function benchGoal(
+  state: SimState,
+  unit: UnitRuntime,
+  feature: DefenseFeature,
+  fallback: PointMeters,
+): PointMeters {
+  const slots = partitionLipCells(
+    feature.lipPoints ?? [],
+    activeBenchHolders(state, unit).map((holder) => holder.id),
+  );
+  const slot = slots.find((candidate) => candidate.unitId === unit.id);
+  if (slot) return { ...slot.goal };
+  // TODO-AMBIGUOUS: D108's defensive-only empty extraction fallback. The
+  // pinned terrain test proves this branch is unreachable on current terrain.
+  return { ...fallback };
+}
+
+function synchronizeBenchGoals(
+  state: SimState,
+  features: readonly DefenseFeature[],
+): void {
+  const feature = features.find((candidate) => candidate.id === BENCH_FEATURE_ID);
+  if (!feature) return;
+  const holders = activeBenchHolders(state);
+  if (holders.length === 0) return;
+  const slots = partitionLipCells(feature.lipPoints ?? [], holders.map((holder) => holder.id));
+  const goals = new Map(slots.map((slot) => [slot.unitId, slot.goal]));
+  for (const holder of holders) {
+    if (!holder.campDefense) continue;
+    // TODO-AMBIGUOUS: defensive-only feature-point fallback if current terrain
+    // ever produces an empty lip; lip-extraction-pinned makes it unreachable.
+    holder.campDefense.goal = { ...(goals.get(holder.id) ?? feature.points[0]) };
+  }
+}
+
+function samePoint(left: PointMeters | undefined, right: PointMeters | undefined): boolean {
+  return left !== undefined && right !== undefined && left.x === right.x && left.y === right.y;
 }
 
 function nearestPoint(points: readonly PointMeters[], target: PointMeters): {
@@ -332,10 +424,13 @@ function selectReachableFeature(
     terrain,
   )) {
     if (candidate.feature.id === excludedFeatureId) continue;
-    if (!setPath(state, unit, terrain, candidate.goal)) continue;
+    const goal = candidate.feature.id === BENCH_FEATURE_ID
+      ? benchGoal(state, unit, candidate.feature, candidate.goal)
+      : candidate.goal;
+    if (!setPath(state, unit, terrain, goal)) continue;
     if (!unit.campDefense) return false;
     unit.campDefense.featureId = candidate.feature.id;
-    unit.campDefense.goal = candidate.goal;
+    unit.campDefense.goal = goal;
     return true;
   }
   if (unit.campDefense) {
@@ -498,6 +593,10 @@ export function updateCampDefense(
   );
   for (const unit of state.units) {
     if (unit.defaultBehavior !== 'DEFEND_CAMP') continue;
+    if (unit.endState === 'DESTROYED') {
+      if (unit.campDefense || unit.campDefenseAlert) release(unit);
+      continue;
+    }
     const source = scenario.units[unit.unitIndex];
     if (hasScheduledOrActiveOrder(state, unit)) {
       if (unit.campDefense || unit.campDefenseAlert) release(unit);
@@ -595,15 +694,19 @@ export function updateCampDefense(
     ) && startClosing(state, unit, threat.threat, terrain)) {
       continue;
     }
-    if (!unit.blockedReason ||
+    const heldFeatureId = unit.campDefense.featureId;
+    const heldGoal = unit.campDefense.goal;
+    const pathGoal = unit.path.at(-1);
+    const benchGoalChanged = heldFeatureId === BENCH_FEATURE_ID &&
+      heldGoal !== undefined && !samePoint(pathGoal, heldGoal);
+    if ((!unit.blockedReason && !benchGoalChanged) ||
       state.tick - unit.campDefense.lastPathAttemptTick < combat.pursuitRepathCadenceTicks) {
       continue;
     }
 
-    // D92(a): D34/D70's 10-tick cadence is reused for blocked retry only.
+    // D108 reuses D92's held-goal path-attempt cadence when a join, release,
+    // or destruction changes a lip slot; the in-flight path is not interrupted.
     unit.campDefense.lastPathAttemptTick = state.tick;
-    const heldFeatureId = unit.campDefense.featureId;
-    const heldGoal = unit.campDefense.goal;
     if (heldFeatureId && heldGoal && setPath(state, unit, terrain, heldGoal)) continue;
     selectReachableFeature(
       state,
@@ -615,4 +718,8 @@ export function updateCampDefense(
       heldFeatureId,
     );
   }
+  // Goal metadata is synchronized atomically after the declared-order pass so
+  // the D108 audit sees the exact current partition. Paths adopt changed goals
+  // only on the existing held-goal cadence above.
+  synchronizeBenchGoals(state, features);
 }

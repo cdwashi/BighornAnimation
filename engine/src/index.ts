@@ -262,6 +262,7 @@ export * from './events.js';
 export * from './fatigue.js';
 export * from './frontage.js';
 export * from './leaders.js';
+export * from './lip.js';
 export * from './morale.js';
 export * from './movement.js';
 export * from './pathfind.js';
