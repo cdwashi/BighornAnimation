@@ -1,0 +1,27 @@
+﻿arc cells 103 | WEST 85 | EAST 18 | other 0 
+
+EAST cells (offsets from bench, elevation):
+  (190,-20) e=948.2 (-3.5 vs e0)
+  (190,-10) e=948.2 (-3.5 vs e0)
+  (190,0) e=948.2 (-3.5 vs e0)
+  (200,0) e=948.7 (-3.0 vs e0)
+  (190,40) e=948.2 (-3.5 vs e0)
+  (190,50) e=948.3 (-3.3 vs e0)
+  (170,60) e=948.2 (-3.5 vs e0)
+  (180,60) e=948.3 (-3.3 vs e0)
+  (190,60) e=948.5 (-3.2 vs e0)
+  (170,70) e=948.5 (-3.1 vs e0)
+  (180,70) e=948.7 (-3.0 vs e0)
+  (160,80) e=948.3 (-3.4 vs e0)
+  (170,80) e=948.8 (-2.9 vs e0)
+  (180,80) e=949.0 (-2.7 vs e0)
+  (160,90) e=948.4 (-3.3 vs e0)
+  (170,90) e=948.9 (-2.7 vs e0)
+  (160,100) e=948.6 (-3.1 vs e0)
+  (170,100) e=949.1 (-2.5 vs e0)
+
+West-to-east transects (y-offset: side flips and elevation profile every 10 m from x-offset 0 to 400):
+  y=-20: flips [110:WEST->EAST] | elevation min 946.3 at x-offset 110 (e0 951.7)
+  y=20: flips [120:WEST->EAST] | elevation min 946.2 at x-offset 120 (e0 951.7)
+  y=60: flips [130:WEST->EAST] | elevation min 947.0 at x-offset 130 (e0 951.7)
+  y=100: flips [160:WEST->EAST] | elevation min 948.3 at x-offset 140 (e0 951.7)

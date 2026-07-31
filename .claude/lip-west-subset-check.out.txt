@@ -1,0 +1,1 @@
+﻿WEST-only arc: 85 cells | N-S span -140 to 120 m (260 m) | gaps >20 m: NONE - continuous | min dist 51 m | max dist 200 m
