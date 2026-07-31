@@ -1,0 +1,13 @@
+﻿===== FORTIETH MEASUREMENT: occupancy bounding pass, 50 seeds, D107 world =====
+
+Capacity binds iff density > t (t = area / peak demand, m2/man). Sweep: 0.17 / 1 / 2.4 / 4.57 / 9 / 21 / 100 m2/man.
+
+| feature | cells | area m2 | peak ASSIGNED | peak HOLDING | bands | seeds | t(assigned) | t(holding) | binds within sweep? |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| scenario-bench | POINT | none | 620 | n/a | 3 | 50 | UNDEFINED | UNDEFINED | capacity undefined until extent exists |
+
+Features never sought by any band (zero demand all 50 seeds):
+  substrate-timber-0001, substrate-timber-0002, substrate-timber-0003
+
+VERDICT INPUT: capacity NEVER binds at any swept density on any represented feature - the denominator is irrelevant on current ground
+Disclosures: scenario-bench has no ground (demand reported, capacity undefined until the data commit); D100 foothills absent from current terrain; implied-density coverage per Fable: sweep includes 100 m2/man = one-man-per-cell.
