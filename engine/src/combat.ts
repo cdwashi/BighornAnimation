@@ -420,7 +420,27 @@ function resolveShock(
       unit.pursuit.targetUnitId === engagement.unitIds[index === 0 ? 1 : 0]);
   const defender = units.find((unit) => unit && unit !== attacker);
   if (!attacker || !defender) return;
+  // A D107 annihilation can end a unit while another same-tick engagement
+  // still references it. Ended participants do not resolve a second bout.
+  if (attacker.endState || defender.endState) return;
   engagement.meleeBoutResolved = true;
+  const defenderAlreadyRouted = defender.moraleState === 'ROUTED';
+  const defenderSideId = scenario.units[defender.unitIndex].sideId;
+  const nearestShelter = defenderAlreadyRouted
+    ? state.units.filter((unit) => unit.id !== defender.id &&
+      !unit.endState && !unit.withdrawnOffField && unit.moraleState === 'STEADY' &&
+      scenario.units[unit.unitIndex].sideId === defenderSideId &&
+      scenario.units[unit.unitIndex].kind !== 'NONCOMBATANT_CAMP')
+      .map((unit) => ({
+        unit,
+        distanceMeters: Math.hypot(
+          unit.position.x - defender.position.x,
+          unit.position.y - defender.position.y,
+        ),
+      }))
+      .filter(({ distanceMeters }) => distanceMeters <= config.isolationRadiusMeters)
+      .sort((left, right) => left.distanceMeters - right.distanceMeters)[0]
+    : undefined;
   const source = scenario.units[attacker.unitIndex];
   const profile = scenario.tacticsProfiles[source.tacticsProfileId];
   const leader = scenario.leaders.filter((item) => item.attachedToUnitId === attacker.id &&
@@ -430,8 +450,9 @@ function resolveShock(
     config.chargeSpeedBonus * (leader?.ratings.aggression ?? 50) / 50 *
     profile.weights.shockCharge / 50;
   const defense = defender.strengthAvailable * Math.max(0.1, defender.morale / 100);
-  let outcome: 'break' | 'repel' | 'held';
+  let outcome: 'break' | 'repel' | 'held' | 'annihilation';
   let convertedWounded = 0;
+  let terminalConverted: number | undefined;
   if (shock > defense * config.chargeBreakMargin) {
     defender.morale = Math.min(defender.morale, config.moraleBrokenThreshold - 1);
     defender.moraleState = 'ROUTED';
@@ -440,6 +461,23 @@ function resolveShock(
     convertedWounded = defender.wounded;
     defender.killed += convertedWounded;
     defender.wounded = 0;
+    if (defenderAlreadyRouted && !nearestShelter) {
+      outcome = 'annihilation';
+      defender.endState = 'DESTROYED';
+      // D107 mirrors D81 terminal accounting after D105's wounded conversion.
+      terminalConverted = defender.strengthCurrent;
+      defender.killed += terminalConverted;
+      defender.strengthCurrent = 0;
+      defender.strengthAvailable = 0;
+      defender.horseHolderStrength = 0;
+      defender.casualties = defender.strengthTotal;
+      defender.path = [];
+      defender.pathIndex = 0;
+      appendEvent(state, events, {
+        tick: state.tick, type: 'unit-destroyed', unitId: defender.id,
+        killed: terminalConverted, position: { ...defender.position },
+      });
+    }
   } else if (shock < defense * config.chargeRepelMargin) {
     attacker.posture = 'WITHDRAW';
     engagement.state = 'WITHDRAWAL';
@@ -460,6 +498,14 @@ function resolveShock(
     targetUnitId: defender.id,
     outcome,
     convertedWounded,
+    ...(terminalConverted === undefined ? {} : { terminalConverted }),
+    ...(outcome === 'break' && defenderAlreadyRouted && nearestShelter ? {
+      shelteredBy: {
+        id: nearestShelter.unit.id,
+        distanceMeters: nearestShelter.distanceMeters,
+        strengthCurrent: nearestShelter.unit.strengthCurrent,
+      },
+    } : {}),
   });
 }
 

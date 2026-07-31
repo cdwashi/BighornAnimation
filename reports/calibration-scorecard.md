@@ -41,10 +41,10 @@ Gate: **FAIL** — both killed/wounded side bands and every flagship end-state e
 
 | Item | Confidence | Scope | Expected | Actual | Result |
 |---|---|---|---|---|---|
-| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 207 | FAIL |
-| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 27 | FAIL |
-| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 90 | PASS |
-| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 206 | FAIL |
+| us-7th-cavalry:killed | HIGH | included | 235.0–285.0 | 225 | FAIL |
+| us-7th-cavalry:wounded | HIGH | included | 45.0–60.0 | 7 | FAIL |
+| lakota-cheyenne-coalition:killed | DISPUTED | included | 31.0–300.0 | 72 | PASS |
+| lakota-cheyenne-coalition:wounded | DISPUTED | included | 100.0–200.0 | 212 | FAIL |
 | flagship:co-c | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-e | HIGH | included | DESTROYED exactly | DESTROYED | PASS |
 | flagship:co-f | HIGH | included | DESTROYED exactly | DESTROYED | PASS |

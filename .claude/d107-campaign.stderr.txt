@@ -1,0 +1,2 @@
+seed 18760600: Reno 35; east 3; coalition 103; bouts 15; annih 3; suppress 7; wing incomplete; audit 6; accounting 0
+seed 18760601: Reno 31; east 3; coalition 76; bouts 22; annih 8; suppress 8; wing incomplete; audit 7; accounting 0

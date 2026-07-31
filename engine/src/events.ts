@@ -48,8 +48,14 @@ export interface SimEvent {
   /** D81 additive split; casualties remains killed + wounded for old consumers. */
   killed?: number;
   wounded?: number;
-  outcome?: 'break' | 'repel' | 'held';
+  outcome?: 'break' | 'repel' | 'held' | 'annihilation';
   convertedWounded?: number;
+  terminalConverted?: number;
+  shelteredBy?: {
+    id: string;
+    distanceMeters: number;
+    strengthCurrent: number;
+  };
   position?: { x: number; y: number };
   leaderId?: string;
   moraleState?: string;

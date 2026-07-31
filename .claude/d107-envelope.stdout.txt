@@ -1,0 +1,58 @@
+
+> bighorn-animation@0.1.0 envelope
+> tsc -p tsconfig.engine.json && node dist/engine/envelope-cli.js
+
+[envelope] order=1 criteria-sha256=507e4d1c1fb8dc1adfc63dbc819b448d47ae36b5602cd7f93c923f67c577f9ad
+[envelope] order=2 per-seed-generation-started N=50
+[envelope] completed=1/50 seed=18760600 composite=53.78%
+[envelope] completed=2/50 seed=18760601 composite=56.56%
+[envelope] completed=3/50 seed=18760602 composite=60.41%
+[envelope] completed=4/50 seed=18760603 composite=56.56%
+[envelope] completed=5/50 seed=18760604 composite=56.56%
+[envelope] completed=6/50 seed=18760605 composite=59.34%
+[envelope] completed=7/50 seed=18760606 composite=58.48%
+[envelope] completed=8/50 seed=18760607 composite=54.85%
+[envelope] completed=9/50 seed=18760608 composite=57.63%
+[envelope] completed=10/50 seed=18760609 composite=60.41%
+[envelope] completed=11/50 seed=18760610 composite=63.18%
+[envelope] completed=12/50 seed=18760611 composite=58.48%
+[envelope] completed=13/50 seed=18760612 composite=57.63%
+[envelope] completed=14/50 seed=18760613 composite=52.93%
+[envelope] completed=15/50 seed=18760614 composite=60.41%
+[envelope] completed=16/50 seed=18760615 composite=60.41%
+[envelope] completed=17/50 seed=18760616 composite=60.41%
+[envelope] completed=18/50 seed=18760617 composite=58.48%
+[envelope] completed=19/50 seed=18760618 composite=46.52%
+[envelope] completed=20/50 seed=18760619 composite=57.63%
+[envelope] completed=21/50 seed=18760620 composite=52.07%
+[envelope] completed=22/50 seed=18760621 composite=60.41%
+[envelope] completed=23/50 seed=18760622 composite=58.48%
+[envelope] completed=24/50 seed=18760623 composite=58.48%
+[envelope] completed=25/50 seed=18760624 composite=60.41%
+[envelope] completed=26/50 seed=18760625 composite=57.63%
+[envelope] completed=27/50 seed=18760626 composite=57.63%
+[envelope] completed=28/50 seed=18760627 composite=57.63%
+[envelope] completed=29/50 seed=18760628 composite=60.41%
+[envelope] completed=30/50 seed=18760629 composite=54.85%
+[envelope] completed=31/50 seed=18760630 composite=53.78%
+[envelope] completed=32/50 seed=18760631 composite=58.48%
+[envelope] completed=33/50 seed=18760632 composite=59.34%
+[envelope] completed=34/50 seed=18760633 composite=57.63%
+[envelope] completed=35/50 seed=18760634 composite=57.63%
+[envelope] completed=36/50 seed=18760635 composite=60.41%
+[envelope] completed=37/50 seed=18760636 composite=52.07%
+[envelope] completed=38/50 seed=18760637 composite=57.63%
+[envelope] completed=39/50 seed=18760638 composite=57.63%
+[envelope] completed=40/50 seed=18760639 composite=47.37%
+[envelope] completed=41/50 seed=18760640 composite=57.63%
+[envelope] completed=42/50 seed=18760641 composite=60.41%
+[envelope] completed=43/50 seed=18760642 composite=57.63%
+[envelope] completed=44/50 seed=18760643 composite=57.63%
+[envelope] completed=45/50 seed=18760644 composite=58.48%
+[envelope] completed=46/50 seed=18760645 composite=60.41%
+[envelope] completed=47/50 seed=18760646 composite=58.48%
+[envelope] completed=48/50 seed=18760647 composite=44.59%
+[envelope] completed=49/50 seed=18760648 composite=57.63%
+[envelope] completed=50/50 seed=18760649 composite=60.41%
+[envelope] selected=18760612 candidates=7
+[envelope] wrote C:\Users\cdwas\Documents\Programming\BighornAnimation\reports\seed-envelope.md

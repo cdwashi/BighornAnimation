@@ -1,0 +1,87 @@
+
+> bighorn-animation@0.1.0 test
+> vitest run --fileParallelism=false
+
+
+ RUN  v3.2.7 C:/Users/cdwas/Documents/Programming/BighornAnimation
+
+stdout | engine/tests/m4a-gates.test.ts > M4-A F1-F6 closeout gates > F6 pooled-A* work metrics are bounded; wall clock is informational
+[gate] F6 median=18055.5ms timings=14715.7,18055.5,18478.0 pathfind={"calls":146,"expandedNodes":12560251,"scratchAllocations":1,"heapGrowths":3}
+
+ ✓ engine/tests/m4a-gates.test.ts (6 tests) 103571ms
+   ✓ M4-A F1-F6 closeout gates > F1 seed flip — identical same-seed run; different seeds flip only at first contact  34756ms
+   ✓ M4-A F1-F6 closeout gates > F3 no-combat regression — legacy seeds remain byte-identical with zero draws  16892ms
+   ✓ M4-A F1-F6 closeout gates > F6 pooled-A* work metrics are bounded; wall clock is informational  33003ms
+stdout | engine/tests/gates.test.ts > M2 exit gates > E1 Determinism — full-state hashes match at required ticks, including a different unused seed
+[gate] E1 hashes {"sameA":{"1":"baadad58","360":"46f01a7a","1080":"49bc6012","2160":"b36d9fa9"},"sameB":{"1":"baadad58","360":"46f01a7a","1080":"49bc6012","2160":"b36d9fa9"},"different":{"1":"baadad58","360":"46f01a7a","1080":"49bc6012","2160":"b36d9fa9"}}
+
+ ✓ engine/tests/gates.test.ts (6 tests) 88645ms
+   ✓ M2 exit gates > E5 Movement-only checkpoint report — CLI module generates the informational hit/miss table  15579ms
+   ✓ M2 exit gates > E6 Save/replay equivalence — resume and keyframe scrub are bit-identical to straight runs  28961ms
+stdout | engine/tests/m3a-gates.test.ts > M3-A exit gates > V1 Determinism — same-seed and different-seed full-day states are identical; spotting consumes no RNG
+[gate] V1 PASS same/different seeds identical; rng.draws=0
+
+stdout | engine/tests/m3a-gates.test.ts > M3-A exit gates > V2 C4 exam — one global table reproduces at least 80% of gateable events
+[gate] V2 PASS 12/13 (92.3%)
+
+stdout | engine/tests/m3a-gates.test.ts > M3-A exit gates > V3 Knowledge invariant — never-spotted enemies are absent from belief and serialization
+[gate] V3 PASS no never-spotted target ids in belief or serialized belief
+
+stdout | engine/tests/m3a-gates.test.ts > M3-A exit gates > V7 E5 stability — checkpoint table is identical to the D53a 083e7f2c baseline
+[gate] V7 PASS E5 table diff=none
+
+ ✓ engine/tests/m3a-gates.test.ts (6 tests) 58992ms
+   ✓ M3-A exit gates > D55 cache equivalence — full-day run with spotting memoization disabled is bit-identical to the cached run  41293ms
+stdout | tests/m3b-gates.test.ts > M3-B exit gates > V4 performance — 30 m viewshed and full-day spotting stay within generous CI ceilings
+[gate] V4 viewshed=472.35ms baseline=8003.06ms sweep=6901.14ms spottingOverhead=-9.34%
+
+stdout | tests/m3b-gates.test.ts > M3-B exit gates > V5 ray parity — 200 deterministic random pairs exactly match engine transmittance verdicts
+[gate] V5 PASS exact=200/200
+
+stdout | tests/m3b-gates.test.ts > M3-B exit gates > V6 decision index — orders plus camp activations and M4-B leader deaths
+[gate] V6 PASS entries=30 orders=26 activations=3 leaderDeaths=1
+
+ ✓ tests/m3b-gates.test.ts (3 tests) 64367ms
+ ✓ engine/tests/d91-gates.test.ts (12 tests) 27719ms
+   ✓ D91/D92 camp-defence reconstruction gates > D92 derives deterministic TIMBER feature clusters and scenario data declares only the Bench  394ms
+   ✓ D91/D92 camp-defence reconstruction gates > D91 permanent invariant — no baseline unit occupies a non-finite-cost cell at any full-day tick  27202ms
+stdout | tests/terrain-gates.test.ts > M1 terrain validation gates > G1 — pipeline outputs exist, manifest is coherent, and contours are non-empty GeoJSON
+[gate] G1 PASS
+
+stdout | tests/terrain-gates.test.ts > M1 terrain validation gates > G2 — landmark elevations satisfy all required ordinal relationships
+[gate] G2 elevations {"lastStandHill":1006.6591586542488,"deepRavine":1004.6884803025237,"fordB":939.2357514637081,"renoHill":1034.959347093062,"fordA":957.904810237618,"weirPoint":1041.7486488377403,"sharpshooterRidge":1038.9672878067122}
+[gate] G2 PASS
+
+stdout | tests/terrain-gates.test.ts > M1 terrain validation gates > G3 — curvature toggle demonstrates the 24 km earth-drop correction
+[gate] G3 PASS rawDrop=45.20m effectiveDrop=39.33m
+
+stdout | tests/terrain-gates.test.ts > M1 terrain validation gates > G4 — Reno Hill to Last Stand Hill is blocked for standing observer and target
+[gate] G4 PASS blockedAt=489.77m
+
+stdout | tests/terrain-gates.test.ts > M1 terrain validation gates > G5 — loader round-trips 100 deterministic source-grid points within quantization tolerance
+[gate] G5 PASS samples=100 tolerance=0.05m
+
+ ✓ tests/terrain-gates.test.ts (5 tests) 338ms
+ ✓ engine/tests/m5a-gates.test.ts (9 tests) 273ms
+stdout | tests/data-integrity.test.ts
+[metric] remaining TODO-AMBIGUOUS count: 38
+
+ ✓ tests/data-integrity.test.ts (13 tests) 226ms
+ ✓ engine/tests/unit.test.ts (3 tests) 128ms
+ ✓ engine/tests/d105-bout.test.ts (5 tests) 75ms
+ ✓ engine/tests/d107-annihilation.test.ts (5 tests) 47ms
+ ✓ tests/m4b-interactions.test.ts (8 tests) 47ms
+ ✓ engine/tests/d106-pursuit-gate.test.ts (4 tests) 26ms
+ ✓ engine/tests/d104-rout.test.ts (4 tests) 38ms
+ ✓ tests/m3d-interactions.test.ts (5 tests) 28ms
+ ✓ engine/tests/d102-frontage.test.ts (4 tests) 32ms
+ ✓ engine/tests/variants.test.ts (3 tests) 20ms
+ ✓ tests/m3c-interactions.test.ts (7 tests) 11ms
+ ✓ tests/m4c-interactions.test.ts (2 tests) 8ms
+
+ Test Files  19 passed (19)
+      Tests  110 passed (110)
+     Errors  1 error
+   Start at  20:56:53
+   Duration  359.03s (transform 1.17s, setup 0ms, collect 3.07s, tests 344.59s, environment 7ms, prepare 3.59s)
+

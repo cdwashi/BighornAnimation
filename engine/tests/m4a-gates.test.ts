@@ -45,7 +45,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // D104 and D105 both accepted behavior changes but stopped before their
     // registered refreshes. D106's camp-defence ownership gate therefore
     // refreshes the two-round-stale combat pin directly to this ruled world.
-    expect(hashState(baseline.state())).toBe('38f6ce32');
+    // D107's isolated-catch annihilation removes finished fragments and
+    // intentionally refreshes this combat-only behavioral oracle.
+    expect(hashState(baseline.state())).toBe('baafb3c9');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -116,7 +118,7 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      expect(hashState(sim.state())).toBe('38f6ce32');
+      expect(hashState(sim.state())).toBe('baafb3c9');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
@@ -132,7 +134,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // before refresh; a separate whole-create probe reads 186/155 before/after
     // because it includes two initialization calls. This gate resets after
     // createSim, so D106's matching run-only oracle is 153 calls.
-    expect(pathMetrics.calls).toBe(153);
+    // D107 removes ended fragments and their later path work: the independent
+    // probe reads 148 whole-create calls and this gate's run-only protocol 146.
+    expect(pathMetrics.calls).toBe(146);
     // D94 participant-scaled ceiling: the pre-D91 11.1M ceiling covered 447
     // active warriors. D91 raised participation to 964, so the resource ceiling
     // scales by 964 / 447 and is deliberately not fitted to the observed run.
