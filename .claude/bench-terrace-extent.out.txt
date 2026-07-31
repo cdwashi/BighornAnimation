@@ -1,0 +1,19 @@
+﻿bench local (7364, 10517), elevation 951.67 m
+
+tol 2.5 m (sensitivity): 37866 cells = 3786600 m2 | equiv-circle diameter 2196 m | bbox 4080 x 3980 m | sides WEST:32974 EAST:4892 | CAP HIT - criterion leaks, fill truncated
+
+tol 3.5 m (D90 relief bound, PRIMARY): 46907 cells = 4690700 m2 | equiv-circle diameter 2444 m | bbox 4110 x 4170 m | sides WEST:39721 EAST:7186 | CAP HIT - criterion leaks, fill truncated
+  capacity vs true peak 708 (41st):
+    2.4 m2/man -> capacity 1954458 - does not bind
+    4.57 m2/man -> capacity 1026411 - does not bind
+    21 m2/man -> capacity 223366 - does not bind
+    100 m2/man -> capacity 46907 - does not bind
+
+tol 4.5 m (sensitivity): 63821 cells = 6382100 m2 | equiv-circle diameter 2851 m | bbox 4180 x 5390 m | sides WEST:47059 EAST:16762 | CAP HIT - criterion leaks, fill truncated
+node : done
+At line:1 char:302
++ ... t' } catch {} } }; node .claude\bench-terrace-extent.mjs 2>&1 | Out-F ...
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (done:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

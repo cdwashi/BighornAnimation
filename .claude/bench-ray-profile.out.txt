@@ -1,0 +1,23 @@
+﻿bench local (7364, 10517), elevation 951.67 m, tolerance 3.5 m
+
+| bearing (deg, 0=N=+y) | downhill break (m) | uphill bound (m) | first bound (m) | note |
+|---:|---:|---:|---:|---|
+| 0 | 755 | 805 | 755 |  |
+| 23 | 605 | 680 | 605 |  |
+| 45 | >1500 | 595 | 595 |  |
+| 68 | 95 | 575 | 95 |  |
+| 90 | 85 | 605 | 85 |  |
+| 113 | 100 | 785 | 100 |  |
+| 135 | >1500 | 1185 | 1185 |  |
+| 158 | >1500 | >1500 | UNBOUNDED | open shelf |
+| 180 | >1500 | 1115 | 1115 |  |
+| 203 | >1500 | 955 | 955 |  |
+| 225 | >1500 | 950 | 950 |  |
+| 248 | >1500 | 1070 | 1070 |  |
+| 270 | >1500 | >1500 | UNBOUNDED | open shelf |
+| 293 | >1500 | >1500 | UNBOUNDED | open shelf |
+| 315 | 600 | >1500 | 600 |  |
+| 338 | 660 | >1500 | 660 |  |
+
+bounded directions: 13/16 | min 85 m | median 660 m | max 1185 m
+Ellipse-order area estimate from bounded rays only (pi * r_med^2) is indicative, not a delineation.
