@@ -1,0 +1,13 @@
+﻿bench local position: (7364, 10517)
+===== FORTY-FIRST MEASUREMENT: ground-pressure census (all channels, by position), 50 seeds =====
+
+| ground | global peak | peak UNASSIGNED-share | per-seed peak min/med/max | seeds>0 | nonzero ticks (sum) | top bands (peak contrib) |
+|---|---:|---:|---|---:|---:|---|
+| bench-r30 | 708 | 620 | 615/620/708 | 50/50 | 30590 | minneconjou-pool:265 sans-arc-pool:195 blackfeet-santee-pool:160 cheyenne-pool:88 crow-king-band:28 |
+| bench-r60 | 708 | 620 | 615/620/708 | 50/50 | 30606 | minneconjou-pool:265 sans-arc-pool:195 blackfeet-santee-pool:160 cheyenne-pool:88 crow-king-band:28 |
+| substrate-timber-0001 | 0 | 0 | 0/0/0 | 0/50 | 0 | (none) |
+| substrate-timber-0002 | 0 | 0 | 0/0/0 | 0/50 | 0 | (none) |
+| substrate-timber-0003 | 0 | 0 | 0/0/0 | 0/50 | 0 | (none) |
+
+Arithmetic anchor for the ruling: 40th assigned-channel peak on bench was 620.
+Capacity of D90 ground (2,827 m2) at candidate densities: 2.4 -> 1,178 men | 4.57 -> 619 men | 21 -> 135 men | 100 (one-man-per-cell) -> 28 men.
