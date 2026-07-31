@@ -327,3 +327,39 @@ Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5
 ### Compounding-uncertainty disclosure
 
 Thirty-four of fifty seeds are previewed; the sixteen unseen seeds carry the genuine uncertainty, and the wing-completion deficit rides through this campaign unfixed by design. The bundle's northern registrations are not to be sized from this campaign's wing numbers — that sizing waits on the wing-finisher ruling's own campaign.
+
+---
+
+## WO-D107 — close-action finishing: the annihilation outcome, isolation-scoped (tier A)
+
+**Tier A.** Committed alone, before the work order is frozen and before any dispatch. Ruling D107; work order follows at `docs/WO-D107.md`, written to match. No scenario byte changes — same stream.
+
+**Baseline disclosure:** the pre-fix world is the accepted D106 tree: Reno killed median 32 (N=50), coalition 67.5, complete wing 9/50, ≥2-east 50/50 (49/50 all three), ford choke empty 50/50, bouts 634 all-break. The 36th's census bounds the annihilation set on this world (~198 wing catches, 2 Reno annihilation-eligible catches) — a static bound, not a behavioral preview: annihilations remove units and change subsequent dynamics, so this campaign is the design's first behavioral measurement. Sized accordingly, with the 26th's warned direction registered.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-45 — The wing completes.** Scored: complete wing destruction (C/E/F/I/L destroyed, co-d alive) in at least **30/50** seeds, against 9/50 baseline. Direction is the claim: the finisher transforms completion, demonstrated by a large move off the baseline. 30 was chosen at review over the drafted 35 because co-e's census catch-column is thin (19 across 50 seeds) and the recur dynamics that would fill it are exactly the static-vs-behavioral gap nobody has observed — the threshold does not stake the prediction on a hoped-for mechanism (the PR-25 lesson). *Other branch, registered:* completion below 30/50 with catches occurring means the recur dynamics under-deliver specific companies (the census's thin co-e/co-f columns) — a finding about catch distribution, not the mechanism failing; report per-company completion counts.
+
+**PR-46 — The valley holds.** Scored, two legs: at least two of A/G/M end alive east in at least **45/50** seeds, and the Reno A/G/M killed median stays below **45** (the same referent as the D104 and D105 campaigns, held for cross-round comparability per review). The two known annihilation-eligible Reno catches (an isolated straggler remnant; seed 632's retreat-window fragment) are inside this envelope; a median approaching 45 means annihilations are reaching companies the census said were sheltered — the over-kill direction, owned by the stop.
+
+**PR-47 — The audit legs.** Scored, graded from the extended `melee-bout` event (outcome gains `annihilation`): (a) every annihilation's defender was ROUTED before the bout and ISOLATED at it (no eligible friendly — STEADY, non-withdrawn, same-side combat unit — within 650 m); zero annihilations of first-break defenders, zero with an eligible friendly in radius, 50/50 seeds; (b) killed − fire-killed − bout-converted − annihilation-converted = 0 for every unit in every seed. Failure = implementation error, not a miss.
+
+**PR-48 — Coalition stays sourced.** Scored: coalition killed median inside 36–136. The annihilation outcome targets cavalry (the 36th: zero coalition catches); material coalition movement means something else moved, registered as such.
+
+**PR-49 — The choke, directional at last.** Registered expectation, per adjudication: seed-632-class catches — west-side, retreat-window, isolated — are **expected behaviour producing deaths where the record puts them**, and PR-34's choke-populates branch may now fire for the right reason. Scored leg: all annihilation and bout events within the preserved 250 m Ford A extraction reported per seed; a populated choke **supersedes PR-29's ammunition reading per the pre-registered chain** (bouts and finishes need no rounds). An empty choke remains informative (catches happening away from the registered extraction point — report catch locations).
+
+**PR-50 — Same stream.** Scored: `ba288f09` byte-identical; a change is a STOP.
+
+### Registered observations, no direction scored
+
+- **Shelter-suppression events as data:** every catch-while-routed that does NOT annihilate because an eligible friendly stands in radius, with the friendly's identity, distance, and strength (the which-one-specifically practice, instrumented in the mechanism itself). The 618/647-class exclusions should appear here; a suppression by a weak shelterer is the known softness showing itself, reported not repaired. The thirty-eighth measured the softness harmless on the census world — all 22 shelterer instances are formed bodies (ratio min 73%, median 82%; strength min 29, median 37; the shattered-remnant arm empty) — so any suppression by a shelterer materially below that observed floor is the reopen signal for the formed question, on measurement.
+- **Repulse remains 0-for-N watch:** the standing observation rides along.
+- **Per-company catch and annihilation counts** against the census bound (198 wing / 2 Reno) — the static-vs-behavioral gap is itself informative.
+
+### RE-ARMED STOP (PR-5 class)
+
+Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5/50** seeds, or any seed reaches killed ≥ **100**. Same referents, held deliberately for the fourth consecutive work order: on this world a re-fire can only mean the annihilation outcome reaching the valley beyond its census bound — the 26th's warned direction in its exact form. Registered before dispatch; not to be moved.
+
+### Compounding-uncertainty disclosure
+
+The census bounds the trigger set statically, but annihilations change the day: removed units release pursuers, alter catch sequences, and shift the northern fight the 32nd measured. This campaign is the design's first behavioral measurement, the sixth mechanism in the post-stop chain, and the last ruling scheduled before the bundle. Surprises are the register working.
