@@ -1,0 +1,17 @@
+﻿defense features (id, points, camp-side check deferred to per-camp eval): scenario-bench(1pt) substrate-timber-0001(984pt) substrate-timber-0002(10pt) substrate-timber-0003(2164pt)
+
+===== FORTY-SECOND MEASUREMENT: overflow eligibility (bench excluded), 10 seeds =====
+evaluations: 375 (bands: blackfeet-santee-pool, minneconjou-pool, sans-arc-pool)
+bench rank when included: 0 (0 = first choice)
+evaluations with ANY reachable non-bench candidate: 0/375
+
+| candidate (bench excluded) | offered | reachable | dist-to-threat med (m) | dist-to-camp med (m) | path length med (m) |
+|---|---:|---:|---:|---:|---:|
+| substrate-timber-0003 | 375 | 0 | 2658 | 1875 | n/a |
+
+Per-band summary (first-assignment evaluations only):
+  blackfeet-santee-pool: 10 first-assignments, reachable alternative in 0
+  minneconjou-pool: 10 first-assignments, reachable alternative in 0
+  sans-arc-pool: 10 first-assignments, reachable alternative in 0
+
+VERDICT INPUT: NO reachable non-bench destination at any evaluation - overflow has no destination and the option dies before drafting
