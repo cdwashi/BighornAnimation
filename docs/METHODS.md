@@ -59,6 +59,8 @@ Requirements:
 - **Verdicts are accepted as they fall.** A missed prediction is recorded as missed. Nothing is adjusted to rescue it.
 - Where a plausible failure mode is anticipated, the **response is pre-committed** — for example, that a particular miss would require a separately-ruled mechanism and explicitly not a parameter change.
 
+**The discipline validated itself on the typical-seed criteria (2026-07-30).** The D80 typical-seed selection criteria were frozen before the post-stop defect arc began, and returned "none — no eligible member" in every world from the D91 fix onward. They were deliberately left un-re-derived across that entire span, because adjusting selection criteria after seeing the distributions they select from is forking-paths; the empty selection was reported as a finding each round instead. After six precedent-only defect rulings (D103–D107, none justified by a casualty figure), the WO-D107 campaign's envelope selected seed 18760612 from seven eligible candidates — the first selection in the project's history. Nobody moved the criteria toward the model; the model changed until it produced a day the frozen criteria recognise. The envelope median rose 46.30% → 57.63% over the same span. This is the cleanest validation of pre-registration this project is likely to generate: the instrument held still, and reality walked into it.
+
 ## 6. Verification
 
 Every change is verified by a four-part gate — typecheck, lint, tests, build — plus, for behavioural changes, a before/after composite audit and a re-run of the preserved diagnostic probes.
