@@ -1,0 +1,20 @@
+﻿===== THIRTY-NINTH MEASUREMENT: frontage in the D107 world, 50 seeds =====
+
+(1) FIRE AUDIT: 97928 fire events | frontage-ACTIVE (effective < centroid): 14259 (14.56%)
+    delta (centroid - effective) where active: {"n":14259,"min":10.11,"p25":61.69,"med":68.55,"p75":75.41,"max":77.69}
+    active by window: valley(Reno,700-800) 14259 | post-800 0 | other 0
+    active by attacker (top 8): hunkpapa-pool:2328 gall-band:2328 crow-king-band:2143 sans-arc-pool:1967 blackfeet-santee-pool:1964 minneconjou-pool:1816 co-m:1013 co-g:400
+    active by target (top 8): co-m:8407 co-g:2308 co-a:1831 minneconjou-pool:353 hunkpapa-pool:335 gall-band:335 blackfeet-santee-pool:320 sans-arc-pool:300
+
+(2) PR-16 INSTRUMENT RE-RUN (warrior-on-Reno fire, min 700-800):
+    centroid ranges: {"n":28581,"min":0,"p25":150,"med":151.9,"p75":226.66,"max":670.47}
+    effective ranges: {"n":28581,"min":0,"p25":88.3,"med":150,"p75":226.66,"max":599.88}
+    per-seed median effective: {"n":50,"min":140.66,"p25":150,"med":150,"p75":150,"max":226.66} (seeds with valley events: 50/50)
+    D102 baseline: pooled median 215.96 m, effective==centroid everywhere | registered instrument was 144 +/- 35 m
+
+(3) FRONTAGE-STATE CENSUS (units with nonzero frontage, any tick):
+    co-a: 2910 unit-ticks (sum over 50 seeds) | first min 725.5 last 754 | frontage m med 151 p75 155 max 155
+    co-g: 2910 unit-ticks (sum over 50 seeds) | first min 725.5 last 754 | frontage m med 151 p75 151 max 155
+    co-m: 2910 unit-ticks (sum over 50 seeds) | first min 725.5 last 754 | frontage m med 142 p75 151 max 155
+
+(4) FLANK EVENTS: endpoint 2591 (D102 baseline 0) | angular 18031
