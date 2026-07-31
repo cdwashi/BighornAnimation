@@ -363,3 +363,42 @@ Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5
 ### Compounding-uncertainty disclosure
 
 The census bounds the trigger set statically, but annihilations change the day: removed units release pursuers, alter catch sequences, and shift the northern fight the 32nd measured. This campaign is the design's first behavioral measurement, the sixth mechanism in the post-stop chain, and the last ruling scheduled before the bundle. Surprises are the register working.
+
+---
+
+## WO-D108 — Bench extent as goal geometry: the lip ruling (tier A)
+
+**Tier A.** Committed alone, before the work order is frozen and before any dispatch. Ruling D108; work order follows at `docs/WO-D108.md`, written to match. **No scenario byte changes — the mechanism is a derivation (D102 `frontageMeters` class), and that claim is itself scored (PR-55).**
+
+**Baseline disclosure:** the accepted D107 world: composite median 57.63; Reno A/G/M killed median 32 (4 seeds >60, max 68 — seed 632's disclosed number); complete wing 35/50; coalition killed median 70.5; **zero east-side Reno annihilations**; bench ground pressure per-seed peak 615/620/708, all of it within 30 m of the point (41st); stand-window ranges median 151.9 m centroid / 150 m effective (39th); timber features at zero pressure in all 50 seeds (41st). Evidence base for the ruling: measurements 39 through 44; the fifteenth design death and its METHODS entry stand behind the segment-boundary discipline below.
+
+### Predictions (judged per D80, N=50, seeds 18760600–18760649; verdicts as they fall)
+
+**PR-51 — The stacking dissolves (load-bearing).** Scored, two legs: (a) peak simultaneous warrior strength within 30 m of the bench point falls below the 41st's measured floor (615) in at least **45/50** seeds; (b) assigned-band goals span at least **150 m** of the lip arc in every seed-tick where ≥3 bands hold assignment. *Threshold basis, stated because it is geometric rather than comfortable:* every extracted lip cell lies ≥51 m from the bench point, so a band standing on its goal contributes zero pressure inside the 30 m radius — mechanically this should approach 50/50, and the 5-seed allowance absorbs transit spikes (bands passing the point en route), not mechanism failure; the per-seed distribution is a registered observation. The 150 m clears 3-band equal partition of the 260 m arc (~173 m end-to-end) without assuming a fourth assignment. If pressure still stacks at the point, the ruling failed regardless of every other verdict.
+
+**PR-52 — The stand moves to the lip.** Scored, direction: warrior-on-Reno centroid ranges in the stand window (min 700–800) shorten — pooled median falls below the 39th's measured 151.9 m. Registered observation, not scored: effective median (39th: 150 m) expected to fall in sympathy, with the frontage contribution (~68 m median shortening) continuing on top. Cause pre-stated by the 44th's geometric note: all measured demand stood 51–100 m behind the lip; goals now sit on it.
+
+**PR-53 — The valley holds, two legs.** (a) **Sanctuary, hard leg:** zero east-side Reno annihilations, 50/50 — the invariant has survived two mechanisms that could have breached it without touching D98 and stays hard; goals are west-side lip cells; any east-side annihilation is a MISS, not noise. (b) Reno A/G/M killed median **registered as expected to RISE from 32** — the named consequence of forward movement (shorter range, higher hit probability; the PR-15 shape: a worse casualty picture is the predicted result of a geometry correction, pressure stays on the ruled mechanism, nothing is tuned in response). Direction-registered, not band-scored, per the PR-25 lesson; the stop owns the tail.
+
+**PR-54 — Northern confinement.** Scored: complete wing destruction within **30–40/50** (±5 of the D107 baseline 35) and coalition killed median inside the sourced band 36–136 (D107: 70.5). *Honesty note, kept exactly as constructed:* same stream plus deterministic engine means any wing movement at all is mechanism-caused knock-on — this leg scores knock-on MAGNITUDE, not noise. The ±5 permits knock-on about one-fifth of D107's own mechanism effect (the 9→35 swing was 26 seeds) while catching anything approaching mechanism scale; no repeat-campaign variance exists to calibrate against, so the ±5 is a judgment and is labelled as one. Knock-on channel named in advance: pool release timing (D93) shifting hilltop arrival — a northern move beyond threshold points there first.
+
+**PR-55 — Reseed-free, scored on the hash.** Scenario content hash byte-identical (`ba288f09`). The lip derivation consumes terrain plus the existing bench point only; "this is a derivation, not data" is a falsifiable claim and this is its score. A hash change is a STOP.
+
+**PR-56 — Audit invariants.** Zero tolerance, 50/50: every assigned goal lies on an extracted lip cell; every goal cell classifies WEST of the channel (D98 composition); no two bands assigned to the feature share a goal cell; goal count equals assigned-band count at every sampled tick. Any violation is an implementation error, not a miss.
+
+### Registered observations, no direction scored
+
+- Per-seed goal-partition layouts (which band holds which segment, by the ruled band-id order).
+- Per-seed distribution of peak within-30 m pressure (PR-51's slack, watched).
+- Timber features expected to remain at zero pressure — this mechanism must not touch them.
+- Endpoint-flank event count (39th baseline: 2,591) as the stand geometry moves.
+- F4 expected GREEN; five-destroyed roster untouched.
+- Composite envelope before/after, carrying **the artifact-baseline line (adjudicated for this row): D108 moves the valley stand again, so every northern baseline figure inherits one more round of "measured against a world that no longer exists." The caveat has been shrinking since the eighteenth measurement and was partly lifted at D107; this round re-ages it by one. The bundle's registrations are not to over-claim the northern baseline's stability when sizing against it.**
+
+### RE-ARMED STOP (PR-5 class)
+
+Work halts for adjudication if Reno A/G/M killed exceeds **60** in more than **5/50** seeds, or any seed reaches killed ≥ **100**. Standing form, fifth consecutive work order — precedent carried forward, not re-derived. On this world a re-fire means forward movement over-delivering fire against the retreating battalion. Registered before dispatch; not to be moved.
+
+### Compounding-uncertainty disclosure
+
+This is the first behavioral measurement of goal geometry: the 44th extracted the lip statically, but moving four pools' stands changes engagement ranges, timing, and release downstream — the static-vs-behavioral gap that has surprised this register five times. The segment boundary is a 1-D convention owned in D108's row; these predictions test the mechanism against that stated boundary, not the boundary against history.
