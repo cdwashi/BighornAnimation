@@ -1,0 +1,14 @@
+﻿bench (7364, 10517) e0 951.67 m | box +/-800 m | shelf cells 20724 (elev drift min 948.2 max 955.2) | edge cells 1841
+
+components: 6
+| # | cells | length est (m) | dist-to-bench min/med/max (m) | bearing span from bench (deg) | facing (mean drop bearing, deg) | ground below drop: side |
+|---:|---:|---:|---|---|---:|---|
+| 1 | 797 | ~1002-7970 | 51/455/928 | 111 | 65 | EAST:546 WEST:251 |
+| 2 | 409 | ~712-4090 | 527/737/1076 | 36 | 353 | WEST:250 EAST:159 |
+| 3 | 299 | ~470-2990 | 608/750/992 | 24 | 182 | WEST:181 EAST:118 |
+| 4 | 197 | ~518-1970 | 566/656/809 | 39 | 34 | EAST:197 |
+| 5 | 138 | ~410-1380 | 624/689/800 | 30 | 222 | EAST:114 WEST:24 |
+| 6 | 1 | ~10-10 | 968/968/968 | 0 | 45 | EAST:1 |
+
+EASTWARD ARC (bearing 45-135, within 200 m of bench): 103 edge cells
+  north-south extent -140 to 120 m (span 260 m) | gaps >20 m along N-S: NONE - continuous
