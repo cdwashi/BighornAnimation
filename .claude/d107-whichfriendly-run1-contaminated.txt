@@ -1,0 +1,17 @@
+through 18760609
+through 18760619
+through 18760629
+through 18760639
+through 18760649
+
+===== which-friendly, non-isolated catches =====
+RENO non-isolated catches, individually:
+  18760618 co-m @802: sheltered by co-a@460m
+  18760618 co-m @802: sheltered by co-a@460m
+  18760647 co-m @780.5: sheltered by co-h@611m, co-d@611m, co-k@611m
+  18760647 co-m @782: sheltered by co-a@551m, co-h@611m, co-d@611m, co-k@611m
+  18760647 co-m @782: sheltered by co-a@551m, co-h@611m, co-d@611m, co-k@611m
+
+WING non-isolated 61: by SISTER-WING only 4 | by GARRISON only 1 | mixed 0
+WING shelterer frequency: crow-scouts:56 co-e:4 co-f:4 co-d:1
+done

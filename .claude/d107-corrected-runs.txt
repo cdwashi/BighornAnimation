@@ -1,0 +1,42 @@
+through 18760609
+through 18760619
+through 18760629
+through 18760639
+through 18760649
+
+===== isolation classification of 212 catches =====
+WING: 203 catches | ISOLATED 198 (97.5%) | non-isolated 5
+RENO: 9 catches | ISOLATED 4 (44.4%) | non-isolated 5
+other: none
+
+the 9 Reno catches, individually:
+  18760618 co-m @802: non-isolated
+  18760618 co-m @802: non-isolated
+  18760622 co-m @922: ISOLATED
+  18760622 co-m @922: ISOLATED
+  18760622 co-m @922: ISOLATED
+  18760632 co-a @774: ISOLATED
+  18760647 co-m @780.5: non-isolated
+  18760647 co-m @782: non-isolated
+  18760647 co-m @782: non-isolated
+
+WING non-isolated detail (the refinement's blind spot if populated):
+  5 catches: co-i:4 co-e:1
+done
+through 18760609
+through 18760619
+through 18760629
+through 18760639
+through 18760649
+
+===== which-friendly, non-isolated catches =====
+RENO non-isolated catches, individually:
+  18760618 co-m @802: sheltered by co-a@460m
+  18760618 co-m @802: sheltered by co-a@460m
+  18760647 co-m @780.5: sheltered by co-h@611m, co-d@611m, co-k@611m
+  18760647 co-m @782: sheltered by co-a@551m, co-h@611m, co-d@611m, co-k@611m
+  18760647 co-m @782: sheltered by co-a@551m, co-h@611m, co-d@611m, co-k@611m
+
+WING non-isolated 5: by SISTER-WING only 4 | by GARRISON only 1 | mixed 0
+WING shelterer frequency: co-e:4 co-f:4 co-d:1
+done
