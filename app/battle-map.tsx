@@ -590,6 +590,7 @@ export function BattleMap({ state, events, leaderId, mode, viewshedEnabled, view
     const important = new Set([
       'ford-a', 'ford-b', 'reno-hill', 'weir-point', 'last-stand-hill',
       'timber', 'village-s-end', 'village-n-end',
+      'foothills-1', 'foothills-2', 'foothills-3',
     ]);
     context.textBaseline = 'alphabetic';
     scenario.terrain.landmarks
@@ -609,7 +610,7 @@ export function BattleMap({ state, events, leaderId, mode, viewshedEnabled, view
     context.font = '22px Georgia, serif';
     context.fillText('Little Bighorn', width - 22, 34);
     context.font = '9px system-ui';
-    context.fillText('JUNE 25, 1876 · LOCAL SUN TIME', width - 22, 51);
+    context.fillText('JUNE 25, 1876 · SCENARIO CLOCK', width - 22, 51);
   }, [assetRevision, events, fallMarkersEnabled, leaderId, mode, state, view, viewportRevision]);
 
   useEffect(() => {

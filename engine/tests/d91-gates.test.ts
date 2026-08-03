@@ -191,7 +191,8 @@ describe('D91/D92 camp-defence reconstruction gates', () => {
     expect(scenario.coverFeatures).toEqual([expect.objectContaining({
       id: 'bench',
       position: { lat: 45.51659, lon: -107.38996 },
-      provenance: expect.objectContaining({ confidence: 'MEDIUM' }),
+      // Amendment 2 payload-pin refresh: D101's LOW byte lands in D111.
+      provenance: expect.objectContaining({ confidence: 'LOW' }),
     })]);
     expect(scenario.campDefense?.turnoutDelayMinutes).toMatchObject({
       low: 10,

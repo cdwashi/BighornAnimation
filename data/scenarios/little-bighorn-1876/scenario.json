@@ -4,7 +4,7 @@
     "title": "Battle of the Little Bighorn",
     "date": "1876-06-25",
     "schemaVersion": "0.3",
-    "timeAnchor": "Local apparent (sun) time per Gray (1991). Officer watch times (RCOI, Godfrey) run ~45–70 min ahead of this clock; offsets applied per research doc.",
+    "timeAnchor": "Chronology per Gray (1991), whose timing baseline is Lt. George D. Wallace's watch set to Chicago time (CBHMA/Heier review; HistoryNet - RELAYED; Gray's methodology chapter not consulted at page level; O5 B4). The prior 'local apparent sun time' framing and its ~45-70 min offsets are superseded as themselves the error. No sun-time offset is encoded: UNRESOLVED until the exact figure is read from Gray's page. Derived estimates recorded as estimates, not data: ~65-66 min geometric (90th-meridian Chicago standard vs ~107.3 W plus the late-June equation of time); Wagner's 57 min was St. Paul time, not Chicago.",
     "bibliography": {
       "GRAY1991": { "citation": "Gray (1991)" },
       "FOX1993": { "citation": "Fox (1993)" },
@@ -431,6 +431,60 @@
             }
           ],
           "note": "D53: old APPROX coordinate (45.552, -107.45) relocated at LOW to the D43 village-strip north-end midpoint (45.556, -107.44657) for landmark/strip/order-objective coherence; near Ford B"
+        }
+      },
+      {
+        "id": "foothills-1",
+        "name": "Foot-hills, west valley edge (south)",
+        "position": {
+          "lat": 45.50579,
+          "lon": -107.40259
+        },
+        "provenance": {
+          "confidence": "MEDIUM",
+          "sources": [
+            {
+              "key": "RCOI",
+              "locus": "Varnum, feature identification via O6 secondary synthesis: warriors held '800, some 1000, and some took 1200 yard range... every bullet fell short'; 'rode around on those foot-hills to the left'"
+            }
+          ],
+          "note": "D100/D90: in-frame summit identification (O6 §D names the W-edge foothill set; identification relayed via O6 secondary synthesis per the house relay convention), +21.1 m relief, ~1.8-2.2 km from Reno's line; D88 governs (O6 lat/lon non-authoritative). Region-level corroboration per the D90 row's dated annotation (2026-08-02): Varnum's foot-hills are the continuous western rise and these points are its summits, a selection convention on a measured region; NOT claimed as Varnum's firing position. Confidence MEDIUM against the Bench's LOW, asymmetry deliberate: the Bench's LOW is an attribution judgment (whether the sources' 'bench' is that terrace - O5 B3 undercut it), while the foothills' attribution is not in doubt (O6 names the set, Varnum names foot-hills to the left, the DEM shows exactly one western rise); what is weak here is point selection within a region, declared as convention rather than discounted as confidence. Display and ledger vehicle; referenced by no order, checkpoint, assertion, or exam item - engine-inert by construction, attested by the D110 landmark-consumption pin."
+        }
+      },
+      {
+        "id": "foothills-2",
+        "name": "Foot-hills, west valley edge (north-west)",
+        "position": {
+          "lat": 45.51317,
+          "lon": -107.41571
+        },
+        "provenance": {
+          "confidence": "MEDIUM",
+          "sources": [
+            {
+              "key": "RCOI",
+              "locus": "Varnum, feature identification via O6 secondary synthesis: warriors held '800, some 1000, and some took 1200 yard range... every bullet fell short'; 'rode around on those foot-hills to the left'"
+            }
+          ],
+          "note": "D100/D90: in-frame summit identification (O6 §D names the W-edge foothill set; identification relayed via O6 secondary synthesis per the house relay convention), +31.7 m relief, ~1.8-2.2 km from Reno's line; D88 governs (O6 lat/lon non-authoritative). Region-level corroboration per the D90 row's dated annotation (2026-08-02): Varnum's foot-hills are the continuous western rise and these points are its summits, a selection convention on a measured region; NOT claimed as Varnum's firing position. Confidence MEDIUM against the Bench's LOW, asymmetry deliberate: the Bench's LOW is an attribution judgment (whether the sources' 'bench' is that terrace - O5 B3 undercut it), while the foothills' attribution is not in doubt (O6 names the set, Varnum names foot-hills to the left, the DEM shows exactly one western rise); what is weak here is point selection within a region, declared as convention rather than discounted as confidence. Display and ledger vehicle; referenced by no order, checkpoint, assertion, or exam item - engine-inert by construction, attested by the D110 landmark-consumption pin."
+        }
+      },
+      {
+        "id": "foothills-3",
+        "name": "Foot-hills, west valley edge (middle)",
+        "position": {
+          "lat": 45.50827,
+          "lon": -107.41294
+        },
+        "provenance": {
+          "confidence": "MEDIUM",
+          "sources": [
+            {
+              "key": "RCOI",
+              "locus": "Varnum, feature identification via O6 secondary synthesis: warriors held '800, some 1000, and some took 1200 yard range... every bullet fell short'; 'rode around on those foot-hills to the left'"
+            }
+          ],
+          "note": "D100/D90: in-frame summit identification (O6 §D names the W-edge foothill set; identification relayed via O6 secondary synthesis per the house relay convention), +33.0 m relief, ~1.8-2.2 km from Reno's line; D88 governs (O6 lat/lon non-authoritative). Region-level corroboration per the D90 row's dated annotation (2026-08-02): Varnum's foot-hills are the continuous western rise and these points are its summits, a selection convention on a measured region; NOT claimed as Varnum's firing position. Confidence MEDIUM against the Bench's LOW, asymmetry deliberate: the Bench's LOW is an attribution judgment (whether the sources' 'bench' is that terrace - O5 B3 undercut it), while the foothills' attribution is not in doubt (O6 names the set, Varnum names foot-hills to the left, the DEM shows exactly one western rise); what is weak here is point selection within a region, declared as convention rather than discounted as confidence. Display and ledger vehicle; referenced by no order, checkpoint, assertion, or exam item - engine-inert by construction, attested by the D110 landmark-consumption pin."
         }
       }
     ],
@@ -4164,14 +4218,14 @@
         "lon": -107.38996
       },
       "provenance": {
-        "confidence": "MEDIUM",
+        "confidence": "LOW",
         "sources": [
           {
             "key": "MICHNO1997",
-            "locus": "p.105, low hill / Bench"
+            "locus": "p.105, low hill / Bench — RELAYED / likely-misattributed (O5 B3)"
           }
         ],
-        "note": "D90: in-frame terrace-search result; rise 3-18 m above local floor, <=3.5 m relief across a 60 m neighbourhood, downhill break toward Reno's line. Selected on absolute geometry; no computable flank is asserted."
+        "note": "D90 in-frame terrace-search result (rise 3-18 m, <=3.5 m relief across 60 m, downhill break toward Reno's line; selected on absolute geometry, no computable flank per the D91 rider). D101 confidence downgrade executed at D111: the Michno p.105 attribution is RELAYED/likely-misattributed (O5 B3: 'bench' absent from Lakota Noon's index and frequent-terms; p.105 most plausibly falls beyond the valley fight) and the Jackson '>500 warriors' pillar is a Wikipedia-mediated gloss of Schultz 1926, not Jackson verbatim (O5 B2). The terrain is real - a raster-derived terrace; what is weak is the historical attribution. The feature remains declared: sole west-bank camp-defence cover post-D98. See the D90 row's dated annotation (2026-08-02) for the Varnum region-level corroboration."
       }
     }
   ],
