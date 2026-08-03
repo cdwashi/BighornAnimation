@@ -1,0 +1,58 @@
+=== Rider: foothill classification + eastward transects (D103 artifact check) ===
+foothills-1 (45.50579,-107.40259) local(6341,9347) side=WEST elev=972.4 | east transect flips [1580:WEST->EAST] | trough 950.1 at x+1580
+foothills-2 (45.51317,-107.41571) local(5341,10198) side=WEST elev=983.0 | east transect flips [2700:WEST->EAST] | trough 947.7 at x+2700
+foothills-3 (45.50827,-107.41294) local(5541,9647) side=WEST elev=984.4 | east transect flips [2280:WEST->EAST] | trough 949.8 at x+2280
+
+=== Cross-check vs reports/d108-campaign-results.json ===
+seed 18760625: probe Reno killed 31, campaign 31 MATCH
+seed 18760633: probe Reno killed 66, campaign 66 MATCH
+
+=== Aggregate: :711 fires across 50 accepted-campaign seeds ===
+total fires 405 | held-exclusion 0 | featureless-retry 405
+fires where a reachable foothill would be selected (the harm count): 0
+seeds with any fire: 42/50
+seeds with any would-walk fire: 0/50
+fires by unit: minneconjou-pool:135 sans-arc-pool:135 blackfeet-santee-pool:135
+would-select distribution: none
+
+=== First 40 fires, detail ===
+seed 18760601 t1612 (m806) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1612 (m806) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1612 (m806) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1622 (m811) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1622 (m811) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1622 (m811) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1636 (m818) minneconjou-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1636 (m818) sans-arc-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760601 t1636 (m818) blackfeet-santee-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1612 (m806) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1612 (m806) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1612 (m806) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1622 (m811) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1622 (m811) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1622 (m811) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1636 (m818) minneconjou-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1636 (m818) sans-arc-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760602 t1636 (m818) blackfeet-santee-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1608 (m804) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1608 (m804) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1608 (m804) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1618 (m809) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1618 (m809) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1618 (m809) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1636 (m818) minneconjou-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1636 (m818) sans-arc-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760603 t1636 (m818) blackfeet-santee-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1608 (m804) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1608 (m804) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1608 (m804) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1618 (m809) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1618 (m809) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1618 (m809) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1634 (m817) minneconjou-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1634 (m817) sans-arc-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760604 t1634 (m817) blackfeet-santee-pool [featureless-retry] camp=cheyenne-camp threat=co-f held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760606 t1608 (m804) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760606 t1608 (m804) sans-arc-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760606 t1608 (m804) blackfeet-santee-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []
+seed 18760606 t1618 (m809) minneconjou-pool [featureless-retry] camp=minneconjou-camp threat=co-e held=- actual-after=none (no reachable camp-defense feature) would-select=none []

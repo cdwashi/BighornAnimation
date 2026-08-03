@@ -1,0 +1,52 @@
+=== Origin of the featureless-retry fires (Fable's question on the 405) ===
+fires by segment origin: never-acquired:0 lost-via-switch:405 lost-via-exclusion:0
+
+=== Events (the D98-relevant counts - transitions, not retry fires) ===
+activationWithFeature: 150
+activationWithout: 0
+switchToFeature: 204
+switchToNothing: 291
+exclusionToNothing: 0
+exclusionToOther: 0
+reacquired: 0
+
+=== switch-to-nothing detail (heldFeature|threat transition|camp -> count) ===
+none|co-e->co-f|cheyenne-camp: 123
+scenario-bench|co-g->co-e|minneconjou-camp: 120
+scenario-bench|co-a->co-c|minneconjou-camp: 30
+scenario-bench|co-a->co-e|minneconjou-camp: 6
+scenario-bench|co-m->co-e|minneconjou-camp: 6
+scenario-bench|co-m->co-e|cheyenne-camp: 3
+none|co-c->co-e|cheyenne-camp: 3
+
+=== First 30 transition events ===
+seed 18760601 t1602 minneconjou-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760601 t1602 sans-arc-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760601 t1602 blackfeet-santee-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760601 t1626 minneconjou-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760601 t1626 sans-arc-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760601 t1626 blackfeet-santee-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760602 t1602 minneconjou-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760602 t1602 sans-arc-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760602 t1602 blackfeet-santee-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760602 t1626 minneconjou-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760602 t1626 sans-arc-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760602 t1626 blackfeet-santee-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760602 t1716 minneconjou-pool SWITCH->nothing held=scenario-bench co-a->co-c camp=minneconjou-camp
+seed 18760602 t1716 sans-arc-pool SWITCH->nothing held=scenario-bench co-a->co-c camp=minneconjou-camp
+seed 18760602 t1716 blackfeet-santee-pool SWITCH->nothing held=scenario-bench co-a->co-c camp=minneconjou-camp
+seed 18760603 t1598 minneconjou-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760603 t1598 sans-arc-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760603 t1598 blackfeet-santee-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760603 t1626 minneconjou-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760603 t1626 sans-arc-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760603 t1626 blackfeet-santee-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760604 t1598 minneconjou-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760604 t1598 sans-arc-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760604 t1598 blackfeet-santee-pool SWITCH->nothing held=scenario-bench co-g->co-e camp=minneconjou-camp
+seed 18760604 t1624 minneconjou-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760604 t1624 sans-arc-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760604 t1624 blackfeet-santee-pool SWITCH->nothing held=- co-e->co-f camp=cheyenne-camp
+seed 18760604 t1720 minneconjou-pool SWITCH->nothing held=scenario-bench co-a->co-c camp=minneconjou-camp
+seed 18760604 t1720 sans-arc-pool SWITCH->nothing held=scenario-bench co-a->co-c camp=minneconjou-camp
+seed 18760604 t1720 blackfeet-santee-pool SWITCH->nothing held=scenario-bench co-a->co-c camp=minneconjou-camp

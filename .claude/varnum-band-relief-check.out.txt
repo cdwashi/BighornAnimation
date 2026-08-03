@@ -1,0 +1,23 @@
+line checkpoint local (6110,11576) elev 945.4
+ray to fh-1 (2241 m): candidates 400-1300 m [420m elev 950.6 (+5.2 over valley) | 480m elev 950.7 (+5.3 over valley) | 560m elev 950.9 (+5.5 over valley) | 900m elev 954.2 (+8.8 over valley) | 1000m elev 954.4 (+9.0 over valley) | 1080m elev 954.4 (+9.0 over valley) | 1140m elev 954.5 (+9.1 over valley) | 1160m elev 954.5 (+9.1 over valley)] | in Varnum band 732-1097 m: 900m elev 954.2 (+8.8 over valley) | 1000m elev 954.4 (+9.0 over valley) | 1080m elev 954.4 (+9.0 over valley)
+ray to fh-2 (1578 m): candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+ray to fh-3 (2011 m): candidates 400-1300 m [500m elev 950.5 (+5.1 over valley) | 560m elev 950.8 (+5.4 over valley) | 760m elev 951.7 (+6.3 over valley) | 780m elev 951.7 (+6.3 over valley) | 800m elev 951.7 (+6.3 over valley) | 820m elev 951.7 (+6.3 over valley) | 840m elev 951.7 (+6.3 over valley) | 860m elev 951.7 (+6.3 over valley) | 880m elev 951.7 (+6.3 over valley)] | in Varnum band 732-1097 m: 760m elev 951.7 (+6.3 over valley) | 780m elev 951.7 (+6.3 over valley) | 800m elev 951.7 (+6.3 over valley) | 820m elev 951.7 (+6.3 over valley) | 840m elev 951.7 (+6.3 over valley) | 860m elev 951.7 (+6.3 over valley) | 880m elev 951.7 (+6.3 over valley)
+bearing 180: candidates 400-1300 m [480m elev 950.6 (+5.2 over valley) | 540m elev 950.8 (+5.4 over valley) | 720m elev 951.3 (+5.9 over valley) | 740m elev 951.3 (+5.9 over valley) | 880m elev 954.4 (+9.0 over valley) | 940m elev 954.5 (+9.1 over valley) | 960m elev 954.5 (+9.1 over valley) | 980m elev 954.5 (+9.1 over valley) | 1040m elev 954.4 (+9.0 over valley)] | in Varnum band 732-1097 m: 740m elev 951.3 (+5.9 over valley) | 880m elev 954.4 (+9.0 over valley) | 940m elev 954.5 (+9.1 over valley) | 960m elev 954.5 (+9.1 over valley) | 980m elev 954.5 (+9.1 over valley) | 1040m elev 954.4 (+9.0 over valley)
+bearing 190: candidates 400-1300 m [400m elev 950.5 (+5.1 over valley) | 440m elev 950.5 (+5.1 over valley) | 480m elev 950.5 (+5.1 over valley) | 620m elev 950.8 (+5.4 over valley) | 880m elev 952.5 (+7.1 over valley)] | in Varnum band 732-1097 m: 880m elev 952.5 (+7.1 over valley)
+bearing 200: candidates 400-1300 m [700m elev 951.7 (+6.3 over valley)] | in Varnum band 732-1097 m: NONE
+bearing 210: candidates 400-1300 m [520m elev 950.8 (+5.4 over valley)] | in Varnum band 732-1097 m: NONE
+bearing 220: candidates 400-1300 m [1280m elev 970.4 (+25.0 over valley)] | in Varnum band 732-1097 m: NONE
+bearing 230: candidates 400-1300 m [1160m elev 957.5 (+12.1 over valley)] | in Varnum band 732-1097 m: NONE
+bearing 240: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+bearing 250: candidates 400-1300 m [640m elev 952.7 (+7.3 over valley)] | in Varnum band 732-1097 m: NONE
+bearing 260: candidates 400-1300 m [560m elev 951.5 (+6.1 over valley)] | in Varnum band 732-1097 m: NONE
+bearing 270: candidates 400-1300 m [860m elev 952.7 (+7.3 over valley) | 980m elev 951.7 (+6.3 over valley)] | in Varnum band 732-1097 m: 860m elev 952.7 (+7.3 over valley) | 980m elev 951.7 (+6.3 over valley)
+bearing 280: candidates 400-1300 m [880m elev 951.3 (+5.9 over valley)] | in Varnum band 732-1097 m: 880m elev 951.3 (+5.9 over valley)
+bearing 290: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+bearing 300: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+bearing 310: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+bearing 320: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+bearing 330: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+bearing 340: candidates 400-1300 m [NONE] | in Varnum band 732-1097 m: NONE
+
+TOTAL in-band candidates across all rays: 20

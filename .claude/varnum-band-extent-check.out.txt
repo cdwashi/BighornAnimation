@@ -1,0 +1,3 @@
+line valley floor 945.4; rise threshold 950.4; rise cells 4804; components 1
+component: 4804 cells | distance 320-1500 m | in-band cells 1601 | peak 983.0 (+37.6) at d=1500 | extent x[-1500,200] y[-1500,200]
+in-band component (4804 cells): reaches beyond 1300 m -> true (CONTIGUOUS with the far foothill mass - region reading (C) live)
