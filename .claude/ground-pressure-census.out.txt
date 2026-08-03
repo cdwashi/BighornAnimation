@@ -1,4 +1,4 @@
-﻿bench local position: (7364, 10517)
+bench local position: (7364, 10517)
 ===== FORTY-FIRST MEASUREMENT: ground-pressure census (all channels, by position), 50 seeds =====
 
 | ground | global peak | peak UNASSIGNED-share | per-seed peak min/med/max | seeds>0 | nonzero ticks (sum) | top bands (peak contrib) |

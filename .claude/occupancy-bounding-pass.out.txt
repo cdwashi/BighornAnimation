@@ -1,4 +1,4 @@
-﻿===== FORTIETH MEASUREMENT: occupancy bounding pass, 50 seeds, D107 world =====
+===== FORTIETH MEASUREMENT: occupancy bounding pass, 50 seeds, D107 world =====
 
 Capacity binds iff density > t (t = area / peak demand, m2/man). Sweep: 0.17 / 1 / 2.4 / 4.57 / 9 / 21 / 100 m2/man.
 

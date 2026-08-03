@@ -1,4 +1,4 @@
-﻿defense features (id, points, camp-side check deferred to per-camp eval): scenario-bench(1pt) substrate-timber-0001(984pt) substrate-timber-0002(10pt) substrate-timber-0003(2164pt)
+defense features (id, points, camp-side check deferred to per-camp eval): scenario-bench(1pt) substrate-timber-0001(984pt) substrate-timber-0002(10pt) substrate-timber-0003(2164pt)
 
 ===== FORTY-SECOND MEASUREMENT: overflow eligibility (bench excluded), 10 seeds =====
 evaluations: 375 (bands: blackfeet-santee-pool, minneconjou-pool, sans-arc-pool)

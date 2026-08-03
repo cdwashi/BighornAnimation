@@ -1,4 +1,4 @@
-﻿// Thirty-seventh measurement, which-friendly supplement (Fable's caution:
+// Thirty-seventh measurement, which-friendly supplement (Fable's caution:
 // a STEADY friendly within 650 m is a state, not a fact about protection).
 // For every NON-ISOLATED caught-while-routed break-bout: the identity and
 // distance of every STEADY friendly within isolationRadiusMeters at the

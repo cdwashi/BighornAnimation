@@ -1,4 +1,4 @@
-﻿bench local (7364, 10517), elevation 951.67 m
+bench local (7364, 10517), elevation 951.67 m
 
 tol 2.5 m (sensitivity): 37866 cells = 3786600 m2 | equiv-circle diameter 2196 m | bbox 4080 x 3980 m | sides WEST:32974 EAST:4892 | CAP HIT - criterion leaks, fill truncated
 

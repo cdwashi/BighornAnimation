@@ -1,4 +1,4 @@
-﻿seed 18760625: Reno killed 31 (report: 31) | F4 roster: co-c:DESTROYED co-e:DESTROYED co-f:DESTROYED co-i:DESTROYED co-l:DESTROYED co-d:alive (report: five destroyed, co-d alive)
+seed 18760625: Reno killed 31 (report: 31) | F4 roster: co-c:DESTROYED co-e:DESTROYED co-f:DESTROYED co-i:DESTROYED co-l:DESTROYED co-d:alive (report: five destroyed, co-d alive)
 
 seed 18760633 ANNIHILATION EVENT: tick 1628 (min 814), attacker undefined, terminalConverted 18, at (?,?) | report: tick 1628, crow-king-band, (7156,11480)
 co-m at catch: pos (7156,11480) side EAST endState DESTROYED

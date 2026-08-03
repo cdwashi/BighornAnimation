@@ -1,4 +1,4 @@
-﻿// Dev-only F6 bare measurement: one clean full-day run per process invocation.
+// Dev-only F6 bare measurement: one clean full-day run per process invocation.
 import { readFile } from 'node:fs/promises';
 import { performance } from 'node:perf_hooks';
 import { createSim } from '../dist/engine/src/index.js';

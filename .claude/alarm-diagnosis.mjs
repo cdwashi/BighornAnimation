@@ -1,4 +1,4 @@
-﻿// Ninth measure-before-ruling (Fable's two questions):
+// Ninth measure-before-ruling (Fable's two questions):
 // Q1 â€” what is spotted at minute 602: which observer, which target, what
 //      believed and true range, and which camp's 3 km radius it violates.
 // Q2 â€” the reno-skirmish order's data, verbatim, to establish whether the

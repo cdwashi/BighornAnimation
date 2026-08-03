@@ -1,4 +1,4 @@
-﻿// Twentieth measurement: the D74 latch fix alone (L), then latch fix plus
+// Twentieth measurement: the D74 latch fix alone (L), then latch fix plus
 // D72 ownership (LA), on the stop seed. Fix operationalization, disclosed:
 // (1) no latch on corridor failure - re-attempts every ROUTED tick; (2) a
 // corridor failure no longer wipes an existing path - the unit keeps

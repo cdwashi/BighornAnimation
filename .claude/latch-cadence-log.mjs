@@ -1,4 +1,4 @@
-﻿// Twenty-first measurement, interpretive half: was the cadence branch ever
+// Twenty-first measurement, interpretive half: was the cadence branch ever
 // exercised? Logs every routeToSafety outcome under cadence-10.
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';

@@ -1,4 +1,4 @@
-﻿arc cells 103 | WEST 85 | EAST 18 | other 0 
+arc cells 103 | WEST 85 | EAST 18 | other 0 
 
 EAST cells (offsets from bench, elevation):
   (190,-20) e=948.2 (-3.5 vs e0)

@@ -1,4 +1,4 @@
-﻿bench local (7364, 10517), elevation 951.67 m, tolerance 3.5 m
+bench local (7364, 10517), elevation 951.67 m, tolerance 3.5 m
 
 | bearing (deg, 0=N=+y) | downhill break (m) | uphill bound (m) | first bound (m) | note |
 |---:|---:|---:|---:|---|

@@ -1,4 +1,4 @@
-﻿// Thirty-seventh measurement: classify all caught-while-routed break-bouts
+// Thirty-seventh measurement: classify all caught-while-routed break-bouts
 // by ISOLATION at the catch - is any STEADY friendly combat unit within
 // isolationRadiusMeters (650, the existing [CAL] morale-isolation radius,
 // structural reuse)? Candidate scope refinement for the wing-finisher,

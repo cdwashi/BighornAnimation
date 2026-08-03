@@ -1,4 +1,4 @@
-﻿===== THIRTY-NINTH MEASUREMENT: frontage in the D107 world, 50 seeds =====
+===== THIRTY-NINTH MEASUREMENT: frontage in the D107 world, 50 seeds =====
 
 (1) FIRE AUDIT: 97928 fire events | frontage-ACTIVE (effective < centroid): 14259 (14.56%)
     delta (centroid - effective) where active: {"n":14259,"min":10.11,"p25":61.69,"med":68.55,"p75":75.41,"max":77.69}

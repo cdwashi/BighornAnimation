@@ -1,3 +1,3 @@
-﻿minneconjou-pool @min 719: pos(5198,13741) side WEST | camp side WEST | goal(5800,11966) side WEST | t3 camp-side pts 73/2164 | result unreachable reason: no passable route | blockerActive yes goalBlocked false
+minneconjou-pool @min 719: pos(5198,13741) side WEST | camp side WEST | goal(5800,11966) side WEST | t3 camp-side pts 73/2164 | result unreachable reason: no passable route | blockerActive yes goalBlocked false
 sans-arc-pool @min 719: pos(4687,14090) side WEST | camp side WEST | goal(5800,11966) side WEST | t3 camp-side pts 73/2164 | result unreachable reason: no passable route | blockerActive yes goalBlocked false
 blackfeet-santee-pool @min 719: pos(4521,14207) side WEST | camp side WEST | goal(5800,11966) side WEST | t3 camp-side pts 73/2164 | result unreachable reason: no passable route | blockerActive yes goalBlocked false
