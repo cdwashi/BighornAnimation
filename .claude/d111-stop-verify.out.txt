@@ -1,0 +1,6 @@
+scenario hash: 8e28552c
+tick 1515 (min 757.5): Reno A/G/M killed = 135
+  co-a: killed 45, endState DESTROYED, destroyed at tick 1515, pos (6741,11127)
+  co-g: killed 45, endState DESTROYED, destroyed at tick 1510, pos (6672,11130)
+  co-m: killed 45, endState DESTROYED, destroyed at tick 1497, pos (7171,10965)
+done

@@ -1,0 +1,65 @@
+scenario hash: 8e28552c (must be 8e28552c)
+
+=== Annihilation-class events for the three companies (raw JSON) ===
+{"tick":1497,"type":"unit-destroyed","unitId":"co-m","killed":23,"position":{"x":6951.473881173277,"y":10965.340825187805},"sequence":3471}
+{"tick":1510,"type":"unit-destroyed","unitId":"co-g","killed":23,"position":{"x":6672.113433676192,"y":11129.797361685218},"sequence":3661}
+{"tick":1515,"type":"unit-destroyed","unitId":"co-a","killed":37,"position":{"x":6740.671831347537,"y":11126.543138712503},"sequence":3768}
+
+=== All event types seen for the three companies, ticks 1400-1515 (type: count) ===
+order-received:15 order-superseded:15 move-started:12 ford-crossing:1 waypoint-reached:6 engagement-state:137 arrived:3 weapon-malfunction:58 casualty-resolution:23 weapon-cleared:46 dismounted:3 morale-state:6 leader-killed:1 unit-destroyed:3 mounted:3
+
+=== Per-company anatomy (ruled schema) ===
+
+--- co-a (encoded strength best 45) ---
+destruction tick 1515 (min 757.5)
+immediately prior (t=1514): strength undefined, available 37, killed 8, wounded 0, morale 57.8 (SHAKEN), cohesion 100.0, posture WITHDRAW, order reno-retreat, pos (6705.1,11137.3) WEST
+at destruction (t=1515): strength undefined, killed 45, wounded 0, pos (6740.7,11126.5) WEST
+KILL CREDIT SPLIT: killed before destruction tick = 8; booked AT destruction tick = 37 (terminal-accounting share if fire did not spike this tick)
+kill/morale curve: t1400:k0/sundefined/STEADY t1410:k0/sundefined/STEADY t1420:k0/sundefined/STEADY t1430:k0/sundefined/STEADY t1440:k0/sundefined/STEADY t1450:k0/sundefined/STEADY t1460:k0/sundefined/STEADY t1470:k0/sundefined/STEADY t1480:k0/sundefined/STEADY t1490:k4/sundefined/STEADY t1500:k8/sundefined/SHAKEN t1510:k8/sundefined/SHAKEN t1514:k8/sundefined/SHAKEN t1515:k45/sundefined/ROUTED/DEAD
+
+--- co-g (encoded strength best 45) ---
+destruction tick 1510 (min 755)
+immediately prior (t=1509): strength undefined, available 23, killed 18, wounded 4, morale 38.9 (BROKEN), cohesion 100.0, posture MARCH, order reno-mount, pos (6634.8,11135.7) WEST
+at destruction (t=1510): strength undefined, killed 45, wounded 0, pos (6672.1,11129.8) WEST
+KILL CREDIT SPLIT: killed before destruction tick = 18; booked AT destruction tick = 27 (terminal-accounting share if fire did not spike this tick)
+kill/morale curve: t1400:k0/sundefined/STEADY t1410:k0/sundefined/STEADY t1420:k0/sundefined/STEADY t1430:k2/sundefined/STEADY t1440:k2/sundefined/STEADY t1450:k3/sundefined/STEADY t1460:k3/sundefined/STEADY t1470:k3/sundefined/STEADY t1480:k3/sundefined/STEADY t1490:k6/sundefined/STEADY t1500:k17/sundefined/SHAKEN t1509:k18/sundefined/BROKEN t1510:k45/sundefined/ROUTED/DEAD
+
+--- co-m (encoded strength best 45) ---
+destruction tick 1497 (min 748.5)
+immediately prior (t=1496): strength undefined, available 23, killed 20, wounded 2, morale 0.0 (ROUTED), cohesion 93.0, posture WITHDRAW, order reno-to-timber, pos (6967.7,10956.5) WEST
+at destruction (t=1497): strength undefined, killed 45, wounded 0, pos (6951.5,10965.3) WEST
+KILL CREDIT SPLIT: killed before destruction tick = 20; booked AT destruction tick = 25 (terminal-accounting share if fire did not spike this tick)
+kill/morale curve: t1400:k0/sundefined/STEADY t1410:k0/sundefined/STEADY t1420:k1/sundefined/STEADY t1430:k1/sundefined/STEADY t1440:k1/sundefined/STEADY t1450:k2/sundefined/STEADY t1460:k2/sundefined/STEADY t1470:k7/sundefined/STEADY t1480:k13/sundefined/SHAKEN t1490:k16/sundefined/ROUTED t1496:k20/sundefined/ROUTED t1497:k45/sundefined/ROUTED/DEAD t1500:k45/sundefined/ROUTED/DEAD t1510:k45/sundefined/ROUTED/DEAD
+
+=== Coalition contact at each destruction tick (re-runs to the exact tick) ===
+co-a at t=1515 pos (6740.7,11126.5): minneconjou-pool@4m(STEADY) sans-arc-pool@4m(STEADY) blackfeet-santee-pool@4m(STEADY) hunkpapa-pool@61m(STEADY) gall-band@61m(STEADY) crow-king-band@61m(STEADY)
+co-g at t=1510 pos (6672.1,11129.8): hunkpapa-pool@23m(STEADY) gall-band@23m(STEADY) crow-king-band@23m(STEADY) minneconjou-pool@294m(STEADY) sans-arc-pool@294m(STEADY) blackfeet-santee-pool@294m(STEADY)
+co-m at t=1497 pos (6951.5,10965.3): blackfeet-santee-pool@16m(STEADY) minneconjou-pool@31m(STEADY) sans-arc-pool@64m(STEADY) crow-king-band@90m(STEADY) hunkpapa-pool@128m(STEADY) gall-band@128m(STEADY)
+
+=== Position-recording reconciliation (the ~220 m item; counters held provisional on this) ===
+co-m t1493: pos (7014.15,10930.99) active
+co-m t1494: pos (6997.68,10940.02) active
+co-m t1495: pos (6981.49,10948.89) active
+co-m t1496: pos (6967.67,10956.47) active
+co-m t1497: pos (6951.47,10965.34) DESTROYED
+co-m t1498: pos (6951.47,10965.34) DESTROYED
+co-m t1499: pos (6951.47,10965.34) DESTROYED
+co-m t1500: pos (6951.47,10965.34) DESTROYED
+co-m t1501: pos (6951.47,10965.34) DESTROYED
+co-m t1502: pos (6951.47,10965.34) DESTROYED
+co-m t1503: pos (6951.47,10965.34) DESTROYED
+co-m t1504: pos (6951.47,10965.34) DESTROYED
+co-m t1505: pos (6951.47,10965.34) DESTROYED
+co-m t1506: pos (6951.47,10965.34) DESTROYED
+co-m t1507: pos (6951.47,10965.34) DESTROYED
+co-m t1508: pos (6951.47,10965.34) DESTROYED
+co-m t1509: pos (6951.47,10965.34) DESTROYED
+co-m t1510: pos (6988.00,10965.35) DESTROYED
+co-m t1511: pos (7025.80,10965.36) DESTROYED
+co-m t1512: pos (7057.93,10965.37) DESTROYED
+co-m t1513: pos (7095.08,10965.38) DESTROYED
+co-m t1514: pos (7132.88,10965.40) DESTROYED
+co-m t1515: pos (7170.68,10965.41) DESTROYED
+approach-table row recorded: (6951.47,10965.34) at tick 1497; end-state read at 1515: see above.
+If position moved AFTER the DESTROYED tick, the table and the closing comparison used different moments.
+done
