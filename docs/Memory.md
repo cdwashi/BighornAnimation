@@ -1,6 +1,6 @@
 # MEMORY.md — Session Record & Resume Brief (BighornAnimation)
 
-## READ FIRST — current state (2026-08-02, HEAD `29e13c3`; everything below this block is history)
+## READ FIRST — current state (last updated 2026-08-02; everything below this block is history). For HEAD and what landed since this block was written, read `git log`.
 
 *This block supersedes §2's "NEXT ACTION" and the §8 addendum. It carries structural state and
 pointers only; every absolute figure is tagged with its content stream, because a reseed re-rolls
