@@ -1,0 +1,48 @@
+#!/bin/sh
+# D110 fail-fast courtesy: inspect staged INDEX bytes, never Windows working copies.
+# Activate locally (this config does not travel): git config core.hooksPath scripts/hooks
+
+text_path() {
+  case "$1" in
+    *.css|*.gitignore|*.gitkeep|*.js|*.json|*.md|*.mjs|*.ts|*.tsx|*.txt|scripts/hooks/pre-commit)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+hook_tmp_dir=$(mktemp -d 2>/dev/null) || {
+  echo "D110 pre-commit gate: cannot create temporary directory" >&2
+  exit 1
+}
+paths_file="$hook_tmp_dir/staged-paths"
+blob_file="$hook_tmp_dir/index-blob"
+trap 'rm -f "$paths_file" "$blob_file"; rmdir "$hook_tmp_dir" 2>/dev/null' EXIT HUP INT TERM
+
+git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR >"$paths_file" || {
+  echo "D110 pre-commit gate: cannot enumerate staged paths" >&2
+  exit 1
+}
+
+status=0
+while IFS= read -r path || [ -n "$path" ]; do
+  text_path "$path" || continue
+  if ! git show ":$path" >"$blob_file"; then
+    echo "D110 pre-commit gate: $path: cannot read staged index blob" >&2
+    status=1
+    continue
+  fi
+  prefix=$(od -An -t x1 -N3 "$blob_file" | tr -d ' \n')
+  if [ "$prefix" = "efbbbf" ]; then
+    echo "D110 pre-commit gate: $path: UTF-8 BOM at offset 0" >&2
+    status=1
+  fi
+  if grep "$(printf '\r')" "$blob_file" >/dev/null 2>&1; then
+    echo "D110 pre-commit gate: $path: CR byte present" >&2
+    status=1
+  fi
+done <"$paths_file"
+
+exit "$status"
