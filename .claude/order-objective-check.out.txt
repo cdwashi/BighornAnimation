@@ -1,0 +1,41 @@
+order objective resolutions (local coords via terrain.toLocal):
+  approach-march (MOVE, landmarkId:divide) -> (12025,9647)
+  division-halt (HOLD, landmarkId:divide) -> (12025,9647)
+  reno-advance (MOVE, landmarkId:village-s-end) -> (7465,10708)
+  custer-bluff-route (MOVE, waypoints[last]) -> (6624,12030)
+  reno-water (HOLD, landmarkId:ford-a) -> (7050,8096)
+  reno-charge (CHARGE, landmarkId:village-s-end) -> (7465,10708)
+  reno-skirmish (DISMOUNT_SKIRMISH, landmarkId:reno-skirmish-line) -> (4282,12101)
+  reno-to-timber (WITHDRAW, landmarkId:timber) -> (5297,12070)
+  reno-retreat (WITHDRAW, waypoints[last]) -> (8340,11112)
+  yates-ford-b-probe (SCREEN, landmarkId:ford-b) -> (5400,13935)
+  right-wing-ridges (HOLD, waypoints[last]) -> (5349,15872)
+  hare-ammo (RESUPPLY, landmarkId:reno-hill) -> (8340,11112)
+  wing-consolidate (MOVE, landmarkId:last-stand-hill) -> (4628,16572)
+  weir-advance (MOVE, landmarkId:weir-point) -> (7162,12515)
+  weir-recall (WITHDRAW, landmarkId:reno-hill) -> (8340,11112)
+
+pair entries parsed: 179
+SHARED declared objective (<10 m apart): 108
+death position within 50 m of OWN order objective: 98 (no resolvable own objective: 0)
+death position within 50 m of COMPANION's order objective: 162
+
+per order-pair (annihilated / companion): n, median dist to own obj, median dist to companion obj, shared-obj count
+  right-wing-ridges / right-wing-ridges: n=100 dOwn-med=0m dComp-med=0m shared=100
+  right-wing-ridges / wing-consolidate: n=68 dOwn-med=1005m dComp-med=0m shared=0
+  wing-consolidate / wing-consolidate: n=8 dOwn-med=3972m dComp-med=3972m shared=8
+  wing-consolidate / right-wing-ridges: n=2 dOwn-med=3972m dComp-med=4327m shared=0
+  wing-consolidate / weir-advance: n=1 dOwn-med=4783m dComp-med=0m shared=0
+
+companion recorded path endpoints vs that order's declared objective:
+  right-wing-ridges (waypoints[last]) declared -> (5349,15872):
+    end (4628,16572) x100 -> 1005m from declared objective
+    end (6624,20006) x2 -> 4327m from declared objective
+  wing-consolidate (landmarkId:last-stand-hill) declared -> (4628,16572):
+    end (6624,20006) x28 -> 3972m from declared objective
+    end (4628,16572) x21 -> 0m from declared objective
+    end (7162,12515) x19 -> 4783m from declared objective
+    end (240,12030) x4 -> 6315m from declared objective
+    end (6624,19148) x4 -> 3259m from declared objective
+  weir-advance (landmarkId:weir-point) declared -> (7162,12515):
+    end (7162,12515) x1 -> 0m from declared objective
