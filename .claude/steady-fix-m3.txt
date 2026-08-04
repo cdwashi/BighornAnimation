@@ -1,0 +1,53 @@
+M3 - the interaction analysis (2026-08-04), per the FROZEN registration at
+docs/research/STEADY-SHELTER-FIX-REGISTRATION.md (298f3a1), for C1 and C2
+(C0 dead at its registered M1 branch). Analytic: inputs are the committed
+read log (b83c45a, bd424bb), M1 (b6b6668), and M2 (3975c7a). No simulation.
+
+THE RELATION INVENTORY, exact (extends Amendment 1's finding):
+  finishing (D107):          STEADY-only,   presence,  @650  <- the item's subject
+  rout-reintegration (D117): STEADY-only,   presence,  @450  (morale.ts:361-392)
+  massed-fire pursuit end:   STEADY+SHAKEN, strength,  @450  (morale.ts:433-437, D72 form)
+  morale isolation (D66):    any-friendly,  presence,  @650  (morale.ts:174)
+  rout-safety target (D74):  STEADY-only,   presence,  unbounded nearest (morale.ts:112-120)
+Five relations, not three: the ledger-search's inventory grows by two under
+the read log's own citations. Recorded for the ruling.
+
+C1 (any-state presence @650) against the two queued mechanics:
+- Rout-reintegration: NO SHARED PREDICATE - reintegration requires a STEADY
+  protector @450; C1's finishing shelter accepts broken companions @650. The
+  interaction is through POPULATION, not predicate: fragments C1 leaves
+  unfinished persist ROUTED among non-STEADY companions, where reintegration
+  cannot fire (no STEADY protector) - a durable routed-limbo population that
+  neither dies nor recovers. First-order size: up to the 99 flip rows'
+  fragments. This is C1's registered burden made concrete: the companions
+  that stop the finishing cannot do anything else for the fragment either.
+- Massed-fire pursuit end: mechanism untouched; exposure grows - unfinished
+  targets keep pursuits alive longer, so the S+SH-strength evaluation runs
+  more often over longer chases. No predicate coupling.
+
+C2 (S+SH strength @450) against the two queued mechanics:
+- Massed-fire pursuit end: EXACT ALIGNMENT BY CONSTRUCTION - C2 imports this
+  relation into finishing, collapsing two of five inventory rows into one.
+  Interaction is definitional, not emergent: a pursuer whose pursuit would
+  break against a mass cannot finish against it either. Internally coherent.
+- Rout-reintegration: still a DIFFERENT relation (STEADY presence vs S+SH
+  strength, same 450 radius) - C2 narrows the inventory to four, not one.
+  Limbo channel exists but is first-order small (1 row).
+- IDENTIFIED RISK to C2's registered M1(b) prediction, stated before M4:
+  C2 NARROWS the finishing radius 650 -> 450 and this opens a REVERSE
+  channel M1(a) cannot see - catches that D107 shelters today (a STEADY
+  friendly at 450-650 m; the 38th's ten non-isolated catches are this
+  class) could become finishable under C2. New annihilations, not removed
+  ones. C2's frozen (b) prediction ("within a few rows of 120 minus
+  first-order flips") did not account for this channel; the prediction
+  stands as registered - it cannot be edited after the fact - and this
+  paragraph is the record that the risk was identified between M1 and M4,
+  so an M4 overshoot is read against it rather than absorbed silently.
+
+THE TIMING FACT, carried from M2 for the ruling (reported, not interpreted):
+the shelterer population at end-of-t-1 contains 99 STEADY instances against
+the census's zero STEADY after the death tick - the tick that kills the
+unit breaks its companions. Every relation in the inventory evaluates at
+some point inside that tick, and WHERE it evaluates is part of each
+candidate's design surface that no registration has yet specified. D113's
+snapshot-versus-vector, at measured magnitude.
