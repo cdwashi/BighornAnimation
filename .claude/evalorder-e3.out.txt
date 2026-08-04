@@ -1,0 +1,28 @@
+=== E3 order sensitivity, stream [68325eff], baseline = committed m4-baseline.json ===
+arm reverse: patched, built, running...
+arm shuffle-1: patched, built, running...
+arm shuffle-2: patched, built, running...
+arm shuffle-3: patched, built, running...
+arm shuffle-4: patched, built, running...
+arm shuffle-5: patched, built, running...
+post-run git status --porcelain:
+?? .claude/e3-reverse.json
+?? .claude/e3-shuffle-1.json
+?? .claude/e3-shuffle-2.json
+?? .claude/e3-shuffle-3.json
+?? .claude/e3-shuffle-4.json
+?? .claude/e3-shuffle-5.json
+?? .claude/evalorder-e3.mjs
+
+post-run git diff on tracked files: EMPTY - byte-identical, verified
+
+baseline: median 54.7161 mean 52.5409 bouts 120
+arm reverse: median 54.7161 (Δ 0.0000) mean 53.7802 (Δ 1.2393) | bouts 160 (removed 119, new 159)
+arm shuffle-1: median 51.0836 (Δ -3.6325) mean 50.8101 (Δ -1.7308) | bouts 140 (removed 76, new 96)
+arm shuffle-2: median 51.0836 (Δ -3.6325) mean 52.6520 (Δ 0.1111) | bouts 152 (removed 86, new 118)
+arm shuffle-3: median 51.0836 (Δ -3.6325) mean 51.2802 (Δ -1.2607) | bouts 141 (removed 96, new 117)
+arm shuffle-4: median 51.0836 (Δ -3.6325) mean 50.3828 (Δ -2.1581) | bouts 146 (removed 70, new 96)
+arm shuffle-5: median 51.0836 (Δ -3.6325) mean 51.6648 (Δ -0.8761) | bouts 150 (removed 105, new 135)
+
+randomized-arm distribution (5 arrangements): median-Δ min -3.6325 max -3.6325 | mean-Δ min -2.1581 max 0.1111
+read against the ~0.5 pp reseed noise floor per the frozen plan and the disclosed dice-path confound; verdict lines are the adjudication's, not this probe's.
