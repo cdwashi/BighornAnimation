@@ -162,6 +162,42 @@ and per the amendment it queues for that item; nothing about it enters M4's read
 Scope held: lines 395–518 read (the finishing region and its immediate resolution
 context); the rest of `combat.ts` remains unread; no other file opened.
 
+## Amendment read — 2026-08-04, `engagement.ts` opened and `combat.ts` extended by the evaluation-order plan's file-scope ruling (`67d5bc1`)
+
+**E2's answer — the order's origin:** `state.engagements` is append-only
+(`engagement.ts:120`, descriptors pushed at first contact, never re-sorted, deactivated
+in place), so bout resolution order = **engagement CREATION order = first-contact
+chronology**, with same-tick contact ties broken by declared-unit order via the
+`entities()` double loop (`engagement.ts:95-98`, D30's determinism contract). This is
+a temporal warrant AT DESCRIPTOR GRANULARITY — longest-standing contact resolves first
+— which is chronology of CONTACT, not chronology of the current tick's tactical
+events; whether that warrant suffices is the adjudication's question, reported here
+without a verdict.
+
+**The fire/shock asymmetry is ARCHITECTURAL, not incidental:** `resolveCombat` computes
+all fire into a `pending` buffer and applies it AFTER the engagement loop
+(`combat.ts:528, 574-576`) — simultaneity implemented as compute-then-apply — while
+`resolveShock` mutates in place inside the loop (`combat.ts:544`). Someone built fire
+WITH a deferral buffer and shock WITHOUT one. Amendment 3's required report: **D64's
+row covers fire only** — the fire buffer's simultaneity is attested by both structure
+and ruling scope; whether that intent extends to melee remains UNRULED, exactly as the
+amendment's constraint provided: H-ARTIFACT's warrant premise is not strengthened.
+
+**Scope-internal texture, reported without interpretation:** the within-tick semantics
+are a THREE-WAY mixture — fire DIRECTIONS snapshot pre-loop (`combat.ts:530-533`),
+fire COMPUTATION reads live mid-loop state, fire APPLICATION deferred post-loop; shock
+is fully live. A defender routed by an early bout still fires this tick only per the
+pre-loop direction snapshot's eligibility. Recorded for the item's evidence base.
+
+**E3 dice-path disclosure, registered before the probes run:** any reordering of the
+engagement loop reshuffles the seeded RNG draw sequence, so an E3 delta conflates
+order-semantics with dice-path noise — which is WHY Amendment 1's randomized arm reads
+a DISTRIBUTION against the measured reseed noise floor (~0.5 pp on means) rather than
+a single number against zero.
+
+Scope held: `engagement.ts` read whole (the file is the creation/ordering machinery);
+`combat.ts` read `:513-577` (the resolution loop); no other file opened.
+
 ## Conduct statement
 
 From this read forward, no hypothesis in this project is drafted from a blind position;
