@@ -138,6 +138,30 @@ path from observed phenomenon to owning row did not.
 - `morale.ts:440-447`: pursuit breaks after `pursuitBreakTicks` of losing ground
   (`'beyond-pursuit-reach'`).
 
+## Amendment read — 2026-08-04, `combat.ts` opened by the dated amendment (`05637f3`), scoped to the close-action finishing region
+
+**For M4's patch, and answered exactly to its needs:** the finishing predicate is
+`nearestShelter` in `resolveShock` (`combat.ts:429-443`) — for a defender ALREADY
+ROUTED at bout start: nearest same-side combat unit, STEADY, not destroyed, not
+withdrawn, within `config.isolationRadiusMeters`; the annihilation branch
+(`combat.ts:464-479`) fires on break when `defenderAlreadyRouted && !nearestShelter`,
+with D81 terminal accounting. The shelter result also feeds the `melee-bout` event's
+`shelteredBy` payload (`combat.ts:502-508`) — the patch must keep that surface
+coherent. The adjudicator's registered expectation — a straightforward eligibility
+filter — HOLDS for the predicate itself.
+
+**UNREGISTERED FINDING (surprise clause; logged verbatim, not interpreted, queued —
+and NOT absorbed into M4):** `resolveShock` sets the defender's `moraleState` to
+ROUTED directly, mid-resolution (`combat.ts:457-458`), before the tick's
+`updateMorale` runs. Same-tick melee bouts therefore resolve in sequence against a
+mutating morale field: a later bout's shelter check sees companions already broken by
+earlier bouts of the same tick. This is a mechanism surface for the registered
+evaluation-order item — the M2 timing fact's 99-versus-0 has a candidate locus here —
+and per the amendment it queues for that item; nothing about it enters M4's read.
+
+Scope held: lines 395–518 read (the finishing region and its immediate resolution
+context); the rest of `combat.ts` remains unread; no other file opened.
+
 ## Conduct statement
 
 From this read forward, no hypothesis in this project is drafted from a blind position;
