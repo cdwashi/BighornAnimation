@@ -1,0 +1,35 @@
+Engine source directory listing - produced 2026-08-04 PRE-FREEZE per the
+source-read plan's Amendment 2. File NAMES AND SIZES ONLY; no file content
+was opened to produce this. This listing is the selection surface; the
+selected set is named in docs/research/SOURCE-READ-PLAN.md.
+
+engine/src/ammunition.ts (1825 bytes)
+engine/src/baseline-selection.ts (4665 bytes)
+engine/src/camp-defense.ts (23466 bytes)
+engine/src/clock.ts (1561 bytes)
+engine/src/combat-config.ts (10967 bytes)
+engine/src/combat.ts (23286 bytes)
+engine/src/couriers.ts (3240 bytes)
+engine/src/engagement.ts (5836 bytes)
+engine/src/envelope.ts (12660 bytes)
+engine/src/events.ts (1707 bytes)
+engine/src/exam.ts (12378 bytes)
+engine/src/fatigue.ts (1007 bytes)
+engine/src/frontage.ts (708 bytes)
+engine/src/index.ts (10524 bytes)
+engine/src/leaders.ts (2956 bytes)
+engine/src/lip.ts (2804 bytes)
+engine/src/morale.ts (22256 bytes)
+engine/src/movement.ts (10150 bytes)
+engine/src/objectives.ts (6551 bytes)
+engine/src/orders.ts (6178 bytes)
+engine/src/pathfind.ts (14524 bytes)
+engine/src/rng.ts (1343 bytes)
+engine/src/score.ts (21526 bytes)
+engine/src/serialize.ts (2041 bytes)
+engine/src/spotting.ts (25910 bytes)
+engine/src/state.ts (11024 bytes)
+
+SELECTED (opened by the read): movement.ts, pathfind.ts, objectives.ts, orders.ts
+ALL OTHERS: signature-only under the plan's transitive halt rule; bodies open
+only by dated amendment naming the question that requires them.
