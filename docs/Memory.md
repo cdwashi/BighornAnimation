@@ -8,8 +8,8 @@ all of them (session-boundary ruling: the reseed invalidates numbers, not findin
 block at session close; never let a bare number sit here; never duplicate ledger content that
 exists — point at it.*
 
-**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D113, with dated
-annotations on D90/D98/D108/D109/D111/D112). Predictions: `PREDICTIONS.md` (PR-1..71, the
+**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D114, with dated
+annotations on D90/D98/D108/D109/D111/D112/D113). Predictions: `PREDICTIONS.md` (PR-1..71, the
 bands amendment, and the reading-order pre-commitment). Refuted designs and misses:
 `NEGATIVE_RESULTS.md` (including §4's late-recorded fallback-clause row). Standing practices:
 `METHODS.md` §6 (the three practices, the yield-and-counterexample paragraph, the §4 pointer).
@@ -72,8 +72,11 @@ no order declares and no landmark names within 3.9 km; the stacking is order-end
 and the zero-distance check's sameEnd predicate could only ever return zero (dated
 annotation inside the D113 row). ESCROW is now a register status (evidence whose validity
 depends on an unruled mechanism); register attribution is by ROLE, not session name. **NEXT
-ACTION: the re-path item drafts** — mechanism unnamed, component mixing the leading
-candidate, measured not chased.
+ACTION: the x=6624 residue item drafts** — last ruling D114 (`ec16bb3`): the re-path mixed
+outcome ruled as the finding, all three hypotheses failed in registered forms, the 33
+released from escrow, 82/120 restored as the operative count. *(This NEXT line corrected
+mid-session 2026-08-04, ahead of the block's full session-close update, so the resume
+surface points at open work rather than at the item that just closed.)*
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
 dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
