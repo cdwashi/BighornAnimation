@@ -1,0 +1,38 @@
+events parsed from committed log: 13969
+family events: 606
+
+=== R2 — constancy against geometry (semi-seen) ===
+  (6624,15124): n=66 | distinct old terminals 1 | enemy-dist min 244 med 520 max 1043
+  (240,12030): n=23 | distinct old terminals 4 | enemy-dist min 25 med 600 max 763
+  (6624,20006): n=493 | distinct old terminals 66 | enemy-dist min 0 med 389 max 7866
+  (6624,19148): n=24 | distinct old terminals 2 | enemy-dist min 25 med 867 max 890
+  destination constant per point across all events and seeds (registered: consistent with DECL2 and REF; kills live-source MIX2 if true, cannot kill constant-source MIX2)
+
+=== R3 — precondition coherence (semi-seen) ===
+  FAMILY: units {gall-band:120 crow-king-band:106 crow-scouts:45 co-c:27 co-e:32 co-f:28 oglala-pool:95 crazy-horse-band:95 cheyenne-pool:49 lwm-band:9} | morale {STEADY:439 ROUTED:89 SHAKEN:78} | orders {gall-calhoun:226 custer-bluff-route:45 right-wing-ridges:27 wing-consolidate:60 ch-strike:190 lwm-charge:58}
+  DECLARED-RETREATS (un-ordered events only): units {co-c:62 co-i:49 gall-band:125 crow-king-band:124 cheyenne-pool:122 lwm-band:129 oglala-pool:127 crazy-horse-band:127 co-e:14 hunkpapa-pool:42 co-f:11} | morale {ROUTED:156 STEADY:668 SHAKEN:103 BROKEN:5} | orders {right-wing-ridges:111 gall-calhoun:249 lwm-charge:251 ch-strike:254 wing-consolidate:25 gall-response:42}
+  registered check — family events by units whose route NEVER touched cedar-coulee (per seed): 473 — gall-band crow-king-band oglala-pool crazy-horse-band cheyenne-pool lwm-band
+
+=== R3b — the generalisation test (semi-seen) ===
+distinct stray terminals: 890
+-- per-landmark component families: terminals sharing a landmark component (±1 m) with the OTHER component differing by >50 m --
+  lone-tipi (4248,10990): preserve-x [] preserve-y [(7550,10991)x1]
+  ford-a (7050,8096): preserve-x [(7050,11595)x4] preserve-y []
+  timber (5297,12070): preserve-x [(5296,14849)x6] preserve-y []
+  retreat-crossing (7720,10976): preserve-x [] preserve-y [(7164,10976)x3 (7389,10976)x3 (7501,10976)x3 (7453,10976)x6 (7566,10976)x3 (7493,10976)x6 (7450,10976)x4 (7511,10976)x3 (7272,10975)x2 (7528,10976)x1 (7212,10976)x3 (7552,10976)x3 (7379,10976)x5]
+  weir-point (7162,12515): preserve-x [(7162,11359)x32 (7163,11482)x2] preserve-y []
+  cedar-coulee (6624,12030): preserve-x [(6624,15124)x66 (6624,20006)x493 (6624,7426)x3 (6624,17323)x4 (6624,19148)x24 (6624,19796)x16 (6624,20005)x8 (6624,12671)x2 (6624,13049)x2 (6624,13422)x2 (6624,13690)x2 (6624,13961)x2 (6624,14219)x2 (6624,14489)x2 (6624,14753)x2 (6624,15021)x2 (6624,15294)x2 (6624,15562)x2 (6624,15937)x2 (6624,16191)x2 (6624,16543)x2 (6624,16797)x2 (6624,17056)x2] preserve-y [(240,12030)x23]
+  ford-b (5400,13935): preserve-x [(5400,14709)x1] preserve-y []
+  nye-cartwright-ridge (6968,14922): preserve-x [(6968,10956)x9 (6968,10948)x4 (6969,12947)x4 (6968,12354)x1] preserve-y [(5562,14923)x1]
+  calhoun-hill (5349,15872): preserve-x [(5348,14778)x8] preserve-y []
+  deep-ravine (4749,16457): preserve-x [(4750,17696)x6] preserve-y []
+-- per-bound families: terminals within 1 m of a declared grid bound --
+  minX=240.049: (240,12030)x23
+  minY=7425.57: (7440,7426)x54 (6624,7426)x3
+  maxX=12320.049: none
+  maxY=20005.57: (6624,20006)x493 (6624,20005)x8
+
+=== R4 — the sibling constraint against the registered frame ===
+  (6624,20006): y = maxY (audited, metre-rounded) — bound component CONFIRMED
+  (240,12030): x = minX (audited, metre-rounded) — bound component CONFIRMED
+  (6624,19148), (6624,15124): y declared nowhere on the parsed data surface (R1) — NOT bound components; partial coverage under the registered frame, reported as partial
