@@ -8,103 +8,64 @@ all of them (session-boundary ruling: the reseed invalidates numbers, not findin
 block at session close; never let a bare number sit here; never duplicate ledger content that
 exists — point at it.*
 
-**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D108).
-Predictions and supersessions: `PREDICTIONS.md` (PR-1..56). Refuted designs and misses:
-`NEGATIVE_RESULTS.md`. Standing practices: `METHODS.md` §5 (pre-registration tiers) and §6
-(measure-before-freezing; which-one-specifically; open-the-source-before-citing-a-number).
-Instruments and probes: `.claude/`. Codex work orders: `docs/WO-*.md`.
+**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D112, with dated
+annotations on D90/D98/D108/D109/D111/D112). Predictions: `PREDICTIONS.md` (PR-1..71, the
+bands amendment, and the reading-order pre-commitment). Refuted designs and misses:
+`NEGATIVE_RESULTS.md` (including §4's late-recorded fallback-clause row). Standing practices:
+`METHODS.md` §6 (the three practices, the yield-and-counterexample paragraph, the §4 pointer).
+The ruled tier map: `docs/research/D112-TIER-MAP.md` (enumeration = authorization). The
+transcription split: `docs/research/O5-TRANSCRIPTION-SPLIT*`. Work orders with their
+amendments: `docs/WO-D110.md`–`WO-D112.md`. Instruments and probes: `.claude/`, committed
+with outputs.
 
-**Committed state at `29e13c3`.** D108 ACCEPTED — Bench extent as goal geometry (the lip, not the
-area); first mechanism of the unbundled bundle, reseed-free against the D107 baseline, stream
-`ba288f09`. Register: 44 measurements at D108 acceptance; this session's four probes (two
-D100-branch, two Varnum, `.claude/`, with outputs) pending numbering. Standing stop: >5/50 seeds
-above 60 Reno killed, or any ≥100 [registered before dispatch, stream-independent; not to be
-moved]. Named bench item, recorded not repaired: approach-vector-versus-radius (one-seed
-sanctuary breach, D107 predicate executed as ruled; recurrence at frequency is what would earn a
-ruling). **PR-53 scoring:** see the D108 row's dated annotation (2026-08-02) — both legs MISS;
-53(b) the adjudicator's fifth direction-wrong registration.
+**Committed state: BOTH BREAKS COMPLETE, and the O5 v1-blocking item is CLOSED at D112's
+acceptance.** Stream lineage: `ba288f09` (D108 world) → `8e28552c` (D111, the inert-class
+break — median unmoved to the digit, noise floor measured: means ~0.5 pp, median-unchanged
+uninformative) → **`68325eff`** (D112, the value-class break — the registered fall arrived).
+Standing law built this arc: D110's pins (a)–(d) and the BOM/CRLF gate (index bytes, suite +
+hook); FOUR refresh principles (oracles = stream re-rolled; payload pins = ruling landed;
+baseline-character pins = stream re-rolled, graded on the envelope; everything else stays
+red); the generalized value-contradiction rule; the adjudicated-choice precedent for
+undocumented fixtures; and PRE-FREEZE RED ENUMERATION for every future byte-bearing WO.
 
-**Figures — stream-tagged [`ba288f09`], all invalidated by the next byte commit:** composite
-median 57.63; Reno killed median 31 (D108 campaign summary; PR-53(b)'s scored miss — D108 row
-annotation); peak-within-30 m of the bench point 158–160 (from 615–708 pre-D108); wing completion
-28/50. **Stream-independent (derivation or structure, survive any reseed):** the lip — raw 44th
-extraction 103 cells / 260 m / zero gaps >20 m (the D108 row's anchor), pinned goal set =
-extraction ∩ WEST **85 cells**, same 260 m span, continuous, min 51 m from point (WO-D108
-Amendment 1; the set the mechanism consumes); 219:2 close-episode kill asymmetry; 100/0 flight
-decomposition; 87.6% dry contact; zero timber demand.
+**Figures — stream-tagged [`68325eff`], all invalidated by the next byte commit:** composite
+median 54.7161% under the REGISTERED floor-quantile convention (the 26th order statistic of
+50 — the 25th, 53.6477, is not the register's median; named in the D112 row's dated
+annotation); mean 52.5409%; F4 complete-wing 25/50; coalition wounded 71–258 median 192 (the
+model OVER-wounds against the sole sourced 160 — direction corrected in the acceptance row);
+coalition killed median 69; D80 typical seed 18760600. **Stream-independent:** the lip (85
+cells / 260 m / min 51 m / all WEST, SHA in the rows); the C2 ceiling 8/9 (structural until a
+width-bearing wounded source is located — zero of fifty seeds landed on exactly 160); C4
+reported as x/14 beside the 12/13 lineage on every cross-round comparison, permanently.
 
-**Adjudicated this session (2026-08-02, rows not yet committed).** The data commit is split by
-class per Fable: **D109** class separation + two-break sequencing (boundary ruling binds per
-break; each break gets its own re-baseline before any registration leans on a number;
-envelope-median comparisons only across breaks). **D110** three pins, reseed-free, land first:
-(a) test pinning `combat-config.ts` killed-to-wounded ranges to `calibration.sideCasualties`
-cross-products (the copy at :151–155 currently cites values it duplicates); (b) test pinning the
-camp-defence scenario-feature candidate set to the ruled set (today: bench only); (c) test
-pinning the set of landmark ids consumed engine-side to the set referenced by orders,
-checkpoints, assertions, and exam items — a future iterator turns CI red instead of silently
-making declared landmarks load-bearing. Same pass: pre-commit hook rejecting BOM and CRLF in
-tracked text (the `8759dd0` scar promoted from prose to gate; the trap pulled again this session
-on a relay copy, caught pre-repo), and METHODS §6's fallback-clause parenthetical becomes a
-pointer to the new NEGATIVE_RESULTS §4 row (the no-duplication rule, applied to the file it came
-from — Fable's carry, prose-only). **D111** break 1 — provenance-class bytes (B3/B2
-bench confidence→LOW, B4 timeAnchor reframe to Chicago watch time, no offset encoded, plus the
-D100 foothill landmark bytes GATED on the D90 Varnum annotation landing first), registered
-PR-55-inverse: stream changes and nothing else, envelope reproduces within the composite's
-quantization lattice; a miss triggers a per-edit bisect (pre-committed response). Code half of
-the same WO: UI `important`-set addition for any D100 landmarks, and the map banner
-(`battle-map.tsx:612` "LOCAL SUN TIME") rewritten non-committal ("Scenario clock" or equivalent),
-bound to B4's wording — the UI must not assert a resolution the record is withdrawing. **D112**
-break 2, conditional on break 1 — value bytes: coalition killed 36/60/136 source-per-bound (300
-discredited, removed), wounded 160 flat (confidence on the located source's own tier; note reads
-bounds *unavailable*, not agreed — and the Red Horse coupling: one testimony supplies both the
-killed high and the wounded figure, so those bounds are not independent), pony split (unit
-strength = total herd 15000/15000/25000 LOW; dawn-visible subset moves to the Crow's Nest
-observation event; same unavailable-not-agreed treatment on the degenerate low) + the O5
-180-claim transcription (provenance class, rides free once break 1 proves the class inert).
-**D100 remains reserved, vehicle accepted (landmarks), drafting GATED on the D90 annotation:**
-engine consumes landmarks by id-lookup only (envelope/exam/objectives/score — verified), so an
-unreferenced landmark is display-vehicle and inert by construction (pin (c) is the instrument for
-that claim); `coverFeatures` stays bench-only. Varnum reconciliation (probes
-`.claude/varnum-band-relief-check.mjs`, `varnum-band-extent-check.mjs`): range consistency is
-FALSE — pinned points ≥1,579 m from the line under the most favourable referent vs Varnum's
-732–1,097 m band; the DEM shows ONE contiguous western rise from 320 m out through the band
-(+5–9 m apron, 1,601 in-band cells, nothing in-band survives a +10 m threshold) climbing unbroken
-into the pinned summits (+21–33 m at 1.8–2.2 km) — no detached in-band feature exists. Ruled
-reading: REGION-level corroboration recorded AS A DEMOTION (successor claim weaker, DEM-derived
-after the range reading failed, source-corroborated at direction-and-identity only); the three
-coordinates are a SELECTION CONVENTION on a measured region (D108 segment-boundary precedent),
-still the right selection for their purpose (far feature set distinct from the Bench), no longer
-claimed as Varnum's firing position; stakes: nothing behavioral rests on this. Registered
-observation: the in-band apron platform QUALIFIES under D90's own terrace criterion; the original
-search instrument is unpreserved, so reached-and-rejected vs never-reached is unsettleable —
-explicitly NOT a Bench reopening (D101 stands at LOW, untouched). D90 dated annotation drafted
-per Fable's three constraints, awaiting his acceptance; Q4 confidence held.
-**The 405 (probes `d100-exclusion-branch-probe.mjs`, `d100-featureless-origin-probe.mjs`,
-digit-exact vs the accepted campaign):** held-exclusion 0/50. **291 switch-to-nothing events
-strand the bands** — switchThreat's unconditional feature clear (`camp-defense.ts:488`) on a
-switch to a camp with no eligible feature in radius; **the 405 retry fires across 42/50 seeds are
-the cadenced consequence of holding stranded** (origin lost-via-switch in 405/405, 0
-never-acquired, 0 re-acquisitions) [`ba288f09`]. **D98's measured finding STANDS** (0/96
-confinement strandings — none of the 291 is a confinement stranding); what falls is the inference
-that the state doesn't arise — second instance of the eleventh measurement's lesson (measured
-quantity right, conclusion wrong; first: turnout-was-never-arrival, D103 row).
-NEGATIVE_RESULTS §4's fallback death unchanged, takes a dated pointer, not a revision.
-switchThreat clear-on-switch REGISTERED AS CANDIDATE, not ruled (clearing = unhysteretic
-re-evaluation, D92's refused shape; keeping = bench-pinning, D93's asymmetry mirrored) —
-measured behind break 2, reseed-free.
+**OPEN ITEMS, in ruling order:** (1) **the mean residual −1.68 pp against the ±1.14 floor —
+an OPEN QUANTITY, explicitly not retired** (D112 acceptance row), with the registered
+HYPOTHESIS that the three sanctuary breaches own part of it — measured in the STEADY-shelter
+work, not asserted; (2) **STEADY-SHELTER IS THE NEXT THING RULED** — three-stream recurrence
+1/50 + 1/50 + 3/50 (seeds 617/626/635; 617's co-m closing at 865 m = the D108 breach's exact
+geometry) plus the D111 stop seed's three west-side annihilations through the same predicate;
+reseed-free against `68325eff`; tier A; the approach-vector tables are its evidence base;
+(3) corpse drift (D111 row annotation, blast radius unknown); (4) the arikara value item
+(Libby ~40 outside the encoded 35–39); (5) the GNIS O-item (#1/#4/#11 held, #6 open);
+(6) the 268/253 engine question (scoring-inert, reaches `combat-config.ts:231`); (7) the O5
+revisit thresholds (a wounded figure with width; a peer-reviewed pony census); (8) the human
+items: the Mielke click and O5 stage-2 page-level reads (Gray's methodology chapter, Michno
+pp. 17–19/105); (9) the schema observation — one `confidence` field doing two jobs — far
+behind the queue.
 
-**Mechanism queue after the breaks (reseed-free against the D112 world):** switchThreat
-clear-on-switch measurement (candidate registered above, both directions live), interception
-boundary ruling, junction/rally, repulse-reachability, choke-instrument-location, fire
-economy/resupply, approach-vector-vs-radius watch. v1-blocking:
-O5 sourcing (closes with D111/D112). Post-v1 #1: academic methods paper prompt.
+**The arc's character, for whoever resumes:** twenty catches with names on every one, ten
+consecutive Codex STOPs (the tenth preserving its own error unrepaired), and a register that
+scored its own predicted fall as two misses — the D112 acceptance row is the summary of
+record. **NEXT ACTION: draft the STEADY-shelter ruling's measurement plan** (the residual
+hypothesis measured first: per-seed composites of 617/626/635 against the rest), tier A as
+always.
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
-dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck commits
-(`git commit -F <file>`; file tools for all prose including commit-message files — the BOM in
-`8759dd0`'s subject is the standing scar). Tier A: predictions alone → row + frozen WO →
-dispatch.
-
+dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
+word executes commits (`git commit -F <file>`; file tools for all prose including
+commit-message files; the BOM/CRLF gate now enforces what the `8759dd0` scar could only
+record). Tier A: predictions alone → row + frozen WO → dispatch. Pre-freeze red enumeration
+before any byte-bearing freeze.
 ---
 
 Written 2026-07-18 at Chuck's request before a prolonged break. Purpose:
