@@ -123,6 +123,35 @@ the grid edge rather than a chosen destination; grounds: `repathPursuit` already
 overwrites terminal points directly against a target, and a flight computation doing the
 same against a bound would produce exactly the observed stack. If it returns CHOSEN, the
 co-locations are stable under repair and the STEADY fix's scale holds at 82/120.
+
+## Dated amendment — 2026-08-04, at the M4 halt
+
+**`engine/src/combat.ts` OPENS, named for M4:** implementing C2's throwaway patch
+requires the finishing predicate's body, and no ruling had opened the file that holds
+it. Scoped to the CLOSE-ACTION FINISHING REGION — the isolation predicate and its
+immediate resolution context; signature-only beyond it, transitive halt rule live;
+first look recorded as a dated read in the read log. **This REVERSES `combat.ts`'s
+held-back status**, established when `morale.ts` was named and recorded at D117 as
+"never needed" — true for the source-read questions, not true for M4; stated plainly
+rather than letting the file slide in as an extension. **The THIRTIETH catch, the
+adjudicator's, on the record with it:** five M4 conditions were written covering patch
+containment, byte-identity, reseed discipline, prediction scoring, and freeze
+exclusion — without asking what the patch would be written against; the register's
+standing pattern (an instrument specified without checking what it requires to exist),
+caught this time at the boundary by the verifier's halt rather than by a probe's
+output — an improvement in where it surfaced, not in the writing. **Workflow additions,
+registered:** byte-identity verification covers the WHOLE tree — `git status` clean and
+`git diff` empty printed into the probe output — with the explicit statement that
+`dist/` is untracked by rule (`.gitignore:2`) and is REGENERATED from committed source
+in the restore step so the running artifact matches the committed tree; and
+restore-and-verify runs under a GUARD so the tree is returned and the verification
+prints regardless of how the envelope run exits. **The adjudicator's stated
+expectation, registered so it can miss:** the finishing predicate is a straightforward
+eligibility filter and the read answers nothing beyond M4's needs; any surplus is an
+UNREGISTERED FINDING under the surprise clause — logged verbatim, not interpreted,
+queued — and given the evaluation-order item sits registered and unexamined precisely
+where a timing surface would live, the chance of surplus is real and it does not get
+absorbed into M4.
 **The read repairs nothing and edits nothing** — repairs remain separate WOs against
 registered predictions, and the STEADY fix stays waiting until the read's ruling lands.
 The read log's claims are verifiable by any reader against the same files, which
