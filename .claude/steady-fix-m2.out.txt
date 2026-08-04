@@ -1,0 +1,32 @@
+radii: C1 eligibility @650 (D107's isolation radius) | C2 mass @450 (friendlyRadiusMeters)
+
+=== 34th re-derivation (analytic): both candidates modify only the eligibility clause of
+=== D107 isolation; the D72 pursuit supply channel is untouched by construction. HOLDS for C1 and C2. ===
+
+=== 37th re-derivation: the withdrawnOffField clause under each candidate ===
+rows with WITHDRAWN same-side units within 650: 18 of 120
+  18760604 t1743 co-e: withdrawn=[crow-scouts:STEADY]
+  18760604 t1745 co-c: withdrawn=[crow-scouts:STEADY]
+  18760604 t1747 co-f: withdrawn=[crow-scouts:STEADY]
+  18760605 t1762 co-c: withdrawn=[crow-scouts:STEADY]
+  18760611 t1763 co-f: withdrawn=[crow-scouts:STEADY]
+  18760611 t1765 co-c: withdrawn=[crow-scouts:STEADY]
+  18760612 t1764 co-c: withdrawn=[crow-scouts:STEADY]
+  18760612 t1766 co-e: withdrawn=[crow-scouts:STEADY]
+  18760627 t1766 co-e: withdrawn=[crow-scouts:STEADY]
+  18760629 t1742 co-e: withdrawn=[crow-scouts:STEADY]
+  18760629 t1747 co-f: withdrawn=[crow-scouts:STEADY]
+  18760632 t1755 co-c: withdrawn=[crow-scouts:STEADY]
+  … 6 more
+C1: rows where dropping the clause would CHANGE the verdict (no live shelterer, withdrawn present): 6 — the clause is load-bearing in exactly these; C1 as registered RETAINS it: contamination NOT re-admitted.
+C2: rows where withdrawn STEADY/SHAKEN mass would cross the pursuer threshold if the clause were dropped: 0 — C2 as registered RETAINS the clause: contamination NOT re-admitted.
+
+=== 38th re-derivation: the formed-body softness under each candidate ===
+D107-world committed profile: 22/22 shelterer instances formed; ratio min 73% median 82% max 100%; absolute strength min 29 median 37.
+C1 shelterer instances across the 99 occupied rows: 204
+  strength ratio: min 5% p25 55% median 83% max 100%
+  below the D107-world minimum (73%): 94 of 204 | below 50%: 43 | absolute strength min 2 median 34
+  by morale state: STEADY:99 ROUTED:24 BROKEN:31 SHAKEN:50
+  READING, per the registration: C1 does not silently unwind the softness — it EXPLICITLY abandons the
+  formed proxy; the numbers above are the population that abandonment admits, reported for adjudication.
+C2's single M1 flip (18760602 co-l): mass constituents co-c:STEADY@37/40(93%) co-i:STEADY@36/40(90%) — the strength comparison IS a formed-body test by construction; the 38th's concern is structurally addressed under C2.
