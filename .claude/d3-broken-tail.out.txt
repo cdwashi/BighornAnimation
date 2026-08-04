@@ -1,0 +1,36 @@
+stray events parsed from committed log: 9732 | broken-unit tail (SHAKEN/ROUTED/BROKEN): 1018 | tail events without an angle: 0
+
+D3 rescoped - angle flight-vs-away-from-nearest-enemy, 30-degree bins [-180..180), broken tail only:
+  239 46 130 38 53 27 72 34 5 18 44 312
+  n=1018 | fraction in the two toward-enemy end bins: 54.1% | fraction in the two away-from-enemy centre bins [-30..30): 9.7%
+
+per morale state:
+  ROUTED: 53 4 60 9 29 3 47 22 0 12 13 92 (n=344)
+  SHAKEN: 169 40 70 29 24 24 25 11 5 6 28 216 (n=647)
+  BROKEN: 17 2 0 0 0 0 0 1 0 0 3 4 (n=27)
+per category:
+  TERMINAL-MOVES: 219 43 128 35 38 24 70 32 4 12 35 288 (n=928)
+  TERMINAL-APPEARS: 20 3 2 3 15 3 2 2 1 6 9 24 (n=90)
+
+tail destination tally: 223 distinct terminals
+  (4628,16572) x193 across 49 seeds
+  (6624,20006) x154 across 33 seeds
+  (7162,12515) x44 across 15 seeds
+  (7484,10617) x32 across 25 seeds
+  (4930,16276) x27 across 25 seeds
+  (8340,11112) x27 across 26 seeds
+  (5129,16076) x25 across 23 seeds
+  (6624,12030) x25 across 14 seeds
+  (6575,12121) x16 across 11 seeds
+  (5220,16911) x14 across 13 seeds
+  (5080,16659) x13 across 13 seeds
+  (6970,12760) x11 across 3 seeds
+  (5390,17289) x11 across 11 seeds
+  (5526,17541) x10 across 10 seeds
+  (4790,17388) x9 across 8 seeds
+  (5233,18439) x9 across 8 seeds
+  (5448,18653) x9 across 8 seeds
+  (6624,19148) x9 across 4 seeds
+  (4790,17693) x8 across 7 seeds
+  (4670,16856) x7 across 6 seeds
+  ... 203 more
