@@ -1,0 +1,19 @@
+=== E4 snapshot counterfactual, stream [68325eff], baseline = committed m4-baseline.json ===
+snapshot patch applied and built; running...
+post-run git status --porcelain:
+?? .claude/e4-snapshot.json
+?? .claude/evalorder-e4.mjs
+
+post-run git diff on tracked files: EMPTY - byte-identical, verified
+
+--- THE NAMED STATISTIC (the only E4 support surface for H-DESIGN) ---
+baseline: bouts 120 | same-tick multi-bout (seed,tick) groups 1 (bouts inside them 3) | Calhoun window t1680-1699: 52 | Last Stand window t1700-1799: 62
+snapshot: bouts 98 | same-tick multi-bout (seed,tick) groups 0 (bouts inside them 0) | Calhoun window t1680-1699: 0 | Last Stand window t1700-1799: 94
+bout-set delta: removed 97 | new 75
+
+--- envelope, REPORTED, supporting neither hypothesis per Amendment 2 ---
+baseline median 54.7161 mean 52.5409 | snapshot median 53.8614 mean 52.2845
+
+M2 cross-reference: the 99-versus-0 timing fact predicts the snapshot world suppresses finishings
+whose shelter check now sees pre-cascade STEADY companions; the numbers above measure how much.
+Verdict lines are the adjudication's, not this probe's.
