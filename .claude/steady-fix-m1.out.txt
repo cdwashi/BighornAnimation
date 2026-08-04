@@ -1,0 +1,144 @@
+config (compiled artifact, numeric-asserted): friendlyRadiusMeters=450 isolationRadiusMeters=650
+
+=== C0 — M1(a): zero flips by definition. Recorded, not credited: C0 passes M1 only when its
+=== registered burden holds at adjudication; a trivial measurement is not a survived phase. ===
+
+=== C1 — M1(a), tabulated from .claude/steady-shelter-probes.out.txt (not inherited) ===
+rows tabulated: 120 | C1 first-order flips (>=1 any-state companion within 650): 99 | unchanged (none within 650): 21
+flip rows: 18760600/t1684/co-l 18760600/t1724/co-i 18760601/t1684/co-l 18760602/t1684/co-l 18760602/t1716/co-i 18760603/t1684/co-l 18760604/t1684/co-l 18760604/t1708/co-i 18760604/t1743/co-e 18760604/t1745/co-c 18760605/t1684/co-l 18760605/t1714/co-i 18760606/t1684/co-l 18760607/t1684/co-l 18760607/t1717/co-i 18760608/t1684/co-l 18760609/t1684/co-l 18760610/t1684/co-l 18760610/t1721/co-i 18760611/t1684/co-l 18760611/t1763/co-f 18760611/t1765/co-c 18760612/t1684/co-l 18760612/t1764/co-c 18760612/t1766/co-e 18760613/t1684/co-l 18760613/t1720/co-i 18760613/t1750/co-e 18760614/t1684/co-l 18760614/t1724/co-i 18760615/t1684/co-l 18760615/t1719/co-i 18760616/t1684/co-l 18760616/t1710/co-i 18760616/t1777/co-e 18760617/t1684/co-l 18760617/t1720/co-i 18760618/t1684/co-l 18760618/t1716/co-i 18760619/t1684/co-l 18760620/t1684/co-l 18760620/t1720/co-i 18760621/t1684/co-l 18760622/t1684/co-l 18760622/t1708/co-i 18760623/t1684/co-l 18760623/t1708/co-i 18760624/t1684/co-l 18760624/t1708/co-i 18760625/t1684/co-l 18760625/t1720/co-i 18760626/t1684/co-l 18760626/t1720/co-i 18760626/t1750/co-e 18760627/t1684/co-l 18760627/t1766/co-e 18760628/t1684/co-l 18760629/t1684/co-l 18760629/t1700/co-c 18760629/t1702/co-i 18760629/t1742/co-e 18760630/t1684/co-l 18760630/t1708/co-i 18760631/t1684/co-l 18760631/t1708/co-i 18760632/t1684/co-l 18760632/t1708/co-i 18760633/t1684/co-l 18760633/t1720/co-i 18760634/t1684/co-l 18760634/t1708/co-i 18760636/t1684/co-l 18760637/t1684/co-l 18760637/t1720/co-i 18760637/t1796/co-f 18760638/t1684/co-l 18760638/t1766/co-e 18760639/t1684/co-l 18760639/t1708/co-i 18760640/t1684/co-l 18760640/t1719/co-i 18760641/t1684/co-l 18760642/t1684/co-l 18760642/t1708/co-c 18760642/t1711/co-i 18760643/t1684/co-l 18760644/t1684/co-l 18760644/t1708/co-i 18760645/t1684/co-l 18760645/t1720/co-i 18760646/t1684/co-l 18760647/t1497/co-m 18760647/t1684/co-l 18760647/t1715/co-i 18760648/t1684/co-l 18760648/t1717/co-i 18760648/t1765/co-c 18760649/t1684/co-l 18760649/t1717/co-i
+
+=== C2 — M1(a), same-seed re-simulation (STEADY+SHAKEN mass in friendlyRadius vs active pursuer strength) ===
+row 18760600 t1684 co-l (sampled end t1683): mass(S+SH,@450)=71 pursuer=gall-band(ORDER)@105 -> no-flip
+row 18760600 t1724 co-i (sampled end t1723): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760601 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760602 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=crow-king-band(ORDER)@73 -> FLIP
+row 18760602 t1716 co-i (sampled end t1715): mass(S+SH,@450)=22 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760603 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760604 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@104 -> no-flip
+row 18760604 t1708 co-i (sampled end t1707): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760604 t1743 co-e (sampled end t1742): mass(S+SH,@450)=0 pursuer=cheyenne-pool(COMBAT)@136 -> no-flip
+row 18760604 t1745 co-c (sampled end t1744): mass(S+SH,@450)=0 pursuer=cheyenne-pool(COMBAT)@136 -> no-flip
+row 18760604 t1747 co-f (sampled end t1746): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760605 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@78 -> no-flip
+row 18760605 t1714 co-i (sampled end t1713): mass(S+SH,@450)=23 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760605 t1762 co-c (sampled end t1761): mass(S+SH,@450)=4 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760606 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760607 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760607 t1717 co-i (sampled end t1716): mass(S+SH,@450)=52 pursuer=oglala-pool(COMBAT)@227 -> no-flip
+row 18760608 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@98 -> no-flip
+row 18760609 t1684 co-l (sampled end t1683): mass(S+SH,@450)=70 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760610 t1567 co-m (sampled end t1566): mass(S+SH,@450)=0 pursuer=minneconjou-pool(undefined)@265 -> no-flip
+row 18760610 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@97 -> no-flip
+row 18760610 t1721 co-i (sampled end t1720): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760610 t1784 co-f (sampled end t1783): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760611 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@109 -> no-flip
+row 18760611 t1763 co-f (sampled end t1762): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760611 t1765 co-c (sampled end t1764): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760612 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@100 -> no-flip
+row 18760612 t1764 co-c (sampled end t1763): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760612 t1766 co-e (sampled end t1765): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760613 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760613 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@225 -> no-flip
+row 18760613 t1750 co-e (sampled end t1749): mass(S+SH,@450)=0 pursuer=cheyenne-pool(COMBAT)@110 -> no-flip
+row 18760614 t1684 co-l (sampled end t1683): mass(S+SH,@450)=71 pursuer=gall-band(ORDER)@103 -> no-flip
+row 18760614 t1724 co-i (sampled end t1723): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760614 t1781 co-f (sampled end t1780): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760615 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760615 t1719 co-i (sampled end t1718): mass(S+SH,@450)=24 pursuer=oglala-pool(COMBAT)@225 -> no-flip
+row 18760616 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@106 -> no-flip
+row 18760616 t1710 co-i (sampled end t1709): mass(S+SH,@450)=58 pursuer=cheyenne-pool(COMBAT)@127 -> no-flip
+row 18760616 t1777 co-e (sampled end t1776): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760616 t1782 co-f (sampled end t1781): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760617 t1628 co-m (sampled end t1627): mass(S+SH,@450)=0 pursuer=gall-band(COMBAT)@145 -> no-flip
+row 18760617 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760617 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@224 -> no-flip
+row 18760617 t1782 co-f (sampled end t1781): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@224 -> no-flip
+row 18760618 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@88 -> no-flip
+row 18760618 t1716 co-i (sampled end t1715): mass(S+SH,@450)=22 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760619 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760620 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@118 -> no-flip
+row 18760620 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760621 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760622 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@106 -> no-flip
+row 18760622 t1708 co-i (sampled end t1707): mass(S+SH,@450)=50 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760623 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@92 -> no-flip
+row 18760623 t1708 co-i (sampled end t1707): mass(S+SH,@450)=50 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760624 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@98 -> no-flip
+row 18760624 t1708 co-i (sampled end t1707): mass(S+SH,@450)=53 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760625 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760625 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760626 t1684 co-l (sampled end t1683): mass(S+SH,@450)=75 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760626 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@226 -> no-flip
+row 18760626 t1750 co-e (sampled end t1749): mass(S+SH,@450)=0 pursuer=cheyenne-pool(COMBAT)@108 -> no-flip
+row 18760626 t1833 co-g (sampled end t1832): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@225 -> no-flip
+row 18760627 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@109 -> no-flip
+row 18760627 t1766 co-e (sampled end t1765): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760628 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760629 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@85 -> no-flip
+row 18760629 t1700 co-c (sampled end t1699): mass(S+SH,@450)=52 pursuer=cheyenne-pool(COMBAT)@142 -> no-flip
+row 18760629 t1702 co-i (sampled end t1701): mass(S+SH,@450)=46 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760629 t1742 co-e (sampled end t1741): mass(S+SH,@450)=8 pursuer=cheyenne-pool(COMBAT)@135 -> no-flip
+row 18760629 t1747 co-f (sampled end t1746): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760630 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@105 -> no-flip
+row 18760630 t1708 co-i (sampled end t1707): mass(S+SH,@450)=48 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760631 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@109 -> no-flip
+row 18760631 t1708 co-i (sampled end t1707): mass(S+SH,@450)=47 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760632 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@85 -> no-flip
+row 18760632 t1708 co-i (sampled end t1707): mass(S+SH,@450)=49 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760632 t1755 co-c (sampled end t1754): mass(S+SH,@450)=0 pursuer=gall-band(COMBAT)@81 -> no-flip
+row 18760633 t1684 co-l (sampled end t1683): mass(S+SH,@450)=70 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760633 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760634 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@103 -> no-flip
+row 18760634 t1708 co-i (sampled end t1707): mass(S+SH,@450)=48 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760635 t1649 co-a (sampled end t1648): mass(S+SH,@450)=0 pursuer=gall-band(COMBAT)@144 -> no-flip
+row 18760635 t1684 co-c (sampled end t1683): mass(S+SH,@450)=65 pursuer=cheyenne-pool(ORDER)@148 -> no-flip
+row 18760635 t1684 co-i (sampled end t1683): mass(S+SH,@450)=66 pursuer=oglala-pool(ORDER)@209 -> no-flip
+row 18760635 t1684 co-l (sampled end t1683): mass(S+SH,@450)=67 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760636 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760637 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@148 -> no-flip
+row 18760637 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@227 -> no-flip
+row 18760637 t1796 co-f (sampled end t1795): mass(S+SH,@450)=31 pursuer=oglala-pool(COMBAT)@226 -> no-flip
+row 18760637 t1798 co-d (sampled end t1797): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@226 -> no-flip
+row 18760637 t1804 co-c (sampled end t1803): mass(S+SH,@450)=0 pursuer=hunkpapa-pool(COMBAT)@172 -> no-flip
+row 18760638 t1684 co-l (sampled end t1683): mass(S+SH,@450)=71 pursuer=gall-band(ORDER)@98 -> no-flip
+row 18760638 t1766 co-e (sampled end t1765): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760638 t1768 co-f (sampled end t1767): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760639 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=gall-band(ORDER)@88 -> no-flip
+row 18760639 t1708 co-i (sampled end t1707): mass(S+SH,@450)=50 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760639 t1756 co-c (sampled end t1755): mass(S+SH,@450)=0 pursuer=gall-band(COMBAT)@83 -> no-flip
+row 18760640 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760640 t1719 co-i (sampled end t1718): mass(S+SH,@450)=24 pursuer=oglala-pool(COMBAT)@226 -> no-flip
+row 18760641 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@104 -> no-flip
+row 18760642 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@82 -> no-flip
+row 18760642 t1708 co-c (sampled end t1707): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760642 t1711 co-i (sampled end t1710): mass(S+SH,@450)=0 pursuer=gall-band(COMBAT)@77 -> no-flip
+row 18760643 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@102 -> no-flip
+row 18760643 t1768 co-f (sampled end t1767): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+row 18760644 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@104 -> no-flip
+row 18760644 t1708 co-i (sampled end t1707): mass(S+SH,@450)=48 pursuer=oglala-pool(COMBAT)@228 -> no-flip
+row 18760645 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@110 -> no-flip
+row 18760645 t1720 co-i (sampled end t1719): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760646 t1684 co-l (sampled end t1683): mass(S+SH,@450)=74 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760647 t1497 co-m (sampled end t1496): mass(S+SH,@450)=69 pursuer=hunkpapa-pool(COMBAT)@227 -> no-flip
+row 18760647 t1684 co-l (sampled end t1683): mass(S+SH,@450)=72 pursuer=gall-band(ORDER)@143 -> no-flip
+row 18760647 t1715 co-i (sampled end t1714): mass(S+SH,@450)=52 pursuer=oglala-pool(COMBAT)@230 -> no-flip
+row 18760648 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=gall-band(ORDER)@107 -> no-flip
+row 18760648 t1717 co-i (sampled end t1716): mass(S+SH,@450)=50 pursuer=oglala-pool(COMBAT)@227 -> no-flip
+row 18760648 t1765 co-c (sampled end t1764): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@226 -> no-flip
+row 18760648 t1767 co-f (sampled end t1766): mass(S+SH,@450)=0 pursuer=oglala-pool(COMBAT)@226 -> no-flip
+row 18760649 t1684 co-l (sampled end t1683): mass(S+SH,@450)=73 pursuer=none -> NO-PURSUER-AT-TICK
+row 18760649 t1717 co-i (sampled end t1716): mass(S+SH,@450)=27 pursuer=oglala-pool(COMBAT)@229 -> no-flip
+C2 first-order: FLIP 1 | no-flip 100 | no-pursuer-at-tick (recorded, unresolved) 19
+
+=== M1(b) — PREDICTIONS, registered here before any M4 world exists ===
+C0(b): zero bouts change, by definition; the envelope under C0 is the committed envelope.
+C1(b): first-order, 99 of 120 committed finishing bouts do not fire. Dynamic prediction, DIRECTIONAL:
+  unfinished fragments persist ROUTED among non-STEADY companions (rout-reintegration requires a STEADY
+  protector and mostly cannot fire there); attrition to the destruction floor recovers SOME annihilations
+  late; net committed-annihilation count at M4 predicted BELOW HALF of 120, and the Custer-wing
+  in-place annihilation sequence (C3/F4 legs) predicted to degrade materially. A C1 M4 run landing near
+  120 annihilations FALSIFIES this registration.
+C2(b): first-order, 1 bouts do not fire. Dynamic prediction: small perturbation - flipped rows are
+  the SHAKEN-mass minority (committed STEADY-within-650 is zero by construction), so the annihilation
+  count at M4 is predicted within a few rows of 120 minus first-order flips, and the envelope moves
+  little. A C2 M4 run collapsing the annihilation sequence FALSIFIES this registration.
