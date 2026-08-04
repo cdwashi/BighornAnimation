@@ -104,6 +104,25 @@ been blind; nothing after this read does.
 
 One READ LOG, committed evidence-first: per question, the answer with file:line
 citations; the unregistered-findings section; the committed directory listing; the date.
+
+## Dated amendment — 2026-08-04, at the HALT's adjudication
+
+The read halted per Amendment 1: nothing in the four ruled files assigns a broken unit's
+flight path, the scout-withdrawal path, or the COMBAT/INITIATIVE pursuit kinds. Ruled:
+**`engine/src/morale.ts` OPENS**, named for **Q2-rout** (what assigns a broken unit's
+flight path) and **Q3** (chosen destination versus truncation artifact) — named by
+FUNCTION, not by size: rout and withdrawal are morale-state transitions, and the
+destination assignment plausibly lives with them. **This REVERSES a named exclusion** —
+the original scope bound excluded morale-state-transition bodies — and is recorded as a
+reversal, not an addition. **`combat.ts` does NOT ride with it:** a maybe does not
+travel on a yes; if `morale.ts` leaves either question unanswered, `combat.ts` gets its
+own dated amendment naming what remains, which costs one round and preserves the
+property that every opened file was opened by a ruling. **The adjudicator's registered
+prediction, before the file opens:** Q3 returns TRUNCATION — a flight vector clamped at
+the grid edge rather than a chosen destination; grounds: `repathPursuit` already
+overwrites terminal points directly against a target, and a flight computation doing the
+same against a bound would produce exactly the observed stack. If it returns CHOSEN, the
+co-locations are stable under repair and the STEADY fix's scale holds at 82/120.
 **The read repairs nothing and edits nothing** — repairs remain separate WOs against
 registered predictions, and the STEADY fix stays waiting until the read's ruling lands.
 The read log's claims are verifiable by any reader against the same files, which
