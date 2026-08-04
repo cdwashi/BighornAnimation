@@ -53,12 +53,18 @@ items: the Mielke click and O5 stage-2 page-level reads (Gray's methodology chap
 pp. 17–19/105); (9) the schema observation — one `confidence` field doing two jobs — far
 behind the queue.
 
-**The arc's character, for whoever resumes:** twenty catches with names on every one, ten
-consecutive Codex STOPs (the tenth preserving its own error unrepaired), and a register that
-scored its own predicted fall as two misses — the D112 acceptance row is the summary of
-record. **NEXT ACTION: draft the STEADY-shelter ruling's measurement plan** (the residual
-hypothesis measured first: per-seed composites of 617/626/635 against the rest), tier A as
-always.
+**The arc's character, for whoever resumes:** twenty-three catches with names on every one,
+ten consecutive Codex STOPs, and a register that scored its own predicted fall as two misses —
+the D112 acceptance row is the summary of record. **STEADY-shelter measurement COMPLETE**
+(plan frozen `73c1349` pre-read; probes `e56a090`; zero-distance check `23dc7c1`): the
+residual hypothesis DEAD BY ARITHMETIC (breach ceiling 0.28 pp vs the open −1.6879 — which
+stays OPEN, pointing elsewhere); the predicate census 99/120 with distances at median 0 m;
+the resolver's implementation certified HONEST, the concept misaimed; the zero-metre stacks
+sit ON THE NAMED HILLS (calhoun-hill ×98, last-stand-hill ×77 — historical death clusters,
+not a goal-assignment artifact; 0 of 179 pairs share a live endpoint); co-m = chronic
+non-holder, standing observation. **NEXT ACTION: Fable's read of the zero-distance result,
+then the STEADY-shelter ruling drafts** — tier A, reseed-free against `68325eff`, on a
+predicate measured across a full world.
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
 dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
