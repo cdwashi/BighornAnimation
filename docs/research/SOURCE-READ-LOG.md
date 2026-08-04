@@ -87,10 +87,62 @@ target's displacement between repaths.** The ladder is the pursued unit's track,
   not a resting position.
 - Pursuit kinds COMBAT and INITIATIVE are consumed here but assigned in excluded files.
 
+## Amendment read — 2026-08-04, `morale.ts` opened by the dated amendment (`35ab384`)
+
+**Q2-rout — ANSWERED: routed units flee to the nearest unengaged STEADY friendly's
+POSITION.** `morale.ts:101-157` (`routeToSafety`, carrying the ledger's own D74 tag):
+a ROUTED unit paths to the nearest STEADY friendly not in an active engagement, sorted
+by distance then strength, with an interdiction blocker over enemy-controlled corridor
+cells; posture WITHDRAW, speed GALLOP if mounted (5.4 m/s × 30 s × raster factor ≈
+126–136 m/tick — the ladder target's arithmetic closes at the source). **The D114
+family's "declared destinations" were never landmark selections: they are FRIEND
+POSITIONS that coincided with landmarks** — routed co-i flees to co-e/co-f, who are
+standing at last-stand-hill because their order put them there. The destination is an
+entity position, computed once (`routSafetyPath`), not tracked. If no non-interdicted
+corridor exists: `blockedReason = 'no non-interdicted corridor to steady friendly
+mass'` (`morale.ts:139-148`).
+
+**Q3 — ANSWERED: CHOSEN. The adjudicator's amendment prediction MISSES as registered.**
+`morale.ts:49-99` (`startScoutWithdrawals`, carrying the ledger's D75 tag): scouts under
+pressure path to the FIELD EDGE — the four candidate goals are axis-projected, clamped
+edge points (`{minX, clamp(y)}, {maxX, clamp(y)}, {clamp(x), minY}, {clamp(x), maxY}`,
+`morale.ts:75-79`), scored by the away-from-enemies dot product. **One coordinate
+preserved (the unit's own, clamped), the other replaced by the bound — the exact
+preserved/replaced frame the x=6624 plan registered at its Amendment 2.** The bound
+terminals are DESTINATIONS — a doctrine-designed exit route — not truncation artifacts.
+Per the amendment's registered branch: the co-locations are stable under repair and the
+STEADY fix's scale holds at 82/120. The flagship's full cascade is now named end to
+end: scout exits north at his own clamped x (D75) → routed units flee to the scout,
+their nearest unengaged STEADY friendly (D74/D66) → pursuers path at the routed
+(entity pursuit) — three documented mechanisms composing at one point.
+
+**Bonus closure within the amendment's questions:** the COMBAT/INITIATIVE pursuit
+assignment also lives here — `morale.ts:227-282` (`startPursuit`), D72(a) break-under-
+contact pursuit and D72(b) consensus-initiative retargeting (`morale.ts:394-497`).
+`combat.ts` was never needed, exactly as the amendment's held-back clause provided.
+
+**The traceability finding, stated for the ruling:** `routeToSafety`, the scout
+withdrawal, the pursuit machinery, and the morale pipeline carry the ledger's OWN
+D-numbers in their comments — D66, D72, D74, D75, D91. The mechanisms this arc spent
+three items failing to name from outside were ruled and documented in this register's
+M-era. The documentation gap D114 named is a TRACEABILITY gap — the rows exist; the
+path from observed phenomenon to owning row did not.
+
+**UNREGISTERED FINDINGS from the amendment read (verbatim, queued, uninterpreted):**
+- `morale.ts:361-392` (`reintegrateProtectedRouts`): a ROUTED unit near a STEADY
+  friendly, with no live COMBAT pursuit, reintegrates to SHAKEN — a shelter mechanic
+  adjacent to the STEADY-shelter predicate's subject.
+- `morale.ts:433-437`: COMBAT pursuit ENDS when the target's steady-friendly mass
+  meets or exceeds the pursuer's strength (`'steady-massed-fire'`) — a second shelter
+  mechanic in the same neighborhood.
+- `morale.ts:440-447`: pursuit breaks after `pursuitBreakTicks` of losing ground
+  (`'beyond-pursuit-reach'`).
+
 ## Conduct statement
 
 From this read forward, no hypothesis in this project is drafted from a blind position;
-subsequent registrations carry POST-READ where it matters. The scope bound held: four
-file bodies opened, all ruled; every boundary crossing was signature-only; the HALT was
-taken rather than reasoned across. The blind era closed at D116 with its evidential
-weight intact.
+subsequent registrations carry POST-READ where it matters. The scope bound held: five
+file bodies opened, every one by ruling — four at the freeze, `morale.ts` by dated
+amendment after a HALT taken rather than reasoned across; `combat.ts` remains unopened
+and unneeded; every other boundary crossing was signature-only. The blind era closed at
+D116 with its evidential weight intact.
