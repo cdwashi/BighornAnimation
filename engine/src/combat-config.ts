@@ -137,7 +137,8 @@ export const M5B_DERIVED_CALIBRATION_RANGES = Object.freeze({
  * D81 preserves the calibration-target spreads instead of averaging them.
  * US low/high use the unit-keyed target bounds (235/60 and 285/45); the best
  * is the spec's hilltop-inclusive 268/52 anchor. Coalition bounds are the
- * most conservative cross-products of K 31-300 and W 100-200.
+ * D112 re-pins the coalition to the conservative cross-products of the ruled
+ * K 36/60/136 and flat W 160 value-class payload.
  */
 export const KILLED_TO_WOUNDED_RATIO_RANGES: Readonly<Record<string, SourcedCombatRange>> =
   Object.freeze({
@@ -148,10 +149,11 @@ export const KILLED_TO_WOUNDED_RATIO_RANGES: Readonly<Record<string, SourcedComb
       provenance: 'M5-SPEC D81; calibration.casualties unit bands; research §I hilltop-inclusive 268 K / 52 W',
     }),
     'lakota-cheyenne-coalition': Object.freeze({
-      low: 31 / 200,
+      // D112 value-class byte commit: simultaneous with pin (a)'s source bounds.
+      low: 36 / 160,
       best: 60 / 160,
-      high: 300 / 100,
-      provenance: 'M5-SPEC D81; calibration.sideCasualties DISPUTED K 31-300 / W 100-200',
+      high: 136 / 160,
+      provenance: 'WO-D112; calibration.sideCasualties K 36/60/136 and W 160/160/160',
     }),
   });
 

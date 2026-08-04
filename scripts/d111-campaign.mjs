@@ -1,5 +1,5 @@
-// WO-D111 registered campaign and re-baseline instrument. The stop is checked
-// after every tick. All outputs derive from the single accepted 50-seed run.
+// WO-D111/D112 registered campaign and re-baseline instrument. The stop is
+// checked after every tick. All outputs derive from one accepted 50-seed run.
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url';
 
 const REPO = process.cwd();
 const SCENARIO_ID = 'little-bighorn-1876';
+const CAMPAIGN = process.env.BIGHORN_CAMPAIGN_ID ?? 'd111';
 const FIRST_SEED = 18760600;
 const LAST_SEED = 18760649;
 const END_TICK = 2160;
@@ -14,12 +15,12 @@ const VALLEY_END_TICK = 1600;
 const RENO = ['co-a', 'co-g', 'co-m'];
 const WING = ['co-c', 'co-e', 'co-f', 'co-i', 'co-l'];
 const COALITION = 'lakota-cheyenne-coalition';
-const RESULT_PATH = join(REPO, 'reports', 'd111-campaign-results.json');
-const PROGRESS_PATH = join(REPO, 'reports', 'd111-campaign-progress.json');
-const GROUND_JSON = join(REPO, 'reports', 'd111-ground-pressure-census.json');
-const GROUND_MD = join(REPO, 'reports', 'd111-ground-pressure-census.md');
-const VALLEY_JSON = join(REPO, 'reports', 'd111-valley-range.json');
-const VALLEY_MD = join(REPO, 'reports', 'd111-valley-range.md');
+const RESULT_PATH = join(REPO, 'reports', `${CAMPAIGN}-campaign-results.json`);
+const PROGRESS_PATH = join(REPO, 'reports', `${CAMPAIGN}-campaign-progress.json`);
+const GROUND_JSON = join(REPO, 'reports', `${CAMPAIGN}-ground-pressure-census.json`);
+const GROUND_MD = join(REPO, 'reports', `${CAMPAIGN}-ground-pressure-census.md`);
+const VALLEY_JSON = join(REPO, 'reports', `${CAMPAIGN}-valley-range.json`);
+const VALLEY_MD = join(REPO, 'reports', `${CAMPAIGN}-valley-range.md`);
 
 const engineRoot = join(REPO, 'dist', 'engine', 'src');
 const { createSim } = await import(pathToFileURL(join(engineRoot, 'index.js')).href);
@@ -148,6 +149,11 @@ function summarize(rows, stop, annihilations, strandings) {
     completeWingSeeds: complete.filter((row) => row.completeWing).length,
     f4BaselineSeed: complete.find((row) => row.seed === 18760625)?.f4 ?? null,
     coalitionKilled: distribution(complete.map((row) => row.coalitionKilled), true),
+    coalitionWounded: distribution(complete.map((row) => row.coalitionWounded), true),
+    woundedFlipSeeds: complete.filter((row) => row.woundedFlip).map((row) => row.seed),
+    woundedFlipCount: complete.filter((row) => row.woundedFlip).length,
+    c4CurrentSeries: complete.map((row) => ({ seed: row.seed, ...row.c4Current })),
+    c4LineageReferent: { passed: 12, total: 13, score: 12 / 13 },
   };
 }
 
@@ -253,13 +259,13 @@ for (let seed = FIRST_SEED; seed <= LAST_SEED && !stop.fired; seed += 1) {
       let approach = 'stationary';
       let priorDistanceMeters = null;
       if (movement) {
-        if (!friendly) throw new Error(`D111 moved annihilation has no eligible friendly: ${seed}/${tick}/${target.id}`);
+        if (!friendly) throw new Error(`${CAMPAIGN} moved annihilation has no eligible friendly: ${seed}/${tick}/${target.id}`);
         priorDistanceMeters = Math.hypot(
           friendly.unit.position.x - movement.from.x,
           friendly.unit.position.y - movement.from.y);
         if (friendly.distanceMeters < priorDistanceMeters) approach = 'closing';
         else if (friendly.distanceMeters > priorDistanceMeters) approach = 'opening';
-        else throw new Error(`D111 moved annihilation has equal approach distances: ${seed}/${tick}/${target.id}`);
+        else throw new Error(`${CAMPAIGN} moved annihilation has equal approach distances: ${seed}/${tick}/${target.id}`);
       }
       annihilations.push({
         seed, tick: event.tick, minute: minute(event.tick), unit: target.id,
@@ -300,11 +306,15 @@ for (let seed = FIRST_SEED; seed <= LAST_SEED && !stop.fired; seed += 1) {
   const coalitionKilled = state.units.filter((unit) =>
     sourceById.get(unit.id)?.sideId === COALITION && combatIds.has(unit.id))
     .reduce((sum, unit) => sum + unit.killed, 0);
+  const coalitionWounded = state.units.filter((unit) =>
+    sourceById.get(unit.id)?.sideId === COALITION && combatIds.has(unit.id))
+    .reduce((sum, unit) => sum + unit.wounded, 0);
   const f4 = Object.fromEntries([...WING, 'co-d'].map((id) =>
     [id, byId.get(id)?.endState ?? 'ALIVE']));
   const completeWing = WING.every((id) => f4[id] === 'DESTROYED') && f4['co-d'] === 'ALIVE';
   let composite = null;
   let components = null;
+  let c4Current = null;
   if (stopTick === null) {
     const scorecard = scoreCalibrationRun({ scenario: sim.scenario, terrain, state,
       tracks: sim.tracks(), events: sim.events(), observationRows, seed });
@@ -313,9 +323,18 @@ for (let seed = FIRST_SEED; seed <= LAST_SEED && !stop.fired; seed += 1) {
     envelopeOutcomes.push(outcome);
     composite = scorecard.composite;
     components = outcome.componentScores;
+    const c4 = scorecard.components.find((component) => component.id === 'C4');
+    const included = c4?.items.filter((item) => item.scope === 'included') ?? [];
+    c4Current = { passed: included.filter((item) => item.passed).length,
+      total: included.length, score: c4?.score ?? null };
   }
   rows.push({ seed, complete: stopTick === null, stopTick, scenarioHash: sim.scenarioHash,
-    renoKilled, coalitionKilled, completeWing, f4, composite, components });
+    renoKilled, coalitionKilled, coalitionWounded,
+    woundedOldPass: coalitionWounded >= 100 && coalitionWounded <= 200,
+    woundedNewPass: coalitionWounded === 160,
+    woundedFlip: (coalitionWounded >= 100 && coalitionWounded <= 200) !== (coalitionWounded === 160),
+    c4Current, c4Lineage: { passed: 12, total: 13, score: 12 / 13 },
+    completeWing, f4, composite, components });
   const partial = { registeredRange: [FIRST_SEED, LAST_SEED], rows,
     annihilations, strandings, summary: summarize(rows, stop, annihilations, strandings), stop };
   await writeFile(PROGRESS_PATH, JSON.stringify(partial, null, 2), 'utf8');
@@ -352,7 +371,7 @@ const ground = { streamId: result.summary.scenarioHashes[0], registeredRange: [F
         .map(([unit, peakStrength]) => ({ unit, peakStrength })) }];
   })) };
 await writeFile(GROUND_JSON, JSON.stringify(ground, null, 2), 'utf8');
-const groundLines = ['# D111 Ground-pressure Census', '', `Stream: \`${ground.streamId}\``, '',
+const groundLines = [`# ${CAMPAIGN.toUpperCase()} Ground-pressure Census`, '', `Stream: \`${ground.streamId}\``, '',
   '| ground | global peak | peak unassigned | seed peak min/median/max | seeds >0 | nonzero ticks |',
   '|---|---:|---:|---|---:|---:|'];
 for (const [key, item] of Object.entries(ground.grounds)) groundLines.push(
@@ -370,7 +389,7 @@ const valley = { streamId: result.summary.scenarioHashes[0], registeredRange: [F
   allBandsFirstFire: rangeStats([...valleyFireRanges.values()].flat()),
   engagementOpenMinutes: rangeStats(valleyOpenMinutes) };
 await writeFile(VALLEY_JSON, JSON.stringify(valley, null, 2), 'utf8');
-const valleyLines = ['# D111 Valley-range Baseline', '', `Stream: \`${valley.streamId}\``, '',
+const valleyLines = [`# ${CAMPAIGN.toUpperCase()} Valley-range Baseline`, '', `Stream: \`${valley.streamId}\``, '',
   '## Engagement-open range (m)', '', '| band | n | min | p25 | median | p75 | max |',
   '|---|---:|---:|---:|---:|---:|---:|'];
 for (const [key, item] of Object.entries(valley.engagementOpenRanges)) valleyLines.push(

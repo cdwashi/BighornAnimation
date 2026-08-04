@@ -91,7 +91,8 @@ describe('M3-A exit gates', () => {
   });
 
   it('V2 C4 exam — one global table reproduces at least 80% of gateable events', () => {
-    expect(exam.gateableCount).toBe(13);
+    // D112 #133 tier ruling: obs-custer-weir-village joins the gateable set.
+    expect(exam.gateableCount).toBe(14);
     expect(exam.reproducedCount).toBe(12);
     expect(exam.rows.every((row) => row.factors?.quantizedTerrainRay !== true)).toBe(true);
     expect(exam.reproductionRate).toBeGreaterThanOrEqual(0.8);

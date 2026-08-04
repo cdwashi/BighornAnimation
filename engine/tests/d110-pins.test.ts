@@ -11,7 +11,7 @@ import { runObservationExam } from '../src/exam.js';
 import { createSim } from '../src/index.js';
 import { extractBenchLip } from '../src/lip.js';
 import type { EngineTerrain, PointMeters } from '../src/pathfind.js';
-import { scoreCalibrationRun } from '../src/score.js';
+import { CALIBRATION_EXCLUSION_FLAG, scoreCalibrationRun } from '../src/score.js';
 
 const scenario = scenarioData as unknown as Scenario;
 
@@ -89,6 +89,27 @@ function trackLandmarkConsumption(
   });
 }
 
+function calibrationExclusionNotePaths(value: unknown): string[] {
+  const paths: string[] = [];
+  function visit(current: unknown, path: string): void {
+    if (Array.isArray(current)) {
+      current.forEach((item, index) => visit(item, `${path}[${index}]`));
+      return;
+    }
+    if (!current || typeof current !== 'object') return;
+    for (const [key, item] of Object.entries(current)) {
+      const itemPath = path ? `${path}.${key}` : key;
+      if (key === 'note' && typeof item === 'string' &&
+          item.toLowerCase().includes(CALIBRATION_EXCLUSION_FLAG)) {
+        paths.push(itemPath);
+      }
+      visit(item, itemPath);
+    }
+  }
+  visit(value, '');
+  return paths.sort();
+}
+
 describe('D110 pre-break pins', () => {
   let terrain: TerrainMovementLoader;
 
@@ -103,6 +124,7 @@ describe('D110 pre-break pins', () => {
     const coalition = sideCasualties['lakota-cheyenne-coalition'];
     if (!coalition) throw new Error('D110 pin (a): coalition side casualties are missing');
     const coalitionRange = KILLED_TO_WOUNDED_RATIO_RANGES['lakota-cheyenne-coalition'];
+    // D112 cause: re-pinned to K 36/60/136 and flat W 160 conservative cross-products.
     expect(coalitionRange.low).toBe(coalition.killed.low / coalition.wounded.high);
     expect(coalitionRange.best).toBe(coalition.killed.best / coalition.wounded.best);
     expect(coalitionRange.high).toBe(coalition.killed.high / coalition.wounded.low);
@@ -186,4 +208,12 @@ describe('D110 pre-break pins', () => {
     expect(consumed.size).toBeGreaterThan(0);
     expect([...consumed].filter((landmarkId) => !referenced.has(landmarkId)).sort()).toEqual([]);
   }, 120_000);
+
+  it('pin (d) — calibration-exclusion note membership is exactly the ruled set', () => {
+    expect(calibrationExclusionNotePaths(scenarioData)).toEqual([
+      'variants[5].patch.addOrders[0].provenance.note',
+      'variants[5].provenance.note',
+      'variants[6].provenance.note',
+    ]);
+  });
 });

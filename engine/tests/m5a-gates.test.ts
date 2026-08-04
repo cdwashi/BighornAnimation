@@ -64,8 +64,12 @@ describe('M5-A scorer, split, envelope, and variant gates', () => {
   it('C1 enforces both HIGH-confidence and overall checkpoint thresholds', () => {
     const highIds = scenario.checkpoints.filter((item) => item.provenance.confidence === 'HIGH')
       .map((item) => item.id);
-    const passing = new Set([...highIds.slice(0, 3), ...scenario.checkpoints.slice(0, 5).map((item) => item.id)]);
+    // D112 C1 disposition: four is the minimal HIGH subset clearing the 70%
+    // threshold (4/5 = 80%), keeping the passing fixture near the boundary.
+    const passing = new Set([...highIds.slice(0, 4), ...scenario.checkpoints.slice(0, 5).map((item) => item.id)]);
     expect(scoreCheckpointComponent(scenario, checkpointScores(passing)).passed).toBe(true);
+    // Deliberately not minimal: two HIGH checkpoints are comfortably below
+    // the threshold (2/5 = 40%) and preserve the existing failing branch.
     expect(scoreCheckpointComponent(scenario, checkpointScores(new Set(highIds.slice(0, 2)))).passed).toBe(false);
   });
 
@@ -107,8 +111,10 @@ describe('M5-A scorer, split, envelope, and variant gates', () => {
   });
 
   it('C4 uses the 80% HIGH/MEDIUM observation rule', () => {
-    expect(scoreObservationComponent(scenario, observationRows(11)).passed).toBe(true);
-    expect(scoreObservationComponent(scenario, observationRows(10)).passed).toBe(false);
+    // D112 #133 ruling: gateable 13→14; 12/14 = 85.7% clears 80%,
+    // while 11/14 = 78.6% does not.
+    expect(scoreObservationComponent(scenario, observationRows(12)).passed).toBe(true);
+    expect(scoreObservationComponent(scenario, observationRows(11)).passed).toBe(false);
   });
 
   it('weights synthetic perfect and failing cards exactly', () => {

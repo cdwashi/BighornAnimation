@@ -49,8 +49,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // intentionally refreshes this combat-only behavioral oracle.
     // D108 Amendment 1's WEST-only bench lip moves camp-defence goals and the
     // resulting combat stream without changing scenario content or RNG seeding.
-    // D111 inert-class byte commit; every stream re-rolls per D31a.
-    expect(hashState(baseline.state())).toBe('338eda95');
+    // D112 value-class byte commit; every stream re-rolls per D31a;
+    // baseline-character class per Amendment 2.
+    expect(hashState(baseline.state())).toBe('a114bb7b');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -87,14 +88,15 @@ describe('M4-A F1-F6 closeout gates', () => {
   it('F3 no-combat regression — legacy seeds remain byte-identical with zero draws', () => {
     const left = createSim(scenario, { seed: 18760625, terrain, combatEnabled: false });
     const right = createSim(scenario, { seed: 42, terrain, combatEnabled: false });
-    // D111 inert-class byte commit; every stream re-rolls per D31a.
+    // D112 value-class byte commit; every stream re-rolls per D31a;
+    // baseline-character class per Amendment 2.
     const expectedHashes = [
-      [1, 'd7ea5758'],
-      [360, 'de16f482'],
-      [1080, '9bc200f2'],
+      [1, '7537c54d'],
+      [360, 'f70e486f'],
+      [1080, 'a6b9ac53'],
       // D108 Amendment 1: goal geometry is movement-side and runs with combat
       // disabled, legitimately refreshing only the late-day no-combat pin.
-      [2160, '62b224ca'],
+      [2160, 'dd71a1f0'],
     ] as const;
     for (const [tick, expectedHash] of expectedHashes) {
       left.run(tick);
@@ -107,10 +109,15 @@ describe('M4-A F1-F6 closeout gates', () => {
   }, 120_000);
 
   it('F4 full-stack baseline — wing dies, hill and village hold, couriers deliver', () => {
-    for (const id of ['co-c', 'co-e', 'co-f', 'co-i', 'co-l']) {
+    // D112 value-class byte commit; every stream re-rolls per D31a;
+    // baseline-character class per Amendment 2. The envelope, not this seed pin,
+    // grades F4: C/E are alive here; F/I/L are destroyed; D remains alive.
+    for (const id of ['co-f', 'co-i', 'co-l']) {
       expect(baseline.state().units.find((unit) => unit.id === id)?.endState, id).toBe('DESTROYED');
     }
-    expect(baseline.state().units.find((unit) => unit.id === 'co-d')?.endState).toBeUndefined();
+    for (const id of ['co-c', 'co-e', 'co-d']) {
+      expect(baseline.state().units.find((unit) => unit.id === id)?.endState, id).toBeUndefined();
+    }
     expect(baseline.state().units.filter((unit) =>
       scenario.units[unit.unitIndex].kind === 'NONCOMBATANT_CAMP' && unit.casualties > 0)).toHaveLength(0);
     for (const courier of baseline.state().couriers) {
@@ -133,8 +140,9 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      // D111 inert-class byte commit; every stream re-rolls per D31a.
-      expect(hashState(sim.state())).toBe('338eda95');
+      // D112 value-class byte commit; every stream re-rolls per D31a;
+      // baseline-character class per Amendment 2.
+      expect(hashState(sim.state())).toBe('a114bb7b');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];
@@ -154,8 +162,11 @@ describe('M4-A F1-F6 closeout gates', () => {
     // probe reads 148 whole-create calls and this gate's run-only protocol 146.
     // D108's WEST-only lip changes held-goal paths: the independent probe reads
     // 160 whole-create calls and this gate's run-only protocol 158.
-    // D111 inert-class byte commit; every stream re-rolls per D31a.
-    expect(pathMetrics.calls).toBe(124);
+    // D112 value-class byte commit; every stream re-rolls per D31a;
+    // baseline-character class per Amendment 2. Amendment 3 protocol: construct
+    // one run, reset immediately before run(), then read immediately after it;
+    // combat and no-combat are measured separately so the global counter cannot leak.
+    expect(pathMetrics.calls).toBe(140);
     // D94 participant-scaled ceiling: the pre-D91 11.1M ceiling covered 447
     // active warriors. D91 raised participation to 964, so the resource ceiling
     // scales by 964 / 447 and is deliberately not fitted to the observed run.
