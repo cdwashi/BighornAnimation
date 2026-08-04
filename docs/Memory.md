@@ -8,8 +8,8 @@ all of them (session-boundary ruling: the reseed invalidates numbers, not findin
 block at session close; never let a bare number sit here; never duplicate ledger content that
 exists — point at it.*
 
-**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D114, with dated
-annotations on D90/D98/D108/D109/D111/D112/D113). Predictions: `PREDICTIONS.md` (PR-1..71, the
+**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D117, with dated
+annotations on D90/D98/D108/D109/D111/D112/D113/D114). Predictions: `PREDICTIONS.md` (PR-1..71, the
 bands amendment, and the reading-order pre-commitment). Refuted designs and misses:
 `NEGATIVE_RESULTS.md` (including §4's late-recorded fallback-clause row). Standing practices:
 `METHODS.md` §6 (the three practices, the yield-and-counterexample paragraph, the §4 pointer).
@@ -72,11 +72,14 @@ no order declares and no landmark names within 3.9 km; the stacking is order-end
 and the zero-distance check's sameEnd predicate could only ever return zero (dated
 annotation inside the D113 row). ESCROW is now a register status (evidence whose validity
 depends on an unruled mechanism); register attribution is by ROLE, not session name. **NEXT
-ACTION: the x=6624 residue item drafts** — last ruling D114 (`ec16bb3`): the re-path mixed
-outcome ruled as the finding, all three hypotheses failed in registered forms, the 33
-released from escrow, 82/120 restored as the operative count. *(This NEXT line corrected
-mid-session 2026-08-04, ahead of the block's full session-close update, so the resume
-surface points at open work rather than at the item that just closed.)*
+ACTION: the STEADY-shelter fix adjudication** — M1–M3 complete and committed (`b6b6668`,
+`3975c7a`, `97196f9`) under the frozen registration (`298f3a1`); C0 dead at its
+registered branch, C1 and C2 surviving to the M4 gate, which awaits the adjudicator's
+ruling on candidate selection and the instrument discipline for a measurement-grade
+build. Last ruling D117 (`9393496`): the source read — six answers, the traceability
+finding, the fourth METHODS practice (search the ledger first, landed `9978149`).
+*(This NEXT line corrected mid-session 2026-08-04, second application of the
+correct-it-now precedent: a NEXT pointing at closed work is false as read.)*
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
 dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
