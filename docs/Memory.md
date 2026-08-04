@@ -1,6 +1,6 @@
 # MEMORY.md — Session Record & Resume Brief (BighornAnimation)
 
-## READ FIRST — current state (last updated 2026-08-02; everything below this block is history). For HEAD and what landed since this block was written, read `git log`.
+## READ FIRST — current state (last updated 2026-08-03; everything below this block is history). For HEAD and what landed since this block was written, read `git log`.
 
 *This block supersedes §2's "NEXT ACTION" and the §8 addendum. It carries structural state and
 pointers only; every absolute figure is tagged with its content stream, because a reseed re-rolls
@@ -8,7 +8,7 @@ all of them (session-boundary ruling: the reseed invalidates numbers, not findin
 block at session close; never let a bare number sit here; never duplicate ledger content that
 exists — point at it.*
 
-**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D112, with dated
+**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D113, with dated
 annotations on D90/D98/D108/D109/D111/D112). Predictions: `PREDICTIONS.md` (PR-1..71, the
 bands amendment, and the reading-order pre-commitment). Refuted designs and misses:
 `NEGATIVE_RESULTS.md` (including §4's late-recorded fallback-clause row). Standing practices:
@@ -38,33 +38,42 @@ cells / 260 m / min 51 m / all WEST, SHA in the rows); the C2 ceiling 8/9 (struc
 width-bearing wounded source is located — zero of fifty seeds landed on exactly 160); C4
 reported as x/14 beside the 12/13 lineage on every cross-round comparison, permanently.
 
-**OPEN ITEMS, in ruling order:** (1) **the mean residual −1.68 pp against the ±1.14 floor —
-an OPEN QUANTITY, explicitly not retired** (D112 acceptance row), with the registered
-HYPOTHESIS that the three sanctuary breaches own part of it — measured in the STEADY-shelter
-work, not asserted; (2) **STEADY-SHELTER IS THE NEXT THING RULED** — three-stream recurrence
-1/50 + 1/50 + 3/50 (seeds 617/626/635; 617's co-m closing at 865 m = the D108 breach's exact
-geometry) plus the D111 stop seed's three west-side annihilations through the same predicate;
-reseed-free against `68325eff`; tier A; the approach-vector tables are its evidence base;
-(3) corpse drift (D111 row annotation, blast radius unknown); (4) the arikara value item
-(Libby ~40 outside the encoded 35–39); (5) the GNIS O-item (#1/#4/#11 held, #6 open);
-(6) the 268/253 engine question (scoring-inert, reaches `combat-config.ts:231`); (7) the O5
-revisit thresholds (a wounded figure with width; a peer-reviewed pony census); (8) the human
-items: the Mielke click and O5 stage-2 page-level reads (Gray's methodology chapter, Michno
-pp. 17–19/105); (9) the schema observation — one `confidence` field doing two jobs — far
-behind the queue.
+**OPEN ITEMS, in D113's ruled order:** (1) **RE-PATH TO UNDECLARED DESTINATIONS** — a
+mechanism moving units to destinations no order declares; component mixing the leading
+candidate (two stray endpoints share x=6624 exactly with custer-bluff-route's final
+waypoint, a third shares y=12030); evidence base transferred by D113 (the 4+13 failed rows,
+the 3+25 companion observations, the five-coordinate endpoint scatter); the 33 ESCROW rows
+and the STEADY-shelter fix decision both resolve behind it; (2) **order-objective extent** —
+98 pair entries die at 0 m from their OWN declared objective, a real destination with
+dimensionless geometry, D108's lesson unapplied to order objectives; (3) corpse drift (D111
+row annotation, blast radius unknown); (4) the 268/253 engine question (scoring-inert,
+reaches `combat-config.ts:231`); (5) the arikara value item (Libby ~40 outside the encoded
+35–39); (6) the GNIS O-item (#1/#4/#11 held, #6 open); (7) the schema observation — one
+`confidence` field doing two jobs. **Standing open, unqueued:** the mean residual −1.68 pp —
+OPEN QUANTITY; its breach hypothesis is DEAD BY ARITHMETIC (ceiling 0.28 pp), so it points
+elsewhere; the O5 revisit thresholds (a wounded figure with width; a peer-reviewed pony
+census); the human items (the Mielke click; O5 stage-2 page-level reads: Gray's methodology
+chapter, Michno pp. 17–19/105); co-m the chronic non-holder.
 
-**The arc's character, for whoever resumes:** twenty-three catches with names on every one,
-ten consecutive Codex STOPs, and a register that scored its own predicted fall as two misses —
-the D112 acceptance row is the summary of record. **STEADY-shelter measurement COMPLETE**
-(plan frozen `73c1349` pre-read; probes `e56a090`; zero-distance check `23dc7c1`): the
-residual hypothesis DEAD BY ARITHMETIC (breach ceiling 0.28 pp vs the open −1.6879 — which
-stays OPEN, pointing elsewhere); the predicate census 99/120 with distances at median 0 m;
-the resolver's implementation certified HONEST, the concept misaimed; the zero-metre stacks
-sit ON THE NAMED HILLS (calhoun-hill ×98, last-stand-hill ×77 — historical death clusters,
-not a goal-assignment artifact; 0 of 179 pairs share a live endpoint); co-m = chronic
-non-holder, standing observation. **NEXT ACTION: Fable's read of the zero-distance result,
-then the STEADY-shelter ruling drafts** — tier A, reseed-free against `68325eff`, on a
-predicate measured across a full world.
+**The arc's character, for whoever resumes:** twenty-six catches with names on every one —
+four of them (the 23rd through 26th) inside one probe family, where every measurement was
+honest and four readings of it were wrong: the failure surface is the interpretation layer
+above an honest measurement. **STEADY-SHELTER RULED at D113** (2026-08-03; plan `73c1349`;
+probes `e56a090`, `23dc7c1`, `bd7c712`, `515204f`): the residual hypothesis DEAD BY
+ARITHMETIC; the implementation certified HONEST, the concept ruled MISAIMED
+(snapshot-versus-vector, STEADY-versus-broken, cluster-versus-isolation); evidence hierarchy
+49/120 artifact-clean floor (ONE replicated co-location geometry — co-l at Calhoun beside C
+and I at their ordered objective, 49 of 50 seeds — NOT forty-nine facts, never a sample
+size) / 82/120 world-as-committed / 33 in ESCROW pending the re-path mechanism; the SCALE of
+the misaim NAMED OPEN; NO FIX FROZEN — the fix decision waits behind the re-path ruling.
+**CORRECTION, on the adjudicator's order: this block's earlier "stacks sit on the named
+hills ×98/×77" line was FALSE for twelve entries** — they sit at (6624,20006), a coordinate
+no order declares and no landmark names within 3.9 km; the stacking is order-endpoint-shaped,
+and the zero-distance check's sameEnd predicate could only ever return zero (dated
+annotation inside the D113 row). ESCROW is now a register status (evidence whose validity
+depends on an unruled mechanism); register attribution is by ROLE, not session name. **NEXT
+ACTION: the re-path item drafts** — mechanism unnamed, component mixing the leading
+candidate, measured not chased.
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
 dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
