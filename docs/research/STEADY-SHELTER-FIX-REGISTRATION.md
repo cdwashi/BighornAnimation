@@ -125,3 +125,42 @@ unmoved.
 Ledger-search yield first (done, above), then M1, M2, M3 per candidate in candidate
 order C0, C1, C2; M4 last and only for survivors; no envelope figure is read before its
 candidate's M1–M3 verdicts are written.
+
+## Dated amendment — 2026-08-04, at the M1–M3 adjudication
+
+Measurements: M1 `b6b6668`, M2 `3975c7a`, M3 `97196f9`. **C0: DEAD at its registered
+M1 kill-branch** — written threshold-free by its author before the census existed, one
+qualifying row of 101 (seed 18760602, mass 73 against 73), and reading one row as de
+minimis after seeing it is the reinterpretation this register forbids. Death by
+kill-branch, not refutation: **C0's burden argument SURVIVES its candidate and
+transfers** — any design widening finishing eligibility must say what a routed
+companion DOES to interrupt a melee, given the engine's own `pursuerAccepts` rules such
+units incapable of offensive action. **C1: SURVIVED-NOT-PROMOTED** — the D116 status
+applied for the first time as a decision rather than a verdict. Its registered branch
+did not fire and it is not killed by reinterpretation; but its burden is answered
+AGAINST it: M3 shows the companions that would stop a finishing can do nothing else for
+the fragment (no reintegration, no massed fire — a durable routed-limbo population up
+to 99 rows wide), and the 38th re-derivation shows its eligibility admits shelterers at
+ratios from 5%, 43 of 204 below half strength, a two-man minimum. Held; available if
+the evaluation-order item changes the picture. **C2: PROCEEDS TO M4**, its reverse
+channel carried as a named risk against its own frozen and unamended prediction.
+**Amendment 1's finding WIDENS to the five-relation inventory** (M3): finishing
+(STEADY presence @650), rout-reintegration (STEADY presence @450), massed-fire pursuit
+end (STEADY+SHAKEN strength @450), morale isolation (any-friendly presence @650),
+rout-safety targeting (STEADY nearest, unbounded) — five ruled predicates answering
+"does a nearby friendly matter," differing on morale filter, presence-versus-strength,
+and radius, with no reconciliation anywhere: the item's most durable output regardless
+of the candidates' fate. **The evaluation-order question is REGISTERED as its own item
+ahead of M4** (`docs/research/EVALUATION-ORDER-ITEM.md`): 99 STEADY shelterer
+instances one tick before death against zero after — both candidates change who
+counts, neither touches when; every M4 read carries the stated confound caveat. **M4
+instrument discipline, ruled: THROWAWAY PROBE PATCH, not a WO** — measurement decides
+whether a design freezes, so the design cannot freeze to enable the measurement.
+Conditions, registered: the patch lives in the probe, never in committed engine
+source, preserved with its output; the engine's committed tree is byte-identical
+before and after, VERIFIED not asserted; no reseed — mechanism change, same seeds,
+stream lineage declared on every figure; the M4 read is scored against C2's frozen
+M1(b) prediction with the overshoot channel read against its named paragraph, not
+folded into it; pre-freeze red enumeration does not apply because nothing freezes.
+The 19 same-tick finishers remain UNRESOLVED and named; C2's flip census covered 101
+of 120 rows.
