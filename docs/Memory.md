@@ -8,8 +8,10 @@ all of them (session-boundary ruling: the reseed invalidates numbers, not findin
 block at session close; never let a bare number sit here; never duplicate ledger content that
 exists — point at it.*
 
-**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D117, with dated
-annotations on D90/D98/D108/D109/D111/D112/D113/D114). Predictions: `PREDICTIONS.md` (PR-1..71, the
+**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D119, with dated
+annotations on D90/D98/D108/D109/D111/D112/D113/D114). Frozen measurement plans and the
+source-read plan+log: `docs/research/` (STEADY-SHELTER, X6624-RESIDUE, LADDER-SHARING,
+EVALUATION-ORDER plans; SOURCE-READ-PLAN and SOURCE-READ-LOG with every dated read). Predictions: `PREDICTIONS.md` (PR-1..71, the
 bands amendment, and the reading-order pre-commitment). Refuted designs and misses:
 `NEGATIVE_RESULTS.md` (including §4's late-recorded fallback-clause row). Standing practices:
 `METHODS.md` §6 (the three practices, the yield-and-counterexample paragraph, the §4 pointer).
@@ -38,48 +40,47 @@ cells / 260 m / min 51 m / all WEST, SHA in the rows); the C2 ceiling 8/9 (struc
 width-bearing wounded source is located — zero of fifty seeds landed on exactly 160); C4
 reported as x/14 beside the 12/13 lineage on every cross-round comparison, permanently.
 
-**OPEN ITEMS, in D113's ruled order:** (1) **RE-PATH TO UNDECLARED DESTINATIONS** — a
-mechanism moving units to destinations no order declares; component mixing the leading
-candidate (two stray endpoints share x=6624 exactly with custer-bluff-route's final
-waypoint, a third shares y=12030); evidence base transferred by D113 (the 4+13 failed rows,
-the 3+25 companion observations, the five-coordinate endpoint scatter); the 33 ESCROW rows
-and the STEADY-shelter fix decision both resolve behind it; (2) **order-objective extent** —
-98 pair entries die at 0 m from their OWN declared objective, a real destination with
-dimensionless geometry, D108's lesson unapplied to order objectives; (3) corpse drift (D111
-row annotation, blast radius unknown); (4) the 268/253 engine question (scoring-inert,
-reaches `combat-config.ts:231`); (5) the arikara value item (Libby ~40 outside the encoded
-35–39); (6) the GNIS O-item (#1/#4/#11 held, #6 open); (7) the schema observation — one
-`confidence` field doing two jobs. **Standing open, unqueued:** the mean residual −1.68 pp —
-OPEN QUANTITY; its breach hypothesis is DEAD BY ARITHMETIC (ceiling 0.28 pp), so it points
-elsewhere; the O5 revisit thresholds (a wounded figure with width; a peer-reviewed pony
-census); the human items (the Mielke click; O5 stage-2 page-level reads: Gray's methodology
-chapter, Michno pp. 17–19/105); co-m the chronic non-holder.
+**OPEN ITEMS, in D119's ruled order:** (1) **order-objective extent** — 98 pair entries die
+at 0 m from their OWN declared objective, a real destination with dimensionless geometry,
+D108's lesson unapplied to order objectives; NOTE the METHODS §7 threat "units are
+dimensionless points, recorded as the D91 rider, adjudication pending" — the ledger search
+must resolve the overlap before hypotheses are written; (2) corpse drift (D111 row
+annotation, blast radius unknown); (3) the 268/253 engine question (scoring-inert, reaches
+`combat-config.ts:231`); (4) the arikara value item (Libby ~40 outside the encoded 35–39);
+(5) the GNIS O-item (#1/#4/#11 held, #6 open); (6) the schema observation — one
+`confidence` field doing two jobs. **STANDING FINDINGS (a category created this arc —
+tracked, not queued):** the FIVE-RELATION adjacency inconsistency (D118: finishing,
+rout-reintegration, massed-fire, morale isolation, rout-safety — five ruled predicates
+answering one question five ways, reconciled nowhere, defect class); the BOUT-ORDER
+sensitivity (D119: outcomes sensitive to a bout ordering whose warrant is contact-append
+order — measured 2.27 pp mean spread, 60–99% bout churn). **Standing open, unqueued:** the
+mean residual −1.68 pp — OPEN QUANTITY, breach hypothesis dead by arithmetic, points
+elsewhere; the O5 revisit thresholds; the human items (the Mielke click; O5 stage-2 reads:
+Gray's methodology chapter, Michno pp. 17–19/105); co-m the chronic non-holder.
 
-**The arc's character, for whoever resumes:** twenty-six catches with names on every one —
-four of them (the 23rd through 26th) inside one probe family, where every measurement was
-honest and four readings of it were wrong: the failure surface is the interpretation layer
-above an honest measurement. **STEADY-SHELTER RULED at D113** (2026-08-03; plan `73c1349`;
-probes `e56a090`, `23dc7c1`, `bd7c712`, `515204f`): the residual hypothesis DEAD BY
-ARITHMETIC; the implementation certified HONEST, the concept ruled MISAIMED
-(snapshot-versus-vector, STEADY-versus-broken, cluster-versus-isolation); evidence hierarchy
-49/120 artifact-clean floor (ONE replicated co-location geometry — co-l at Calhoun beside C
-and I at their ordered objective, 49 of 50 seeds — NOT forty-nine facts, never a sample
-size) / 82/120 world-as-committed / 33 in ESCROW pending the re-path mechanism; the SCALE of
-the misaim NAMED OPEN; NO FIX FROZEN — the fix decision waits behind the re-path ruling.
-**CORRECTION, on the adjudicator's order: this block's earlier "stacks sit on the named
-hills ×98/×77" line was FALSE for twelve entries** — they sit at (6624,20006), a coordinate
-no order declares and no landmark names within 3.9 km; the stacking is order-endpoint-shaped,
-and the zero-distance check's sameEnd predicate could only ever return zero (dated
-annotation inside the D113 row). ESCROW is now a register status (evidence whose validity
-depends on an unruled mechanism); register attribution is by ROLE, not session name. **NEXT
-ACTION: the STEADY-shelter fix adjudication** — M1–M3 complete and committed (`b6b6668`,
-`3975c7a`, `97196f9`) under the frozen registration (`298f3a1`); C0 dead at its
-registered branch, C1 and C2 surviving to the M4 gate, which awaits the adjudicator's
-ruling on candidate selection and the instrument discipline for a measurement-grade
-build. Last ruling D117 (`9393496`): the source read — six answers, the traceability
-finding, the fourth METHODS practice (search the ledger first, landed `9978149`).
-*(This NEXT line corrected mid-session 2026-08-04, second application of the
-correct-it-now precedent: a NEXT pointing at closed work is false as read.)*
+**The arc's character, for whoever resumes — D113 through D119, one continuous arc, closed
+2026-08-04:** THIRTY catch/miss entries with names on every one, and the arc's shape is its
+lesson: the STEADY-shelter question opened at D113 as a predicate suspicion, survived four
+frozen registrations, ended the blind era by ruled source read (D117: five files opened by
+ruling, the mechanisms carrying the register's OWN D-numbers — the gap was TRACEABILITY,
+not absence; fourth METHODS practice born there: SEARCH THE LEDGER FIRST), refused three
+fixes on measurement (D118: C0 dead by branch, C1 survived-not-promoted, C2's prediction
+missed through its pre-named reverse channel), and closed at D119 with the model VINDICATED
+on the point it was suspected of: **snapshot semantics ERASE the Calhoun collapse (52
+window bouts → 0) — the sequential cascade is DESIGN, load-bearing for the history the
+model exists to reproduce.** The composite-stillness pairing is the arc's most transferable
+result: the envelope median held (once EXACTLY) through two near-total battle rewrites —
+METHODS §6's low-resolution clause is now a measurement, not a caution. Standing law
+gained: the fourth practice; ESCROW (first member discharged as designed); role attribution;
+the transport rule (adjudication text in the message body, never link or tool result);
+UNANSWERED-IN-SCOPE, SURVIVED-NOT-PROMOTED, and STANDING-FINDING as register statuses;
+POST-READ conduct (no hypothesis drafted blind again; dated reads by ruling only;
+signature-only boundary crossings; halts taken, not reasoned across); THROWAWAY-PATCH
+discipline for measurement builds (patch lives in the probe, tree restored under guard,
+byte-identity VERIFIED, no reseed, lineage on every figure). **NEXT ACTION:
+order-objective extent drafts** — verifier first, POST-READ, the ledger search first on
+its own practice; the search must resolve the overlap with the D91 rider (METHODS §7's
+dimensionless-units threat, adjudication pending) before any hypothesis is written.
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
 dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
