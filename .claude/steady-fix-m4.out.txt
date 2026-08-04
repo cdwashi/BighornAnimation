@@ -1,0 +1,100 @@
+=== M4 under C2, stream [68325eff], same seeds, no reseed ===
+pre-run tracked tree: clean (probe artifacts excepted)
+baseline pass (committed source, rebuilt to be certain)...
+patch applied to working tree (engine/src/combat.ts, uncommitted)
+patched pass...
+restore executed under guard; dist rebuilt from committed source (dist/ untracked per .gitignore:2).
+post-run git status --porcelain:
+?? .claude/m4-baseline.json
+?? .claude/m4-patched.json
+?? .claude/steady-fix-m4.mjs
+
+post-run git diff on tracked files: EMPTY - byte-identical, verified
+
+score object keys (first seed): ["scenarioId","seed","variantIds","reviewTier","counterfactual","components","composite","passed","report"]
+=== per-seed composites (baseline | patched) ===
+  18760600: 54.7161 | 57.4939
+  18760601: 46.3828 | 49.1606
+  18760602: 56.6392 | 51.0836
+  18760603: 48.3059 | 51.0836
+  18760604: 56.6392 | 56.6392
+  18760605: 54.7161 | 49.1606
+  18760606: 48.3059 | 51.0836
+  18760607: 51.0836 | 51.0836
+  18760608: 56.6392 | 51.0836
+  18760609: 48.3059 | 51.0836
+  18760610: 57.4939 | 51.9383
+  18760611: 56.6392 | 51.0836
+  18760612: 56.6392 | 51.0836
+  18760613: 59.4170 | 51.0836
+  18760614: 54.7161 | 57.4939
+  18760615: 43.6050 | 49.1606
+  18760616: 53.6477 | 57.4939
+  18760617: 55.5708 | 47.2375
+  18760618: 56.6392 | 51.0836
+  18760619: 44.4597 | 47.2375
+  18760620: 52.7930 | 57.4939
+  18760621: 46.3828 | 49.1606
+  18760622: 49.1606 | 57.4939
+  18760623: 56.6392 | 51.0836
+  18760624: 56.6392 | 51.0836
+  18760625: 51.0836 | 51.0836
+  18760626: 52.7930 | 42.5366
+  18760627: 56.6392 | 51.0836
+  18760628: 48.3059 | 51.0836
+  18760629: 56.6392 | 56.6392
+  18760630: 49.1606 | 57.4939
+  18760631: 49.1606 | 45.3144
+  18760632: 56.6392 | 51.0836
+  18760633: 46.3828 | 51.0836
+  18760634: 56.6392 | 51.0836
+  18760635: 49.1606 | 46.3828
+  18760636: 48.3059 | 51.0836
+  18760637: 54.7161 | 49.1606
+  18760638: 56.6392 | 51.0836
+  18760639: 56.6392 | 51.0836
+  18760640: 43.6050 | 57.4939
+  18760641: 48.3059 | 56.6392
+  18760642: 54.7161 | 49.1606
+  18760643: 56.6392 | 51.0836
+  18760644: 51.9383 | 57.4939
+  18760645: 59.4170 | 49.1606
+  18760646: 46.3828 | 49.1606
+  18760647: 50.0153 | 49.1606
+  18760648: 56.6392 | 51.0836
+  18760649: 48.3059 | 51.0836
+
+unit-destroyed events: baseline 206 (committed array: 120) | patched 194
+annihilation bouts:    baseline 120 | patched 144
+REMOVED under C2 (in baseline, not patched): destroyed 152 | bouts 66
+NEW under C2 (reverse channel; in patched, not baseline): destroyed 140 | bouts 90
+  NEW bout: 18760600|t1510|co-m
+  NEW bout: 18760600|t1684|co-i
+  NEW bout: 18760600|t1736|co-c
+  NEW bout: 18760601|t1684|co-i
+  NEW bout: 18760602|t1684|co-i
+  NEW bout: 18760603|t1684|co-i
+  NEW bout: 18760604|t1684|co-i
+  NEW bout: 18760604|t1693|co-c
+  NEW bout: 18760605|t1545|co-m
+  NEW bout: 18760605|t1684|co-i
+  NEW bout: 18760606|t1684|co-i
+  NEW bout: 18760607|t1684|co-i
+  NEW bout: 18760608|t1684|co-i
+  NEW bout: 18760609|t1684|co-i
+  NEW bout: 18760610|t1684|co-i
+  NEW bout: 18760610|t1812|co-c
+  NEW bout: 18760611|t1684|co-i
+  NEW bout: 18760612|t1684|co-i
+  NEW bout: 18760613|t1684|co-i
+  NEW bout: 18760614|t1567|co-m
+
+envelope (registered floor-quantile convention, 26th order statistic of 50): baseline median 54.7161 mean 52.5409 | patched median 51.0836 mean 51.5794
+committed stream figures beside them, for lineage: median 54.7161 mean 52.5409 [68325eff]
+
+=== scored against C2's FROZEN M1(b) prediction (verbatim from b6b6668): ===
+  "small perturbation - ... the annihilation count at M4 is predicted within a few rows of 120
+  minus first-order flips, and the envelope moves little. A C2 M4 run collapsing the annihilation
+  sequence FALSIFIES this registration."
+The reverse channel (M3, 97196f9) is read against its named paragraph, not folded in. The
+evaluation-order caveat (EVALUATION-ORDER-ITEM.md) is in view for every line above.
