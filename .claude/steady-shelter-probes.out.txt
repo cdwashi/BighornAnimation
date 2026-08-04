@@ -1,0 +1,132 @@
+MEASURED annihilation row count (committed D112 array): 120
+
+=== Probe 2 census (120 of 120 rows measured) ===
+split: none-within-650 21 | STEADY-within-650 (SHOULD BE EMPTY) 0 | only-non-STEADY-within-650 99
+FRACTION with >=1 non-STEADY friendly within 650: 99/120
+within-650 distance distribution: n=190 min 0 p25 0 med 0 p75 0 max 576
+row 18760600 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760600 t1724 co-i: nearestAny=co-e:ROUTED@146 | within650=[co-e:ROUTED@146] | eligibleCrosscheck=4783
+row 18760601 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760602 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760602 t1716 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760603 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760604 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760604 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760604 t1743 co-e: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=7510
+row 18760604 t1745 co-c: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0] | eligibleCrosscheck=7510
+row 18760604 t1747 co-f: nearestAny=co-d:STEADY@7510 | within650=[] | eligibleCrosscheck=7510
+row 18760605 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760605 t1714 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760605 t1762 co-c: nearestAny=co-d:STEADY@7510 | within650=[] | eligibleCrosscheck=7510
+row 18760606 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760607 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760607 t1717 co-i: nearestAny=co-e:BROKEN@0 | within650=[co-e:BROKEN@0 co-f:BROKEN@0] | eligibleCrosscheck=4783
+row 18760608 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760609 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760610 t1567 co-m: nearestAny=co-a:STEADY@662 | within650=[] | eligibleCrosscheck=662
+row 18760610 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760610 t1721 co-i: nearestAny=co-e:BROKEN@0 | within650=[co-e:BROKEN@0 co-f:BROKEN@0] | eligibleCrosscheck=4783
+row 18760610 t1784 co-f: nearestAny=co-h:STEADY@707 | within650=[] | eligibleCrosscheck=707
+row 18760611 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760611 t1763 co-f: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-e:ROUTED@0] | eligibleCrosscheck=7510
+row 18760611 t1765 co-c: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0] | eligibleCrosscheck=7592
+row 18760612 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760612 t1764 co-c: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=7552
+row 18760612 t1766 co-e: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0] | eligibleCrosscheck=7631
+row 18760613 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760613 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760613 t1750 co-e: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0 co-c:SHAKEN@425] | eligibleCrosscheck=725
+row 18760614 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760614 t1724 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760614 t1781 co-f: nearestAny=crow-scouts:STEADY@704 | within650=[] | eligibleCrosscheck=704
+row 18760615 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760615 t1719 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760616 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760616 t1710 co-i: nearestAny=co-e:SHAKEN@0 | within650=[co-e:SHAKEN@0 co-f:SHAKEN@0] | eligibleCrosscheck=4783
+row 18760616 t1777 co-e: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0 co-c:BROKEN@310] | eligibleCrosscheck=662
+row 18760616 t1782 co-f: nearestAny=co-h:STEADY@707 | within650=[] | eligibleCrosscheck=707
+row 18760617 t1628 co-m: nearestAny=co-h:STEADY@865 | within650=[] | eligibleCrosscheck=865
+row 18760617 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760617 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760617 t1782 co-f: nearestAny=co-h:STEADY@707 | within650=[] | eligibleCrosscheck=707
+row 18760618 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760618 t1716 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760619 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760620 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760620 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760621 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760622 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760622 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=3259
+row 18760623 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760623 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=4783
+row 18760624 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760624 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=4783
+row 18760625 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760625 t1720 co-i: nearestAny=co-e:ROUTED@145 | within650=[co-e:ROUTED@145] | eligibleCrosscheck=4783
+row 18760626 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760626 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760626 t1750 co-e: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0 co-c:SHAKEN@425] | eligibleCrosscheck=725
+row 18760626 t1833 co-g: nearestAny=co-h:STEADY@727 | within650=[] | eligibleCrosscheck=727
+row 18760627 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760627 t1766 co-e: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0] | eligibleCrosscheck=7631
+row 18760628 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760629 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760629 t1700 co-c: nearestAny=co-e:SHAKEN@0 | within650=[co-e:SHAKEN@0 co-f:SHAKEN@0 co-i:ROUTED@0] | eligibleCrosscheck=4783
+row 18760629 t1702 co-i: nearestAny=co-e:SHAKEN@0 | within650=[co-e:SHAKEN@0 co-f:SHAKEN@0] | eligibleCrosscheck=4783
+row 18760629 t1742 co-e: nearestAny=co-f:SHAKEN@356 | within650=[co-f:SHAKEN@356] | eligibleCrosscheck=7510
+row 18760629 t1747 co-f: nearestAny=co-d:STEADY@7278 | within650=[] | eligibleCrosscheck=7278
+row 18760630 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760630 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=3259
+row 18760631 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760631 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=3259
+row 18760632 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760632 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=4783
+row 18760632 t1755 co-c: nearestAny=co-d:STEADY@7510 | within650=[] | eligibleCrosscheck=7510
+row 18760633 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760633 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760634 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760634 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760635 t1649 co-a: nearestAny=co-c:STEADY@1062 | within650=[] | eligibleCrosscheck=1062
+row 18760635 t1684 co-c: nearestAny=co-e:STEADY@1005 | within650=[] | eligibleCrosscheck=1005
+row 18760635 t1684 co-i: nearestAny=co-e:STEADY@1005 | within650=[] | eligibleCrosscheck=1005
+row 18760635 t1684 co-l: nearestAny=co-e:STEADY@1005 | within650=[] | eligibleCrosscheck=1005
+row 18760636 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760637 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760637 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760637 t1796 co-f: nearestAny=co-d:SHAKEN@0 | within650=[co-d:SHAKEN@0] | eligibleCrosscheck=707
+row 18760637 t1798 co-d: nearestAny=co-h:STEADY@707 | within650=[] | eligibleCrosscheck=707
+row 18760637 t1804 co-c: nearestAny=co-m:SHAKEN@904 | within650=[] | eligibleCrosscheck=985
+row 18760638 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760638 t1766 co-e: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0] | eligibleCrosscheck=7631
+row 18760638 t1768 co-f: nearestAny=co-d:STEADY@7705 | within650=[] | eligibleCrosscheck=7705
+row 18760639 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760639 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=4783
+row 18760639 t1756 co-c: nearestAny=co-d:STEADY@7510 | within650=[] | eligibleCrosscheck=7510
+row 18760640 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760640 t1719 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760641 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760642 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760642 t1708 co-c: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0 co-i:ROUTED@0 co-e:ROUTED@148] | eligibleCrosscheck=4783
+row 18760642 t1711 co-i: nearestAny=co-f:ROUTED@432 | within650=[co-f:ROUTED@432 co-e:ROUTED@576] | eligibleCrosscheck=4783
+row 18760643 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760643 t1768 co-f: nearestAny=co-d:STEADY@7705 | within650=[] | eligibleCrosscheck=7705
+row 18760644 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760644 t1708 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:BROKEN@0] | eligibleCrosscheck=3259
+row 18760645 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760645 t1720 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760646 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760647 t1497 co-m: nearestAny=co-g:SHAKEN@103 | within650=[co-g:SHAKEN@103 co-a:SHAKEN@267] | eligibleCrosscheck=893
+row 18760647 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760647 t1715 co-i: nearestAny=co-e:SHAKEN@0 | within650=[co-e:SHAKEN@0 co-f:SHAKEN@0] | eligibleCrosscheck=4783
+row 18760648 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760648 t1717 co-i: nearestAny=co-e:BROKEN@0 | within650=[co-e:BROKEN@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+row 18760648 t1765 co-c: nearestAny=co-f:ROUTED@0 | within650=[co-f:ROUTED@0] | eligibleCrosscheck=7592
+row 18760648 t1767 co-f: nearestAny=co-d:STEADY@7665 | within650=[] | eligibleCrosscheck=7665
+row 18760649 t1684 co-l: nearestAny=co-c:ROUTED@0 | within650=[co-c:ROUTED@0 co-i:ROUTED@0] | eligibleCrosscheck=1005
+row 18760649 t1717 co-i: nearestAny=co-e:ROUTED@0 | within650=[co-e:ROUTED@0 co-f:ROUTED@0] | eligibleCrosscheck=4783
+
+=== Probe 1 leg attribution (matched by committed composite alone) ===
+pair: breach 18760617 (55.5708) vs match 18760600 (54.7161)
+pair: breach 18760626 (52.7930) vs match 18760620 (52.7930)
+pair: breach 18760635 (49.1606) vs match 18760622 (49.1606)
+PROBE-1 LEG PASS FAILED (census above is intact): Cannot read properties of undefined (reading 'map')
