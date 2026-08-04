@@ -1,0 +1,86 @@
+events parsed: 13969 | sides: us-7th-cavalry / lakota-cheyenne-coalition | declared speed entries found: 0
+
+=== S1 — rung ownership (read first) ===
+rung owners: oglala-pool (lakota-cheyenne-coalition):16 | crazy-horse-band (lakota-cheyenne-coalition):16
+owner's PREVIOUS terminal: on the x=6624 line 30 | off the line 2 | null 0
+  rung y=12671: seed 18760635 t1573 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(5250,13474) enemy=co-a@862
+  rung y=12671: seed 18760635 t1573 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(5250,13474) enemy=co-a@862
+  rung y=13049: seed 18760635 t1576 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,12671) enemy=co-f@887
+  rung y=13049: seed 18760635 t1576 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,12671) enemy=co-f@887
+  rung y=13422: seed 18760635 t1579 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13049) enemy=co-f@830
+  rung y=13422: seed 18760635 t1579 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13049) enemy=co-f@830
+  rung y=13690: seed 18760635 t1581 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13422) enemy=co-f@793
+  rung y=13690: seed 18760635 t1581 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13422) enemy=co-f@793
+  rung y=13961: seed 18760635 t1583 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13690) enemy=co-f@758
+  rung y=13961: seed 18760635 t1583 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13690) enemy=co-f@758
+  rung y=14219: seed 18760635 t1585 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13961) enemy=co-f@725
+  rung y=14219: seed 18760635 t1585 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,13961) enemy=co-f@725
+  rung y=14489: seed 18760635 t1587 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,14219) enemy=co-f@677
+  rung y=14489: seed 18760635 t1587 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,14219) enemy=co-f@677
+  rung y=14753: seed 18760635 t1589 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,14489) enemy=co-f@624
+  rung y=14753: seed 18760635 t1589 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,14489) enemy=co-f@624
+  rung y=15021: seed 18760635 t1591 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,14753) enemy=co-f@578
+  rung y=15021: seed 18760635 t1591 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,14753) enemy=co-f@578
+  rung y=15294: seed 18760635 t1593 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15021) enemy=co-f@537
+  rung y=15294: seed 18760635 t1593 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15021) enemy=co-f@537
+  rung y=15562: seed 18760635 t1595 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15294) enemy=co-a@496
+  rung y=15562: seed 18760635 t1595 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15294) enemy=co-a@496
+  rung y=15937: seed 18760635 t1598 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15562) enemy=co-a@396
+  rung y=15937: seed 18760635 t1598 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15562) enemy=co-a@396
+  rung y=16191: seed 18760635 t1600 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15937) enemy=co-a@328
+  rung y=16191: seed 18760635 t1600 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,15937) enemy=co-a@328
+  rung y=16543: seed 18760635 t1603 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,16191) enemy=co-a@227
+  rung y=16543: seed 18760635 t1603 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,16191) enemy=co-a@227
+  rung y=16797: seed 18760635 t1605 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,16543) enemy=co-a@159
+  rung y=16797: seed 18760635 t1605 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,16543) enemy=co-a@159
+  rung y=17056: seed 18760635 t1607 oglala-pool [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,16797) enemy=co-a@93
+  rung y=17056: seed 18760635 t1607 crazy-horse-band [lakota-cheyenne-coalition STEADY TERMINAL-MOVES order=crazy-horse-sweep] oldT=(6624,16797) enemy=co-a@93
+
+=== S4 — the ordered-march control (read second) ===
+ORDER-CHANGED events with a terminal: 2452 | provenance: WHOLE 2342 | COMPONENT-only 0 | none 110
+ORDER-CHANGED terminals matching nothing declared (candidate ordered-march rungs): 110
+  18760600 t1510 co-m order=reno-retreat ->(7106,11818)
+  18760600 t1600 gall-band order=gall-calhoun ->(6874,14978)
+  18760600 t1600 crow-king-band order=gall-calhoun ->(6874,14978)
+  18760601 t1600 gall-band order=gall-calhoun ->(8097,11163)
+  18760601 t1600 crow-king-band order=gall-calhoun ->(8097,11163)
+  18760602 t1600 gall-band order=gall-calhoun ->(6874,14978)
+  18760602 t1600 crow-king-band order=gall-calhoun ->(6874,14978)
+  18760603 t1600 gall-band order=gall-calhoun ->(8097,11163)
+  18760603 t1600 crow-king-band order=gall-calhoun ->(8097,11163)
+  18760604 t1600 gall-band order=gall-calhoun ->(6874,14978)
+  18760604 t1600 crow-king-band order=gall-calhoun ->(6874,14978)
+  18760605 t1600 gall-band order=gall-calhoun ->(6874,14978)
+  18760605 t1600 crow-king-band order=gall-calhoun ->(6874,14978)
+  18760606 t1600 gall-band order=gall-calhoun ->(8097,11163)
+  18760606 t1600 crow-king-band order=gall-calhoun ->(7728,11240)
+  … 95 more
+
+=== S2 — step arithmetic against declared speeds (read third) ===
+declared speeds on the data surface: NONE FOUND under /speed/i keys
+rung spacings: 378 373 268 271 258 270 264 268 273 268 375 254 352 254 259 (n=15, min 254, max 378)
+
+=== S3 — temporal coupling at the flagship (read fourth) ===
+flagship events 493 across 34 seeds | seeds with both sides: US-side first 22, coalition first 0 | single-side seeds 12
+flagship enemy-distance: US-side n=113 min 0 med 25 max 681 | coalition n=380 min 25 med 554 max 7866
+  seed 18760601 sequence: t1568 crow-scouts[US STEADY] → t1703 co-c[US ROUTED] → t1717 co-e[US ROUTED] → t1717 co-f[US ROUTED]
+  seed 18760602 sequence: t1600 crow-scouts[US STEADY] → t1701 co-c[US ROUTED] → t1716 co-e[US ROUTED] → t1716 co-f[US ROUTED] → t1716 crow-king-band[CO STEADY] → t1716 oglala-pool[CO STEADY] → t1716 crazy-horse-band[CO STEADY] → t1716 cheyenne-pool[CO STEADY] → t1721 crow-king-band[CO STEADY] → t1721 oglala-pool[CO STEADY] → t1721 crazy-horse-band[CO STEADY] → t1721 cheyenne-pool[CO STEADY] → t1726 crow-king-band[CO STEADY] → t1726 oglala-pool[CO STEADY] → t1726 crazy-horse-band[CO STEADY] → t1731 crow-king-band[CO STEADY] → t1731 oglala-pool[CO STEADY] → t1731 crazy-horse-band[CO STEADY] → t1737 cheyenne-pool[CO STEADY]
+  seed 18760603 sequence: t1564 crow-scouts[US STEADY] → t1703 co-c[US ROUTED] → t1717 co-e[US ROUTED] → t1717 co-f[US ROUTED]
+
+=== S5 — pairing identity (read last) ===
+  y=12671: 18760635/t1573/oglala-pool , 18760635/t1573/crazy-horse-band
+  y=13049: 18760635/t1576/oglala-pool , 18760635/t1576/crazy-horse-band
+  y=13422: 18760635/t1579/oglala-pool , 18760635/t1579/crazy-horse-band
+  y=13690: 18760635/t1581/oglala-pool , 18760635/t1581/crazy-horse-band
+  y=13961: 18760635/t1583/oglala-pool , 18760635/t1583/crazy-horse-band
+  y=14219: 18760635/t1585/oglala-pool , 18760635/t1585/crazy-horse-band
+  y=14489: 18760635/t1587/oglala-pool , 18760635/t1587/crazy-horse-band
+  y=14753: 18760635/t1589/oglala-pool , 18760635/t1589/crazy-horse-band
+  y=15021: 18760635/t1591/oglala-pool , 18760635/t1591/crazy-horse-band
+  y=15294: 18760635/t1593/oglala-pool , 18760635/t1593/crazy-horse-band
+  y=15562: 18760635/t1595/oglala-pool , 18760635/t1595/crazy-horse-band
+  y=15937: 18760635/t1598/oglala-pool , 18760635/t1598/crazy-horse-band
+  y=16191: 18760635/t1600/oglala-pool , 18760635/t1600/crazy-horse-band
+  y=16543: 18760635/t1603/oglala-pool , 18760635/t1603/crazy-horse-band
+  y=16797: 18760635/t1605/oglala-pool , 18760635/t1605/crazy-horse-band
+  y=17056: 18760635/t1607/oglala-pool , 18760635/t1607/crazy-horse-band
