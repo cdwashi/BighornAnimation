@@ -1,0 +1,30 @@
+=== X1 for G2 (sole survivor), offline ===
+marchSpacingMeters (instrument-read, numeric-asserted): 150
+right-wing-ridges recipients in declared order (ordinal 0,1,2): co-c, co-i, co-l
+G2 destination offsets: ordinal x 150 m = co-c:0m co-i:150m co-l:300m
+
+G2's reachable population (X2's 52, by dying unit): co-l:50 co-c:1 co-i:1
+
+--- X1(a) first-order, offline: offset magnitude vs the world's radii ---
+max destination displacement = 2 x 150 = 300 m. The MEMBERSHIP/SHELTER radii -
+isolation 650, friendly 450 - EXCEED it: no membership or shelter verdict in the committed rows
+flips from geometry alone. The repath threshold (250) and pursuit standoff (150) are SMALLER than
+the maximum offset: pursuit repath timing and contact geometry CAN shift first-order, which
+SHARPENS Section 4's channel from possible to expected. (A first draft of this paragraph claimed
+every radius exceeded the offset - false as written for 250 and 150, corrected on read before
+commit: the near-true-summary family, caught in the instrument's own prose.) Note the ordinal
+irony: co-l, the dying unit in 50 of the 52 reachable rows, takes the MAXIMUM 300 m displacement.
+X1(a) verdict: zero membership flips predicted from offsets; contact-order and repath-timing
+effects expected at some magnitude, measurable only by X3.
+
+--- X1(b) PREDICTIONS, registered before any X3 world runs ---
+LONGITUDINAL arm (column-halt; the existing mechanism's direction): the three companies halt in
+column at 0/150/300 m short of the chain end along the approach. Prediction: the Calhoun
+collapse SURVIVES in sequence and timing (the cluster stays inside every radius); annihilation
+bout count within a few rows of 120; envelope within the ~0.5 pp floor on means; the co-l-first
+death order at t1684 may shift to a different company - reported, not predicted. FALSIFIED by
+bout-count movement beyond a few rows or envelope movement well beyond the floor.
+LATERAL arm (line-abreast; the frozen text's word): same magnitudes, perpendicular. Prediction:
+same as longitudinal - the offsets are small against every radius - with the difference, if any,
+appearing through contact ORDER (Section 4). A large divergence BETWEEN the two arms is itself
+the bout-order channel firing and is read against Section 4, not against G2.
