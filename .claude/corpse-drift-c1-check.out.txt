@@ -1,0 +1,4 @@
+checkpoints referencing co-m: NONE
+co-m carries no checkpoints: the unfiltered C1 scan has NOTHING to read from the drift in the
+committed world - the exposure is structural, not realized. The defect stands; the blast
+radius on committed figures remains zero through C1 as well.

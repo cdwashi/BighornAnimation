@@ -198,6 +198,24 @@ a single number against zero.
 Scope held: `engagement.ts` read whole (the file is the creation/ordering machinery);
 `combat.ts` read `:513-577` (the resolution loop); no other file opened.
 
+## Amendment read — 2026-08-04, `score.ts` opened by the corpse-drift audit amendment (`f6bfce9`), scoped to one question
+
+**The question: does any calibration leg read unit positions, and does it filter on
+`endState`? The answer: YES, and the filtering is SPLIT.** The HOLDING_AT end-state leg
+samples the unit's track at the assertion minute and is DESTRUCTION-GUARDED —
+`passed: !destroyed && distance <= radius` (`score.ts:320-323`); a corpse's position
+cannot flip it. The DESTROYED/ROUTED/WITHDRAWN conditions are event-based
+(`score.ts:292-311`), pre-drift by construction. **But `scoreCheckpoints`
+(`score.ts:38-73`) scans the unit's ENTIRE track for the nearest sample to each
+checkpoint with NO destruction filter** (`score.ts:48-57`) — a structural exposure: a
+drifting corpse passing nearer a checkpoint than the living unit ever did replaces the
+nearest-sample and its wrong-minute timestamp can flip the verdict either way.
+**Quantified against the committed world's single re-arm** (`corpse-drift-c1-check`):
+co-m carries NO checkpoints — the unfiltered scan has nothing to read from the drift.
+The exposure is structural, not realized; committed figures across D113–D120 are
+CONFIRMED unaffected through every scoring path. Scope held: positional-read regions
+and the checkpoint scan only; the rest of `score.ts` remains unread.
+
 ## Conduct statement
 
 From this read forward, no hypothesis in this project is drafted from a blind position;
