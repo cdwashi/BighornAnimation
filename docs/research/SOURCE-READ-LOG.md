@@ -216,6 +216,55 @@ The exposure is structural, not realized; committed figures across D113–D120 a
 CONFIRMED unaffected through every scoring path. Scope held: positional-read regions
 and the checkpoint scan only; the rest of `score.ts` remains unread.
 
+## Amendment read — 2026-08-05, `combat-config.ts` and `combat.ts` (split region) opened by the 268-versus-253 registration's §3 two-region ruling (frozen `dc39dab`)
+
+**Scope as ruled:** (i) `combat-config.ts`, the `KILLED_TO_WOUNDED_RATIO_RANGES`
+declaration and every within-file consumer of the range (read `:140-265`, plus the
+`:81-82` type field); (ii) `combat.ts`, the casualty-split consumption — `applyResult`
+(`:350-394`) and its split routine `splitCasualties` (`:98-111`, located by exhaustive
+identifier grep from the `:368` call). Transitive halt honoured: the annihilation
+branch, shock resolution, and probe-runner plumbing were not opened here.
+
+**R1 — call sites, exhaustive (identifier grep over `engine/`):** ONE behavioral
+consumer. `DEFAULT_COMBAT_CONFIG.killedToWoundedRatioBySide` is built as
+sideId → `range.best` (`combat-config.ts:232-234`) and read at exactly one engine
+site: `combat.ts:366` in `applyResult`, the FIRE-result application path, which
+passes it to `splitCasualties` (`:368`) — itself called from exactly that one site.
+Non-behavioral consumers: the provenance table (`combat-config.ts:241`,
+'sourced-range' label), two test files (`d110-pins.test.ts`, `m5a-gates.test.ts`,
+consuming the RANGES export for assertions), and `combatConfig(overrides)`'s copy
+machinery. **LINE-DRIFT NOTE for the record: the ruled rows' `combat-config.ts:231`
+now sits at `:232-234`** — line 231 is `infiltrationSuppressionMultiplier` in the
+current tree; the D112 coalition re-pin comment added lines above it. The
+consumption the rows describe is real and singular; the number aged.
+
+**R2 — the split arithmetic: SHARE-FORM, PER-EVENT.** `splitCasualties`
+(`combat.ts:98-111`): `killedExpectation = casualties × R/(R+1)`; killed =
+`min(casualties, floor(expectation) + one seeded Bernoulli on the fractional
+remainder)` (the source's own comment: "D26/D81: floor plus exactly one seeded roll
+on the fractional remainder"); wounded = the integer complement. Integer casualties
+enforced by RangeError; non-negative ratio guarded at `:367` (missing side throws).
+**The §5 conditional's premise HOLDS as written — the mechanism is share-form** —
+so the conditional direction is live: killed share 0.83750 → 0.82951 under 253/52.
+**Measurement-relevant texture:** `stochasticInteger` (`:92-96`) consumes its draw
+UNCONDITIONALLY, so a ratio change alters NO draw counts — under M-FLIP the RNG
+sequence stays in lockstep with the committed world; deltas are split-threshold
+effects plus their behavioral downstream, not dice-path reshuffles (the E3
+disclosure's conflation does not arise here).
+
+**R3 — other consumers: NONE.** No other engine site reads `best`, low/high, the
+range, or the map. By the one-call-site fact, the melee/annihilation terminal
+accounting (`combat.ts:464-479`, prior scoped read `60ef41e`) does NOT flow through
+the ratio: the ratio governs fire-application casualties only. How much of the
+committed world's US casualty production flows through the fire path versus
+terminal accounting is M-COVER's question, measured not asserted.
+
+**Config-surface finding (within R1's remit):** `combatConfig(overrides)` exposes a
+per-side override channel, key `killedToWoundedRatio.<sideId>`
+(`combat-config.ts:259-263`, documented at `:81`) — a byte-free route to a 253/52
+world IF probe plumbing reaches it. Whether M-FLIP uses it instead of the frozen
+throwaway patch is a question for the bands amendment, not this log.
+
 ## Conduct statement
 
 From this read forward, no hypothesis in this project is drafted from a blind position;
