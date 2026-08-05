@@ -1,0 +1,78 @@
+=== C1 - the trigger discriminator: seed 18760647, co-m, t1490-1560, stream [68325eff] ===
+t1490: pos(7063.56,10903.91) order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1491: pos(7047.09,10912.93) MOVED 18.8m order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1492: pos(7030.62,10921.96) MOVED 18.8m order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1493: pos(7014.15,10930.99) MOVED 18.8m order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1494: pos(6997.68,10940.02) MOVED 18.8m order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1495: pos(6981.49,10948.89) MOVED 18.5m order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1496: pos(6967.67,10956.47) MOVED 15.8m order=reno-to-timber path=4 posture=WITHDRAW end=-
+t1497: pos(6951.47,10965.34) MOVED 18.5m order=reno-to-timber path=0 posture=WITHDRAW end=DESTROYED
+t1508: pos(6951.47,10965.34) order=reno-mount path=0 posture=MARCH end=DESTROYED
+t1510: pos(6988.00,10965.35) MOVED 36.5m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1511: pos(7025.80,10965.36) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1512: pos(7057.93,10965.37) MOVED 32.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1513: pos(7095.08,10965.38) MOVED 37.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1514: pos(7132.88,10965.40) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1515: pos(7170.68,10965.41) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1516: pos(7208.48,10965.42) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1517: pos(7246.28,10965.43) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1518: pos(7283.44,10965.44) MOVED 37.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1519: pos(7320.59,10965.45) MOVED 37.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1520: pos(7358.39,10965.46) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1521: pos(7395.54,10965.47) MOVED 37.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1522: pos(7432.69,10965.49) MOVED 37.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1523: pos(7470.49,10965.50) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1524: pos(7508.29,10965.51) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1525: pos(7546.09,10965.52) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1526: pos(7583.89,10965.53) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1527: pos(7621.69,10965.54) MOVED 37.8m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1528: pos(7658.21,10965.55) MOVED 36.5m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1529: pos(7695.37,10965.57) MOVED 37.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1530: pos(7720.05,10975.57) MOVED 26.6m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1539: pos(7706.13,11017.46) MOVED 44.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1540: pos(7674.83,11059.20) MOVED 52.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1541: pos(7629.60,11081.16) MOVED 50.3m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1542: pos(7584.72,11098.45) MOVED 48.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1543: pos(7536.03,11117.21) MOVED 52.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1544: pos(7486.51,11136.29) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1545: pos(7441.63,11153.59) MOVED 48.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1546: pos(7392.94,11172.35) MOVED 52.2m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1547: pos(7342.56,11191.76) MOVED 54.0m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1548: pos(7293.03,11210.85) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1549: pos(7243.51,11229.93) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1550: pos(7193.98,11249.01) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1551: pos(7143.59,11268.43) MOVED 54.0m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1552: pos(7094.07,11287.51) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1553: pos(7048.47,11305.08) MOVED 48.9m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1554: pos(7002.14,11322.94) MOVED 49.7m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1555: pos(6951.75,11342.35) MOVED 54.0m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1556: pos(6902.23,11361.43) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1557: pos(6858.05,11378.46) MOVED 47.3m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1558: pos(6810.17,11396.91) MOVED 51.3m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1559: pos(6760.64,11415.99) MOVED 53.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+t1560: pos(6715.76,11433.28) MOVED 48.1m order=reno-retreat path=7 posture=WITHDRAW end=DESTROYED
+unit-destroyed events in window: co-m@t1497
+co-m death-event position (6951.47,10965.34) vs end-of-death-tick sample - within-tick drift measured directly above.
+
+=== C2a - the re-arm population: committed R1 event log, events on units AFTER their death tick ===
+post-death events on the 120 committed annihilation units: 1
+  18760647|co-m death@t1497 -> ORDER-CHANGED@t1510
+
+=== C2b - the instrument audit: when each committed probe reads positions relative to destruction ===
+(classifications from the probes' own committed source, citable line by line)
+  steady-shelter-probes.mjs   AT-TICK  (post sim.run(t) at the death tick)
+  zero-distance-goal-check.mjs AT-TICK (same convention)
+  order-objective-check.mjs   INHERITED AT-TICK (offline over the committed pair table)
+  membership-rederivation.mjs AT-TICK  (post sim.run(t) at the death tick)
+  steady-fix-m1.mjs           PRE-DEATH (end t-1; corrected from AT-TICK mid-phase, documented)
+  steady-fix-m2.mjs           PRE-DEATH (end t-1)
+  ooe-x2.mjs                  PRE-DEATH (end t-1)
+  repath-event-log.mjs        ALL-TICKS BY DESIGN - the one instrument that reads past death;
+    its D1 tallies and family counts included any post-death events; C2a above sizes that
+    exposure against the 120 committed annihilation units.
+  m4/e3/e4/x3 workers         EVENT+SCORE reads (bouts are at-death events; composites read
+    end-of-day state).
+  UNANSWERABLE-IN-SCOPE, flagged rather than guessed: whether scoreCalibrationRun reads
+  DESTROYED units' end-of-day positions in any leg - score.ts was imported by instruments and
+  never opened by ruling; if any committed leg reads corpse positions at t2160, drift between
+  death and day-end would contaminate it, and answering requires a dated read of score.ts.
