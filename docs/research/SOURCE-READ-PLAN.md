@@ -152,6 +152,19 @@ UNREGISTERED FINDING under the surprise clause — logged verbatim, not interpre
 queued — and given the evaluation-order item sits registered and unexamined precisely
 where a timing surface would live, the chance of surplus is real and it does not get
 absorbed into M4.
+
+## Dated amendment — 2026-08-04, at the corpse-drift audit question
+
+**`engine/src/score.ts` OPENS, named for one question with a yes-or-no answer:** does
+any calibration leg read unit POSITIONS, and if so does it filter on `endState`? The
+corpse-drift blast-radius audit (D121-pending) cannot claim "instruments audited" while
+a scoring path is unexamined — a row asserting audited with a known unexamined surface
+would be the near-true-summary family in the row that closes the audit. Scoped to
+positional reads and their endState filtering; signature-only beyond; transitive halt
+rule live; first look recorded as a dated read. Two outcomes, both fine: no positional
+read or filtered → the audit closes clean and the blast radius is one; reads corpse
+positions → seed 18760647's composite is named affected and every campaign figure it
+contributed to takes a dated note.
 **The read repairs nothing and edits nothing** — repairs remain separate WOs against
 registered predictions, and the STEADY fix stays waiting until the read's ruling lands.
 The read log's claims are verifiable by any reader against the same files, which
