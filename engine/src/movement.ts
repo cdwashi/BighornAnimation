@@ -294,7 +294,8 @@ export function moveUnits(
   memoizeCombatPaths = true,
 ): void {
   // Declared unit order is a determinism contract (D30).
-  for (const unit of state.units) moveOneUnit(
-    scenario, state, unit, terrain, events, cache, combat, memoizeCombatPaths,
-  );
+  for (const unit of state.units) {
+    if (unit.endState) continue;
+    moveOneUnit(scenario, state, unit, terrain, events, cache, combat, memoizeCombatPaths);
+  }
 }

@@ -38,6 +38,7 @@ export function scoreCheckpoints(
   scenario: Scenario,
   terrain: EngineTerrain,
   tracks: readonly (readonly TrackSample[])[],
+  events: readonly SimEvent[],
 ): CheckpointScore[] {
   return scenario.checkpoints.map((checkpoint, checkpointIndex) => {
     const unitIndex = scenario.units.findIndex((unit) => unit.id === checkpoint.unitId);
@@ -45,16 +46,19 @@ export function scoreCheckpoints(
     const samples = tracks[unitIndex];
     if (!samples || samples.length === 0) throw new Error(`No track for unit ${checkpoint.unitId}`);
     const [targetX, targetY] = checkpointPosition(scenario, checkpointIndex, terrain);
-    let nearest = samples[0];
-    let distanceMeters = Math.hypot(nearest.x - targetX, nearest.y - targetY);
-    for (let index = 1; index < samples.length; index += 1) {
-      const sample = samples[index];
+    const destructionTick = events.find((event) => event.type === 'unit-destroyed' &&
+      event.unitId === checkpoint.unitId)?.tick;
+    let nearest: TrackSample | undefined;
+    let distanceMeters = Number.POSITIVE_INFINITY;
+    for (const sample of samples) {
+      if (destructionTick !== undefined && sample.tick > destructionTick) continue;
       const distance = Math.hypot(sample.x - targetX, sample.y - targetY);
       if (distance < distanceMeters) {
         nearest = sample;
         distanceMeters = distance;
       }
     }
+    if (!nearest) throw new Error(`No pre-destruction track for unit ${checkpoint.unitId}`);
     const nearestMinute = nearest.tick * scenario.clock.tickSeconds / 60;
     const timeDeltaMinutes = nearestMinute - checkpoint.minute;
     return {
@@ -506,7 +510,7 @@ export function scoreCalibrationRun(input: ScoreRunInput): CalibrationScorecard 
   const excludedUnitIds = counterfactualExcludedUnitIds(input.scenario, variantIds);
   const components: CalibrationScorecard['components'] = [
     scoreCheckpointComponent(input.scenario,
-      scoreCheckpoints(input.scenario, input.terrain, input.tracks), excludedUnitIds),
+      scoreCheckpoints(input.scenario, input.terrain, input.tracks, input.events), excludedUnitIds),
     scoreCasualtyComponent(input.scenario, input.state, excludedUnitIds),
     scoreEndStateComponent(input.scenario, input.terrain, input.state, input.tracks, input.events,
       excludedUnitIds),

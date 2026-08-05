@@ -33,7 +33,7 @@ export async function runCli(args: readonly string[], cwd = process.cwd()): Prom
   const terrain = await TerrainMovementLoader.fromDirectory(terrainPath);
   const sim = createSim(scenario, { seed, terrain });
   sim.run(toTick);
-  const scores = scoreCheckpoints(sim.scenario, terrain, sim.tracks());
+  const scores = scoreCheckpoints(sim.scenario, terrain, sim.tracks(), sim.events());
   const table = formatCheckpointTable(scores);
   const hits = scores.filter((score) => score.hit).length;
   const report = [

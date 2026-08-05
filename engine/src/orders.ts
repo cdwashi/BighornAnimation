@@ -167,7 +167,9 @@ export function deliverOrders(
     }
     const order = scenario.orders[delivery.orderIndex];
     const unit = state.units[delivery.recipientUnitIndex];
-    activateOrder(scenario, state, unit, order, delivery.orderIndex, terrain, events, cache, combat);
+    if (!unit.endState) {
+      activateOrder(scenario, state, unit, order, delivery.orderIndex, terrain, events, cache, combat);
+    }
     state.deliveredOrders.push({ ...delivery, deliveredTick: state.tick });
   }
   state.deliveryQueue = remaining;

@@ -64,6 +64,7 @@ describe('M3-A exit gates', () => {
       movement.scenario,
       terrain,
       movement.tracks(),
+      movement.events(),
     ));
     const baseline = await readFile(join(process.cwd(), 'reports', 'e5-baseline.md'), 'utf8');
     baselineE5Table = baseline.slice(baseline.indexOf('| Checkpoint |')).trim();

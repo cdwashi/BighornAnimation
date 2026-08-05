@@ -1,0 +1,9 @@
+seed 18760600: composite EXACT | components EXACT | bouts EXACT (2)
+seed 18760647: composite EXACT | components EXACT | bouts EXACT (3)
+co-m stillness post-t1497: HOLDS across 21 sampled ticks | distinct activeOrderId values 1 (1 = never re-armed) | order = reno-to-timber
+  t1497: (6951.47,10965.34) order=reno-to-timber path=0 end=DESTROYED
+  t1498: (6951.47,10965.34) order=reno-to-timber path=0 end=DESTROYED
+  t1499: (6951.47,10965.34) order=reno-to-timber path=0 end=DESTROYED
+  t1500: (6951.47,10965.34) order=reno-to-timber path=0 end=DESTROYED
+  t1501: (6951.47,10965.34) order=reno-to-timber path=0 end=DESTROYED
+  t1502: (6951.47,10965.34) order=reno-to-timber path=0 end=DESTROYED
