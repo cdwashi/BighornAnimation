@@ -233,3 +233,21 @@ verification for #1/#4/#11 (+#6's contested citation) — O-item, four lookups.
 | 178 | `calibration.endState.10` | A-ENDSTATE | HIGH | HIGH | LIVE-BRANCH SET; confirm HIGH, no change implied - PR-67 STANDS |
 | 179 | `calibration.endState.11` | A-ENDSTATE | HIGH | HIGH | LIVE-BRANCH SET; confirm HIGH, no change implied - PR-67 STANDS |
 | 180 | `calibration.endState.12` | A-ENDSTATE | HIGH | HIGH | LIVE-BRANCH SET; confirm HIGH, no change implied - PR-67 STANDS |
+
+---
+
+*Dated annotation (2026-08-05, D123 — original rows #69/#73 untouched above): the
+OPEN ITEM those rows carried ("the value discrepancy is an OPEN ITEM — a value edit
+outside the registered payload") is RESOLVED as REFERENT-DISSOLUTION. Libby's
+"forty Arikara Indian scouts" is a line item in Terry's COLUMN composition (p. 26,
+expedition order-of-battle; p. 9's "some forty" a 1912 reunion retrospective) —
+neither counts the June 25 detachment with the 7th, which is the population the
+encoded 35/37/39 encodes (Historynet/NPS, present-at-battle). Two numbers, two
+populations, no discrepancy; the gap is populated by what a column sheds en route
+(couriers, depot details, herd duties). Reach measured ZERO on both ends (M-COVER
+`d8cfb99`; the giving-end census `eab74ba`), so a value edit was dead at its gate
+regardless. TIER UNCHANGED at MEDIUM — the read was a fetched transcription,
+referent-capable and tier-incapable per the frozen scope; NO SCENARIO BYTE MOVES
+under any reading (D111: `hashScenario` covers every byte — even a provenance-note
+edit costs a stream break; this record is docs-side for exactly that reason).
+Evidence: reports/arikara-item-report.md. Ruled at D123.*
