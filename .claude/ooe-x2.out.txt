@@ -1,0 +1,139 @@
+=== X2 coverage census over the 120 rows (sampled end t-1; the registration's 98 are PAIR ENTRIES from bd7c712 — one row can contribute two) ===
+row 18760600 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760600 t1724 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760601 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760602 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760602 t1716 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760603 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760604 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760604 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760604 t1743 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760604 t1745 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760604 t1747 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760605 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760605 t1714 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760605 t1762 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760606 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760607 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760607 t1717 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760608 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760609 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760610 t1567 co-m: order=reno-retreat form=WAYPOINTS recipients=3 dOwn=785 ELSEWHERE (runtime-computed position)
+row 18760610 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760610 t1721 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760610 t1784 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=4783 ELSEWHERE (runtime-computed position)
+row 18760611 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760611 t1763 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760611 t1765 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760612 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760612 t1764 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760612 t1766 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760613 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760613 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760613 t1750 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3913 ELSEWHERE (runtime-computed position)
+row 18760614 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760614 t1724 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760614 t1781 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=4783 ELSEWHERE (runtime-computed position)
+row 18760615 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760615 t1719 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760616 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760616 t1710 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760616 t1777 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=4783 ELSEWHERE (runtime-computed position)
+row 18760616 t1782 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=4783 ELSEWHERE (runtime-computed position)
+row 18760617 t1628 co-m: order=reno-retreat form=WAYPOINTS recipients=3 dOwn=1239 ELSEWHERE (runtime-computed position)
+row 18760617 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760617 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760617 t1782 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=4783 ELSEWHERE (runtime-computed position)
+row 18760618 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760618 t1716 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760619 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760620 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760620 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760621 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760622 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760622 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760623 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760623 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760624 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760624 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760625 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760625 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760626 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760626 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760626 t1750 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3913 ELSEWHERE (runtime-computed position)
+row 18760626 t1833 co-g: order=reno-retreat form=WAYPOINTS recipients=3 dOwn=1563 ELSEWHERE (runtime-computed position)
+row 18760627 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760627 t1766 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760628 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760629 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760629 t1700 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760629 t1702 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760629 t1742 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760629 t1747 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3627 ELSEWHERE (runtime-computed position)
+row 18760630 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760630 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760631 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760631 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760632 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760632 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760632 t1755 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760633 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760633 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760634 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760634 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760635 t1649 co-a: order=reno-retreat form=WAYPOINTS recipients=3 dOwn=4705 ELSEWHERE (runtime-computed position)
+row 18760635 t1684 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760635 t1684 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760635 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760636 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760637 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760637 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760637 t1796 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=4783 ELSEWHERE (runtime-computed position)
+row 18760637 t1798 co-d: order=weir-advance form=LANDMARK recipients=1 dOwn=0 AT-OWN-DECLARED
+row 18760637 t1804 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=5537 ELSEWHERE (runtime-computed position)
+row 18760638 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760638 t1766 co-e: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760638 t1768 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760639 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760639 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760639 t1756 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760640 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760640 t1719 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760641 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760642 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760642 t1708 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760642 t1711 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760643 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760643 t1768 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760644 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760644 t1708 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760645 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760645 t1720 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760646 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760647 t1497 co-m: order=reno-to-timber form=LANDMARK recipients=3 dOwn=2008 ELSEWHERE (runtime-computed position)
+row 18760647 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760647 t1715 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760648 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760648 t1717 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+row 18760648 t1765 co-c: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=4326 ELSEWHERE (runtime-computed position)
+row 18760648 t1767 co-f: order=wing-consolidate form=LANDMARK recipients=2 dOwn=3972 ELSEWHERE (runtime-computed position)
+row 18760649 t1684 co-l: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=0 AT-OWN-DECLARED
+row 18760649 t1717 co-i: order=right-wing-ridges form=WAYPOINTS recipients=3 dOwn=1005 ELSEWHERE (runtime-computed position)
+
+--- partition: form × position class ---
+  WAYPOINTS|at-own: 52
+  WAYPOINTS|elsewhere: 47
+  LANDMARK|elsewhere: 20
+  LANDMARK|at-own: 1
+
+AT-OWN-DECLARED rows: 53 of 120 | COMPUTED/RUNTIME bucket (dying elsewhere than any declared objective): 67 of 120
+
+--- candidate reach (Amendment 1: neither declared-form candidate reaches the computed bucket) ---
+G1 reach (landmark-form, at-own): 1 of 120
+G2 reach (multi-recipient, at-own): 52 of 120 (forms: WAYPOINTS)
+G0 reach: all 120 by construction (it changes nothing)
+UNREACHABLE by any declared-form candidate: 67 (the computed bucket)
+
+--- the premise check the amendment ordered ---
+If the computed bucket is a material share of the phenomenon, the item's premise (order
+objectives are dimensionless) is NARROWER THAN THE PHENOMENON. Share: 67/120 = 55.8%. Verdict lines are the adjudication's.
