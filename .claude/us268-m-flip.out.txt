@@ -1,0 +1,86 @@
+=== M-FLIP: one token, 268/52 -> 253/52, stream [68325eff]; predictions frozen at 31c53b5 ===
+patch applied and built.
+pin suite WHILE PATCHED (expected RED per the frozen registration — pin (a)(3), the literal 268/52; recorded, NOT repaired): RED (nonzero exit) — relevant lines:
+ ❯ engine/tests/d110-pins.test.ts (4 tests | 1 failed) 8760ms
+   × D110 pre-break pins > pin (a) — killed-to-wounded ratio ranges duplicate their declared source bounds 10ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+ FAIL  engine/tests/d110-pins.test.ts > D110 pre-break pins > pin (a) — killed-to-wounded ratio ranges duplicate their declared source bounds
+    167|     expect(usRange.best).toBe(268 / 52);
+post-run git status --porcelain:
+?? .claude/us268-m-flip.json
+?? .claude/us268-m-flip.mjs
+
+post-run git diff on tracked files: EMPTY - byte-identical, verified
+pin suite AFTER GUARDED RESTORE (expected GREEN): GREEN (exit 0)
+
+--- P-A: the bout census, row for row against the committed 120 ---
+committed 120 | patched 120 | removed 0 | new 0
+P-A: IDENTICAL row for row.
+
+--- P-B: the ledger shift (patched minus committed) ---
+pooled fire-killed delta -78 (band [-120,-30], expectation -69.6) | fire-wounded delta 78
+pooled final-killed delta -48 (band [-85,-15], expectation ~-45) | final-wounded delta 48
+per-seed final-killed delta: min -3 max 0 (band [-4,0] every seed) | application-count delta: min 0 max 0 (identity expected under P-A)
+
+--- P-C: the envelope, per seed against the committed rows ---
+seeds with composite AND all components IDENTICAL: 0/50
+  seed 18760600: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760601: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760602: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760603: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760604: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760605: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760606: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760607: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760608: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760609: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760610: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760611: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760612: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760613: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760614: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760615: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760616: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760617: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760618: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760619: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760620: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760621: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760622: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760623: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760624: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760625: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760626: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760627: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760628: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760629: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760630: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760631: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760632: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760633: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760634: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760635: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760636: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760637: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760638: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760639: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760640: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760641: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760642: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760643: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760644: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760645: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760646: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760647: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760648: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+  seed 18760649: composite 0.0000 pp | components NaN/NaN/NaN/NaN
+patched median 54.7161 vs committed 54.7161 (delta 0.0000 pp; predicted 0.0000)
+patched mean 52.5409 vs committed 52.5409 (delta 0.0000 pp; predicted 0.0000)
+
+--- the per-seed US C2 legs (patched world; committed-world counterpart derivable from M-COVER actuals vs the data-surface bands) ---
+  us-7th-cavalry:killed:FAIL: 43/50
+  us-7th-cavalry:killed:PASS: 7/50
+  us-7th-cavalry:wounded:FAIL: 50/50
+
+Verdict lines are the adjudication's; figures above are the probe's only claims.
