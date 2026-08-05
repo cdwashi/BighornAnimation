@@ -1,0 +1,16 @@
+=== X3 for G2, both arms, stream [68325eff], baseline = committed m4-baseline.json ===
+arm longitudinal: patched, built, running...
+arm lateral: patched, built, running...
+post-run git status --porcelain:
+?? .claude/ooe-x3.mjs
+?? .claude/x3-lateral.json
+?? .claude/x3-longitudinal.json
+
+post-run git diff on tracked files: EMPTY - byte-identical, verified
+
+baseline: median 54.7161 mean 52.5409 bouts 120 | Calhoun window 52 | first Calhoun death: co-l:49 co-c:1 across 50 seeds
+arm longitudinal: median 35.4042 (Δ -19.3120) mean 35.2717 (Δ -17.2692) | bouts 66 (removed 120, new 66) | Calhoun window 0 | first Calhoun death:  across 0 seeds
+arm lateral: median 46.5153 (Δ -8.2009) mean 46.1624 (Δ -6.3785) | bouts 94 (removed 120, new 94) | Calhoun window 1 | first Calhoun death: co-i:1 across 1 seeds
+
+read against X1(b)'s per-arm predictions (1df7821); between-arm divergence pre-assigned to the
+registration's Section 4 bout-order channel; verdict lines are the adjudication's.
