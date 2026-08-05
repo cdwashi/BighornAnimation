@@ -1,0 +1,5958 @@
+{
+  "stream": "68325eff",
+  "endTick": 2160,
+  "seeds": [
+    18760600,
+    18760601,
+    18760602,
+    18760603,
+    18760604,
+    18760605,
+    18760606,
+    18760607,
+    18760608,
+    18760609,
+    18760610,
+    18760611,
+    18760612,
+    18760613,
+    18760614,
+    18760615,
+    18760616,
+    18760617,
+    18760618,
+    18760619,
+    18760620,
+    18760621,
+    18760622,
+    18760623,
+    18760624,
+    18760625,
+    18760626,
+    18760627,
+    18760628,
+    18760629,
+    18760630,
+    18760631,
+    18760632,
+    18760633,
+    18760634,
+    18760635,
+    18760636,
+    18760637,
+    18760638,
+    18760639,
+    18760640,
+    18760641,
+    18760642,
+    18760643,
+    18760644,
+    18760645,
+    18760646,
+    18760647,
+    18760648,
+    18760649
+  ],
+  "perSeed": [
+    {
+      "seed": 18760600,
+      "finalKilled": 225,
+      "finalWounded": 15,
+      "fireKilled": 163,
+      "fireWounded": 31,
+      "fireApps": 110,
+      "nonFireKilled": 62,
+      "nonFireWounded": -16,
+      "custer": {
+        "k": 188,
+        "w": 12
+      },
+      "renoBenteen": {
+        "k": 37,
+        "w": 3
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 37,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 163,
+          "wounded": 31,
+          "events": 110
+        },
+        "unit-destroyed": {
+          "killed": 46,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 8,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 12,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 17,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 39,
+          "wounded": 1,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760601,
+      "finalKilled": 183,
+      "finalWounded": 28,
+      "fireKilled": 146,
+      "fireWounded": 29,
+      "fireApps": 104,
+      "nonFireKilled": 37,
+      "nonFireWounded": -1,
+      "custer": {
+        "k": 147,
+        "w": 22
+      },
+      "renoBenteen": {
+        "k": 36,
+        "w": 6
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 36,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 146,
+          "wounded": 29,
+          "events": 104
+        },
+        "unit-destroyed": {
+          "killed": 36,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 12,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 8,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 22,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 28,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 21,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760602,
+      "finalKilled": 210,
+      "finalWounded": 19,
+      "fireKilled": 155,
+      "fireWounded": 25,
+      "fireApps": 98,
+      "nonFireKilled": 55,
+      "nonFireWounded": -6,
+      "custer": {
+        "k": 184,
+        "w": 16
+      },
+      "renoBenteen": {
+        "k": 26,
+        "w": 3
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 26,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 155,
+          "wounded": 25,
+          "events": 98
+        },
+        "unit-destroyed": {
+          "killed": 49,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 4,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760603,
+      "finalKilled": 189,
+      "finalWounded": 28,
+      "fireKilled": 149,
+      "fireWounded": 31,
+      "fireApps": 111,
+      "nonFireKilled": 40,
+      "nonFireWounded": -3,
+      "custer": {
+        "k": 154,
+        "w": 23
+      },
+      "renoBenteen": {
+        "k": 35,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 35,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 149,
+          "wounded": 31,
+          "events": 111
+        },
+        "unit-destroyed": {
+          "killed": 37,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 10,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 8,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 17,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 25,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 31,
+          "wounded": 8,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 24,
+          "wounded": 7,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760604,
+      "finalKilled": 225,
+      "finalWounded": 6,
+      "fireKilled": 117,
+      "fireWounded": 22,
+      "fireApps": 79,
+      "nonFireKilled": 108,
+      "nonFireWounded": -16,
+      "custer": {
+        "k": 200,
+        "w": 0
+      },
+      "renoBenteen": {
+        "k": 25,
+        "w": 6
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 25,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 117,
+          "wounded": 22,
+          "events": 79
+        },
+        "unit-destroyed": {
+          "killed": 92,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 2,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 17,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760605,
+      "finalKilled": 230,
+      "finalWounded": 13,
+      "fireKilled": 149,
+      "fireWounded": 29,
+      "fireApps": 106,
+      "nonFireKilled": 81,
+      "nonFireWounded": -16,
+      "custer": {
+        "k": 189,
+        "w": 11
+      },
+      "renoBenteen": {
+        "k": 41,
+        "w": 2
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 41,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 149,
+          "wounded": 29,
+          "events": 106
+        },
+        "unit-destroyed": {
+          "killed": 65,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 29,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760606,
+      "finalKilled": 183,
+      "finalWounded": 19,
+      "fireKilled": 144,
+      "fireWounded": 22,
+      "fireApps": 92,
+      "nonFireKilled": 39,
+      "nonFireWounded": -3,
+      "custer": {
+        "k": 157,
+        "w": 15
+      },
+      "renoBenteen": {
+        "k": 26,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 26,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 144,
+          "wounded": 22,
+          "events": 92
+        },
+        "unit-destroyed": {
+          "killed": 36,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 4,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 3,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 19,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 24,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 31,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 27,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760607,
+      "finalKilled": 190,
+      "finalWounded": 31,
+      "fireKilled": 128,
+      "fireWounded": 37,
+      "fireApps": 97,
+      "nonFireKilled": 62,
+      "nonFireWounded": -6,
+      "custer": {
+        "k": 165,
+        "w": 22
+      },
+      "renoBenteen": {
+        "k": 25,
+        "w": 9
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 25,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 128,
+          "wounded": 37,
+          "events": 97
+        },
+        "unit-destroyed": {
+          "killed": 56,
+          "wounded": 0,
+          "events": 3
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 15,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 22,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 30,
+          "wounded": 10,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 33,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760608,
+      "finalKilled": 199,
+      "finalWounded": 35,
+      "fireKilled": 161,
+      "fireWounded": 36,
+      "fireApps": 99,
+      "nonFireKilled": 38,
+      "nonFireWounded": -1,
+      "custer": {
+        "k": 173,
+        "w": 27
+      },
+      "renoBenteen": {
+        "k": 26,
+        "w": 8
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 25,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 161,
+          "wounded": 36,
+          "events": 99
+        },
+        "unit-destroyed": {
+          "killed": 37,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 14,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 1,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760609,
+      "finalKilled": 180,
+      "finalWounded": 23,
+      "fireKilled": 141,
+      "fireWounded": 25,
+      "fireApps": 99,
+      "nonFireKilled": 39,
+      "nonFireWounded": -2,
+      "custer": {
+        "k": 153,
+        "w": 18
+      },
+      "renoBenteen": {
+        "k": 27,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 27,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 141,
+          "wounded": 25,
+          "events": 99
+        },
+        "unit-destroyed": {
+          "killed": 37,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 18,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 29,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 28,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 24,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760610,
+      "finalKilled": 247,
+      "finalWounded": 13,
+      "fireKilled": 151,
+      "fireWounded": 23,
+      "fireApps": 106,
+      "nonFireKilled": 96,
+      "nonFireWounded": -10,
+      "custer": {
+        "k": 190,
+        "w": 10
+      },
+      "renoBenteen": {
+        "k": 57,
+        "w": 3
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 57,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 151,
+          "wounded": 23,
+          "events": 106
+        },
+        "unit-destroyed": {
+          "killed": 86,
+          "wounded": 0,
+          "events": 6
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 45,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760611,
+      "finalKilled": 207,
+      "finalWounded": 21,
+      "fireKilled": 138,
+      "fireWounded": 30,
+      "fireApps": 90,
+      "nonFireKilled": 69,
+      "nonFireWounded": -9,
+      "custer": {
+        "k": 186,
+        "w": 14
+      },
+      "renoBenteen": {
+        "k": 21,
+        "w": 7
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 21,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 138,
+          "wounded": 30,
+          "events": 90
+        },
+        "unit-destroyed": {
+          "killed": 60,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 3,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 13,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760612,
+      "finalKilled": 225,
+      "finalWounded": 14,
+      "fireKilled": 162,
+      "fireWounded": 30,
+      "fireApps": 112,
+      "nonFireKilled": 63,
+      "nonFireWounded": -16,
+      "custer": {
+        "k": 194,
+        "w": 6
+      },
+      "renoBenteen": {
+        "k": 31,
+        "w": 8
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 31,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 162,
+          "wounded": 30,
+          "events": 112
+        },
+        "unit-destroyed": {
+          "killed": 47,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 4,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 9,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 18,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 39,
+          "wounded": 1,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760613,
+      "finalKilled": 251,
+      "finalWounded": 23,
+      "fireKilled": 182,
+      "fireWounded": 38,
+      "fireApps": 124,
+      "nonFireKilled": 69,
+      "nonFireWounded": -15,
+      "custer": {
+        "k": 187,
+        "w": 13
+      },
+      "renoBenteen": {
+        "k": 64,
+        "w": 10
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 32,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 182,
+          "wounded": 38,
+          "events": 124
+        },
+        "unit-destroyed": {
+          "killed": 54,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 19,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 17,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 15,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760614,
+      "finalKilled": 225,
+      "finalWounded": 10,
+      "fireKilled": 142,
+      "fireWounded": 32,
+      "fireApps": 96,
+      "nonFireKilled": 83,
+      "nonFireWounded": -22,
+      "custer": {
+        "k": 195,
+        "w": 5
+      },
+      "renoBenteen": {
+        "k": 30,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 30,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 142,
+          "wounded": 32,
+          "events": 96
+        },
+        "unit-destroyed": {
+          "killed": 61,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 3,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 3,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 24,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 39,
+          "wounded": 1,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760615,
+      "finalKilled": 187,
+      "finalWounded": 24,
+      "fireKilled": 129,
+      "fireWounded": 28,
+      "fireApps": 96,
+      "nonFireKilled": 58,
+      "nonFireWounded": -4,
+      "custer": {
+        "k": 154,
+        "w": 14
+      },
+      "renoBenteen": {
+        "k": 33,
+        "w": 10
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 33,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 129,
+          "wounded": 28,
+          "events": 96
+        },
+        "unit-destroyed": {
+          "killed": 54,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 2,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 24,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 19,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 30,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 25,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760616,
+      "finalKilled": 246,
+      "finalWounded": 3,
+      "fireKilled": 132,
+      "fireWounded": 32,
+      "fireApps": 99,
+      "nonFireKilled": 114,
+      "nonFireWounded": -29,
+      "custer": {
+        "k": 198,
+        "w": 2
+      },
+      "renoBenteen": {
+        "k": 48,
+        "w": 1
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 48,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 132,
+          "wounded": 32,
+          "events": 99
+        },
+        "unit-destroyed": {
+          "killed": 85,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 9,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 8,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 31,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 38,
+          "wounded": 2,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760617,
+      "finalKilled": 280,
+      "finalWounded": 26,
+      "fireKilled": 191,
+      "fireWounded": 38,
+      "fireApps": 122,
+      "nonFireKilled": 89,
+      "nonFireWounded": -12,
+      "custer": {
+        "k": 183,
+        "w": 17
+      },
+      "renoBenteen": {
+        "k": 97,
+        "w": 9
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 58,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 191,
+          "wounded": 38,
+          "events": 122
+        },
+        "unit-destroyed": {
+          "killed": 77,
+          "wounded": 0,
+          "events": 7
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 8,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 45,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 39,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 31,
+          "wounded": 9,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760618,
+      "finalKilled": 215,
+      "finalWounded": 15,
+      "fireKilled": 158,
+      "fireWounded": 17,
+      "fireApps": 95,
+      "nonFireKilled": 57,
+      "nonFireWounded": -2,
+      "custer": {
+        "k": 186,
+        "w": 14
+      },
+      "renoBenteen": {
+        "k": 29,
+        "w": 1
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 29,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 158,
+          "wounded": 17,
+          "events": 95
+        },
+        "unit-destroyed": {
+          "killed": 55,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 9,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760619,
+      "finalKilled": 183,
+      "finalWounded": 26,
+      "fireKilled": 139,
+      "fireWounded": 33,
+      "fireApps": 104,
+      "nonFireKilled": 44,
+      "nonFireWounded": -7,
+      "custer": {
+        "k": 145,
+        "w": 22
+      },
+      "renoBenteen": {
+        "k": 38,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 38,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 139,
+          "wounded": 33,
+          "events": 104
+        },
+        "unit-destroyed": {
+          "killed": 37,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 12,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 20,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 22,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 26,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 24,
+          "wounded": 7,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760620,
+      "finalKilled": 263,
+      "finalWounded": 22,
+      "fireKilled": 200,
+      "fireWounded": 34,
+      "fireApps": 135,
+      "nonFireKilled": 63,
+      "nonFireWounded": -12,
+      "custer": {
+        "k": 183,
+        "w": 12
+      },
+      "renoBenteen": {
+        "k": 80,
+        "w": 9
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 1
+      },
+      "agmKilled": 39,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 200,
+          "wounded": 34,
+          "events": 135
+        },
+        "unit-destroyed": {
+          "killed": 51,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 30,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 30,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 4,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 29,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 39,
+          "wounded": 1,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 1,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760621,
+      "finalKilled": 172,
+      "finalWounded": 30,
+      "fireKilled": 131,
+      "fireWounded": 35,
+      "fireApps": 94,
+      "nonFireKilled": 41,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 142,
+        "w": 26
+      },
+      "renoBenteen": {
+        "k": 30,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 30,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 131,
+          "wounded": 35,
+          "events": 94
+        },
+        "unit-destroyed": {
+          "killed": 36,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 3,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 23,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 22,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 27,
+          "wounded": 7,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 21,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760622,
+      "finalKilled": 191,
+      "finalWounded": 16,
+      "fireKilled": 127,
+      "fireWounded": 26,
+      "fireApps": 84,
+      "nonFireKilled": 64,
+      "nonFireWounded": -10,
+      "custer": {
+        "k": 158,
+        "w": 15
+      },
+      "renoBenteen": {
+        "k": 33,
+        "w": 1
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 33,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 127,
+          "wounded": 26,
+          "events": 84
+        },
+        "unit-destroyed": {
+          "killed": 54,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 8,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 3,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 22,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 13,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 30,
+          "wounded": 10,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760623,
+      "finalKilled": 211,
+      "finalWounded": 23,
+      "fireKilled": 152,
+      "fireWounded": 28,
+      "fireApps": 84,
+      "nonFireKilled": 59,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 182,
+        "w": 18
+      },
+      "renoBenteen": {
+        "k": 29,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 29,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 152,
+          "wounded": 28,
+          "events": 84
+        },
+        "unit-destroyed": {
+          "killed": 54,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 3,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 19,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760624,
+      "finalKilled": 210,
+      "finalWounded": 19,
+      "fireKilled": 147,
+      "fireWounded": 28,
+      "fireApps": 82,
+      "nonFireKilled": 63,
+      "nonFireWounded": -9,
+      "custer": {
+        "k": 185,
+        "w": 15
+      },
+      "renoBenteen": {
+        "k": 25,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 25,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 147,
+          "wounded": 28,
+          "events": 82
+        },
+        "unit-destroyed": {
+          "killed": 54,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 2,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760625,
+      "finalKilled": 191,
+      "finalWounded": 22,
+      "fireKilled": 136,
+      "fireWounded": 27,
+      "fireApps": 98,
+      "nonFireKilled": 55,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 154,
+        "w": 17
+      },
+      "renoBenteen": {
+        "k": 33,
+        "w": 3
+      },
+      "nonCompany": {
+        "k": 4,
+        "w": 2
+      },
+      "agmKilled": 32,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 136,
+          "wounded": 27,
+          "events": 98
+        },
+        "unit-destroyed": {
+          "killed": 50,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 20,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 1,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 20,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 23,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 31,
+          "wounded": 9,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 4,
+          "wounded": 2,
+          "endState": "DESTROYED"
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760626,
+      "finalKilled": 324,
+      "finalWounded": 11,
+      "fireKilled": 217,
+      "fireWounded": 36,
+      "fireApps": 142,
+      "nonFireKilled": 107,
+      "nonFireWounded": -25,
+      "custer": {
+        "k": 194,
+        "w": 6
+      },
+      "renoBenteen": {
+        "k": 130,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 81,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 217,
+          "wounded": 36,
+          "events": 142
+        },
+        "unit-destroyed": {
+          "killed": 82,
+          "wounded": 0,
+          "events": 6
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 8,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 45,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-m": {
+          "killed": 28,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 4,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760627,
+      "finalKilled": 218,
+      "finalWounded": 19,
+      "fireKilled": 166,
+      "fireWounded": 30,
+      "fireApps": 110,
+      "nonFireKilled": 52,
+      "nonFireWounded": -11,
+      "custer": {
+        "k": 188,
+        "w": 12
+      },
+      "renoBenteen": {
+        "k": 30,
+        "w": 7
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 27,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 166,
+          "wounded": 30,
+          "events": 110
+        },
+        "unit-destroyed": {
+          "killed": 41,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 2,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 1,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760628,
+      "finalKilled": 180,
+      "finalWounded": 27,
+      "fireKilled": 143,
+      "fireWounded": 28,
+      "fireApps": 105,
+      "nonFireKilled": 37,
+      "nonFireWounded": -1,
+      "custer": {
+        "k": 149,
+        "w": 18
+      },
+      "renoBenteen": {
+        "k": 31,
+        "w": 9
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 31,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 143,
+          "wounded": 28,
+          "events": 105
+        },
+        "unit-destroyed": {
+          "killed": 36,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 18,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 22,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 31,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 23,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760629,
+      "finalKilled": 221,
+      "finalWounded": 6,
+      "fireKilled": 98,
+      "fireWounded": 23,
+      "fireApps": 78,
+      "nonFireKilled": 123,
+      "nonFireWounded": -17,
+      "custer": {
+        "k": 200,
+        "w": 0
+      },
+      "renoBenteen": {
+        "k": 21,
+        "w": 6
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 21,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 98,
+          "wounded": 23,
+          "events": 78
+        },
+        "unit-destroyed": {
+          "killed": 106,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 5,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 11,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760630,
+      "finalKilled": 195,
+      "finalWounded": 14,
+      "fireKilled": 132,
+      "fireWounded": 25,
+      "fireApps": 84,
+      "nonFireKilled": 63,
+      "nonFireWounded": -11,
+      "custer": {
+        "k": 159,
+        "w": 12
+      },
+      "renoBenteen": {
+        "k": 36,
+        "w": 2
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 36,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 132,
+          "wounded": 25,
+          "events": 84
+        },
+        "unit-destroyed": {
+          "killed": 52,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 4,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 27,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 11,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760631,
+      "finalKilled": 188,
+      "finalWounded": 17,
+      "fireKilled": 123,
+      "fireWounded": 26,
+      "fireApps": 76,
+      "nonFireKilled": 65,
+      "nonFireWounded": -9,
+      "custer": {
+        "k": 160,
+        "w": 13
+      },
+      "renoBenteen": {
+        "k": 28,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 28,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 123,
+          "wounded": 26,
+          "events": 76
+        },
+        "unit-destroyed": {
+          "killed": 56,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 3,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 21,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 13,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760632,
+      "finalKilled": 214,
+      "finalWounded": 21,
+      "fireKilled": 130,
+      "fireWounded": 26,
+      "fireApps": 80,
+      "nonFireKilled": 84,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 187,
+        "w": 13
+      },
+      "renoBenteen": {
+        "k": 27,
+        "w": 8
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 27,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 130,
+          "wounded": 26,
+          "events": 80
+        },
+        "unit-destroyed": {
+          "killed": 79,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 7,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 13,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760633,
+      "finalKilled": 193,
+      "finalWounded": 19,
+      "fireKilled": 140,
+      "fireWounded": 23,
+      "fireApps": 95,
+      "nonFireKilled": 53,
+      "nonFireWounded": -4,
+      "custer": {
+        "k": 161,
+        "w": 17
+      },
+      "renoBenteen": {
+        "k": 32,
+        "w": 2
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 30,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 140,
+          "wounded": 23,
+          "events": 95
+        },
+        "unit-destroyed": {
+          "killed": 49,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 20,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 2,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 28,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 27,
+          "wounded": 8,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 26,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760634,
+      "finalKilled": 210,
+      "finalWounded": 17,
+      "fireKilled": 152,
+      "fireWounded": 21,
+      "fireApps": 87,
+      "nonFireKilled": 58,
+      "nonFireWounded": -4,
+      "custer": {
+        "k": 184,
+        "w": 16
+      },
+      "renoBenteen": {
+        "k": 26,
+        "w": 1
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 26,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 152,
+          "wounded": 21,
+          "events": 87
+        },
+        "unit-destroyed": {
+          "killed": 54,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 3,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 19,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760635,
+      "finalKilled": 195,
+      "finalWounded": 5,
+      "fireKilled": 81,
+      "fireWounded": 14,
+      "fireApps": 90,
+      "nonFireKilled": 114,
+      "nonFireWounded": -9,
+      "custer": {
+        "k": 123,
+        "w": 0
+      },
+      "renoBenteen": {
+        "k": 72,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 72,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 81,
+          "wounded": 14,
+          "events": 90
+        },
+        "unit-destroyed": {
+          "killed": 105,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 45,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-g": {
+          "killed": 9,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 18,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 2,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 1,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760636,
+      "finalKilled": 179,
+      "finalWounded": 24,
+      "fireKilled": 142,
+      "fireWounded": 25,
+      "fireApps": 96,
+      "nonFireKilled": 37,
+      "nonFireWounded": -1,
+      "custer": {
+        "k": 153,
+        "w": 19
+      },
+      "renoBenteen": {
+        "k": 26,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 26,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 142,
+          "wounded": 25,
+          "events": 96
+        },
+        "unit-destroyed": {
+          "killed": 36,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 1,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 4,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 21,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 25,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 29,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 25,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760637,
+      "finalKilled": 301,
+      "finalWounded": 5,
+      "fireKilled": 184,
+      "fireWounded": 31,
+      "fireApps": 125,
+      "nonFireKilled": 117,
+      "nonFireWounded": -26,
+      "custer": {
+        "k": 200,
+        "w": 0
+      },
+      "renoBenteen": {
+        "k": 95,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 6,
+        "w": 0
+      },
+      "agmKilled": 43,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 184,
+          "wounded": 31,
+          "events": 125
+        },
+        "unit-destroyed": {
+          "killed": 91,
+          "wounded": 0,
+          "events": 7
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 3,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 34,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 5,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 45,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-k": {
+          "killed": 2,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 6,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760638,
+      "finalKilled": 220,
+      "finalWounded": 15,
+      "fireKilled": 155,
+      "fireWounded": 27,
+      "fireApps": 103,
+      "nonFireKilled": 65,
+      "nonFireWounded": -12,
+      "custer": {
+        "k": 191,
+        "w": 9
+      },
+      "renoBenteen": {
+        "k": 29,
+        "w": 6
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 29,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 155,
+          "wounded": 27,
+          "events": 103
+        },
+        "unit-destroyed": {
+          "killed": 53,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 7,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760639,
+      "finalKilled": 220,
+      "finalWounded": 19,
+      "fireKilled": 138,
+      "fireWounded": 24,
+      "fireApps": 90,
+      "nonFireKilled": 82,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 186,
+        "w": 14
+      },
+      "renoBenteen": {
+        "k": 34,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 34,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 138,
+          "wounded": 24,
+          "events": 90
+        },
+        "unit-destroyed": {
+          "killed": 77,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 11,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 33,
+          "wounded": 7,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760640,
+      "finalKilled": 198,
+      "finalWounded": 20,
+      "fireKilled": 132,
+      "fireWounded": 25,
+      "fireApps": 97,
+      "nonFireKilled": 66,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 156,
+        "w": 16
+      },
+      "renoBenteen": {
+        "k": 42,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 42,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 132,
+          "wounded": 25,
+          "events": 97
+        },
+        "unit-destroyed": {
+          "killed": 61,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 11,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 14,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 17,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 21,
+          "wounded": 7,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 30,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 25,
+          "wounded": 5,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760641,
+      "finalKilled": 172,
+      "finalWounded": 20,
+      "fireKilled": 131,
+      "fireWounded": 25,
+      "fireApps": 102,
+      "nonFireKilled": 41,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 141,
+        "w": 16
+      },
+      "renoBenteen": {
+        "k": 31,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 31,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 131,
+          "wounded": 25,
+          "events": 102
+        },
+        "unit-destroyed": {
+          "killed": 36,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 7,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 17,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 28,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 30,
+          "wounded": 10,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 26,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 17,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760642,
+      "finalKilled": 227,
+      "finalWounded": 16,
+      "fireKilled": 150,
+      "fireWounded": 32,
+      "fireApps": 118,
+      "nonFireKilled": 77,
+      "nonFireWounded": -16,
+      "custer": {
+        "k": 188,
+        "w": 12
+      },
+      "renoBenteen": {
+        "k": 39,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 39,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 150,
+          "wounded": 32,
+          "events": 118
+        },
+        "unit-destroyed": {
+          "killed": 61,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 28,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 32,
+          "wounded": 8,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760643,
+      "finalKilled": 204,
+      "finalWounded": 30,
+      "fireKilled": 152,
+      "fireWounded": 35,
+      "fireApps": 98,
+      "nonFireKilled": 52,
+      "nonFireWounded": -5,
+      "custer": {
+        "k": 176,
+        "w": 24
+      },
+      "renoBenteen": {
+        "k": 28,
+        "w": 6
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 28,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 152,
+          "wounded": 35,
+          "events": 98
+        },
+        "unit-destroyed": {
+          "killed": 47,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 6,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 30,
+          "wounded": 10,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 30,
+          "wounded": 10,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760644,
+      "finalKilled": 189,
+      "finalWounded": 11,
+      "fireKilled": 129,
+      "fireWounded": 18,
+      "fireApps": 71,
+      "nonFireKilled": 60,
+      "nonFireWounded": -7,
+      "custer": {
+        "k": 162,
+        "w": 11
+      },
+      "renoBenteen": {
+        "k": 27,
+        "w": 0
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 27,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 129,
+          "wounded": 18,
+          "events": 71
+        },
+        "unit-destroyed": {
+          "killed": 53,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 4,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 2,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 21,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 13,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760645,
+      "finalKilled": 239,
+      "finalWounded": 16,
+      "fireKilled": 172,
+      "fireWounded": 30,
+      "fireApps": 125,
+      "nonFireKilled": 67,
+      "nonFireWounded": -14,
+      "custer": {
+        "k": 187,
+        "w": 13
+      },
+      "renoBenteen": {
+        "k": 50,
+        "w": 2
+      },
+      "nonCompany": {
+        "k": 2,
+        "w": 1
+      },
+      "agmKilled": 48,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 172,
+          "wounded": 30,
+          "events": 125
+        },
+        "unit-destroyed": {
+          "killed": 53,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 7,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 9,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 32,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 2,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 38,
+          "wounded": 2,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 35,
+          "wounded": 5,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 2,
+          "wounded": 1,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760646,
+      "finalKilled": 181,
+      "finalWounded": 27,
+      "fireKilled": 143,
+      "fireWounded": 28,
+      "fireApps": 100,
+      "nonFireKilled": 38,
+      "nonFireWounded": -1,
+      "custer": {
+        "k": 151,
+        "w": 18
+      },
+      "renoBenteen": {
+        "k": 30,
+        "w": 9
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 30,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 143,
+          "wounded": 28,
+          "events": 100
+        },
+        "unit-destroyed": {
+          "killed": 37,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 9,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 16,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 24,
+          "wounded": 4,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 24,
+          "wounded": 9,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 26,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 37,
+          "wounded": 3,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760647,
+      "finalKilled": 282,
+      "finalWounded": 20,
+      "fireKilled": 193,
+      "fireWounded": 28,
+      "fireApps": 139,
+      "nonFireKilled": 89,
+      "nonFireWounded": -8,
+      "custer": {
+        "k": 182,
+        "w": 9
+      },
+      "renoBenteen": {
+        "k": 100,
+        "w": 11
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 65,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 193,
+          "wounded": 28,
+          "events": 139
+        },
+        "unit-destroyed": {
+          "killed": 81,
+          "wounded": 0,
+          "events": 4
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 9,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 11,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 45,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 35,
+          "wounded": 6,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 34,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 36,
+          "wounded": 4,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 32,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760648,
+      "finalKilled": 229,
+      "finalWounded": 11,
+      "fireKilled": 135,
+      "fireWounded": 33,
+      "fireApps": 98,
+      "nonFireKilled": 94,
+      "nonFireWounded": -22,
+      "custer": {
+        "k": 194,
+        "w": 6
+      },
+      "renoBenteen": {
+        "k": 34,
+        "w": 5
+      },
+      "nonCompany": {
+        "k": 1,
+        "w": 0
+      },
+      "agmKilled": 33,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 135,
+          "wounded": 33,
+          "events": 98
+        },
+        "unit-destroyed": {
+          "killed": 72,
+          "wounded": 0,
+          "events": 5
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 4,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 8,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 21,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 1,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-e": {
+          "killed": 34,
+          "wounded": 6,
+          "endState": "DESTROYED"
+        },
+        "co-f": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 1,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    },
+    {
+      "seed": 18760649,
+      "finalKilled": 168,
+      "finalWounded": 11,
+      "fireKilled": 111,
+      "fireWounded": 18,
+      "fireApps": 85,
+      "nonFireKilled": 57,
+      "nonFireWounded": -7,
+      "custer": {
+        "k": 140,
+        "w": 7
+      },
+      "renoBenteen": {
+        "k": 28,
+        "w": 4
+      },
+      "nonCompany": {
+        "k": 0,
+        "w": 0
+      },
+      "agmKilled": 28,
+      "eventTypes": {
+        "casualty-resolution": {
+          "killed": 111,
+          "wounded": 18,
+          "events": 85
+        },
+        "unit-destroyed": {
+          "killed": 50,
+          "wounded": 0,
+          "events": 2
+        }
+      },
+      "renoCheck": true,
+      "perUnit": {
+        "co-a": {
+          "killed": 6,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-g": {
+          "killed": 5,
+          "wounded": 1,
+          "endState": null
+        },
+        "co-m": {
+          "killed": 17,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-h": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-d": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-k": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "co-c": {
+          "killed": 13,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-e": {
+          "killed": 26,
+          "wounded": 2,
+          "endState": null
+        },
+        "co-f": {
+          "killed": 21,
+          "wounded": 3,
+          "endState": null
+        },
+        "co-i": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-l": {
+          "killed": 40,
+          "wounded": 0,
+          "endState": "DESTROYED"
+        },
+        "co-b": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "pack-train": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "arikara-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "crow-scouts": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        },
+        "civilians-interpreters": {
+          "killed": 0,
+          "wounded": 0,
+          "endState": null
+        }
+      }
+    }
+  ]
+}
