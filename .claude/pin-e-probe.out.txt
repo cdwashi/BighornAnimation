@@ -1,0 +1,18 @@
+DISPUTED blocks total: 14
+GATED subset (1):
+  calibration.sideCasualties.lakota-cheyenne-coalition.killed.provenance
+ungated (13):
+  leaders[7].ratingsProvenance
+  orders[15].provenance
+  orders[19].provenance
+  variants[0].patch.addCheckpoints[0].provenance
+  variants[0].provenance
+  variants[1].patch.addTacticsProfiles[0].provenance
+  variants[1].provenance
+  variants[2].patch.addUnits[0].provenance
+  variants[2].patch.addUnits[0].strength.provenance
+  variants[2].patch.modifyUnits[0].changes.strength.provenance
+  variants[2].provenance
+  variants[3].provenance
+  variants[4].provenance
+pin (e) predicate today: GREEN — gated set equals the ruled set of one
