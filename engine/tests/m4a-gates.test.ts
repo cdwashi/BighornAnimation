@@ -49,9 +49,9 @@ describe('M4-A F1-F6 closeout gates', () => {
     // intentionally refreshes this combat-only behavioral oracle.
     // D108 Amendment 1's WEST-only bench lip moves camp-defence goals and the
     // resulting combat stream without changing scenario content or RNG seeding.
-    // D112 value-class byte commit; every stream re-rolls per D31a;
-    // baseline-character class per Amendment 2.
-    expect(hashState(baseline.state())).toBe('a114bb7b');
+    // D122 is the ruling that changed the value; D127 is the WO that measured
+    // the resulting combat-only behavioral-oracle hash.
+    expect(hashState(baseline.state())).toBe('a72fd7ef');
 
     const left = createSim(scenario, { seed: 18760625, terrain });
     const right = createSim(scenario, { seed: 42, terrain });
@@ -140,9 +140,9 @@ describe('M4-A F1-F6 closeout gates', () => {
       const started = performance.now();
       sim.run(2160);
       timings.push(performance.now() - started);
-      // D112 value-class byte commit; every stream re-rolls per D31a;
-      // baseline-character class per Amendment 2.
-      expect(hashState(sim.state())).toBe('a114bb7b');
+      // D122 is the ruling that changed the value; D127 is the WO that measured
+      // the resulting combat-only behavioral-oracle hash.
+      expect(hashState(sim.state())).toBe('a72fd7ef');
     }
     timings.sort((left, right) => left - right);
     const median = timings[1];

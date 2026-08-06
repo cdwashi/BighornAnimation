@@ -144,9 +144,9 @@ export const KILLED_TO_WOUNDED_RATIO_RANGES: Readonly<Record<string, SourcedComb
   Object.freeze({
     'us-7th-cavalry': Object.freeze({
       low: 235 / 60,
-      best: 268 / 52,
+      best: 253 / 52,
       high: 285 / 45,
-      provenance: 'M5-SPEC D81; calibration.casualties unit bands; research §I hilltop-inclusive 268 K / 52 W',
+      provenance: 'WO-D127 SOURCED VALUE: 253 is the per-company killed-best sum—the population the engine casualties come from (99.9%, measured at D122); former 268/52 mixed counting frames (monument-plus-evacuees numerator over officers-and-troopers denominator; Scott pairs 268 with 55); changed at D122/D127 on M-FLIP\'s measurement',
     }),
     'lakota-cheyenne-coalition': Object.freeze({
       // D112 value-class byte commit: simultaneous with pin (a)'s source bounds.

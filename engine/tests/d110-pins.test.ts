@@ -162,9 +162,11 @@ describe('D110 pre-break pins', () => {
     expect(usRange.low).toBe(recovered.killed.low / recovered.wounded.high);
     expect(usRange.high).toBe(recovered.killed.high / recovered.wounded.low);
 
-    // M5-SPEC hilltop-inclusive figure, sourced outside the scenario: 268/52
-    // deliberately diverges from the per-company killed-best sum of 253.
-    expect(usRange.best).toBe(268 / 52);
+    // WO-D127 SOURCED VALUE: 253 is the per-company killed-best sum—the population the
+    // engine casualties come from (99.9%, measured at D122). Former 268/52 mixed counting
+    // frames (monument-plus-evacuees numerator over officers-and-troopers denominator;
+    // Scott pairs 268 with 55); changed at D122/D127 on M-FLIP's measurement.
+    expect(usRange.best).toBe(253 / 52);
   });
 
   it('pin (b) — committed scenario contributes exactly the ruled camp-defence candidate', () => {
