@@ -39,7 +39,7 @@ while IFS= read -r path || [ -n "$path" ]; do
     echo "D110 pre-commit gate: $path: UTF-8 BOM at offset 0" >&2
     status=1
   fi
-  if grep "$(printf '\r')" "$blob_file" >/dev/null 2>&1; then
+  if od -An -v -t x1 "$blob_file" | tr ' ' '\n' | grep -q '^0d$'; then
     echo "D110 pre-commit gate: $path: CR byte present" >&2
     status=1
   fi

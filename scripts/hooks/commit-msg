@@ -1,0 +1,21 @@
+#!/bin/sh
+# D128 fail-fast courtesy: inspect the commit message file as bytes before commit.
+
+message_file=$1
+if [ -z "$message_file" ] || [ ! -f "$message_file" ]; then
+  echo "D128 commit-msg gate: cannot read commit message file" >&2
+  exit 1
+fi
+
+status=0
+prefix=$(od -An -t x1 -N3 "$message_file" | tr -d ' \n')
+if [ "$prefix" = "efbbbf" ]; then
+  echo "D128 commit-msg gate: UTF-8 BOM at offset 0" >&2
+  status=1
+fi
+if od -An -v -t x1 "$message_file" | tr ' ' '\n' | grep -q '^0d$'; then
+  echo "D128 commit-msg gate: CR byte present" >&2
+  status=1
+fi
+
+exit "$status"
