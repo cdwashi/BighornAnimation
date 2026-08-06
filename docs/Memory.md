@@ -1,6 +1,6 @@
 # MEMORY.md — Session Record & Resume Brief (BighornAnimation)
 
-## READ FIRST — current state (last updated 2026-08-04; everything below this block is history). For HEAD and what landed since this block was written, read `git log`.
+## READ FIRST — current state (last updated 2026-08-05; everything below this block is history). For HEAD and what landed since this block was written, read `git log`.
 
 *This block supersedes §2's "NEXT ACTION" and the §8 addendum. It carries structural state and
 pointers only; every absolute figure is tagged with its content stream, because a reseed re-rolls
@@ -8,19 +8,26 @@ all of them (session-boundary ruling: the reseed invalidates numbers, not findin
 block at session close; never let a bare number sit here; never duplicate ledger content that
 exists — point at it.*
 
-**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D121, with dated
-annotations/corrections on D90/D98/D108/D109/D111/D112/D113/D114). Frozen registrations and
-the source-read plan+log: `docs/research/` (STEADY-SHELTER, X6624-RESIDUE, LADDER-SHARING,
-EVALUATION-ORDER, ORDER-OBJECTIVE-EXTENT, CORPSE-DRIFT; SOURCE-READ-PLAN and
-SOURCE-READ-LOG with every dated read, including `combat.ts` scoped, `engagement.ts`, and
-`score.ts` scoped). Predictions: `PREDICTIONS.md` (PR-1..71, the
+**Where the live record is.** Rulings: `IMPLEMENTATION_HISTORY.md` (through D127, with dated
+annotations/corrections on D90/D98/D108/D109/D111/D112/D113/D114/D121/D123/D124). Frozen
+registrations and the source-read plan+log: `docs/research/` (STEADY-SHELTER, X6624-RESIDUE,
+LADDER-SHARING, EVALUATION-ORDER, ORDER-OBJECTIVE-EXTENT, CORPSE-DRIFT; 268-VS-253 with its
+BANDS-AMENDMENT, ARIKARA-VALUE, GNIS-LANDMARKS, SCHEMA-CONFIDENCE; SOURCE-READ-PLAN and
+SOURCE-READ-LOG with every dated read, including `combat.ts` scoped, `engagement.ts`,
+`score.ts` scoped twice, and the 2026-08-05 two-region read of `combat-config.ts` +
+`combat.ts`'s split region). Predictions: `PREDICTIONS.md` (PR-1..71, the
 bands amendment, and the reading-order pre-commitment). Refuted designs and misses:
 `NEGATIVE_RESULTS.md` (including §4's late-recorded fallback-clause row). Standing practices:
-`METHODS.md` §6 (the three practices, the yield-and-counterexample paragraph, the §4 pointer).
-The ruled tier map: `docs/research/D112-TIER-MAP.md` (enumeration = authorization). The
-transcription split: `docs/research/O5-TRANSCRIPTION-SPLIT*`. Work orders with their
-amendments: `docs/WO-D110.md`–`WO-D112.md`. Instruments and probes: `.claude/`, committed
-with outputs.
+`METHODS.md` §6 (FIVE practices — the fifth: a file-and-line citation to unread source is a
+crossing and must state its provenance, with the source-versus-copies boundary and its
+serving-layer clause — plus the confidence-field semantic rule in its own section, clause 3
+load-bearing). The ruled tier map: `docs/research/D112-TIER-MAP.md` (enumeration =
+authorization; D123 dated annotation resolving #69/#73). The transcription split:
+`docs/research/O5-TRANSCRIPTION-SPLIT*`. Work orders: `docs/WO-D110.md`–`WO-D112.md`, and
+`WO-D126.md`/`WO-D127.md` — both EXECUTED AND ACCEPTED with their two-surface enumerations
+and dry-runs committed. Item reports: `reports/268-*`, `arikara-*`, `gnis-*`,
+`schema-confidence-*`, `codex-report-wo-d126/127.md`. Instruments and probes: `.claude/`,
+committed with outputs.
 
 **Committed state: BOTH BREAKS COMPLETE, and the O5 v1-blocking item is CLOSED at D112's
 acceptance.** Stream lineage: `ba288f09` (D108 world) → `8e28552c` (D111, the inert-class
@@ -32,7 +39,10 @@ baseline-character pins = stream re-rolled, graded on the envelope; everything e
 red); the generalized value-contradiction rule; the adjudicated-choice precedent for
 undocumented fixtures; and PRE-FREEZE RED ENUMERATION for every future byte-bearing WO.
 
-**Figures — stream-tagged [`68325eff`], all invalidated by the next byte commit:** composite
+**Figures — stream-tagged [`68325eff`], invalidated by the next SCENARIO byte commit — and
+NOTE, the day's structural fact: the D126 and D127 ENGINE commits did NOT invalidate them;
+both payloads were accepted precisely by reproducing every figure below at full precision
+(the envelope, the components, the 120 bouts) — a probe-verified claim made suite-checked:** composite
 median 54.7161% under the REGISTERED floor-quantile convention (the 26th order statistic of
 50 — the 25th, 53.6477, is not the register's median; named in the D112 row's dated
 annotation); mean 52.5409%; F4 complete-wing 25/50; coalition wounded 71–258 median 192 (the
@@ -42,56 +52,83 @@ cells / 260 m / min 51 m / all WEST, SHA in the rows); the C2 ceiling 8/9 (struc
 width-bearing wounded source is located — zero of fifty seeds landed on exactly 160); C4
 reported as x/14 beside the 12/13 lineage on every cross-round comparison, permanently.
 
-**OPEN ITEMS, in D121's ruled order:** (1) the 268/253 engine question (scoring-inert,
-reaches `combat-config.ts:231`); (2) the arikara value item (Libby ~40 outside the encoded
-35–39); (3) the GNIS O-item (#1/#4/#11 held, #6 open); (4) the schema observation — one
-`confidence` field doing two jobs. **QUEUED FUTURE WO, the cheapest the register will ever
-freeze:** the corpse-drift guards — endState checks at `deliverOrders`, `moveUnits`, and
-the C1 checkpoint scan (`score.ts:48-57`) — a frozen WO against a registered prediction,
-per D121's no-repair bound. **STANDING FINDINGS (tracked, not queued), now three plus one
-exposure:** the FIVE-RELATION adjacency inconsistency (D118); the BOUT-ORDER sensitivity
-(D119) and the HALT-GEOMETRY sensitivity (D120) — jointly the ARRIVAL-MICRO-GEOMETRY
-family: the historical outcome rides on conditions finer than any source can fix, a limit
-on what conclusions the model can claim, at result weight; and the structural
-checkpoint-scan exposure (D121, zero realized, recorded beside the seam for the guard WO).
-**Standing open, unqueued:** the mean residual −1.68 pp — OPEN QUANTITY, breach hypothesis
-dead by arithmetic, points elsewhere; the METHODS §7 D91 rider's UNIT-EXTENT half
-(objective facet closed at D120; unit half explicitly open); the O5 revisit thresholds;
-the human items (the Mielke click; O5 stage-2 reads: Gray's methodology chapter, Michno
-pp. 17–19/105); co-m the chronic non-holder.
+**OPEN ITEMS after the 08-05 close — the pre-WO queue is EMPTY (all four items ruled:
+D122 RUN-253, D123 REFERENT-DISSOLUTION, D124 the four GNIS endings, D125
+STANDING-SEMANTIC-RULE) and TWO WOs are EXECUTED AND ACCEPTED (D126 the corpse-drift
+guards; D127 RUN-253 — the engine now RUNS 253/52 with sourced-value history on the
+page).** **THREE WOs REMAIN, in order:** (1) GATE-REPAIR — the BOM/CRLF gate covers
+commit subjects (37th/38th catches) AND streams per-blob instead of one `spawnSync`
+buffer (the gate is INOPERATIVE-WHEN-RUN at current repo scale, ENOBUFS on 10.9 MB
+aggregate; index verified clean twice) — **its open question, flagged for the ledger
+search that drafts it: how do you accept a repair to the instrument you'd normally
+accept it with?** (candidate reference oracle: the direct `git grep --cached` scan used
+at diagnosis); (2) HARNESS-REPAIR — the vitest-worker RPC timeout, INTERMITTENT (2-of-3
+full-suite runs, absence-of-firing is not evidence): its acceptance must say what
+"fixed" means against a stochastic failure; (3) PIN (e) — DISPUTED-confidence blocks on
+gated surfaces equal the ruled set of one (`sideCasualties…killed`), the cheapest of
+the family. All three under FULL pre-freeze TWO-SURFACE enumeration (D126's standing
+amendment: assertion and process surfaces enumerated separately — three executions,
+now routine). **BEHIND THE WOs: the −1.6879 residual — the LAST substantive item on
+the board, un-owned since D112, and when the WOs clear there is no cheaper item to do
+first.** **STANDING FINDINGS three** (D118 five-relation adjacency; D119 bout-order +
+D120 halt-geometry = the ARRIVAL-MICRO-GEOMETRY family, at result weight); the
+checkpoint-scan exposure is now GUARDED (D126). **Riding the next break as inert-class
+payload:** the two D124 tier grants (#4 weir-point, #11 deep-ravine, MEDIUM→HIGH, pin
+(c) the instrument). **Standing lens (D124, scoped so it never becomes a work queue):**
+O5 cluster verdicts are cluster-level prose — corrected twice in two days (arikara,
+#6) — checked PER-CLAIM only when a claim becomes load-bearing; not 174 queued lookups.
+**Standing open, unqueued:** the METHODS §7 D91 rider's UNIT-EXTENT half; the O5
+revisit thresholds; the human items (the Mielke click; O5 stage-2 reads: Gray's
+methodology chapter, Michno pp. 17–19/105).
 
-**The arc's character, for whoever resumes — D113 through D121, one continuous day, closed
-2026-08-04:** NINE RULINGS AND NOT ONE BYTE OF ENGINE SOURCE CHANGED — the register is the
-deliverable. Thirty-plus catch/miss entries with names on every one. The shape: a predicate
-suspicion (D113) survived five frozen registrations, ended the blind era by ruled source
-read (D117: the mechanisms carried the register's OWN D-numbers — the gap was
-TRACEABILITY, not absence; fourth METHODS practice born there: SEARCH THE LEDGER FIRST),
-refused every candidate fix on measurement (D118: three candidates; D120: three more — six
-designs died on their own registered branches and kill-conditions across two items), ruled
-the same-tick cascade DESIGN at D119 (**snapshot semantics ERASE the Calhoun collapse, 52
-window bouts → 0 — the sequence is load-bearing for the history the model exists to
-reproduce**), closed the D91 rider's OBJECTIVE facet at D120 on "correctly dimensionless
-as implemented," and ended at D121 with corpse drift confessed at the tick level (a dead
-company obeying two scheduled orders and riding its retreat route; blast radius after
-eight rulings of unknown: ONE re-arm, ZERO realized contamination, timetable-dependent —
-the defect is a SEAM between owned mechanisms, and the taxonomy's first predictive entry
-is: seams, not mechanisms). The composite-stillness pairing (D119) is the day's most
-transferable result: the envelope median held — once EXACTLY — through near-total battle
-rewrites. Standing law gained: the fourth practice; ESCROW (discharged as designed); role
-attribution; the transport rule (adjudication text in the message body, never link or
-tool result); UNANSWERED-IN-SCOPE, SURVIVED-NOT-PROMOTED, STANDING-FINDING statuses;
-POST-READ conduct (no blind drafting; dated reads by ruling; signature-only crossings;
-halts taken, not reasoned across); THROWAWAY-PATCH discipline (patch in the probe, tree
-restored under guard, byte-identity VERIFIED, no reseed, lineage on every figure);
-X2-BEFORE-X1 (coverage before flips). **NEXT ACTION: the 268-versus-253 engine question**
-— verifier first, POST-READ, the ledger search first on its own practice.
+**The arc's character, for whoever resumes — D122 through D127, one continuous day, closed
+2026-08-05, following without a break from the D113–D121 nine-ruling day (that day's story:
+its rows, and 17fb544/271c079's block in git history):** SIX RULINGS, FOUR ITEMS CLOSED,
+AND THE REGISTER'S FIRST CODE CHANGES IN FOURTEEN RULINGS — both accepted against worlds
+MEASURED BEFORE THE CHANGES WERE AUTHORISED. **The day's transferable method, the
+inversion:** measure the counterfactual (M-FLIP ran the 253/52 world under throwaway
+discipline and recorded it per-seed), then authorise the change (D122 ruled RUN-253 on
+census + read + counterfactual), then verify the change reproduces the measured world
+(D127: per-seed exact on all four ledger fields; divergence would have been a patch
+defect, never a surprise). **The adjudicator's line for the block: the register spent two
+days proving three fixes wrong and two days proving two fixes right, and the difference
+was that the right ones had their worlds measured first.** The shape: 268-versus-253
+opened with the ledger search and closed same-day as RUN-253 (D122: behaviorally free,
+measured — the ratio partitions a ledger, it does not size a loss; the fifth practice born
+mid-item from the attack's own crossings); arikara dissolved on referents (D123: Libby's
+forty counts Terry's column — the 268/253 lesson, one day old, deciding its first case;
+zero catches, read carefully not celebrated); GNIS returned four different endings (D124:
+two grants queued to ride, #6's citation VINDICATED against the O5 verdict, the
+source-versus-copies boundary + serving-layer clause ruled, the O5-cluster-verdict LENS
+named); the schema field closed docs-side with pin (e) as its real output (D125:
+incommensurable axes, clause 3 load-bearing, the #133 instance priced at 0.989 pp); the
+corpse-drift guards landed (D126: 28 lines, five measured predictions, the dry-run finding
+a broken gate before the first WO shipped, the TWO-SURFACE enumeration born); RUN-253
+landed (D127: the oracle blind-spot found pre-freeze — A PROBE-VERIFIED WORLD IS NOT A
+SUITE-VERIFIED WORLD, and the gap is exactly the oracle class). Catches 31(re-scored)–44,
+six of them the adjudicator's own, three corrections running adjudicator-ward on arguments
+the verifier raised — the arrangement running in every direction, including inward.
+Standing law gained: the FIFTH practice (citation provenance; "correct" is not a
+provenance) with the source-versus-copies boundary and serving-layer clause; the
+confidence-field semantic rule (own section, clause 3 the honest half); the TWO-SURFACE
+pre-freeze enumeration (assertion + process, stated separately — three executions: a
+broken gate, a blind spot, a clean account); the exit-criterion correction (D126); the
+scoped-runs caution (SCOPED TEST RUNS SILENTLY RETIRE WHOLE-SUITE GUARDS — it fired twice
+in one day); the O5-cluster-verdict lens (scoped: when load-bearing, per-claim, never a
+re-audit). One blemish, owned: the BOM'd commit subject at 94b4045 (`8759dd0` governs;
+the message-file discipline held immediately after; the gate gap it exposed is the
+gate-repair WO's first clause). **NEXT ACTION: the GATE-REPAIR WO — ledger search first,
+and its named open question waits at the top: how do you accept a repair to the
+instrument you'd normally accept it with?**
 
 **House workflow.** Codex implements WOs (fresh exec per WO, `resume --last` for fix rounds —
 dispatch pattern in CC's memory), Fable adjudicates, CC verifies and instruments, Chuck's
 word executes commits (`git commit -F <file>`; file tools for all prose including
 commit-message files; the BOM/CRLF gate now enforces what the `8759dd0` scar could only
-record). Tier A: predictions alone → row + frozen WO → dispatch. Pre-freeze red enumeration
-before any byte-bearing freeze.
+record). Tier A: predictions alone → row + frozen WO → dispatch. Pre-freeze TWO-SURFACE red
+enumeration (assertion + process, D126) before any byte-bearing freeze, EXECUTED by
+dry-run, not asserted; where a measured counterfactual exists, WO acceptance is
+reproduce-the-measured-world (D127), never divergence-from-expectation.
 ---
 
 Written 2026-07-18 at Chuck's request before a prolonged break. Purpose:
