@@ -1,0 +1,18 @@
+ALL-ERA (D91-D128): 16/19 fired = 84.2%; 95% CP [0.604, 0.966]
+  P(0 firings in N clean runs | p = CP lower 0.604): N=3: 6.20e-2  N=4: 2.45e-2  N=5: 9.71e-3  N=6: 3.84e-3  N=8: 6.02e-4  N=10: 9.43e-5  N=12: 1.48e-5
+CURRENT-SUITE (22-file, D110-D128): 10/11 fired = 90.9%; 95% CP [0.587, 0.998]
+  P(0 firings in N clean runs | p = CP lower 0.587): N=3: 7.03e-2  N=4: 2.90e-2  N=5: 1.20e-2  N=6: 4.95e-3  N=8: 8.43e-4  N=10: 1.44e-4  N=12: 2.45e-5
+RECENT-SIX (pre-search tally): 5/6 fired = 83.3%; 95% CP [0.359, 0.996]
+  P(0 firings in N clean runs | p = CP lower 0.359): N=3: 2.64e-1  N=4: 1.69e-1  N=5: 1.08e-1  N=6: 6.95e-2  N=8: 2.86e-2  N=10: 1.18e-2  N=12: 4.83e-3
+
+Reading: the statistical route needs the smallest N with P < 0.005 against the
+chosen population's CP lower bound; the registration names the population before
+the arithmetic is applied.
+
+Residual rates a clean N=6 batch cannot reject:
+  residual p=0.3: P(0 in 6) = 0.118; N to reject at 0.05 = 9
+  residual p=0.2: P(0 in 6) = 0.262; N to reject at 0.05 = 14
+  residual p=0.1: P(0 in 6) = 0.531; N to reject at 0.05 = 29
+A fix taking the rate 0.9 -> 0.2 still produces a clean six-run batch 26% of
+the time: Route S at N=6 establishes MATERIALLY REDUCED below the bound, never
+FIXED — which is why exit-1 tolerance retires only under Route M.
