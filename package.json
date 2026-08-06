@@ -6,7 +6,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run --fileParallelism=false",
+    "test": "vitest run --fileParallelism=false --exclude \"**/dist/**\"",
     "build": "tsc -p tsconfig.engine.json && tsc -b && node scripts/prepare-app-assets.mjs && next build",
     "build:ts": "tsc -b",
     "dev": "node scripts/prepare-app-assets.mjs && next dev",
@@ -25,7 +25,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "typescript": "^5.7.0",
     "typescript-eslint": "^8.0.0",
-    "vitest": "^3.0.0"
+    "vitest": "4.1.10"
   },
   "dependencies": {
     "d3-contour": "^4.0.2",
