@@ -1,0 +1,129 @@
+
+> bighorn-animation@0.1.0 test
+> vitest run --fileParallelism=false
+
+
+ RUN  v4.1.10 C:/Users/cdwas/Documents/Programming/BighornAnimation
+
+ ❯ dist/engine/tests/gates.test.js (6 tests | 3 failed) 117131ms
+     × E1 Determinism — full-state hashes match at required ticks, including a different unused seed 11ms
+     × E4 Full-day historical run — completes cleanly with finite, unstuck units and exact delivery ticks 3ms
+     × E5 Movement-only checkpoint report — CLI module generates the informational hit/miss table 19399ms
+ ❯ dist/engine/tests/m3a-gates.test.js (6 tests | 6 skipped) 34043ms
+node.exe : 
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  dist/engine/tests/m3a-gates.test.js > M3-A exit gates
+TypeError: Cannot read properties of undefined (reading 'find')
+ ❯ dist/engine/src/score.js:18:40
+     16|             throw new Error(`No track for unit ${checkpoint.unitId}`);
+     17|         const [targetX, targetY] = checkpointPosition(scenario, checkp…
+     18|         const destructionTick = events.find((event) => event.type === …
+       |                                        ^
+     19|             event.unitId === checkpoint.unitId)?.tick;
+     20|         let nearest;
+ ❯ scoreCheckpoints dist/engine/src/score.js:10:33
+ ❯ dist/engine/tests/m3a-gates.test.js:43:48
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  dist/engine/tests/gates.test.js > M2 exit gates > E1 Determinism — full-state hashes match at required ticks, 
+including a different unused seed
+AssertionError: expected { '1': '419c5c81', …(3) } to deeply equal { '1': '419c5c81', …(3) }
+
+- Expected
++ Received
+
+  {
+    "1": "419c5c81",
+    "1080": "56ce2786",
+-   "2160": "bb444272",
++   "2160": "3091eb48",
+    "360": "6c35a803",
+  }
+
+ ❯ dist/engine/tests/gates.test.js:40:33
+     38|     it('E1 Determinism — full-state hashes match at required ticks, in…
+     39|         expect(hashesB).toEqual(hashesA);
+     40|         expect(hashesDifferent).toEqual(hashesA);
+       |                                 ^
+     41|         console.info(`[gate] E1 hashes ${JSON.stringify({ sameA: hashe…
+     42|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  dist/engine/tests/gates.test.js > M2 exit gates > E4 Full-day historical run — completes cleanly with finite, 
+unstuck units and exact delivery ticks
+AssertionError: expected 1094 to be 1098 // Object.is equality
+
+- Expected
++ Received
+
+- 1098
++ 1094
+
+ ❯ dist/engine/tests/gates.test.js:182:84
+    180|         const expectedDeliveries = scenario.orders.reduce((sum, order)…
+    181|         expect(state.deliveredOrders).toHaveLength(expectedDeliveries);
+    182|         state.deliveredOrders.forEach((delivery) => expect(delivery.de…
+       |                                                                                    ^
+    183|         state.units.forEach((unit) => {
+    184|             expect(Number.isFinite(unit.position.x) && Number.isFinite…
+ ❯ dist/engine/tests/gates.test.js:182:31
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  dist/engine/tests/gates.test.js > M2 exit gates > E5 Movement-only checkpoint report — CLI module generates the 
+informational hit/miss table
+AssertionError: expected '# E5 Movement-only Checkpoint Baselin…' to contain 'Scenario FNV-1a: `b1afd7b5`'
+
+- Expected
++ Received
+
+- Scenario FNV-1a: `b1afd7b5`
++ # E5 Movement-only Checkpoint Baseline
++
++ - Seed: `18760625`
++ - Scenario FNV-1a: `68325eff`
++ - Target tick: `2160`
++ - Result: `5/10 checkpoints hit`
++
++ | Checkpoint | Unit | Target min | Nearest min | Distance m | Delta min | Result |
++ |---|---|---:|---:|---:|---:|---|
++ | cp-scouts-crows-nest | crow-scouts | 0.0 | 0.0 | 0.0 | 0.0 | HIT |
++ | cp-reno-ford-a | co-a | 675.0 | 675.5 | 5.1 | 0.5 | HIT |
++ | cp-reno-skirmish-line | co-a | 720.0 | 787.5 | 515.2 | 67.5 | MISS |
++ | cp-reno-timber | co-a | 750.0 | 787.5 | 1447.7 | 37.5 | MISS |
++ | cp-reno-hill | co-a | 765.0 | 807.5 | 0.0 | 42.5 | MISS |
++ | cp-yates-ford-b | co-f | 780.0 | 797.5 | 9.3 | 17.5 | HIT |
++ | cp-right-wing-calhoun | co-l | 795.0 | 818.5 | 0.0 | 23.5 | MISS |
++ | cp-keogh-sector | co-i | 825.0 | 843.0 | 210.9 | 18.0 | MISS |
++ | cp-custer-last-stand | co-f | 840.0 | 829.5 | 0.0 | -10.5 | HIT |
++ | cp-weir-point | co-d | 865.0 | 847.5 | 0.0 | -17.5 | HIT |
++
+
+ ❯ dist/engine/tests/gates.test.js:209:31
+    207|         ]);
+    208|         expect(result.report).toContain('# E5 Movement-only Checkpoint…
+    209|         expect(result.report).toContain(`Scenario FNV-1a: \`${sameA.sc…
+       |                               ^
+    210|         expect(result.report).toContain('| Checkpoint | Unit |');
+    211|     }, 120_000);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  2 failed | 29 passed (31)
+      Tests  3 failed | 162 passed | 6 skipped (171)
+   Start at  16:38:28
+   Duration  558.68s (transform 1.48s, setup 0ms, import 3.73s, tests 546.23s, environment 5ms)
+
