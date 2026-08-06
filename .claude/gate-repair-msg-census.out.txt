@@ -1,0 +1,5 @@
+HEAD 81f590960b1260e0f9622bd73e961666cc19b53f
+commits scanned: 218
+offending messages: 2
+94b404528ac0c88eae796a534ee1515e47219ec2  [BOM]  ﻿D123 dated annotation: zero catches recorded with the cautions attached
+8759dd06311281951c8ea7089a5f05a7daf1e6fe  [BOM]  ﻿Record the basic-practice lesson: open the source before citing it for a number

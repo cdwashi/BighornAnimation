@@ -1,0 +1,7 @@
+node v24.15.0
+HEAD 81f590960b1260e0f9622bd73e961666cc19b53f
+tracked text files under the gate's filter: 434
+aggregate bytes: 10941597
+per-blob calls OK: 433, FAILED: 1
+  FAIL ENOBUFS size=2708511 .claude/repath-event-log.out.txt :: spawnSync git ENOBUFS
+  control(64MiB buffer): .claude/repath-event-log.out.txt reads clean, 2708511 bytes

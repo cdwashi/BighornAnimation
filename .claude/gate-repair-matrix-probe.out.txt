@@ -1,0 +1,30 @@
+temp repo: C:\Users\cdwas\AppData\Local\Temp\gate-repair-matrix-repo
+hook under test: C:\Users\cdwas\Documents\Programming\BighornAnimation\scripts\hooks\pre-commit
+git git version 2.54.0.windows.1, node v24.15.0
+
+=== BLOB CELLS (staged in temp index) ===
+cell | description | OLD (current gate mechanism) | REF (git-native oracle) | HOOK (pre-commit, real file)
+B1 | clean small blob | PASS | PASS | PASS
+B2 | BOM at offset 0, small | FAIL(BOM) | FAIL(BOM) | FAIL(BOM)
+B3 | CR bytes, small | FAIL(CR) | FAIL(CR) | PASS
+B4 | clean blob 1572864 B (> 1 MiB default maxBuffer) | ERROR(ENOBUFS) | PASS | PASS
+B5 | CR located PAST the 1 MiB boundary (1258325 B) | ERROR(ENOBUFS) | FAIL(CR) | PASS
+B6 | BOM at offset 0, blob 1258307 B > 1 MiB | ERROR(ENOBUFS) | FAIL(BOM) | FAIL(BOM)
+B7 | BOM bytes NOT at offset 0 (false-positive control) | PASS | PASS | PASS
+hook exit status over the staged set: 1 (non-zero = rejected commit, expected)
+
+=== MESSAGE CELLS (committed in temp repo) ===
+cell | description | committed-bytes fact | OLD | REF
+M1 | clean message, -F, default cleanup | sha 9a04546c0 BOM=false CR=false | NO-COVERAGE | PASS
+M2 | BOM at message offset 0, -F, default cleanup (the 94b4045 class) | sha fe7b3420a BOM=true CR=false | NO-COVERAGE | FAIL(BOM)
+M3 | CRLF line endings, -F, default cleanup | sha 73890c09c BOM=false CR=false | NO-COVERAGE | PASS
+M4 | CRLF line endings, -F, --cleanup=verbatim | sha ac2f9b669 BOM=false CR=true | NO-COVERAGE | FAIL(CR)
+M5 | interior CR (mid-line), -F, default cleanup | sha d1d2c51ce BOM=false CR=true | NO-COVERAGE | FAIL(CR)
+
+Note: OLD has NO message coverage anywhere — that measured absence IS the subjects clause.
+The commit-msg hook column is payload and is filled at acceptance.
+
+=== HOOK CR-LEG MECHANISM ISOLATION (sh, temp dir) ===
+EOL CR file, hook's grep pattern:      exit 1 (1 = MISSED, the defect)
+interior CR file, hook's grep pattern: exit 0 (0 = matched)
+EOL CR file, od byte-true route:       1 CR byte(s) found (the repair route)
