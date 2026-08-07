@@ -24,7 +24,10 @@ async function initialize(tick: number): Promise<void> {
   terrain = await TerrainMovementLoader.fromUrl(new URL('/terrain/manifest.json', self.location.origin));
   spottingRuntime = createSpottingRuntime(scenario, terrain);
   prepareViewshedCover(spottingRuntime, terrain.fullBounds(), 30);
-  sim = createSim(scenario, { terrain });
+  // D80 typical seed: the envelope median member (rank 26 of 50 on stream 68325eff),
+  // so the default run is a characterized world with a committed campaign row —
+  // not the accidental seed 0 nobody chose.
+  sim = createSim(scenario, { seed: 18760600, terrain });
   const endTick = (18 * 60 * 60) / scenario.clock.tickSeconds;
   const started = performance.now();
   sim.run(endTick);

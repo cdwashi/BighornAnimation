@@ -9,8 +9,15 @@ section — and the annotated copy becomes the requirements record for the polis
 round, the method that produced D57/D58 and the M4 rounds.*
 
 **Launch:** `npm run dev` → http://localhost:3000. The app runs the committed
-baseline scenario (stream `68325eff`); same seed = same run, so anything odd is
-reproducible — note the clock time and it can be found again exactly.
+baseline scenario (stream `68325eff`) at **seed 18760600 — the D80 typical seed, the
+envelope's MEDIAN member (composite 54.7161, exactly the 26th order statistic of 50;
+components C1 0.5, C2 6/9, C3 4/13, C4 6/7; every figure derived from
+`reports/d112-campaign-results.json`).** The run you're watching has a committed
+campaign row: renoKilled 37, coalitionKilled 55, coalitionWounded 150, complete wing
+destroyed. So the sitting's question sharpens from "does this look right" to "does
+this look like THAT" — the reference numbers are on this page beside your
+annotations. Same seed = same run: anything odd is reproducible; note the clock time
+and it can be found again exactly.
 
 **One rule for tonight: the last section lists what is UNBUILT BY FINDING. Don't
 hunt for those — they are not bugs, they are the ruled queue.**
