@@ -46,7 +46,26 @@ near-band on some seeds). What no one knows is HOW IT READS as a spectacle: paci
 legibility of the collapse, whether the valley phase and the hill defense read as
 the events they reproduce.
 
-(Chuck):
+(Chuck) — first-pass findings from the live sitting, 2026-08-07, transcribed by CC
+from Chuck's real-time report; proper second-pass annotations may follow:
+
+- Full watch-through completed. Overall the run reads OK; nothing I expected to see
+  marked was absent on this pass (the absence-watch, partially answered — I'll keep
+  looking on the focused passes).
+- **END-OF-DAY LOCATIONS, the first-pass flag: I question the final end-of-day
+  positions of companies A, H, and K, and especially of company C.** Locations, not
+  casualties — the casualty numbers seem in line with history. Recorded as noticed,
+  not diagnosed, per the sitting's rule.
+  - *CC context for the adjudication, kept separate from the observation:* A/H/K
+    (hill companies) are fresh ground — no one has examined their rendered
+    end-positions, and C1 sits at exactly 50% with its misses unexamined through
+    the UI. co-c's terminal position sits in ruled territory (D120's
+    computed-destination majority, design; the D113/D114 released-escrow class —
+    Calhoun HOLD units dying elsewhere via re-path) — but "reads wrong to a user"
+    is a NEW product-level finding the register has never had. If any marker sits
+    somewhere other than where the unit was watched dying, that is the
+    corpse-drift class (guarded at D126) and escalates from observation to
+    possible bug.
 
 ## 3. The decision index — drifted content, correct under test
 
@@ -82,7 +101,40 @@ test:
 The flashlight model (scrim + crossfaded beam) is as accepted at D77; the terrain
 and engine under it are not.
 
-(Chuck):
+(Chuck) — the §11 pass/fail, from the live sitting, 2026-08-07, transcribed by CC:
+
+- **Moment 1 (Crow's Nest): FAIL, both halves.** I cannot see either view — not
+  from Bloody Knife's POV at 04:00, not from Custer's at 08:00. And I don't see
+  the scout units moving into any position where they could see the pony herd at
+  those timestamps.
+  - *CC diagnosis, verified against committed data and kept separate from the
+    observation:* the finding is a PRODUCT GAP, not a broken model, and Chuck's
+    "scouts never move into position" matches the bytes exactly. Both events carry
+    an `observerPosition` override pinned at the Crow's Nest (45.4454, −107.1392,
+    placed by the D60 ruling); the C4 exam raycasts from that pinned position
+    (scouts `observed: true`; Custer `observed: false` under a 0.5 haze factor —
+    his pass IS not-seeing). No order in the scenario takes any unit to the
+    Crow's Nest; the app's POV mode reads the leader's LIVE marker position; and
+    the Nest (~20 km east of the battlefield bounds, not in the map's `important`
+    label set) plus the herd ("~15 mi W") are off the rendered map. **The
+    acceptance test passes engine-side while the §11 metric it stands for is
+    undemonstrable on screen — the gap read's engine-versus-app theme, caught a
+    third time, by the sitting's only pass/fail item.** Fix options (scripted
+    scout movement, a POV position override at those clock times, or re-scoping
+    the metric) are the adjudicator's to rule; none attempted tonight.
+- **Moment 2 (village extent masked from Reno's valley position, 15:00): PASS,
+  no problem.**
+- **Moment 3 (Custer field masked from Reno Hill, 16:20): PASS, no problem.**
+- **Bonus 1 (15:40, Custer POV, the Weir Point village view — #133): PASS.** I can
+  see the village view, and a little of the battle going on near the timber.
+- **Bonus 2 (17:25, Weir POV, the Custer field): PASS.** I can barely see up north
+  to where Custer is — *(CC note: at that distance and with the field's smoke,
+  "barely" is plausibly the correct rendering, not a defect).*
+- **Polish suggestion for the list: a POV location halo.** Every time I choose a
+  different leader's point of view, a little circle or halo should appear around
+  the company symbol where that leader is located — it would make these viewpoint
+  checks much easier. *(CC: cheap, map-side only; would have sped this very
+  diagnosis; candidate for the polish round.)*
 
 ## 6. The fight on screen — M4's surfaces on today's engine
 
