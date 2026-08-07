@@ -92,6 +92,34 @@ steps 2–3 runs under throwaway discipline (byte-identity verified, no reseed, 
 `68325eff` on every figure); two-surface enumeration on anything byte-bearing; the D129
 world's rule holds — nothing is expected-pre-existing, any red is a finding and a STOP.
 
+## §2a — RE-FREEZE FOR STEPS 2–3 (dated amendment, 2026-08-06, ruled at step 1's acceptance)
+
+**STEP 1 COMPLETE — THE HARDEN BRANCH FIRED.** Every term re-derived clean at full
+precision (`.claude/residual-audit-step1.mjs` / `.out.txt`, committed `a137eda`; the
+adjudicator independently reproduced four of five terms exactly, and his flips proxy
+discrepancy resolved in the audit's favour — pass/fail STATE is not cross-world FLIP;
+the decomposition prices flips). **The target is VERIFIED: −1.688034 pp.** All ceiling
+arithmetic in steps 2–3 computes against this figure, never the carried −1.6879. The
+instrument preserves its own near-miss (renoKilled [33,35], five seeds, a WRONG shrink
+to −1.577 killed by the band's committed identity) — the audit-before-hunt ordering
+paying for itself twice.
+
+**SCOPE, ruled: C2 AND C4 ARE FULLY PRICED AND CLOSED** — flips counted exactly, the
+identity realized exactly on every seed under both denominators. **Whatever owns the
+residual lives in C1 (checkpoints) and C3 (end-states)** — the components the
+expectation treated as constants. The decomposition was never wrong about what it
+priced; it was silent about two components it assumed reseed-invariant. That
+assumption is the item's central suspect, and naming it is step 1's real product.
+
+**STEP 2 AS RE-FROZEN:** (2a) the COMPONENT-WISE DELTA CENSUS — the D111→D112 mean
+delta of each component (weighted, full precision, committed artifacts only, zero
+probes), which must reproduce C2/C4's priced movements as a consistency check and
+reveals C1/C3's shares of the verified −1.688034; deliberately NOT computed before
+this re-freeze (the Q-POP discipline). (2b) H-IDENTITY hunts INSIDE the located
+component(s): every candidate identity's exact pp price COMPUTED before pursuit —
+fits inside the located share or dead on arithmetic (the D113 method). Step 3's
+bridge requirement stands unchanged.
+
 ## §3 — Flagged for the freeze
 
 1. Step 1's artifact list — the audit needs the D111-stream expectation's source named
