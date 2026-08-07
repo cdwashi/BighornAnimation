@@ -1,0 +1,11 @@
+anchor 56.717949  observed 52.540904  total delta -4.177045 pp
+verified residual (step 1): -1.688034 pp
+
+comp | mean(d111) | mean(d112) | weighted delta pp | priced pp | UNPRICED pp
+C1   | 50.0000 | 50.0000 | 0.000000 | 0.000000 | 0.000000
+C2   | 65.3333 | 54.8889 | -2.611111 | -1.500000 | -1.111111
+C3   | 36.1538 | 33.8462 | -0.576923 | 0.000000 | -0.576923
+C4   | 92.3077 | 85.7143 | -0.989011 | -0.989011 | 0.000000
+
+CONSISTENCY: weighted deltas sum -4.177045 vs total -4.177045 (must match)
+ATTRIBUTION: unpriced shares sum -1.688034 vs verified residual -1.688034 (must match)

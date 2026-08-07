@@ -120,6 +120,36 @@ component(s): every candidate identity's exact pp price COMPUTED before pursuit 
 fits inside the located share or dead on arithmetic (the D113 method). Step 3's
 bridge requirement stands unchanged.
 
+## §2b — THE FORK, FROZEN (dated amendment, 2026-08-06, ruled at 2a's acceptance with the 49th catch folded in)
+
+**Step 2a's census (`.claude/residual-step2a-census.mjs`, committed with this freeze):
+closes exactly — C1 EXONERATED BY MEASUREMENT (50.0000 both streams), C4 PERFECTLY
+PRICED (zero unpriced to six decimals), and the verified −1.688034 attributes as a
+COUNTABLE OBJECT: 20 net C2 leg-flips (× 2.777778) + 15 net C3 end-state leg-flips
+(× 1.923077), both shares exactly on their lattices.**
+
+**THE 49TH CATCH REFRAMES THE FORK (annotated on D112): the ±1.14 band was 2 × SE of
+one mean; the correct band for a difference of two 50-seed means is ±1.7045, and the
+residual sits at 1.98 SE — inside, at the edge. H-NOISE is the LIVE hypothesis, not
+the fallback.**
+
+**H-NOISE (live):** the 35 net flips are ordinary reseed variance in C2/C3 legs.
+TWO REGISTERED LEGS, both from committed artifacts, zero probes: (leg 1) the
+D108→D111 census — a PURE-RESEED break with zero value payload — shows C2/C3 net
+leg movement of comparable magnitude; (leg 2) the D108→D111 composite mean
+difference itself sits within its own correctly-derived difference band (both SEs
+computed from the artifacts, never assumed). BOTH legs must state their numbers
+before interpretation.
+
+**H-IDENTITY (falsification clause tightened):** if the pure-reseed break shows
+movement an order smaller, the 35 flips are not noise — and H-IDENTITY must then
+also explain why a systematic effect hides WITHIN a correctly-sized noise band,
+a weaker claim than exceeding it; ceiling arithmetic computes against that.
+
+**Instrument:** `.claude/residual-step2b-noise-census.mjs` — the 2a census run on
+D108→D111, plus the SE/band arithmetic for both breaks, all figures printed at full
+precision before any verdict sentence.
+
 ## §3 — Flagged for the freeze
 
 1. Step 1's artifact list — the audit needs the D111-stream expectation's source named
