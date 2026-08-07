@@ -1,0 +1,25 @@
+weights: C1=0.35 C2=0.25 C3=0.25 C4=0.15 (sum 1)
+
+ANCHOR: d111 rows=50, complete=true, hash=8e28552c
+  anchor mean = 56.717949 pp   [row printed 56.7179]
+OBSERVED: d112 rows=50, complete=true, hash=68325eff
+  observed mean = 52.540904 pp   [row printed 52.5409]
+
+PER-FLIP: every d112 C2 value sits on the /9 lattice: true
+  per-leg price = (0.25/1)/9 = 2.777778 pp   [row used 2.7778]
+FLIPS: woundedFlip=true in 24/50 rows   [row printed 24/50 observed]
+  flips term = 24/50 x per-leg = 1.333333 pp   [row used 1.3333]
+KILLED near-miss (renoKilled [33,35], WRONG FIELD): 5 seeds — refuted by the band identity
+KILLED window (coalitionKilled [31,35], the raised low 31->36): 3 seeds (622:35, 630:33, 631:33)
+  killed term = 3/50 x per-leg = 0.166667 pp   [row used 0.1667]
+C4 IDENTITY: pure lattice (12/13-12/14)x0.15 = 0.989011 pp   [row used 0.989]
+  per-seed realized mean = 0.989011 pp; passed/total variants in artifact: 12/14|12/13
+
+=== THE ROW'S CHAIN (as printed at D112) ===
+  56.7179 - 1.3333 - 0.989 - 0.1667 = 54.2256 (printed; components give 54.2289 - the 48th catch)
+  52.5409 - 54.2289 = -1.6880 (carried as -1.6879)
+
+=== THE AUDITED CHAIN (full precision, committed artifacts only) ===
+  expected = 56.717949 - 1.333333 - 0.989011 - 0.166667 = 54.228938 pp
+  observed = 52.540904 pp
+  AUDITED RESIDUAL = -1.688034 pp   [carried: -1.6879]
