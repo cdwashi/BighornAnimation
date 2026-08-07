@@ -110,6 +110,26 @@ function calibrationExclusionNotePaths(value: unknown): string[] {
   return paths.sort();
 }
 
+function disputedConfidencePaths(value: unknown): string[] {
+  const paths: string[] = [];
+  function visit(current: unknown, path: string): void {
+    if (Array.isArray(current)) {
+      current.forEach((item, index) => visit(item, `${path}[${index}]`));
+      return;
+    }
+    if (!current || typeof current !== 'object') return;
+    if ((current as { confidence?: unknown }).confidence === 'DISPUTED') {
+      paths.push(path);
+    }
+    for (const [key, item] of Object.entries(current)) {
+      const itemPath = path ? `${path}.${key}` : key;
+      visit(item, itemPath);
+    }
+  }
+  visit(value, '');
+  return paths.sort();
+}
+
 describe('D110 pre-break pins', () => {
   let terrain: TerrainMovementLoader;
 
@@ -216,6 +236,21 @@ describe('D110 pre-break pins', () => {
       'variants[5].patch.addOrders[0].provenance.note',
       'variants[5].provenance.note',
       'variants[6].provenance.note',
+    ]);
+  });
+
+  it('pin (e) — gated DISPUTED-confidence membership is exactly the D125 ruled set', () => {
+    const gatedPrefixes = [
+      'checkpoints[',
+      'observationEvents[',
+      'calibration.sideCasualties.',
+      'calibration.endState[',
+      'calibration.timing',
+    ];
+    const gated = disputedConfidencePaths(scenarioData)
+      .filter((path) => gatedPrefixes.some((prefix) => path.startsWith(prefix)));
+    expect(gated, 'D110 pin (e), D125: gated DISPUTED-confidence blocks').toEqual([
+      'calibration.sideCasualties.lakota-cheyenne-coalition.killed.provenance',
     ]);
   });
 });

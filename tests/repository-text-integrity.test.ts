@@ -28,7 +28,7 @@ function git(args: string[], cwd?: string): Buffer {
 
 function isTrackedText(path: string): boolean {
   return TEXT_EXTENSIONS.has(extname(path).toLowerCase()) ||
-    path === 'scripts/hooks/pre-commit' || basename(path) === '.gitignore';
+    path.startsWith('scripts/hooks/') || basename(path) === '.gitignore';
 }
 
 function trackedTextBlobs(root: string): IndexBlob[] {

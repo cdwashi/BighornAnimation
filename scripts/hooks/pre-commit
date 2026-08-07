@@ -4,7 +4,7 @@
 
 text_path() {
   case "$1" in
-    *.css|*.gitignore|*.gitkeep|*.js|*.json|*.md|*.mjs|*.ts|*.tsx|*.txt|scripts/hooks/pre-commit)
+    *.css|*.gitignore|*.gitkeep|*.js|*.json|*.md|*.mjs|*.ts|*.tsx|*.txt|scripts/hooks/*)
       return 0
       ;;
     *)

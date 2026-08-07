@@ -1,0 +1,13 @@
+
+> bighorn-animation@0.1.0 test
+> vitest run --fileParallelism=false --exclude "**/dist/**"
+
+
+ RUN  v4.1.10 C:/Users/cdwas/Documents/Programming/BighornAnimation
+
+
+ Test Files  22 passed (22)
+      Tests  121 passed (121)
+   Start at  19:50:42
+   Duration  416.63s (transform 1.16s, setup 0ms, import 2.96s, tests 406.72s, environment 5ms)
+

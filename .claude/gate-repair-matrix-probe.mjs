@@ -101,7 +101,9 @@ const blobCells = [
   { id: 'B5', file: 'b5-big-cr-past-1mib.txt', desc: `CR located PAST the 1 MiB boundary (${bigCrPastBoundary.length} B)`, bytes: bigCrPastBoundary },
   { id: 'B6', file: 'b6-big-bom.txt', desc: `BOM at offset 0, blob ${bigBom.length} B > 1 MiB`, bytes: bigBom },
   { id: 'B7', file: 'b7-bom-not-at-0.md', desc: 'BOM bytes NOT at offset 0 (false-positive control)', bytes: Buffer.concat([Buffer.from('x'), BOM, Buffer.from('\n')]) },
+  { id: 'B8', file: 'scripts/hooks/b8-synthetic-hook', desc: 'BOM at offset 0, extensionless scripts/hooks path', bytes: Buffer.concat([BOM, Buffer.from('#!/bin/sh\nexit 0\n')]) },
 ];
+mkdirSync(join(TMP, 'scripts', 'hooks'), { recursive: true });
 for (const c of blobCells) writeFileSync(join(TMP, c.file), c.bytes);
 g(['add', ...blobCells.map((c) => c.file)]);
 
