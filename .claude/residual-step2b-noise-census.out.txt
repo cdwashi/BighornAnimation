@@ -1,0 +1,13 @@
+=== LEG 1: D108 -> D111 (pure reseed, zero value payload) ===
+d108 rows=50 hash=ba288f09; d111 rows=50 hash=8e28552c
+means: d108 56.153846  d111 56.717949  difference 0.564103 pp
+C1: 50.0000 -> 50.0000  weighted delta 0.000000 pp
+C2: 64.0000 -> 65.3333  weighted delta 0.333333 pp  = 0.120 net leg-flips x 2.777778/leg (x50 seeds: 6.0 flips)
+C3: 35.2308 -> 36.1538  weighted delta 0.230769 pp  = 0.120 net leg-flips x 1.923077/leg (x50 seeds: 6.0 flips)
+C4: 92.3077 -> 92.3077  weighted delta 0.000000 pp
+
+=== LEG 2: difference-band arithmetic (all SEs from artifacts) ===
+SEs: d108 0.509658  d111 0.570934  d112 0.632765 pp
+D111->D112: unpriced residual -1.688034 pp; correct band ±1.704533; |z| = 1.98 SE
+D108->D111 (pure reseed): difference 0.564103 pp; own band ±1.530644; |z| = 0.74 SE
+[the D112-row's ruled band ±1.1419 was 2 x SE of ONE mean — the 49th catch]
