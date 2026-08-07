@@ -67,6 +67,26 @@ from Chuck's real-time report; proper second-pass annotations may follow:
     corpse-drift class (guarded at D126) and escalates from observation to
     possible bug.
 
+  PROBE RESULT (the ruled three-way discriminator, seed 18760600, read-only,
+  2026-08-07 — reported without diagnosis beyond the discriminator):
+  - **co-c: DESTROYED t1777 (17:49) at (6970,12760); final marker IDENTICAL,
+    drift 0.0 m — THE D126 GUARD HOLDS; case one eliminated.** Nearest landmark
+    to its terminal position: **weir-point, 312 m** — historically company C died
+    on the Calhoun Hill / Finley Ridge ground, not near Weir Point, so this is
+    **case two: ruled-design mechanics producing a terminal position on ground
+    the history doesn't support, reading wrong to a user** — the new class,
+    now with its first measured member.
+  - **co-a: survivor, final position exactly reno-hill (0 m)** — case three:
+    position defensible; the hill company is on the hill.
+  - **co-h and co-k: survivors, BOTH at the IDENTICAL point (6575,12121),
+    103 m from cedar-coulee — NOT on Reno Hill.** Historically H and K ended
+    the day entrenched in the hill perimeter (after the Weir advance withdrew).
+    Two findings in one: **case two on the ground** (hill companies ending
+    ~north toward the Custer field route), and **the METHODS §7 unit-extent
+    rider visible on screen** — two companies stacked at one dimensionless
+    point, the D91 rider's open half showing to a user as two symbols on one
+    spot. Chuck's instinct was right on three of four companies.
+
 ## 3. The decision index — drifted content, correct under test
 
 You accepted it at 32 entries including 3 emergent leader deaths. It now shows
@@ -135,6 +155,20 @@ and engine under it are not.
   the company symbol where that leader is located — it would make these viewpoint
   checks much easier. *(CC: cheap, map-side only; would have sped this very
   diagnosis; candidate for the polish round.)*
+
+ADJUDICATED (Fable, 2026-08-07, from a fresh clone): **Moment 1 is RE-SCOPED off
+the map and onto the accuracy report card** — both endpoints of the sightline are
+outside the rendered frame, so every on-map fix option fails on the same fact;
+the model does the moment correctly and the exam proves it, so it becomes
+reported content ("the scouts saw the herd; Custer, in haze, did not"). Dated
+re-scope note landed against PRD §11. The 12-of-14 pinned-observerPosition class
+recorded, not queued. **The halo: APPROVED to the polish list — the first item on
+it to arrive from a user rather than from an audit.** Ordering unchanged: the
+end-of-day probe (below), then variant toggles.
+
+ADJUDICATED (same ruling) — the §2 locations observation got its focused pass:
+**the ruled three-way discriminator probe ran on seed 18760600**
+(`.claude/endday-location-probe.mjs` / `.out.txt`); results in the §2 addendum.
 
 ## 6. The fight on screen — M4's surfaces on today's engine
 

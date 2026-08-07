@@ -216,6 +216,19 @@ Before transcription, the owner decides:
 - POV mode reproduces the three signature visibility moments: Crow's Nest (scouts see
   herd / Custer does not), village extent masked from Reno's valley position, Custer
   field terrain-masked from Reno Hill (volleys audible, fight unseen).
+  *(Dated re-scope, 2026-08-07, ruled at the sitting adjudication: the Crow's Nest
+  moment is re-scoped OFF the map and onto the accuracy report card as reported
+  content — both endpoints of its sightline lie outside the rendered terrain frame
+  (the Nest ~20 km east of bounds, the herd ~15 mi west), so the geometry is
+  unviewable in this frame by construction; the model reproduces the moment
+  correctly and the C4 exam proves it (scouts observed: true; Custer observed:
+  false under the 0.5 haze factor, his pass BEING the not-seeing). POV mode's
+  metric is the remaining two moments, both of which PASS (first verified at the
+  2026-08-07 re-baseline sitting). Recorded, not queued, the structural class this
+  exposed: twelve of fourteen observation events carry pinned observerPosition
+  overrides, so the exam raycasts from coordinates rather than unit markers across
+  nearly the whole C4 surface — it will matter the first time someone tries to
+  make POV mode and the C4 exam agree.)*
 - At least two variant pairs (MTC feint↔crossing; disintegration↔last stand) produce
   visibly different runs from the same engine.
 - A second battle can be scoped by executing §6.0–6.3 with zero engine changes.

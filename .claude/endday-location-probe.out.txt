@@ -1,0 +1,10 @@
+seed 18760600, scenario hash context: app-default run, stream 68325eff, end tick 2160
+
+unit | endState | death tick (clock) | death pos | final pos @2160 | drift death->final (m) | nearest landmark to final (m)
+co-a | n/a | - | - | (8340,11112) @t2160 | n/a (survivor) | reno-hill 0m
+co-h | n/a | - | - | (6575,12121) @t2160 | n/a (survivor) | cedar-coulee 103m
+co-k | n/a | - | - | (6575,12121) @t2160 | n/a (survivor) | cedar-coulee 103m
+co-c | DESTROYED | t1777 (17:49) | (6970,12760) | (6970,12760) @t2160 | 0.0 | weir-point 312m
+
+Discriminator key: drift > 0 on a destroyed unit = D126 guard failure (escalate).
+Survivors (A/H/K expected): judge final position + nearest landmark against the hill.
