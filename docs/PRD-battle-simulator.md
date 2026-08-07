@@ -72,6 +72,15 @@ a calibrated simulation, so the controls are real.
 - Variant toggles (mutually-exclusive groups enforced) with plain-language descriptions
   and proponents. Parameter panel: leader ratings, strength Estimates (low↔high sweep),
   order timing offsets. "Reset to baseline" always available.
+  *(Dated ruling, 2026-08-07, at the WO-D132 freeze: the v1 parameter panel is a SEED
+  SELECTOR — the fifty committed campaign seeds as the named set, default 18760600,
+  the D80 envelope median — plus active-variant readout and Reset. The seed is a
+  genuine parameter the engine takes, and the right one: every register number is an
+  envelope over fifty seeds, and the selector makes the measured distribution
+  user-traversable. The knob surface above — leader ratings, strength sweeps, timing
+  offsets — DEFERS to the backlog by this ruling: uncalibrated knobs, §10 R5's fence,
+  and no demonstrated user need. M5's exit line closes with both deliverables real,
+  nothing reinterpreted.)*
 
 ### 4.6 Calibration view (builder-facing, ships hidden behind a flag)
 - Run scored against checkpoints, casualties, end states, observation events; per-item

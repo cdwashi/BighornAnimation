@@ -1,0 +1,22 @@
+WO-D132 pair probe — seed 18760600, baseline vs the two §11 pairs
+
+=== BASELINE (feint; disintegration) ===
+destroyed roster (5): co-c, co-e, co-f, co-i, co-l
+min distance to ford-b: co-e 0 m, co-f 9 m
+engagements: 75; event counts: ammo-resupplied:57 arrived:53 camp-defense-activated:3 casualty-resolution:314 contact-pending:13 courier-delivered:7 courier-departed:7 dismounted:3 engagement-state:503 ford-crossing:18 initiative-retargeted:219 melee-bout:12 morale-state:41 mounted:3 move-blocked:7 move-started:68 order-received:98 order-superseded:75 pursuit-ended:221 pursuit-started:119 resupply-proximity:1 rout-reintegrated:4 scout-withdrawal-started:2 scout-withdrew-off-field:2 unit-destroyed:5 waypoint-reached:4037 weapon-cleared:443 weapon-malfunction:543
+
+=== v-mtc-crossing (§11 pair 1: Medicine Tail serious crossing) ===
+destroyed roster (1): co-l
+min distance to ford-b: co-e 0 m, co-f 0 m
+engagements: 62; event counts: ammo-resupplied:104 arrived:50 camp-defense-activated:3 casualty-resolution:429 contact-pending:13 courier-delivered:7 courier-departed:7 dismounted:3 engagement-state:431 ford-crossing:17 initiative-retargeted:847 leader-killed:1 melee-bout:13 morale-state:46 mounted:3 move-blocked:8 move-started:68 order-received:98 order-superseded:75 pursuit-ended:847 pursuit-started:851 resupply-proximity:1 rout-reintegrated:3 scout-withdrawal-started:2 scout-withdrew-off-field:2 unit-destroyed:1 waypoint-reached:3510 weapon-cleared:574 weapon-malfunction:730
+
+=== v-organized-last-stand (§11 pair 2) ===
+destroyed roster (6): co-d, co-e, co-f, co-i, co-l, lwm-band
+min distance to ford-b: co-e 0 m, co-f 9 m
+engagements: 97; event counts: ammo-resupplied:109 arrived:59 camp-defense-activated:3 casualty-resolution:407 contact-pending:15 courier-delivered:6 courier-departed:7 courier-killed:1 dismounted:3 engagement-state:597 ford-crossing:22 initiative-retargeted:226 leader-killed:2 melee-bout:14 morale-state:76 mounted:3 move-blocked:7 move-started:67 order-received:97 order-superseded:74 pursuit-ended:234 pursuit-started:228 resupply-proximity:1 rout-reintegrated:5 scout-withdrawal-started:2 scout-withdrew-off-field:2 unit-destroyed:6 waypoint-reached:4276 weapon-cleared:591 weapon-malfunction:730
+
+=== OPERATIONAL-DEFINITION OBSERVABLES ===
+Pair 1 (ford-b approach, user-visible as units at the river): baseline co-e/f min-dist 0/9 m vs crossing 0/0 m
+Pair 1 roster delta: differs — baseline 5 vs variant 1
+Pair 2 roster delta: differs — baseline [co-c,co-e,co-f,co-i,co-l] vs variant [co-d,co-e,co-f,co-i,co-l,lwm-band]
+Pair 2 engagement-count delta: 75 -> 97
